@@ -4,6 +4,7 @@ from app.models import User
 
 user_routes = Blueprint('users', __name__)
 
+# handles routes for user-specific actions that aren't related to authentication, like updating a user's profile
 
 @user_routes.route('/')
 @login_required

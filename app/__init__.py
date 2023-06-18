@@ -7,6 +7,15 @@ from flask_login import LoginManager
 from .models import db, User
 from .api.user_routes import user_routes
 from .api.auth_routes import auth_routes
+from .api.cart_routes import cart_routes
+from .api.comment_routes import comment_routes
+from .api.cart_routes import cart_routes
+from .api.item_routes import item_routes
+from .api.like_routes import like_routes
+from .api.reminder_routes import reminder_routes
+from .api.section_item_routes import section_item_routes
+from .api.shop_section_routes import shop_section_routes
+from .api.wishlist_routes import wishlist_routes
 from .seeds import seed_commands
 from .config import Config
 
@@ -28,6 +37,14 @@ app.cli.add_command(seed_commands)
 app.config.from_object(Config)
 app.register_blueprint(user_routes, url_prefix='/api/users')
 app.register_blueprint(auth_routes, url_prefix='/api/auth')
+app.register_blueprint(cart_routes, url_prefix='/api/carts')
+app.register_blueprint(comment_routes, url_prefix='/api/comments')
+app.register_blueprint(item_routes, url_prefix='/api/items')
+app.register_blueprint(like_routes, url_prefix='/api/likes')
+app.register_blueprint(reminder_routes, url_prefix='/api/reminders')
+app.register_blueprint(section_item_routes, url_prefix='/api/section_items')
+app.register_blueprint(shop_section_routes, url_prefix='/api/shop_sections')
+app.register_blueprint(wishlist_routes, url_prefix='/api/wishlists')
 db.init_app(app)
 Migrate(app, db)
 
