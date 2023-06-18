@@ -1,0 +1,33 @@
+/* colors used per rarity */
+/* 
+#62b11e green
+#5346d2 dark blue/purple
+#309b9b aquamarine
+#28a8e7 light blue
+#9e49d9 purple
+*/
+
+.home-item-information {
+    display: flex;
+    align-items: center;
+}
+
+.home-item-name {
+    cursor: pointer;
+}
+
+.home-item-price {
+    cursor: pointer;
+}
+
+.vbucks-icon {
+    height: 25px;
+    width: 25px;
+}
+
+.home-item-image {
+    background-color: #62b11e;
+    height: 200px;
+    width: 200px;
+    cursor: pointer;
+}

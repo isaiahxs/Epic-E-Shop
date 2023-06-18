@@ -1,1 +1,12 @@
 /* TODO Add site wide styles */
+
+body {
+    font-family: "Luckiest Guy", cursive;
+    /* font-weight: light; */
+    font-weight: 200;
+}
+
+.item-name {
+    font-family: 'Poppins', calibri, helvetica, arial, sans-serif;
+    font-weight: bold;
+}
