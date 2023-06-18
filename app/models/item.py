@@ -12,7 +12,7 @@ class Item(db.Model):
 
     # id's and prices are normally integers but in the responses from the api, they're strings
     id = db.Column(db.Integer, primary_key=True)
-    item_id = db.Column(db.String(1000), nullable=False)
+    item_id = db.Column(db.String(1000), nullable=False, unique=True)
     name = db.Column(db.String(1000), nullable=False)
     price = db.Column(db.String(1000), nullable=False)
     # When retrieved, SQLAlchemy will automatically convert this back into a Python object.
