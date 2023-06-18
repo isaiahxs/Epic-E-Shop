@@ -1,9 +1,19 @@
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import session from './session'
+import items from './items'
+import cart from './cart'
+import reminders from './reminders'
+import wishlist from './wishlist'
+import comments from './comments'
 
 const rootReducer = combineReducers({
   session,
+  items,
+  cart,
+  reminders,
+  wishlist,
+  comments
 });
 
 
