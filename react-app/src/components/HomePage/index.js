@@ -24,7 +24,7 @@ const HomePage = () => {
             <h2>Today's Daily Items</h2>
             {/* check if the items array is not empty before trying to map over it */}
             {items.length > 0 && items.map((item, idx) => (
-                <div key={idx}>
+                <div key={idx} onClick={() => history.push(`/item/${item.name}`)}>
                     <div className='home-item-information'>
                         <div className='item-name home-item-name'>{item.name}</div>
                         <img className='vbucks-icon' src={item.priceIconLink} alt='vbucks' />

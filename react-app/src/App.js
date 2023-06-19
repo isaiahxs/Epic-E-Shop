@@ -35,7 +35,7 @@ function App() {
             <Featured />
           </Route>
 
-          <Route path="/item/:id" exact>
+          <Route path="/item/:itemName" exact>
             <ItemDetailPage />
           </Route>
 

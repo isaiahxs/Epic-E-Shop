@@ -8,6 +8,7 @@ import './Featured.css'
 const Featured = () => {
     const dispatch = useDispatch()
     const featuredItems = useSelector(state => state.items.featuredItems)
+    const history = useHistory()
 
     useEffect(() => {
         // dispatch(getDailyItems())
@@ -18,7 +19,7 @@ const Featured = () => {
         <div>
             <h1>Featured Items</h1>
             {featuredItems.length > 0 && featuredItems.map((item, idx) => (
-                <div key={idx}>
+                <div key={idx} onClick={() => history.push(`/item/${item.name}`)}>
                     <div className='home-item-information'>
                         <div className='item-name home-item-name'>{item.name}</div>
                         <img className='vbucks-icon' src={item.priceIconLink} alt='vbucks' />
