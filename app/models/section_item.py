@@ -12,7 +12,7 @@ class SectionItem(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     shop_section_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('shop_sections.id')), nullable=False)
-    item_id = db.Column(db.String(1000), db.ForeignKey(add_prefix_for_prod('items.id')), nullable=False)
+    item_id = db.Column(db.String(1000), db.ForeignKey(add_prefix_for_prod('items.item_id')), nullable=False)
 
     section = db.relationship("ShopSection", back_populates="items")
     item = db.relationship("Item", back_populates="sections")

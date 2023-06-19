@@ -104,7 +104,7 @@ def upgrade():
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('shop_section_id', sa.Integer(), nullable=False),
     sa.Column('item_id', sa.String(length=1000), nullable=False),
-    sa.ForeignKeyConstraint(['item_id'], ['items.id'], ),
+    sa.ForeignKeyConstraint(['item_id'], ['items.item_id'], ),
     sa.ForeignKeyConstraint(['shop_section_id'], ['shop_sections.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
