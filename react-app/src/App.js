@@ -25,10 +25,10 @@ function App() {
             <HomePage />
           </Route>
 
-          <Route path="/api/featured_items" exact>
+          <Route path="/featured_items" exact>
             <Featured />
           </Route>
-          
+
           <Route path="/login" >
             <LoginFormPage />
           </Route>

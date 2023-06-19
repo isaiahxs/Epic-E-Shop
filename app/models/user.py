@@ -65,6 +65,8 @@ class User(db.Model, UserMixin):
     reminders = db.relationship("Reminder", back_populates="user", cascade="all, delete-orphan")
     comments = db.relationship("Comment", back_populates="user")
     likes = db.relationship("Like", back_populates="user")
+    inventory = db.relationship("Inventory", back_populates="user")
+
 
     def __repr__(self):
         return f'<User id={self.id} username={self.username} email={self.email}>'

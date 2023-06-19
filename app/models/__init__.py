@@ -8,4 +8,5 @@ from .reminder import Reminder
 from .section_item import SectionItem
 from .shop_section import ShopSection
 from .wishlist import Wishlist
+from .inventory import Inventory
 from .db import environment, SCHEMA

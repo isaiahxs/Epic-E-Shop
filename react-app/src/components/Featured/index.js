@@ -10,7 +10,7 @@ const Featured = () => {
     const featuredItems = useSelector(state => state.items.featuredItems)
 
     useEffect(() => {
-        dispatch(getDailyItems())
+        // dispatch(getDailyItems())
         dispatch(getFeaturedItems())
     }, [dispatch])
 
@@ -18,15 +18,15 @@ const Featured = () => {
         <div>
             <h1>Featured Items</h1>
             {featuredItems.length > 0 && featuredItems.map((item, idx) => (
-                <>
+                <div key={idx}>
                     <div className='home-item-information'>
-                        <div className='item-name home-item-name' key={idx}>{item.name}</div>
+                        <div className='item-name home-item-name'>{item.name}</div>
                         <img className='vbucks-icon' src={item.priceIconLink} alt='vbucks' />
                         <div className='item-price home-item-price'>{item.price}</div>
                     </div>
                     {/* possible image options are: featured, gallery, icon, png, resizeAvailable: boolean */}
                     <img className='home-item-image' src={item.images.icon} alt={item.name} style={{ backgroundColor: getItemBackgroundColor(item.rarity) }}/>                    
-                </>
+                </div>
             ))}
         </div>
     )
