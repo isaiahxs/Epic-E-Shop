@@ -6,6 +6,7 @@ import LoginFormPage from "./components/LoginFormPage";
 import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
 import HomePage from "./components/HomePage";
+import Featured from "./components/Featured";
 
 function App() {
   const dispatch = useDispatch();
@@ -24,6 +25,10 @@ function App() {
             <HomePage />
           </Route>
 
+          <Route path="/api/featured_items" exact>
+            <Featured />
+          </Route>
+          
           <Route path="/login" >
             <LoginFormPage />
           </Route>

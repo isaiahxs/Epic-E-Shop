@@ -3,14 +3,11 @@ import { getDailyItems, getFeaturedItems } from '../../store/items'
 import { useEffect } from 'react'
 import { getItemBackgroundColor } from '../../utils'
 import { useHistory } from 'react-router-dom'
-import './HomePage.css'
+import './Featured.css'
 
-const HomePage = () => {
+const Featured = () => {
     const dispatch = useDispatch()
-    const items = useSelector(state => state.items.dailyItems)
-    // console.log("THESE ARE OUR ITEMS", items)
-    // console.log('THIS IS OUR ITEMS[0] NAME', items?.[0]?.name)
-    const history = useHistory()
+    const featuredItems = useSelector(state => state.items.featuredItems)
 
     useEffect(() => {
         dispatch(getDailyItems())
@@ -19,11 +16,8 @@ const HomePage = () => {
 
     return (
         <div>
-            <h1>HomePage</h1>
-            <button onClick={() => history.push(`/api/featured_items`)}>Check out our Featured items!</button>
-            <h2>Today's Daily Items</h2>
-            {/* check if the items array is not empty before trying to map over it */}
-            {items.length > 0 && items.map((item, idx) => (
+            <h1>Featured Items</h1>
+            {featuredItems.length > 0 && featuredItems.map((item, idx) => (
                 <>
                     <div className='home-item-information'>
                         <div className='item-name home-item-name' key={idx}>{item.name}</div>
@@ -34,17 +28,8 @@ const HomePage = () => {
                     <img className='home-item-image' src={item.images.icon} alt={item.name} style={{ backgroundColor: getItemBackgroundColor(item.rarity) }}/>                    
                 </>
             ))}
-            {/* <div>
-                <div>Recent Articles</div>
-            </div> */}
-            <div>
-                <div>Latest News</div>
-                <div>Chapter 4 Season 3: WILDS</div>
-                <div>Raptor Riding</div>
-                <div>Mud</div>
-            </div>
         </div>
     )
 }
 
-export default HomePage;
+export default Featured;
