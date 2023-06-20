@@ -23,6 +23,10 @@
 
 .profile-dropdown {
   position: absolute;
+  /* top: 100%; */
+  /* left: 0; */
+  /* top: 50px; */
+  /* right: 50px; */
 }
 
 .hidden {

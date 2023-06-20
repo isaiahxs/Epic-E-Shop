@@ -23,6 +23,21 @@
     box-shadow: 4px 4px 0px 0px rgba(0, 0, 0, 1);
 }
 
+.latest-news {
+    background-color: #ffffff;
+    max-width: 500px;
+}
+
+.news-image {
+    width: 100%;
+    max-width: 500px;
+}
+
+.news-text-heading,
+.news-text-body {
+    color: black;
+}
+
 .home-item-information {
     display: flex;
     align-items: center;
