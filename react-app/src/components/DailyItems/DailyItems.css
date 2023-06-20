@@ -1,0 +1,25 @@
+.home-item-information {
+    display: flex;
+    align-items: center;
+}
+
+.home-item-name {
+    cursor: pointer;
+}
+
+.home-item-price {
+    cursor: pointer;
+}
+
+.vbucks-icon {
+    height: 25px;
+    width: 25px;
+}
+
+.home-item-image {
+    height: 200px;
+    width: 200px;
+    cursor: pointer;
+    border: 1px solid rgb(255, 255, 255);
+    /* box-shadow: 4px 4px 0px 0px rgba(0, 0, 0, 1); */
+}

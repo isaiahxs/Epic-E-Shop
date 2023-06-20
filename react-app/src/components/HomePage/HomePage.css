@@ -6,6 +6,7 @@
 #28a8e7 light blue
 #9e49d9 purple
 */
+
 .home-heading {
     /* display: flex;
     justify-content: center;
@@ -19,47 +20,6 @@
     width: 100%;
     margin: auto;
     /* max-height: 400px; */
-    border: 1px solid black;
-    box-shadow: 4px 4px 0px 0px rgba(0, 0, 0, 1);
-}
-
-.latest-news {
-    background-color: #ffffff;
-    max-width: 500px;
-}
-
-.news-image {
-    width: 100%;
-    max-width: 500px;
-}
-
-.news-text-heading,
-.news-text-body {
-    color: black;
-}
-
-.home-item-information {
-    display: flex;
-    align-items: center;
-}
-
-.home-item-name {
-    cursor: pointer;
-}
-
-.home-item-price {
-    cursor: pointer;
-}
-
-.vbucks-icon {
-    height: 25px;
-    width: 25px;
-}
-
-.home-item-image {
-    height: 200px;
-    width: 200px;
-    cursor: pointer;
-    border: 1px solid black;
-    box-shadow: 4px 4px 0px 0px rgba(0, 0, 0, 1);
+    border: 1px solid rgb(255, 255, 255);
+    /* box-shadow: 4px 4px 0px 0px rgba(0, 0, 0, 1); */
 }
