@@ -11,11 +11,12 @@ const ItemDetailPage = ({isLoaded}) => {
     const history = useHistory();
     const dailyItems = useSelector(state => state.items.dailyItems);
     const featuredItems = useSelector(state => state.items.featuredItems);
+    const itemsLoaded = useSelector(state => state.items.itemsLoaded)
 
-    // useEffect(() => {
-    //     dispatch(getDailyItems())
-    //     dispatch(getFeaturedItems())
-    // }, [dispatch])
+    useEffect(() => {
+        dispatch(getDailyItems())
+        dispatch(getFeaturedItems())
+    }, [dispatch])
 
     //combine both lists
     const allItems = [...dailyItems, ...featuredItems]
@@ -64,7 +65,7 @@ const ItemDetailPage = ({isLoaded}) => {
                     </div>
                 </div>
             ) : (
-                <p>No item found with this name: { itemName }</p>
+                <p>Loading: { itemName }</p>
             )}
             <div></div>
         </>

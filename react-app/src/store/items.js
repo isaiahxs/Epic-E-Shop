@@ -1,6 +1,7 @@
 //actions
 const SET_DAILY_ITEMS = "items/SET_DAILY_ITEMS";
 const SET_FEATURED_ITEMS = "items/SET_FEATURED_ITEMS";
+const SET_ITEMS_LOADED = "items/SET_ITEMS_LOADED";
 
 //action creators
 const setDailyItems = (items) => ({
@@ -13,8 +14,12 @@ const setFeaturedItems = (items) => ({
     payload: items,
 });
 
+const setItemsLoaded = () => ({
+    type: SET_ITEMS_LOADED,
+})
+
 //initial state
-const initialState = { dailyItems: [], featuredItems: [] };
+const initialState = { dailyItems: [], featuredItems: [], itemsLoaded: false };
 
 //thunk action
 export const getDailyItems = () => async (dispatch) => {
@@ -27,6 +32,7 @@ export const getDailyItems = () => async (dispatch) => {
     if (response.ok) {
         const data = await response.json();
         dispatch(setDailyItems(data));
+        dispatch(setItemsLoaded()); //set items loaded after fetching items
     }
 };
 
@@ -40,6 +46,7 @@ export const getFeaturedItems = () => async (dispatch) => {
     if (response.ok) {
         const data = await response.json();
         dispatch(setFeaturedItems(data));
+        dispatch(setItemsLoaded()); //set items loaded after fetching items
     }
 };
 
@@ -51,6 +58,9 @@ export default function reducer(state = initialState, action) {
 
         case SET_FEATURED_ITEMS:
             return { ...state, featuredItems: action.payload };
+
+        case SET_ITEMS_LOADED:
+            return { ...state, itemsLoaded: true };
 
         default:
             return state;
