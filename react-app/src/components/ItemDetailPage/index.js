@@ -27,7 +27,7 @@ const ItemDetailPage = () => {
             {item ? (
                 <div>
                     <h2>{item.name}</h2>
-                    <img src={item.images.icon} alt={item.name} style={{ backgroundColor: getItemBackgroundColor(item.rarity) }}/>
+                    <img className='item-detail-image' src={item.images.icon} alt={item.name} style={{ backgroundColor: getItemBackgroundColor(item.rarity) }}/>
                     <div>{item.description}</div>
                     <div>{item.price}</div>
                 </div>

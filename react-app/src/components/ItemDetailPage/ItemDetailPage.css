@@ -1,0 +1,6 @@
+.item-detail-image {
+    height: 300px;
+    width: 300px;
+    border: 1px solid black;
+    box-shadow: 4px 4px 0px 0px rgba(0, 0, 0, 1);
+}

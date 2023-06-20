@@ -6,6 +6,11 @@ body {
     font-weight: 200;
 }
 
+/* img {
+    border: 1px solid black;
+    box-shadow: 4px 4px 0px 0px rgba(0, 0, 0, 1);
+} */
+
 .item-name {
     font-family: 'Poppins', calibri, helvetica, arial, sans-serif;
     font-weight: bold;

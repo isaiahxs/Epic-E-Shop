@@ -3,6 +3,7 @@ import { getDailyItems, getFeaturedItems } from '../../store/items'
 import { useEffect } from 'react'
 import { getItemBackgroundColor } from '../../utils'
 import { useHistory } from 'react-router-dom'
+import theWilds from '../../assets/images/The-Wilds.jpg'
 import './HomePage.css'
 
 const HomePage = () => {
@@ -19,8 +20,11 @@ const HomePage = () => {
 
     return (
         <div>
-            <h1>HomePage</h1>
-            <button onClick={() => history.push(`/featured_items`)}>Check out our Featured items!</button>
+            <div className='home-heading'>
+                <h1>Welcome to the Wilds!</h1>
+                <img className='hero-banner' src={theWilds} alt='The Wilds' />
+                <button className='featured-items-button' onClick={() => history.push(`/featured_items`)}>Check out our Featured items!</button>
+            </div>
             <h2>Today's Daily Items</h2>
             {/* check if the items array is not empty before trying to map over it */}
             {items.length > 0 && items.map((item, idx) => (
