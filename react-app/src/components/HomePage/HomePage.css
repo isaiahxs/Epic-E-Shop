@@ -7,10 +7,10 @@
 #9e49d9 purple
 */
 
-.home-heading {
-    /* display: flex;
+.heading-text {
+    display: flex;
     justify-content: center;
-    align-items: center; */
+    align-items: center;
 }
 
 .hero-banner {
@@ -26,10 +26,4 @@
 
 .featured-items-button {
     cursor: pointer;
-}
-
-.refresh-counter {
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
