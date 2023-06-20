@@ -17,10 +17,10 @@ const RefreshCounter = () => {
         target.setSeconds(0);
         target.setMilliseconds(0);
 
-        //converting to est
-        const utcOffset = target.getTimezoneOffset() //in minutes
-        // const estOffset = 5 * 60; //est being UTC-5
-        target.setMinutes(target.getMinutes() + utcOffset - 240);
+        // converting to EST/EDT
+        const estDate = new Date(target.toLocaleString("en-US", {timeZone: "America/New_York"}));
+        const estOffsetMinutes = (target - estDate) / 60000; // offset in minutes
+        target.setMinutes(target.getMinutes() + estOffsetMinutes);
 
         //if the target time has already passed, set it to tomorrow
         if (now > target) {
