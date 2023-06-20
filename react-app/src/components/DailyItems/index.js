@@ -44,9 +44,9 @@ const DailyItems = () => {
                             <img className='home-item-image' src={item.images.icon} alt={item.name} style={{ backgroundColor: getItemBackgroundColor(item.rarity) }}/>
                         </div>
                         <div className='home-item-information'>
-                            <div className='item-name home-item-name'>{item.name}</div>
+                            <div className='item-name'>{item.name}</div>
                             <img className='vbucks-icon' src={item.priceIconLink} alt='vbucks' />
-                            <div className='item-price home-item-price'>{item.price}</div>
+                            <div className='item-price'>{item.price}</div>
                         </div>
                     </div>
                 ))}

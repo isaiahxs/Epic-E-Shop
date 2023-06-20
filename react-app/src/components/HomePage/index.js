@@ -16,10 +16,11 @@ const HomePage = () => {
             <div className='home-heading'>
                 <h1>Welcome to the Wilds!</h1>
                 <img className='hero-banner' src={theWilds} alt='The Wilds' />
-                <h2>Item Shop Refreshes in X:XX:XX</h2>
-                <button className='featured-items-button' onClick={() => history.push(`/featured_items`)}>Check out our Featured items!</button>
+                <h2 className='refresh-counter'>Item Shop Refreshes in X:XX:XX</h2>
+
             </div>
             <DailyItems />
+            <button className='featured-items-button' onClick={() => history.push(`/featured_items`)}>Check out our Featured items!</button>
             {/* <div>
                 <div>Recent Articles</div>
             </div> */}

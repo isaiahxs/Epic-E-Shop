@@ -5,24 +5,29 @@
     /* background-color: red; */
 }
 
+.arrow-button {
+    cursor: pointer;
+}
+
 .item-unit {
     display: flex;
     flex-direction: column;
     /* align-items: start; */
     width: 200px;
+    margin: 10px 5px;
 }
 
 .home-item-information {
     display: flex;
     align-items: center;
-    margin-top: 10px;
+    /* margin-top: 10px; */
 }
 
-.home-item-name {
+.item-name {
     cursor: pointer;
 }
 
-.home-item-price {
+.item-price {
     cursor: pointer;
 }
 
@@ -45,7 +50,7 @@
     cursor: pointer;
     /* border: 1px solid rgb(255, 255, 255); */
     /* box-shadow: 4px 4px 0px 0px rgba(0, 0, 0, 1); */
-    transition: transform 0.3s ease;
+    transition: transform 0.4s ease;
     padding: none;
 }
 
