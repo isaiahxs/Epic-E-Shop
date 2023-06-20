@@ -71,14 +71,14 @@ const DailyItems = () => {
     const settings = {
         infinite: true,
         speed: 500,
-        slidesToShow: 3,
-        slidesToScroll: 3,
+        slidesToShow: 2,
+        slidesToScroll: 2,
         centerMode: true,
-        centerPadding: "10%",
+        centerPadding: "110px",
     };
 
     return (
-        <div>
+        <div className='daily-items-carousel'>
             <h2>Today's Daily Items</h2>
             <Slider {...settings}>
                 {/* check if the items array is not empty before trying to map over it */}

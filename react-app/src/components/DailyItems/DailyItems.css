@@ -1,16 +1,23 @@
 .daily-items-carousel {
-    display: flex;
+    /* display: flex;
     justify-content: space-between;
     align-items: center;
-    /* background-color: red; */
+    background-color: red; */
+    margin-bottom: 10px;
 }
 
 .slick-next {
-    right: 0px !important;
+    right: 15px !important;
+}
+
+.slick-prev:before,
+.slick-next:before {
+    /* color: black !important; */
+    opacity: 1 !important;
 }
 
 .slick-prev {
-    left: 0px !important;
+    left: 15px !important;
 }
 
 .slick-next,
@@ -66,8 +73,11 @@
 .img-container {
     overflow: hidden;
     border: 1px solid white;
+    border-right: 2px solid white;
+    border-left: 2px solid white;
     height: 200px;
     width: 200px;
+    margin-bottom: 10px;
 }
 
 .home-item-image {
