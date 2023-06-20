@@ -7,27 +7,29 @@
 #9e49d9 purple
 */
 
-.home-item-information {
+.home-heading {
+    /* display: flex;
+    justify-content: center;
+    align-items: center; */
+}
+
+.hero-banner {
     display: flex;
+    justify-content: center;
     align-items: center;
+    width: 100%;
+    margin: auto;
+    /* max-height: 400px; */
+    border: 1px solid rgb(255, 255, 255);
+    /* box-shadow: 4px 4px 0px 0px rgba(0, 0, 0, 1); */
 }
 
-.home-item-name {
+.featured-items-button {
     cursor: pointer;
 }
 
-.home-item-price {
-    cursor: pointer;
-}
-
-.vbucks-icon {
-    height: 25px;
-    width: 25px;
-}
-
-.home-item-image {
-    background-color: #62b11e;
-    height: 200px;
-    width: 200px;
-    cursor: pointer;
+.refresh-counter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

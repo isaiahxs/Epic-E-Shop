@@ -6,6 +6,13 @@ import LoginFormPage from "./components/LoginFormPage";
 import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
 import HomePage from "./components/HomePage";
+import Featured from "./components/Featured";
+import Cart from "./components/CartSection";
+import ItemDetailPage from "./components/ItemDetailPage";
+import WishlistPage from "./components/WishlistPage";
+import UserProfilePage from "./components/UserProfile";
+import RemindersPage from "./components/RemindersPage";
+import InventoryPage from "./components/InventoryPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -24,12 +31,36 @@ function App() {
             <HomePage />
           </Route>
 
+          <Route path="/featured_items" exact>
+            <Featured />
+          </Route>
+
+          <Route path="/item/:itemName" exact>
+            <ItemDetailPage />
+          </Route>
+
+          <Route path="/wishlist" exact>
+            <WishlistPage />
+          </Route>
+
+          <Route path="/user_profile" exact>
+            <UserProfilePage />
+          </Route>
+
           <Route path="/login" >
             <LoginFormPage />
           </Route>
 
           <Route path="/signup">
             <SignupFormPage />
+          </Route>
+
+          <Route path="/reminders">
+            <RemindersPage />
+          </Route>
+
+          <Route path="/inventory">
+            <InventoryPage />
           </Route>
 
         </Switch>

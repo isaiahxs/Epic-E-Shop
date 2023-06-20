@@ -2,14 +2,20 @@
 
 export const getItemBackgroundColor = (rarity) => {
     switch(rarity) {
-        case 'common':
-            return 'green';
+        case 'uncommon':
+            return '#5da81d';
         case 'rare':
             return '#28a8e7';
         case 'epic':
-            return 'purple';
+            return '#a94de3';
         case 'legendary':
-            return 'orange';
+            return '#b97034';
+        case 'dc':
+            return '#5171c1';
+        case 'icon_series':
+            return '#33aeae';
+        case 'shadow':
+            return '#626262';
         default:
             return 'grey';
     }

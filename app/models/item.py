@@ -29,6 +29,8 @@ class Item(db.Model):
     comments = db.relationship("Comment", back_populates="item")
     likes = db.relationship("Like", back_populates="item")
     sections = db.relationship("SectionItem", back_populates="item")
+    inventory = db.relationship("Inventory", back_populates="item")
+
 
     def __repr__(self):
         return f'<Item id={self.id} name={self.name} price={self.price}>'

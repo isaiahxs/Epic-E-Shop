@@ -38,19 +38,20 @@ function ProfileButton({ user }) {
   const closeMenu = () => setShowMenu(false);
 
   return (
-    <>
+    // <div style={{position: 'relative'}}>
+    <div>
       <button onClick={openMenu}>
         <i className="fas fa-user-circle" />
       </button>
       <ul className={ulClassName} ref={ulRef}>
         {user ? (
-          <>
-            <li>{user.username}</li>
-            <li>{user.email}</li>
-            <li>
+          <div>
+            <div>{user.username}</div>
+            <div>{user.email}</div>
+            <div>
               <button onClick={handleLogout}>Log Out</button>
-            </li>
-          </>
+            </div>
+          </div>
         ) : (
           <>
             <OpenModalButton
@@ -67,7 +68,7 @@ function ProfileButton({ user }) {
           </>
         )}
       </ul>
-    </>
+    </div>
   );
 }
 

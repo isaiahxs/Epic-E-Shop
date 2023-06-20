@@ -1,0 +1,30 @@
+.news-feed {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); 
+    gap: 20px;
+}
+
+@media screen and (max-width: 600px) {
+    .news-feed {
+        grid-template-columns: 1fr;
+    }
+}
+
+.latest-news {
+    background-color: #ffffff;
+    max-width: 500px;
+    border: 1px solid white;
+}
+
+.news-image {
+    width: 100%;
+    max-width: 500px;
+    /* padding: 1px; */
+    /* border-bottom: 1px solid black; */
+}
+
+.news-text-heading,
+.news-text-body {
+    color: #222222;
+    padding: 0 10px;
+}
