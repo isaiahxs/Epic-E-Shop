@@ -38,7 +38,7 @@ function App() {
           </Route>
 
           <Route path="/item/:itemName" exact>
-            <ItemDetailPage />
+            <ItemDetailPage isLoaded={isLoaded}/>
           </Route>
 
           <Route path="/wishlist" exact>

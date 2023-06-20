@@ -3,6 +3,7 @@ import { getDailyItems, getFeaturedItems } from '../../store/items'
 import { useState, useEffect } from 'react'
 import { getItemBackgroundColor } from '../../utils'
 import { useHistory } from 'react-router-dom'
+import './RefreshCounter.css'
 
 const RefreshCounter = () => {
     const [countdown, setCountdown] = useState(getSecondsTill8PMEST());
@@ -59,7 +60,10 @@ const RefreshCounter = () => {
     }, []);
 
     return (
-        <h2 className='refresh-counter'>Item Shop Reset - {formatTime(countdown)}</h2>
+        <div className='refresh-counter'>
+            <h2>Item Shop Reset: </h2>
+            <h2 className='time-left'>{formatTime(countdown)}</h2>
+        </div>
     )
 }
 

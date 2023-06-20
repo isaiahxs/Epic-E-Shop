@@ -1,6 +1,24 @@
+.item-detail-heading {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    margin: 20px;
+    max-width: 1000px;
+}
+
+.item-detail-name {
+    margin: 0;
+}
+
+.item-details {
+    /* margin: none; */
+    /* padding: 10px; */
+    /* margin-top: none; */
+}
+
 .item-detail-image {
-    height: 300px;
-    width: 300px;
-    border: 1px solid black;
-    box-shadow: 4px 4px 0px 0px rgba(0, 0, 0, 1);
+    height: 250px;
+    width: 250px;
+    border: 1px solid white;
+    /* box-shadow: 4px 4px 0px 0px rgba(0, 0, 0, 1); */
 }
