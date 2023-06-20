@@ -13,6 +13,8 @@ import WishlistPage from "./components/WishlistPage";
 import UserProfilePage from "./components/UserProfile";
 import RemindersPage from "./components/RemindersPage";
 import InventoryPage from "./components/InventoryPage";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 function App() {
   const dispatch = useDispatch();

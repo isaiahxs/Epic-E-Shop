@@ -5,16 +5,42 @@
     /* background-color: red; */
 }
 
-.arrow-button {
-    cursor: pointer;
+.slick-next {
+    right: 0px !important;
 }
+
+.slick-prev {
+    left: 0px !important;
+}
+
+.slick-next,
+.slick-prev {
+    z-index: 1;
+}
+
+.slick-list {
+    padding: 0 0% !important;  /* Adjust the padding as necessary */
+    /* background-color: red; */
+}
+
+.slick-track {
+    display: flex;
+    justify-content: center;
+    /* background-color: red;  */
+}
+
+/* .arrow-button {
+    cursor: pointer;
+} */
 
 .item-unit {
     display: flex;
     flex-direction: column;
+    /* justify-content: center; */
     /* align-items: start; */
     width: 200px;
-    margin: 10px 5px;
+    /* margin: 10px 5px; */
+    margin: 0 10px;
 }
 
 .home-item-information {
