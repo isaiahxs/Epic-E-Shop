@@ -13,6 +13,8 @@ import WishlistPage from "./components/WishlistPage";
 import UserProfilePage from "./components/UserProfile";
 import RemindersPage from "./components/RemindersPage";
 import InventoryPage from "./components/InventoryPage";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 function App() {
   const dispatch = useDispatch();
@@ -36,7 +38,7 @@ function App() {
           </Route>
 
           <Route path="/item/:itemName" exact>
-            <ItemDetailPage />
+            <ItemDetailPage isLoaded={isLoaded}/>
           </Route>
 
           <Route path="/wishlist" exact>
