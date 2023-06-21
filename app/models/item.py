@@ -15,13 +15,18 @@ class Item(db.Model):
     item_id = db.Column(db.String(1000), nullable=False, unique=True)
     name = db.Column(db.String(1000), nullable=False)
     price = db.Column(db.String(1000), nullable=False)
+    price_icon = db.Column(db.String(1000), nullable=False)
+    price_icon_link = db.Column(db.String(1000), nullable=False)
     # When retrieved, SQLAlchemy will automatically convert this back into a Python object.
     images = db.Column(db.JSON, nullable=False)
     rarity = db.Column(db.String(1000), nullable=False)
     type = db.Column(db.String(1000), nullable=False)
     slug = db.Column(db.String(1000), nullable=False)
-    readableType = db.Column(db.String(1000), nullable=False)
+    readable_type = db.Column(db.String(1000), nullable=False)
     description = db.Column(db.String(1000), nullable=False)
+    bundle_set = db.Column(db.String(1000), nullable=True)
+    banner_text = db.Column(db.String(1000), nullable=True)
+    history = db.Column(db.JSON, nullable=True)
 
     cart = db.relationship("Cart", back_populates="item")
     wishlist = db.relationship("Wishlist", back_populates="item")
@@ -40,10 +45,15 @@ class Item(db.Model):
             'id': self.id,
             'name': self.name,
             'price': self.price,
+            'priceIcon': self.priceIcon,
+            'priceIconLink': self.priceIconLink,
             'images': self.images,
             'rarity': self.rarity,
             'type': self.type,
             'slug': self.slug,
             'readableType': self.readableType,
-            'description': self.description
+            'description': self.description,
+            'bundleSet': self.bundleSet,
+            'bannerText': self.bannerText,
+            'history': self.history
         }
