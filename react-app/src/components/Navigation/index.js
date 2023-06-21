@@ -17,11 +17,13 @@ function Navigation({ isLoaded }){
 			</div>
 
 			<div className='nav-options'>
-				<div className='nav-home'>
-					<NavLink exact to="/">Home</NavLink>
-				</div>
+				<NavLink to="/" exact className="nav-home" activeClassName="active-link">
+                    Home
+                </NavLink>
 				<div className='nav-shop'>Shop</div>
-				<div className='nav-about-me'>About Me</div>
+				<NavLink to="/about_me" className="nav-about-me" activeClassName="active-link">
+                    About Me
+                </NavLink>
 				<div className='nav-view-cart'>View Cart</div>
 				{isLoaded && (
 					<div className='user-icon'>

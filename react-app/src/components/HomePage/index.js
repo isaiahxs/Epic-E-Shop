@@ -14,7 +14,7 @@ const HomePage = () => {
     const sessionUser = useSelector(state => state.session.user)
 
     return (
-        <div>
+        <div className='home-container'>
             <div className='home-heading'>
                 <h1 className='heading-text'>
                     {/* Welcome to the Wilds, {sessionUser.username}! */}
@@ -27,7 +27,7 @@ const HomePage = () => {
                 <RefreshCounter />
             </div>
             <DailyItems />
-            <button className='featured-items-button' onClick={() => history.push(`/featured_items`)}>Check out our Featured items!</button>
+            <h2 className='featured-items-button' onClick={() => history.push(`/featured_items`)}>Check out the rest of today's featured items!</h2>
             {/* <div>
                 <div>Recent Articles</div>
             </div> */}

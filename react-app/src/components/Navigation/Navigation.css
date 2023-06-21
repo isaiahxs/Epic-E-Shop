@@ -21,6 +21,15 @@
   /* background-color: blue; */
 }
 
+.active-link {
+  color: #0fb8dd;
+  text-decoration: underline;
+}
+
+/* a:visited {
+  color: blue;
+} */
+
 .profile-dropdown {
   position: absolute;
   /* top: 100%; */
@@ -40,6 +49,14 @@
 .user-icon {
   margin: 0 10px;
   cursor: pointer;
+  text-decoration: none;
+  /* color: white; */
+}
+
+.nav-home:visited,
+.nav-about-me:visited {
+  color: white;
+  text-decoration: none;
 }
 
 .nav-home:hover,

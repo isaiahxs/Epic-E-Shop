@@ -8,6 +8,7 @@ import mud from '../../assets/images/Mud.jpg'
 import raptorRiding from '../../assets/images/Raptor-Riding.jpg'
 import autograph from '../../assets/images/Autograph-Please.jpg'
 import wildsCharacters from '../../assets/images/Wilds-Characters.jpeg'
+import airphoria from '../../assets/images/Airphoria.jpeg'
 import './NewsFeed.css'
 
 const NewsFeed = () => {
@@ -58,6 +59,15 @@ const NewsFeed = () => {
                     <div className='news-text'>
                         <h3 className='news-text-heading'>Autograph Please!</h3>
                         <p className='news-text-body'>A long awaited emote is expected to return soon!</p>
+                    </div>
+                </div>
+                <div className='latest-news'>
+                    <div className='feed-image-container'>
+                        <img className='news-image' src={airphoria} alt='Welcome to Airphoria' />
+                    </div>
+                    <div className='news-text'>
+                        <h3 className='news-text-heading'>Welcome to Airphoria</h3>
+                        <p className='news-text-body'>Explore the sky city Airphoria and recover Airie’s lost sneakers. Play the Airphoria Island for 10 minutes to receive the Air Max 1 '86 Back Bling</p>
                     </div>
                 </div>
             </div>
