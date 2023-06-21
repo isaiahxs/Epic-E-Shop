@@ -6,9 +6,13 @@ import { useHistory } from 'react-router-dom'
 import cavalry from '../../assets/images/Cavalry-Captain.png'
 import welldone from '../../assets/images/Well-Done-SC.png'
 import serene from '../../assets/images/SereneHaven-SC.png'
+import linkedin from '../../assets/images/linkedin-logo.svg'
+import github from '../../assets/images/github-logo.svg'
 import './AboutMe.css'
 
 const AboutMe = () => {
+    const history = useHistory();
+
     return (
         <div className='item-detail-container'>
             <div className='item-detail-heading about-me-heading'>
@@ -51,13 +55,34 @@ const AboutMe = () => {
             </div>
 
             <div className='about-me-body'>
+
                 <h2>Check out my socials!</h2>
+                <div className='socials'>
+                    <div className='linked-in'>
+                        <div className='about-img-container'>
+                            <img className='social-logo' src={linkedin} alt='LinkedIn Logo' />
+                        </div>
+                        <div className='social-links'>
+                            <a href='https://www.linkedin.com/in/isaiahxs/'>LinkedIn</a>
+                        </div>
+                    </div>
+                    <div className='github'>
+                        <div className='about-img-container'>
+                            <img className='social-logo' src={github} alt='GitHub Logo' />
+                        </div>
+                        <div className='social-links'>
+                            <a href='https://github.com/isaiahxs'>GitHub</a>
+                        </div>
+                    </div>
+                </div>
+
                 <h2>Check out my other projects!</h2>
                 <div className='other-projects'>
-                    
                     <div className='serene-haven'>
                         <h3>SereneHaven</h3>
-                        <img className='project-image' src={serene}/>
+                        <div className='about-img-container'>
+                            <img className='project-image' src={serene}/>
+                        </div>
                         <div className='project-links'>
                             <a href='https://serene-haven.onrender.com/'>Live Site</a>
                             <div className='separator'>|</div>
@@ -67,15 +92,17 @@ const AboutMe = () => {
 
                     <div className='well-done'>
                         <h3>Well-Done</h3>
-                        <img className='project-image' src={welldone}/>
+                        <div className='about-img-container'>
+                            <img className='project-image' src={welldone}/>
+                        </div>
                         <div className='project-links'>
                             <a href='https://well-done.onrender.com/'>Live Site</a>
                             <div className='separator'>|</div>
                             <a href='https://github.com/isaiahxs/well-done-group-project'>GitHub Repo</a>
                         </div>
                     </div>
-
                 </div>
+
             </div>
         </div>
     )

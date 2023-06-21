@@ -17,3 +17,12 @@ body {
     font-family: 'Poppins', calibri, helvetica, arial, sans-serif;
     font-weight: bold;
 }
+
+a {
+    color: white;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}

@@ -28,6 +28,18 @@
     flex-direction: column;
     align-items: center;
     margin-top: 50px;
+    font-family: 'Poppins', calibri, helvetica, arial, sans-serif;
+}
+
+.socials {
+    display: flex;
+    justify-content: space-between;
+    /* align-items: center; */
+    width: 450px;
+}
+
+.social-logo {
+    height: 70px;
 }
 
 .other-projects {
@@ -36,20 +48,34 @@
     /* flex-direction: column; */
 }
 
+.linked-in,
+.github,
 .serene-haven,
 .well-done {
     display: flex;
     /* justify-content: center; */
     flex-direction: column;
     align-items: center;
+    margin: 0 20px;
 }
+
+/* .about-img-container {
+    overflow: hidden;
+} */
 
 .project-image {
     border: 1px solid white;
-    height: 250px;
+    height: 275px;
     width: auto;
+    transition: transform 0.75s ease;
+    cursor: pointer;
 }
 
+.project-image:hover {
+    transform: scale(1.05);
+}
+
+.social-links,
 .project-links {
     /* color: white; */
     display: flex;
@@ -59,13 +85,4 @@
 
 .separator {
     margin: 0 5px;
-}
-
-a {
-    color: white;
-    text-decoration: none;
-}
-
-a:hover {
-    text-decoration: underline;
 }
