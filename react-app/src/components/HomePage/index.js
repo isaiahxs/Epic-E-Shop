@@ -1,5 +1,5 @@
 import {useSelector, useDispatch} from 'react-redux'
-import { getDailyItems, getFeaturedItems } from '../../store/items'
+import { getSeedItems, getDailyItems, getFeaturedItems } from '../../store/items'
 import { useEffect } from 'react'
 import { getItemBackgroundColor } from '../../utils'
 import { useHistory } from 'react-router-dom'
@@ -12,6 +12,12 @@ import './HomePage.css'
 const HomePage = () => {
     const history = useHistory()
     const sessionUser = useSelector(state => state.session.user)
+
+    const dispatch = useDispatch()
+
+    useEffect(() => {
+        dispatch(getSeedItems())
+    }, [dispatch])
 
     return (
         <div className='home-container'>
