@@ -22,3 +22,14 @@
     border: 1px solid white;
     /* box-shadow: 4px 4px 0px 0px rgba(0, 0, 0, 1); */
 }
+
+.time-days {
+    max-height: 100%;
+    overflow-y: auto;
+}
+
+.loading-message {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

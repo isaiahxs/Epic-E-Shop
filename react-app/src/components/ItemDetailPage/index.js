@@ -37,6 +37,14 @@ const ItemDetailPage = ({isLoaded}) => {
         return `${month}-${day}-${year}`;
     }
 
+    function daysAgo(dateString) {
+        const date = new Date(dateString);
+        const now = new Date();
+        const timeDiff = now - date;
+        const daysDiff = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+        return daysDiff;
+    }
+
     if (!isLoaded) {
         return <p>Loading...</p>
     }
@@ -60,12 +68,38 @@ const ItemDetailPage = ({isLoaded}) => {
                         <div>Last Seen: {formatDate(item.history.lastSeen)}</div>
                         <div>Occurrences: {item.history.occurrences}</div>
                     </div>
+
+                    {/* <div className='item-history'>
+                        <div>Shop Occurrences</div>
+                        <div className='date-days'>
+                            <div>Date</div>
+                            <div>Days Ago</div>
+                        </div>
+                        <div className='time-days'>
+                            <div></div>
+                            <div></div>
+                        </div>
+                    </div> */}
+
                     <div className='item-history'>
                         <div>Shop Occurrences</div>
+                        <div className='date-days'>
+                            <div>Date</div>
+                            <div>Days Ago</div>
+                        </div>
+                        <div className='time-days'>
+                            {item.history.dates.sort((a, b) => new Date(b) - new Date(a)).map(date => (
+                                <div key={date} className="date-item">
+                                    <div>{formatDate(date)}</div>
+                                    <div>{daysAgo(date)} days ago</div>
+                                </div>
+                            ))}
+                        </div>
                     </div>
+
                 </div>
             ) : (
-                <p>Loading: { itemName }</p>
+                <h1 className='loading-message'>Loading: { itemName }</h1>
             )}
             <div></div>
         </>
