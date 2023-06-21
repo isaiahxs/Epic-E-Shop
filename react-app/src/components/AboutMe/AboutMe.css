@@ -27,7 +27,8 @@
     justify-content: center;
     flex-direction: column;
     align-items: center;
-    margin-top: 50px;
+    /* margin-top: 50px; */
+    margin: 50px;
     font-family: 'Poppins', calibri, helvetica, arial, sans-serif;
 }
 
