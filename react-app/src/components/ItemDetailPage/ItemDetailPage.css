@@ -6,10 +6,22 @@
     max-width: 1000px;
     height: 210px;
     font-family: 'Poppins', calibri, helvetica, arial, sans-serif;
+    font-weight: bolder;
 }
 
 .item-detail-name {
     margin: 0;
+}
+
+.item-rarity-section {
+    display: flex;
+    /* justify-content: space-between; */
+    align-items: center;
+}
+
+.rarity {
+    margin-right: 3px;
+    padding: 4px 8px;
 }
 
 .occurrences {

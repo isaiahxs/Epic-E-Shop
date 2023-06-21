@@ -64,7 +64,11 @@ const ItemDetailPage = ({isLoaded}) => {
                     </div>
                     <div className='item-details'>
                         <h1 className='item-detail-name'>{item.name}</h1>
-                        <h3>Rarity: {item.rarity}</h3>
+                        <div className='item-rarity-section'>
+                            {/* <h3>Rarity:</h3> */}
+                            <h3 className='rarity' style={{ backgroundColor: getItemBackgroundColor(item.rarity) }}>{item.rarity}</h3>
+                            <h3>{item.type}</h3>
+                        </div>
                         <div>
                             <img className='vbucks-icon' src={item.priceIconLink} alt='vbucks' />
                             {item.price}

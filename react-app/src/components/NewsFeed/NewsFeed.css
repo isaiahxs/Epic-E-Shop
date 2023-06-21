@@ -21,10 +21,19 @@
     max-width: 500px;
     /* padding: 1px; */
     /* border-bottom: 1px solid black; */
+    transition: transform 1s ease;
 }
 
 .news-text-heading,
 .news-text-body {
     color: #222222;
     padding: 0 10px;
+}
+
+.feed-image-container {
+    overflow: hidden;
+}
+
+.news-image:hover {
+    transform: scale(1.1);
 }
