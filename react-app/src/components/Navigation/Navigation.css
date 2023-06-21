@@ -2,6 +2,10 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
+  max-width: 1400px;
+  margin: auto;
+  height: 50px;
+  font-size: 1.3rem;
   /* background-color: lightgray; */
 }
 
@@ -20,6 +24,15 @@
   align-items: center;
   /* background-color: blue; */
 }
+
+.active-link {
+  color: #0fb8dd;
+  text-decoration: underline;
+}
+
+/* a:visited {
+  color: blue;
+} */
 
 .profile-dropdown {
   position: absolute;
@@ -40,6 +53,14 @@
 .user-icon {
   margin: 0 10px;
   cursor: pointer;
+  text-decoration: none;
+  /* color: white; */
+}
+
+.nav-home:visited,
+.nav-about-me:visited {
+  color: white;
+  text-decoration: none;
 }
 
 .nav-home:hover,

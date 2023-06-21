@@ -14,18 +14,20 @@ const HomePage = () => {
     const sessionUser = useSelector(state => state.session.user)
 
     return (
-        <div>
+        <div className='home-container'>
             <div className='home-heading'>
                 <h1 className='heading-text'>
                     {/* Welcome to the Wilds, {sessionUser.username}! */}
                     {sessionUser ? `Welcome to the Wilds, ${sessionUser.username}!` : 'Welcome to the Wilds!'}
-                </h1> 
-                <img className='hero-banner' src={theWilds} alt='The Wilds' />
+                </h1>
+                <div className='banner-container'>
+                    <img className='hero-banner' src={theWilds} alt='The Wilds' />
                 {/* <h2 className='refresh-counter'>Item Shop Refreshes at 8PM EST!</h2> */}
+                </div>
                 <RefreshCounter />
             </div>
             <DailyItems />
-            <button className='featured-items-button' onClick={() => history.push(`/featured_items`)}>Check out our Featured items!</button>
+            <h2 className='featured-items-button' onClick={() => history.push(`/featured_items`)}>Check out the rest of today's featured items!</h2>
             {/* <div>
                 <div>Recent Articles</div>
             </div> */}

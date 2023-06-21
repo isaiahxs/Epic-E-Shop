@@ -29,19 +29,33 @@ const ItemDetailPage = ({isLoaded}) => {
 
     function formatDate(dateString) {
         const date = new Date(dateString);
-    
-        const day = String(date.getDate()).padStart(2, '0');
-        const month = String(date.getMonth() + 1).padStart(2, '0'); // Months are 0 based index in JS
+        const day = date.getDate();
+        const month = date.toLocaleString('default', { month: 'long' }); //this will get the month name
         const year = date.getFullYear();
+        
+        //function to convert day into ordinal number (1st, 2nd, 3rd, etc.)
+        function getOrdinal(n) {
+            const s = ["th","st","nd","rd"],
+            v = n % 100;
+            return n + (s[(v-20)%10] || s[v] || s[0]);
+        }
     
-        return `${month}-${day}-${year}`;
+        return `${month} ${getOrdinal(day)}, ${year}`;
+    }
+
+    function daysAgo(dateString) {
+        const date = new Date(dateString);
+        const now = new Date();
+        const timeDiff = now - date;
+        const daysDiff = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+        return daysDiff;
     }
 
     if (!isLoaded) {
         return <p>Loading...</p>
     }
     return (
-        <>
+        <div className='item-detail-container'>
             {/* <h1>This is the Item Detail Page</h1> */}
             {item ? (
                 <div className='item-detail-heading'>
@@ -50,8 +64,12 @@ const ItemDetailPage = ({isLoaded}) => {
                     </div>
                     <div className='item-details'>
                         <h1 className='item-detail-name'>{item.name}</h1>
-                        <h3>Rarity: {item.rarity}</h3>
-                        <div>
+                        <div className='item-rarity-section'>
+                            {/* <h3>Rarity:</h3> */}
+                            <h3 className='rarity' style={{ backgroundColor: getItemBackgroundColor(item.rarity) }}>{item.rarity}</h3>
+                            <h3 className='item-type'>{item.type}</h3>
+                        </div>
+                        <div className='item-detail-price'>
                             <img className='vbucks-icon' src={item.priceIconLink} alt='vbucks' />
                             {item.price}
                         </div>
@@ -60,15 +78,29 @@ const ItemDetailPage = ({isLoaded}) => {
                         <div>Last Seen: {formatDate(item.history.lastSeen)}</div>
                         <div>Occurrences: {item.history.occurrences}</div>
                     </div>
+
                     <div className='item-history'>
-                        <div>Shop Occurrences</div>
+                        <h3 className='occurrences'>Shop Occurrences</h3>
+                        <div className='time-days'>
+                            <div className='date-days'>
+                                <div>Date</div>
+                                <div>Days Ago</div>
+                            </div>
+                            {item.history.dates.sort((a, b) => new Date(b) - new Date(a)).map(date => (
+                                <div key={date} className="date-item">
+                                    <div className='date'>{formatDate(date)}</div>
+                                    <div className='days'>{daysAgo(date)}</div>
+                                </div>
+                            ))}
+                        </div>
                     </div>
+
                 </div>
             ) : (
-                <p>Loading: { itemName }</p>
+                <h1 className='loading-message'>Loading: { itemName }</h1>
             )}
             <div></div>
-        </>
+        </div>
     )
 }
 

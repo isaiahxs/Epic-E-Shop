@@ -1,24 +1,103 @@
+/* .item-detail-container {
+    display: flex;
+    justify-content: center;
+} */
+
 .item-detail-heading {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     padding: 10px;
-    margin: 20px;
+    margin: 20px auto;
     max-width: 1000px;
+    height: 230px;
+    /* height: 250px; */
+    font-family: 'Poppins', calibri, helvetica, arial, sans-serif;
+    font-weight: bolder;
 }
 
 .item-detail-name {
     margin: 0;
 }
 
-.item-details {
-    /* margin: none; */
-    /* padding: 10px; */
-    /* margin-top: none; */
+.item-rarity-section {
+    display: flex;
+    /* justify-content: space-between; */
+    align-items: center;
+    margin: 10px 0px;
 }
 
+.rarity {
+    margin-right: 3px;
+    padding: 4px 8px;
+    margin: 0;
+}
+
+.item-type {
+    margin: 0 5px;
+}
+
+.item-detail-price {
+    display: flex;
+    align-items: center;
+}
+
+.item-history {
+    height: 100%;
+}
+
+.occurrences {
+    display: flex;
+    margin: 8px 0 12px;
+}
+
+.date-days {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+    background-color: #1e223a;
+    padding: 0.6rem;
+}
+
+.date {
+    color: #c3b16c;
+}
+
+.days {
+    color: #e6e7e8;
+}
+
+.date-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid #1e223a;
+    padding: 0.4rem 0.6rem;
+}
+
+/* .item-details {
+    margin: none;
+    padding: 0 10px;
+    margin-top: none;
+    height: 100%;
+} */
+
 .item-detail-image {
-    height: 250px;
-    width: 250px;
+    height: 100%;
+    width: auto;
     border: 1px solid white;
-    /* box-shadow: 4px 4px 0px 0px rgba(0, 0, 0, 1); */
+}
+
+.time-days {
+    max-height: 182px;
+    height: 80%;
+    overflow-y: auto;
+    border: 1px solid 
+    #1e223a;
+}
+
+.loading-message {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

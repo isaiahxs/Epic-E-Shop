@@ -7,6 +7,12 @@
 #9e49d9 purple
 */
 
+/* .home-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+} */
+
 .heading-text {
     display: flex;
     justify-content: center;
@@ -20,8 +26,28 @@
     width: 100%;
     margin: auto;
     /* max-height: 400px; */
-    border: 1px solid rgb(255, 255, 255);
-    /* box-shadow: 4px 4px 0px 0px rgba(0, 0, 0, 1); */
+    transition: transform 1s ease;
+}
+
+.hero-banner:hover {
+    transform: scale(1.05);
+}
+
+.home-heading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    /* margin: 20px 0; */
+}
+
+.banner-container {
+    overflow: hidden;
+    border: 1px solid white;
+    max-width: 1000px;
+    /* display: flex; */
+    /* justify-content: center; */
+    /* align-items: center; */
 }
 
 .featured-items-button {
