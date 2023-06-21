@@ -55,7 +55,7 @@ const ItemDetailPage = ({isLoaded}) => {
         return <p>Loading...</p>
     }
     return (
-        <>
+        <div className='item-detail-container'>
             {/* <h1>This is the Item Detail Page</h1> */}
             {item ? (
                 <div className='item-detail-heading'>
@@ -67,9 +67,9 @@ const ItemDetailPage = ({isLoaded}) => {
                         <div className='item-rarity-section'>
                             {/* <h3>Rarity:</h3> */}
                             <h3 className='rarity' style={{ backgroundColor: getItemBackgroundColor(item.rarity) }}>{item.rarity}</h3>
-                            <h3>{item.type}</h3>
+                            <h3 className='item-type'>{item.type}</h3>
                         </div>
-                        <div>
+                        <div className='item-detail-price'>
                             <img className='vbucks-icon' src={item.priceIconLink} alt='vbucks' />
                             {item.price}
                         </div>
@@ -100,7 +100,7 @@ const ItemDetailPage = ({isLoaded}) => {
                 <h1 className='loading-message'>Loading: { itemName }</h1>
             )}
             <div></div>
-        </>
+        </div>
     )
 }
 

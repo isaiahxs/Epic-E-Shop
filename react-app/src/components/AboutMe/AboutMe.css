@@ -1,17 +1,71 @@
 .about-me-image {
     background-color: #ff5a5f;
-    height: 250px;
-    width: 250px;
+    height: 100%;
+    /* width: 250px; */
     border: 1px solid white;
+}
+
+.about-me-heading {
+    display: flex;
+    justify-content: space-between;
+}
+
+.about-me-details {
+    padding: 0 20px;
 }
 
 .about-me-rarity {
     background-color: #ff5a5f;
 }
 
+.about-me-history {
+    width: 230px;
+}
+
 .about-me-body {
     display: flex;
     justify-content: center;
+    flex-direction: column;
     align-items: center;
-    margin-top: 150px;
+    margin-top: 50px;
+}
+
+.other-projects {
+    display: flex;
+    justify-content: space-between;
+    /* flex-direction: column; */
+}
+
+.serene-haven,
+.well-done {
+    display: flex;
+    /* justify-content: center; */
+    flex-direction: column;
+    align-items: center;
+}
+
+.project-image {
+    border: 1px solid white;
+    height: 250px;
+    width: auto;
+}
+
+.project-links {
+    /* color: white; */
+    display: flex;
+    justify-content: space-around;
+    margin-top: 15px;
+}
+
+.separator {
+    margin: 0 5px;
+}
+
+a {
+    color: white;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
 }
