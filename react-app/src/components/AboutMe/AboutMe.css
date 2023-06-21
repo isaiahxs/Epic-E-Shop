@@ -1,0 +1,17 @@
+.about-me-image {
+    background-color: #ff5a5f;
+    height: 250px;
+    width: 250px;
+    border: 1px solid white;
+}
+
+.about-me-rarity {
+    background-color: #ff5a5f;
+}
+
+.about-me-body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 150px;
+}
