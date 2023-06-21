@@ -31,21 +31,39 @@
     font-family: 'Poppins', calibri, helvetica, arial, sans-serif;
 }
 
+.body-headers {
+    font-size: 1.7rem;
+    /* margin-bottom: 40px; */
+    margin: 0;
+}
+
+.about-body-subheading {
+    margin: 0;
+    color: #b19959;
+}
+
 .socials {
     display: flex;
     justify-content: space-between;
     /* align-items: center; */
     width: 450px;
+    margin-bottom: 50px;
 }
 
 .social-logo {
     height: 70px;
+    transition: transform 0.75s ease;
 }
 
 .other-projects {
     display: flex;
     justify-content: space-between;
     /* flex-direction: column; */
+}
+
+.socials,
+.other-projects {
+    margin-top: 30px;
 }
 
 .linked-in,
@@ -63,14 +81,22 @@
     overflow: hidden;
 } */
 
+.project-name {
+    font-size: 1.5rem;
+    margin-top: 0;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
 .project-image {
     border: 1px solid white;
     height: 275px;
     width: auto;
     transition: transform 0.75s ease;
-    cursor: pointer;
+    /* cursor: pointer; */
 }
 
+.social-logo:hover,
 .project-image:hover {
     transform: scale(1.05);
 }
@@ -81,6 +107,8 @@
     display: flex;
     justify-content: space-around;
     margin-top: 15px;
+    font-weight: bolder;
+    font-size: 1.2rem;
 }
 
 .separator {
