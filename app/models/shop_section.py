@@ -11,7 +11,7 @@ class ShopSection(db.Model):
         __table_args__ = {'schema': SCHEMA}
 
     id = db.Column(db.Integer, primary_key=True)
-    displayName = db.Column(db.String(255), nullable=False)
+    display_name = db.Column(db.String(255), nullable=False)
     key = db.Column(db.String(255), nullable=False)
     priority = db.Column(db.Integer, nullable=False)
 

@@ -81,7 +81,7 @@ const AboutMe = () => {
                 </div>
                 
                 <h2 className='body-headers'>Check out my other projects!</h2>
-                <h4 className='about-body-subheading'>Initial render build may take some time to load*</h4>
+                <h4 className='about-body-subheading'>*Initial render build may take some time to load</h4>
                 <div className='other-projects'>
                     <div className='serene-haven'>
                         {/* <h3 className='project-name'>SereneHaven</h3> */}

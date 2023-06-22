@@ -1,5 +1,5 @@
 import {useSelector, useDispatch} from 'react-redux'
-import { getDailyItems, getFeaturedItems } from '../../store/items'
+import { getSeedItems, getDailyItems, getFeaturedItems } from '../../store/items'
 import { useEffect } from 'react'
 import { getItemBackgroundColor } from '../../utils'
 import { useHistory } from 'react-router-dom'
@@ -7,12 +7,19 @@ import theWilds from '../../assets/images/The-Wilds.jpg'
 import NewsFeed from '../NewsFeed'
 import DailyItems from '../DailyItems'
 import RefreshCounter from '../RefreshCounter'
+import FanFavorites from '../FanFavorites'
 import './HomePage.css'
 
 const HomePage = () => {
     const history = useHistory()
     const sessionUser = useSelector(state => state.session.user)
 
+    const dispatch = useDispatch()
+
+    useEffect(() => {
+        dispatch(getFeaturedItems())
+    }, [dispatch])
+    
     return (
         <div className='home-container'>
             <div className='home-heading'>
@@ -31,6 +38,7 @@ const HomePage = () => {
             {/* <div>
                 <div>Recent Articles</div>
             </div> */}
+            <FanFavorites />
             <NewsFeed />
         </div>
     )

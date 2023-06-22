@@ -3,8 +3,17 @@ import os
 from flask import Blueprint, jsonify
 import requests
 import json
+from app.models import Item
 
 item_routes = Blueprint('items', __name__)
+
+@item_routes.route('/seed_items', methods=['GET'])
+def seeded_items():
+    """
+    Query for seeded items and return them in  a list of dictionaries
+    """
+    items = Item.query.all()
+    return {'seeded_items': [item.to_dict() for item in items]}
 
 # because of the prefix in app/__init__.py, the full route is '/api/items/daily_items'
 # when this route is hit, it will return a JSON response with the daily items from the Fortnite API
