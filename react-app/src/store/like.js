@@ -9,6 +9,7 @@ const SET_LIKES = "likes/SET_LIKES";
 
 export const setLikes = (likes) => {
     console.log('Loading likes from localStorage');
+    
     return {
         type: SET_LIKES,
         payload: likes,
