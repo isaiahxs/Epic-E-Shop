@@ -5,11 +5,6 @@ const SET_FEATURED_ITEMS = "items/SET_FEATURED_ITEMS";
 const SET_ITEMS_LOADED = "items/SET_ITEMS_LOADED";
 
 //action creators
-// export const setSeedItems = (items) => ({
-//     type: SET_SEED_ITEMS,
-//     payload: items,
-// });
-
 export const setSeedItems = (items) => {
     console.log('Loading seed items from localStorage');
 
@@ -24,10 +19,14 @@ export const setDailyItems = (items) => ({
     payload: items,
 });
 
-export const setFeaturedItems = (items) => ({
-    type: SET_FEATURED_ITEMS,
-    payload: items,
-});
+export const setFeaturedItems = (items) => {
+    console.log('Loading featured items from localStorage');
+
+    return {
+        type: SET_FEATURED_ITEMS,
+        payload: items,
+    }
+};
 
 export const setItemsLoaded = () => ({
     type: SET_ITEMS_LOADED,
@@ -77,6 +76,7 @@ export const getFeaturedItems = () => async (dispatch) => {
     if (response.ok) {
         const data = await response.json();
         dispatch(setFeaturedItems(data));
+        console.log('Loading featured items from API')
         dispatch(setItemsLoaded()); //set items loaded after fetching items
     }
 };

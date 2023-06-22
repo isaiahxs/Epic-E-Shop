@@ -6,6 +6,7 @@ import cart from './cart'
 import reminders from './reminders'
 import wishlist from './wishlist'
 import comments from './comments'
+import likes from './like'
 
 const rootReducer = combineReducers({
   session,
@@ -13,7 +14,8 @@ const rootReducer = combineReducers({
   cart,
   reminders,
   wishlist,
-  comments
+  comments,
+  likes
 });
 
 

@@ -1,5 +1,6 @@
 import {useSelector, useDispatch} from 'react-redux'
-import { getSeedItems, getDailyItems, getFeaturedItems } from '../../store/items'
+import { setSeedItems, setDailyItems, setFeaturedItems, getSeedItems, getDailyItems, getFeaturedItems } from '../../store/items'
+import { getLikes } from '../../store/like'
 import { useEffect } from 'react'
 import { getItemBackgroundColor } from '../../utils'
 import { useHistory } from 'react-router-dom'
@@ -13,13 +14,27 @@ import './HomePage.css'
 const HomePage = () => {
     const history = useHistory()
     const sessionUser = useSelector(state => state.session.user)
+    const seedItems = useSelector(state => state.items.seedItems);
+    const dailyItems = useSelector(state => state.items.dailyItems);
+    const featuredItems = useSelector(state => state.items.featuredItems);
+    const likes = useSelector(state => state.likes)
 
     const dispatch = useDispatch()
 
     useEffect(() => {
+        dispatch(getSeedItems())
+        dispatch(getDailyItems())
         dispatch(getFeaturedItems())
+        dispatch(getLikes())
     }, [dispatch])
-    
+
+    useEffect(() => {
+        localStorage.setItem('seedItems', JSON.stringify(seedItems));
+        localStorage.setItem('dailyItems', JSON.stringify(dailyItems));
+        localStorage.setItem('featuredItems', JSON.stringify(featuredItems));
+        localStorage.setItem('likes', JSON.stringify(likes));
+    }, [seedItems, dailyItems, featuredItems, likes]);
+
     return (
         <div className='home-container'>
             <div className='home-heading'>

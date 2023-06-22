@@ -19,3 +19,10 @@ class SectionItem(db.Model):
 
     def __repr__(self):
         return f'<SectionItem id={self.id} shop_section_id={self.shop_section_id} item_id={self.item_id}>'
+    
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'shopSectionId': self.shop_section_id,
+            'itemId': self.item_id
+        }

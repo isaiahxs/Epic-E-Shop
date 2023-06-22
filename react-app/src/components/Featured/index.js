@@ -1,5 +1,6 @@
 import {useSelector, useDispatch} from 'react-redux'
-import { getDailyItems, getFeaturedItems } from '../../store/items'
+import { setSeedItems, setDailyItems, setFeaturedItems, getSeedItems, getDailyItems, getFeaturedItems } from '../../store/items'
+import { setLikes, getLikes } from '../../store/like'
 import { useEffect } from 'react'
 import { getItemBackgroundColor } from '../../utils'
 import { useHistory } from 'react-router-dom'
@@ -11,9 +12,23 @@ const Featured = () => {
     const history = useHistory()
 
     useEffect(() => {
-        // dispatch(getDailyItems())
-        dispatch(getFeaturedItems())
-    }, [dispatch])
+        const seedItemsStored = localStorage.getItem('seedItems');
+        const dailyItemsStored = localStorage.getItem('dailyItems');
+        const featuredItemsStored = localStorage.getItem('featuredItems');
+        const likesStored = localStorage.getItem('likes');
+    
+        if (!seedItemsStored || !dailyItemsStored || !featuredItemsStored || !likesStored) {
+            dispatch(getSeedItems())
+            dispatch(getDailyItems())
+            dispatch(getFeaturedItems())
+            dispatch(getLikes())
+        } else {
+            dispatch(setSeedItems(JSON.parse(seedItemsStored)));
+            dispatch(setDailyItems(JSON.parse(dailyItemsStored)));
+            dispatch(setFeaturedItems(JSON.parse(featuredItemsStored)));
+            dispatch(setLikes(JSON.parse(likesStored)));
+        }
+    }, [dispatch]);
 
     return (
         <div>

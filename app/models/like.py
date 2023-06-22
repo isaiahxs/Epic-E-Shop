@@ -22,3 +22,13 @@ class Like(db.Model):
 
     def __repr__(self):
         return f'<Like id={self.id} user_id={self.user_id} item_id={self.item_id} value={self.value}>'
+
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'userId': self.user_id,
+            'itemId': self.item_id,
+            'value': self.value,
+            'createdAt': self.created_at,
+            'updatedAt': self.updated_at
+        }

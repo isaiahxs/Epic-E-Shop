@@ -12,10 +12,6 @@ const FanFavorites = () => {
     const fanFavorites = useSelector(state => state.items.seedItems)
     const history = useHistory()
 
-    useEffect(() => {
-        dispatch(getSeedItems())
-    }, [dispatch])
-
     const settings = {
         infinite: true,
         speed: 500,
