@@ -16,6 +16,8 @@ export const getItemBackgroundColor = (rarity) => {
             return '#33aeae';
         case 'shadow':
             return '#626262';
+        case 'marvel':
+            return "#ba2f2f";
         default:
             return 'grey';
     }

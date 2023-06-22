@@ -1,5 +1,5 @@
 import {useSelector, useDispatch} from 'react-redux'
-import { getDailyItems, getFeaturedItems } from '../../store/items'
+import { getSeedItems, getDailyItems, getFeaturedItems } from '../../store/items'
 import { useEffect } from 'react'
 import { getItemBackgroundColor } from '../../utils'
 import { useHistory, useParams } from 'react-router-dom'
@@ -9,17 +9,19 @@ const ItemDetailPage = ({isLoaded}) => {
     const { itemName } = useParams();
     const dispatch = useDispatch();
     const history = useHistory();
+    const seedItems = useSelector(state => state.items.seedItems);
     const dailyItems = useSelector(state => state.items.dailyItems);
     const featuredItems = useSelector(state => state.items.featuredItems);
     const itemsLoaded = useSelector(state => state.items.itemsLoaded)
 
     useEffect(() => {
+        dispatch(getSeedItems())
         dispatch(getDailyItems())
         dispatch(getFeaturedItems())
     }, [dispatch])
 
     //combine both lists
-    const allItems = [...dailyItems, ...featuredItems]
+    const allItems = [...seedItems, ...dailyItems, ...featuredItems]
 
     //find the item with the given name
     const item = allItems.find(item => item.name === itemName);

@@ -38,7 +38,7 @@ export const getSeedItems = () => async (dispatch) => {
 
     if (response.ok) {
         const data = await response.json();
-        dispatch(setSeedItems(data));
+        dispatch(setSeedItems(data.seeded_items));
         dispatch(setItemsLoaded()); //set items loaded after fetching items
     }
 };

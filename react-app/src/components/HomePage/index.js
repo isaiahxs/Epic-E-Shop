@@ -7,6 +7,7 @@ import theWilds from '../../assets/images/The-Wilds.jpg'
 import NewsFeed from '../NewsFeed'
 import DailyItems from '../DailyItems'
 import RefreshCounter from '../RefreshCounter'
+import FanFavorites from '../FanFavorites'
 import './HomePage.css'
 
 const HomePage = () => {
@@ -14,10 +15,6 @@ const HomePage = () => {
     const sessionUser = useSelector(state => state.session.user)
 
     const dispatch = useDispatch()
-
-    useEffect(() => {
-        dispatch(getSeedItems())
-    }, [dispatch])
 
     return (
         <div className='home-container'>
@@ -37,6 +34,7 @@ const HomePage = () => {
             {/* <div>
                 <div>Recent Articles</div>
             </div> */}
+            <FanFavorites />
             <NewsFeed />
         </div>
     )
