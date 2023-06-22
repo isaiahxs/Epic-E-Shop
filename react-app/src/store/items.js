@@ -14,10 +14,14 @@ export const setSeedItems = (items) => {
     }
 };
 
-export const setDailyItems = (items) => ({
-    type: SET_DAILY_ITEMS,
-    payload: items,
-});
+export const setDailyItems = (items) => {
+    console.log('Loading daily items from localStorage');
+
+    return {
+        type: SET_DAILY_ITEMS,
+        payload: items,
+    }
+};
 
 export const setFeaturedItems = (items) => {
     console.log('Loading featured items from localStorage');
@@ -62,6 +66,7 @@ export const getDailyItems = () => async (dispatch) => {
     if (response.ok) {
         const data = await response.json();
         dispatch(setDailyItems(data));
+        console.log('Loading daily items from API')
         dispatch(setItemsLoaded()); //set items loaded after fetching items
     }
 };
