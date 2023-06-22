@@ -1,5 +1,6 @@
 import {useSelector, useDispatch} from 'react-redux'
 import { setSeedItems, setDailyItems, setFeaturedItems, getSeedItems, getDailyItems, getFeaturedItems } from '../../store/items'
+import { getLikes } from '../../store/like'
 import { useEffect } from 'react'
 import { getItemBackgroundColor } from '../../utils'
 import { useHistory, useParams } from 'react-router-dom'
@@ -13,6 +14,10 @@ const ItemDetailPage = ({isLoaded}) => {
     const dailyItems = useSelector(state => state.items.dailyItems);
     const featuredItems = useSelector(state => state.items.featuredItems);
     const itemsLoaded = useSelector(state => state.items.itemsLoaded)
+
+    useEffect(() => {
+        dispatch(getLikes())
+    }, [dispatch])
 
     // useEffect(() => {
     //     dispatch(getSeedItems())

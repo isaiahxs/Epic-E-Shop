@@ -20,7 +20,10 @@ export const getLikes = () => async (dispatch) => {
 
     if (response.ok) {
         const data = await response.json();
+        console.log("this is the data retrieved from getLikes", data);
         dispatch(setLikes(data.likes));
+    } else {
+        console.error('Error', response.statusText);
     }
 };
 

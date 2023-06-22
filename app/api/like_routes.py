@@ -9,7 +9,7 @@ from flask_login import current_user, login_user, logout_user, login_required
 
 like_routes = Blueprint('likes', __name__)
 
-@like_routes.route('/likes', methods=['GET'])
+@like_routes.route('/', methods=['GET'])
 def get_likes():
     """
     Query for all likes and returns them in a list of like dictionaries
