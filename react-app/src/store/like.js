@@ -2,10 +2,18 @@
 const SET_LIKES = "likes/SET_LIKES";
 
 //action creators
-export const setLikes = (likes) => ({
-    type: SET_LIKES,
-    payload: likes,
-});
+// export const setLikes = (likes) => ({
+//     type: SET_LIKES,
+//     payload: likes,
+// });
+
+export const setLikes = (likes) => {
+    console.log('Loading likes from localStorage');
+    return {
+        type: SET_LIKES,
+        payload: likes,
+    }
+}
 
 //intial state
 const initialState = { likes: [] };
@@ -22,6 +30,7 @@ export const getLikes = () => async (dispatch) => {
         const data = await response.json();
         console.log("this is the data retrieved from getLikes", data);
         dispatch(setLikes(data.likes));
+        console.log('Loading likes from from API')
     } else {
         console.error('Error', response.statusText);
     }

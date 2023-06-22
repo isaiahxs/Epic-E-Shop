@@ -1,6 +1,6 @@
 import {useSelector, useDispatch} from 'react-redux'
 import { setSeedItems, setDailyItems, setFeaturedItems, getSeedItems, getDailyItems, getFeaturedItems } from '../../store/items'
-import { getLikes } from '../../store/like'
+import { setLikes, getLikes } from '../../store/like'
 import { useEffect } from 'react'
 import { getItemBackgroundColor } from '../../utils'
 import { useHistory, useParams } from 'react-router-dom'
@@ -15,9 +15,9 @@ const ItemDetailPage = ({isLoaded}) => {
     const featuredItems = useSelector(state => state.items.featuredItems);
     const itemsLoaded = useSelector(state => state.items.itemsLoaded)
 
-    useEffect(() => {
-        dispatch(getLikes())
-    }, [dispatch])
+    // useEffect(() => {
+    //     dispatch(getLikes())
+    // }, [dispatch])
 
     // useEffect(() => {
     //     dispatch(getSeedItems())
@@ -64,23 +64,20 @@ const ItemDetailPage = ({isLoaded}) => {
         const seedItemsStored = localStorage.getItem('seedItems');
         const dailyItemsStored = localStorage.getItem('dailyItems');
         const featuredItemsStored = localStorage.getItem('featuredItems');
+        const likesStored = localStorage.getItem('likes');
     
-        if (!seedItemsStored || !dailyItemsStored || !featuredItemsStored) {
+        if (!seedItemsStored || !dailyItemsStored || !featuredItemsStored || !likesStored) {
             dispatch(getSeedItems())
             dispatch(getDailyItems())
             dispatch(getFeaturedItems())
+            dispatch(getLikes())
         } else {
             dispatch(setSeedItems(JSON.parse(seedItemsStored)));
             dispatch(setDailyItems(JSON.parse(dailyItemsStored)));
             dispatch(setFeaturedItems(JSON.parse(featuredItemsStored)));
+            dispatch(setLikes(JSON.parse(likesStored)));
         }
     }, [dispatch]);
-
-    useEffect(() => {
-        localStorage.setItem('seedItems', JSON.stringify(seedItems));
-        localStorage.setItem('dailyItems', JSON.stringify(dailyItems));
-        localStorage.setItem('featuredItems', JSON.stringify(featuredItems));
-    }, [seedItems, dailyItems, featuredItems]);
 
     if (!isLoaded) {
         return <p>Loading...</p>
