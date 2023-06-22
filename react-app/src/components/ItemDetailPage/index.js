@@ -1,5 +1,5 @@
 import {useSelector, useDispatch} from 'react-redux'
-import { getSeedItems, getDailyItems, getFeaturedItems } from '../../store/items'
+import { setSeedItems, setDailyItems, setFeaturedItems, getSeedItems, getDailyItems, getFeaturedItems } from '../../store/items'
 import { useEffect } from 'react'
 import { getItemBackgroundColor } from '../../utils'
 import { useHistory, useParams } from 'react-router-dom'
@@ -14,17 +14,19 @@ const ItemDetailPage = ({isLoaded}) => {
     const featuredItems = useSelector(state => state.items.featuredItems);
     const itemsLoaded = useSelector(state => state.items.itemsLoaded)
 
-    useEffect(() => {
-        dispatch(getSeedItems())
-        dispatch(getDailyItems())
-        dispatch(getFeaturedItems())
-    }, [dispatch])
+    // useEffect(() => {
+    //     dispatch(getSeedItems())
+    //     dispatch(getDailyItems())
+    //     dispatch(getFeaturedItems())
+    // }, [dispatch])
 
     //combine both lists
     const allItems = [...seedItems, ...dailyItems, ...featuredItems]
+    // console.log('ALL ITEMS', allItems)
 
     //find the item with the given name
     const item = allItems.find(item => item.name === itemName);
+    // console.log('THIS IS THE ITEM', item);
 
     //now we can use 'item' to display its details
     //handle case where item is undefined
@@ -52,6 +54,28 @@ const ItemDetailPage = ({isLoaded}) => {
         const daysDiff = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
         return daysDiff;
     }
+
+    useEffect(() => {
+        const seedItemsStored = localStorage.getItem('seedItems');
+        const dailyItemsStored = localStorage.getItem('dailyItems');
+        const featuredItemsStored = localStorage.getItem('featuredItems');
+    
+        if (!seedItemsStored || !dailyItemsStored || !featuredItemsStored) {
+            dispatch(getSeedItems())
+            dispatch(getDailyItems())
+            dispatch(getFeaturedItems())
+        } else {
+            dispatch(setSeedItems(JSON.parse(seedItemsStored)));
+            dispatch(setDailyItems(JSON.parse(dailyItemsStored)));
+            dispatch(setFeaturedItems(JSON.parse(featuredItemsStored)));
+        }
+    }, [dispatch]);
+
+    useEffect(() => {
+        localStorage.setItem('seedItems', JSON.stringify(seedItems));
+        localStorage.setItem('dailyItems', JSON.stringify(dailyItems));
+        localStorage.setItem('featuredItems', JSON.stringify(featuredItems));
+    }, [seedItems, dailyItems, featuredItems]);
 
     if (!isLoaded) {
         return <p>Loading...</p>
@@ -85,7 +109,7 @@ const ItemDetailPage = ({isLoaded}) => {
                         { item.history === false || !item.history.dates ? 
                             (
                                 <h3 className='occurrences'>
-                                    "Unfortunately, this item was a battle-pass exclusive, so you are not able to add it to your cart!"
+                                    Unfortunately, this item was a battle-pass exclusive, so you are not able to add it to your cart!
                                 </h3>
                             ) : (
                                 <>

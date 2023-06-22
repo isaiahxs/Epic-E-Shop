@@ -16,6 +16,10 @@ const HomePage = () => {
 
     const dispatch = useDispatch()
 
+    useEffect(() => {
+        dispatch(getFeaturedItems())
+    }, [dispatch])
+    
     return (
         <div className='home-container'>
             <div className='home-heading'>
