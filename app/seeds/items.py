@@ -174,10 +174,13 @@ def seed_items():
         }
     )
 
-    db.session.add(elite_agent)
-    db.session.add(mj_no_way_home)
-    db.session.add(spider_man_2099)
-    db.session.add(teef)
+    items_list = [
+        elite_agent, mj_no_way_home, spider_man_2099, teef
+    ]
+
+    for item in items_list:
+        db.session.add(item)
+
     db.session.commit()
 
 

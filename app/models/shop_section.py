@@ -19,3 +19,11 @@ class ShopSection(db.Model):
 
     def __repr__(self):
         return f'<ShopSection id={self.id} displayName={self.displayName} key={self.key} priority={self.priority}>'
+    
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'displayName': self.display_name,
+            'key': self.key,
+            'priority': self.priority
+        }
