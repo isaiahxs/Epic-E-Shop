@@ -15,16 +15,6 @@ const ItemDetailPage = ({isLoaded}) => {
     const featuredItems = useSelector(state => state.items.featuredItems);
     const itemsLoaded = useSelector(state => state.items.itemsLoaded)
 
-    // useEffect(() => {
-    //     dispatch(getLikes())
-    // }, [dispatch])
-
-    // useEffect(() => {
-    //     dispatch(getSeedItems())
-    //     dispatch(getDailyItems())
-    //     dispatch(getFeaturedItems())
-    // }, [dispatch])
-
     //combine both lists
     const allItems = [...seedItems, ...dailyItems, ...featuredItems]
     // console.log('ALL ITEMS', allItems)

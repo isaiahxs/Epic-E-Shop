@@ -35,22 +35,6 @@ const HomePage = () => {
         localStorage.setItem('likes', JSON.stringify(likes));
     }, [seedItems, dailyItems, featuredItems, likes]);
 
-    // useEffect(() => {
-    //     const seedItemsStored = localStorage.getItem('seedItems');
-    //     const dailyItemsStored = localStorage.getItem('dailyItems');
-    //     const featuredItemsStored = localStorage.getItem('featuredItems');
-    
-    //     if (!seedItemsStored || !dailyItemsStored || !featuredItemsStored) {
-    //         dispatch(getSeedItems())
-    //         dispatch(getDailyItems())
-    //         dispatch(getFeaturedItems())
-    //     } else {
-    //         dispatch(setSeedItems(JSON.parse(seedItemsStored)));
-    //         dispatch(setDailyItems(JSON.parse(dailyItemsStored)));
-    //         dispatch(setFeaturedItems(JSON.parse(featuredItemsStored)));
-    //     }
-    // }, [dispatch]);
-
     return (
         <div className='home-container'>
             <div className='home-heading'>
