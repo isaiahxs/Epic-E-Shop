@@ -82,21 +82,30 @@ const ItemDetailPage = ({isLoaded}) => {
                     </div>
 
                     <div className='item-history'>
-                        <h3 className='occurrences'>Shop Occurrences</h3>
-                        <div className='time-days'>
-                            <div className='date-days'>
-                                <div>Date</div>
-                                <div>Days Ago</div>
-                            </div>
-                            {item.history.dates.sort((a, b) => new Date(b) - new Date(a)).map(date => (
-                                <div key={date} className="date-item">
-                                    <div className='date'>{formatDate(date)}</div>
-                                    <div className='days'>{daysAgo(date)}</div>
-                                </div>
-                            ))}
-                        </div>
+                        { item.history === false || !item.history.dates ? 
+                            (
+                                <h3 className='occurrences'>
+                                    "Unfortunately, this item was a battle-pass exclusive, so you are not able to add it to your cart!"
+                                </h3>
+                            ) : (
+                                <>
+                                    <h3 className='occurrences'>Shop Occurrences</h3>
+                                    <div className='time-days'>
+                                        <div className='date-days'>
+                                            <div>Date</div>
+                                            <div>Days Ago</div>
+                                        </div>
+                                        {item.history.dates.sort((a, b) => new Date(b) - new Date(a)).map(date => (
+                                            <div key={date} className="date-item">
+                                                <div className='date'>{formatDate(date)}</div>
+                                                <div className='days'>{daysAgo(date)}</div>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </>
+                            )
+                        }
                     </div>
-
                 </div>
             ) : (
                 <h1 className='loading-message'>Loading: { itemName }</h1>
