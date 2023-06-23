@@ -17,7 +17,8 @@ const HomePage = () => {
     const seedItems = useSelector(state => state.items.seedItems);
     const dailyItems = useSelector(state => state.items.dailyItems);
     const featuredItems = useSelector(state => state.items.featuredItems);
-    const likes = useSelector(state => state.likes)
+    const likes = useSelector(state => state.totalLikes)
+    // console.log(likes);
 
     const dispatch = useDispatch()
 
