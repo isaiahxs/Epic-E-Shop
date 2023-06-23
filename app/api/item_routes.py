@@ -93,41 +93,6 @@ def get_featured_items():
     result = []
 
     for item in featured_items:
-        # id = item['id']
-        # name = item['name']
-        # price = item['price']
-        # price_icon = item['priceIcon']
-        # price_icon_link = item['priceIconLink']
-        # # image_link = item['images']['icon']
-        # images = item['images']
-        # rarity = item['rarity']
-        # type = item['type']
-        # slug = item['slug']
-        # readable_type = item['readableType']
-        # description = item['description']
-        # bundleSet = item['bundleSet']
-        # bannerText = item['bannerText']
-        # history = item['history']
-
-        # #creating a dictionary to store each item
-        # item_dict = {
-        #     'id': id,
-        #     'name': name,
-        #     'price': price,
-        #     'priceIcon': price_icon,
-        #     'priceIconLink': price_icon_link,
-        #     # 'Image': image_link,
-        #     'images': images,
-        #     'rarity': rarity,
-        #     'type': type,
-        #     'slug': slug,
-        #     'readableType': readable_type,
-        #     'description': description,
-        #     'bundleSet': bundleSet,
-        #     'bannerText': bannerText,
-        #     'history': history
-        # }
-
         item_dict = {
             # 'id': item['id'],
             'itemId': item['id'],
