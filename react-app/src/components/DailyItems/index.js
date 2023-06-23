@@ -63,10 +63,6 @@ const DailyItems = () => {
     const allDailyItems = useSelector(state => state.items.dailyItems)
     const history = useHistory()
 
-    // useEffect(() => {
-    //     dispatch(getDailyItems())
-    // }, [dispatch])
-
     // setting up options for the carousel
     const settings = {
         infinite: true,
