@@ -75,28 +75,43 @@ def get_daily_items():
 
         item_dict = {
             # 'id': item['id'],
-            'item_id': item['id'],
+            'itemId': item['id'],
             'name': item['name'],
             'price': item['price'],
-            'price_icon': item['priceIcon'],
-            'price_icon_link': item['priceIconLink'],
+            'priceIcon': item['priceIcon'],
+            'priceIconLink': item['priceIconLink'],
             'images': item['images'],
             'rarity': item['rarity'],
             'type': item['type'],
             'slug': item['slug'],
-            'readable_type': item['readableType'],
+            'readableType': item['readableType'],
             'description': item['description'],
-            'bundle_set': item['bundleSet'],
-            'banner_text': item['bannerText'],
+            'bundleSet': item['bundleSet'],
+            'bannerText': item['bannerText'],
             'history': item['history']
         }
 
         #check if item is in database
-        existing_item = Item.query.filter_by(item_id=item_dict['item_id']).first()
+        existing_item = Item.query.filter_by(item_id=item['id']).first()
 
         #if it does not, add it to the database
         if existing_item is None:
-            new_item = Item(**item_dict)
+            new_item = Item(
+                item_id=item['id'],
+                name=item['name'],
+                price=item['price'],
+                price_icon=item['priceIcon'],
+                price_icon_link=item['priceIconLink'],
+                images=item['images'],
+                rarity=item['rarity'],
+                type=item['type'],
+                slug=item['slug'],
+                readable_type=item['readableType'],
+                description=item['description'],
+                bundle_set=item['bundleSet'],
+                banner_text=item['bannerText'],
+                history=item['history']
+            )
             db.session.add(new_item)
 
         #adding the dictionary to the result list
