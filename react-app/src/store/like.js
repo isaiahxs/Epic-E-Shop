@@ -30,9 +30,17 @@ export const getLikes = () => async (dispatch) => {
         const likes = await response.json();
         dispatch({
             type: SET_LIKES,
-            payload: likes,
+            payload: Array.isArray(likes) ? likes : [likes],
         })
     }
+
+    // if (response.ok) {
+    //     const likes = await response.json();
+    //     dispatch({
+    //         type: SET_LIKES,
+    //         payload: likes,
+    //     })
+    // }
 
     // if (response.ok) {
     //     const data = await response.json();
@@ -53,11 +61,26 @@ export const postLike = (itemId, value) => async (dispatch) => {
         body: JSON.stringify({value: value}),
     });
 
+    // if (response.ok) {
+    //     const data = await response.json();
+    //     dispatch(addLike(data));
+    // } else {
+    //     console.error('Error', response.statusText);
+    // }
+
+    // if (response.ok) {
+    //     const data = await response.json();
+    //     dispatch(addLike(data));
+    //     return Promise.resolve(data);
+    // } else {
+    //     console.error('Error', response.statusText);
+    //     return Promise.reject(new Error(response.statusText));
+    // }
+
     if (response.ok) {
         const data = await response.json();
-        dispatch(addLike(data));
-    } else {
-        console.error('Error', response.statusText);
+        dispatch(addLike([data]));
+        return Promise.resolve(data);
     }
 };
 
@@ -76,7 +99,7 @@ export default function reducer(state = initialState, action) {
 
         case ADD_LIKE:
             // return [...state, action.payload];
-            
+            return [...state, ...action.payload];
 
         default:
             return state;
