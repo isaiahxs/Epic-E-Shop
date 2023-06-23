@@ -13,7 +13,7 @@ function Navigation({ isLoaded }){
 		<div className='nav-bar'>
 
 			<div>
-				<img src={logo} className='nav-logo' onClick={() => history.push('/')}/>
+				<img src={logo} className='nav-logo' alt='Battle Royale logo' onClick={() => history.push('/')}/>
 			</div>
 
 			<div className='nav-options'>

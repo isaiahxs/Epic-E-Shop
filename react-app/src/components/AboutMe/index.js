@@ -1,8 +1,3 @@
-import {useSelector, useDispatch} from 'react-redux'
-import { getDailyItems, getFeaturedItems } from '../../store/items'
-import { useEffect } from 'react'
-import { getItemBackgroundColor } from '../../utils'
-import { useHistory } from 'react-router-dom'
 import cavalry from '../../assets/images/Cavalry-Captain.png'
 import welldone from '../../assets/images/Well-Done-SC.png'
 import serene from '../../assets/images/SereneHaven-SC.png'
@@ -11,8 +6,6 @@ import github from '../../assets/images/github-logo.svg'
 import './AboutMe.css'
 
 const AboutMe = () => {
-    const history = useHistory();
-
     return (
         <div className='item-detail-container'>
             <div className='item-detail-heading about-me-heading'>
@@ -88,7 +81,7 @@ const AboutMe = () => {
                         <a className='project-name' href='https://serene-haven.onrender.com/' target='_blank' rel='noopener noreferrer'>SereneHaven</a>
                         <div className='about-img-container'>
                             <a href='https://serene-haven.onrender.com/' target='_blank' rel='noopener noreferrer'>
-                                <img className='project-image' src={serene}/>
+                                <img className='project-image' src={serene} alt='serene-haven project'/>
                             </a>
                         </div>
                         <div className='project-links'>
@@ -103,7 +96,7 @@ const AboutMe = () => {
                         <a className='project-name' href='https://well-done.onrender.com/' target='_blank' rel='noopener noreferrer'>Well-Done</a>
                         <div className='about-img-container'>
                             <a href='https://well-done.onrender.com/' target='_blank' rel='noopener noreferrer'>
-                                <img className='project-image' src={welldone}/>
+                                <img className='project-image' src={welldone} alt='well-done project'/>
                             </a>
                         </div>
                         <div className='project-links'>

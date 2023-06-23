@@ -11,28 +11,8 @@ import './ItemLikes.css'
 const ItemLikes = () => {
     const dispatch = useDispatch();
     const currentItem = useSelector(state => state.items.currentItem);
-    console.log(currentItem)
     const allLikes = useSelector(state => state.likes.likes.likes)
-    // console.log(allLikes)
-
-    useEffect(() => {
-        const seedItemsStored = localStorage.getItem('seedItems');
-        const dailyItemsStored = localStorage.getItem('dailyItems');
-        const featuredItemsStored = localStorage.getItem('featuredItems');
-        const likesStored = localStorage.getItem('likes');
-
-        if (!seedItemsStored || !dailyItemsStored || !featuredItemsStored || !likesStored) {
-            dispatch(getSeedItems())
-            dispatch(getDailyItems())
-            dispatch(getFeaturedItems())
-            dispatch(getLikes())
-        } else {
-            dispatch(setSeedItems(JSON.parse(seedItemsStored)));
-            dispatch(setDailyItems(JSON.parse(dailyItemsStored)));
-            dispatch(setFeaturedItems(JSON.parse(featuredItemsStored)));
-            dispatch(setLikes(JSON.parse(likesStored)));
-        }
-    }, [dispatch]);
+    console.log(allLikes)
 
     let likesCount = 0;
     let dislikesCount = 0;

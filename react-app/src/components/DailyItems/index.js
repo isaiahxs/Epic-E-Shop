@@ -1,9 +1,6 @@
 import {useSelector, useDispatch} from 'react-redux'
-import { getDailyItems, getFeaturedItems } from '../../store/items'
-import { useEffect } from 'react'
 import { getItemBackgroundColor } from '../../utils'
 import { useHistory } from 'react-router-dom'
-import { useState } from 'react'
 import Slider from 'react-slick'
 import './DailyItems.css'
 
@@ -59,7 +56,7 @@ import './DailyItems.css'
 
 // Alternate iteration with react-slick carousel
 const DailyItems = () => {
-    const dispatch = useDispatch()
+    // const dispatch = useDispatch()
     const allDailyItems = useSelector(state => state.items.dailyItems)
     const history = useHistory()
 

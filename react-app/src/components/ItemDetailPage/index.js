@@ -7,7 +7,7 @@ import { useHistory, useParams } from 'react-router-dom'
 import ItemLikes from '../ItemLikes'
 import './ItemDetailPage.css'
 
-const ItemDetailPage = ({isLoaded}) => {
+const ItemDetailPage = () => {
     const { itemName } = useParams();
     const dispatch = useDispatch();
     const history = useHistory();
@@ -23,8 +23,13 @@ const ItemDetailPage = ({isLoaded}) => {
 
     //find the item with the given name
     const item = allItems.find(item => item.name === itemName);
-    dispatch(setCurrentItem(item)); //set the current item in the store
+    // dispatch(setCurrentItem(item)); //set the current item in the store
 
+    useEffect(() => {
+        if (item) {
+            dispatch(setCurrentItem(item)); //set the current item in the store
+        }
+    }, [dispatch, item]);
     // console.log('THIS IS THE ITEM', item);
 
     //now we can use 'item' to display its details

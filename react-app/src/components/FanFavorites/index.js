@@ -1,8 +1,5 @@
 import {useSelector, useDispatch} from 'react-redux'
-import { getDailyItems, getFeaturedItems } from '../../store/items'
-import { useEffect } from 'react'
 import { getItemBackgroundColor } from '../../utils'
-import { getSeedItems } from '../../store/items'
 import { useHistory } from 'react-router-dom'
 import Slider from 'react-slick'
 import './FanFavorites.css'
