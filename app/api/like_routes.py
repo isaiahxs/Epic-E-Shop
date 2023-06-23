@@ -16,3 +16,19 @@ def get_likes():
     """
     likes = Like.query.all()
     return {'likes': [like.to_dict() for like in likes]}
+
+@like_routes.route('/<itemId>', methods=['POST'])
+@login_required
+def like(itemId):
+    """
+    Like an item
+    """
+    like = Like(
+        user_id=current_user.id,
+        item_id=itemId,
+        value=True
+    )
+    db.session.add(like)
+    db.session.commit()
+    
+    return like.to_dict()

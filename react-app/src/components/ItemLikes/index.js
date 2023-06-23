@@ -6,13 +6,18 @@ import { getItemBackgroundColor } from '../../utils'
 import { useHistory } from 'react-router-dom'
 import { useState } from 'react'
 import Slider from 'react-slick'
+import { postLike } from '../../store/like'
 import './ItemLikes.css'
 
 const ItemLikes = () => {
     const dispatch = useDispatch();
     const currentItem = useSelector(state => state.items.currentItem);
     const allLikes = useSelector(state => state.totalLikes.likes)
-    console.log(allLikes)
+    // console.log(allLikes)
+
+    const addLikeHandler = (value) => {
+        dispatch(postLike(currentItem.itemId, value))
+    }
 
     let likesCount = 0;
     let dislikesCount = 0;
@@ -31,6 +36,7 @@ const ItemLikes = () => {
         <h1>hi</h1>
         <h3 className='likes'>{message}</h3>
         {/* <button className='like-button' onClick={() => history.push(`/item/${item.name}/like`)}>Like</button> */}
+        <button className='like-button' onClick={() => addLikeHandler(true)}>Like</button>
     </div>
     )
 }

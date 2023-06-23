@@ -3,19 +3,18 @@ import { setSeedItems, setDailyItems, setFeaturedItems, setCurrentItem, getSeedI
 import { setLikes, getLikes } from '../../store/like'
 import { useEffect } from 'react'
 import { getItemBackgroundColor } from '../../utils'
-import { useHistory, useParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import ItemLikes from '../ItemLikes'
 import './ItemDetailPage.css'
 
 const ItemDetailPage = () => {
     const { itemName } = useParams();
     const dispatch = useDispatch();
-    const history = useHistory();
     const seedItems = useSelector(state => state.items.seedItems);
     const dailyItems = useSelector(state => state.items.dailyItems);
     const featuredItems = useSelector(state => state.items.featuredItems);
     const itemsLoaded = useSelector(state => state.items.itemsLoaded)
-    const likes = useSelector(state => state.likes)
+    const likes = useSelector(state => state.totalLikes)
 
     //combine both lists
     const allItems = [...seedItems, ...dailyItems, ...featuredItems]
@@ -63,20 +62,29 @@ const ItemDetailPage = () => {
         const seedItemsStored = localStorage.getItem('seedItems');
         const dailyItemsStored = localStorage.getItem('dailyItems');
         const featuredItemsStored = localStorage.getItem('featuredItems');
-        const likesStored = localStorage.getItem('likes');
     
-        if (!seedItemsStored || !dailyItemsStored || !featuredItemsStored || !likesStored) {
+        if (!seedItemsStored || !dailyItemsStored || !featuredItemsStored) {
             dispatch(getSeedItems())
             dispatch(getDailyItems())
             dispatch(getFeaturedItems())
-            dispatch(getLikes())
         } else {
             dispatch(setSeedItems(JSON.parse(seedItemsStored)));
             dispatch(setDailyItems(JSON.parse(dailyItemsStored)));
             dispatch(setFeaturedItems(JSON.parse(featuredItemsStored)));
-            dispatch(setLikes(JSON.parse(likesStored)));
         }
+
+        //i want to always fetch likes from the server
+        dispatch(getLikes());
     }, [dispatch]);
+
+    useEffect(() => {
+        //fetch likes data from the server
+        dispatch(getLikes()).then(() => {
+            //store likes data into localStorage after fetching
+            localStorage.setItem('likes', JSON.stringify(likes));
+        })
+    }, [dispatch]);
+
 
     // if (!isLoaded) {
     //     return <p>Loading...</p>
