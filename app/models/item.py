@@ -42,7 +42,7 @@ class Item(db.Model):
 
     def to_dict(self):
         return {
-            'id': self.id,
+            'itemId': self.item_id,
             'name': self.name,
             'price': self.price,
             'priceIcon': self.price_icon,
