@@ -142,3 +142,16 @@ def get_featured_items():
 
     #returning the result list as a json object
     return jsonify(result)
+
+@item_routes.route('/<itemId>', methods=['GET'])
+def get_item(itemId):
+    """
+    Get an item based on its itemId
+    """
+    item = Item.query.filter_by(item_id=itemId).first()
+    # item = Item.query.get(itemId)
+
+    if item:
+        return item.to_dict()
+    else:
+        return {'error': 'Item not found'}, 404

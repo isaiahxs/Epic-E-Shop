@@ -1,5 +1,5 @@
 import {useSelector, useDispatch} from 'react-redux'
-import { setSeedItems, setDailyItems, setFeaturedItems, getSeedItems, getDailyItems, getFeaturedItems } from '../../store/items'
+import { setSeedItems, setDailyItems, setFeaturedItems, setCurrentItem, getSeedItems, getDailyItems, getFeaturedItems } from '../../store/items'
 import { setLikes, getLikes } from '../../store/like'
 import { useEffect } from 'react'
 import { getItemBackgroundColor } from '../../utils'
@@ -23,6 +23,8 @@ const ItemDetailPage = ({isLoaded}) => {
 
     //find the item with the given name
     const item = allItems.find(item => item.name === itemName);
+    dispatch(setCurrentItem(item)); //set the current item in the store
+
     // console.log('THIS IS THE ITEM', item);
 
     //now we can use 'item' to display its details
@@ -71,9 +73,9 @@ const ItemDetailPage = ({isLoaded}) => {
         }
     }, [dispatch]);
 
-    if (!isLoaded) {
-        return <p>Loading...</p>
-    }
+    // if (!isLoaded) {
+    //     return <p>Loading...</p>
+    // }
     return (
         <div className='item-detail-container'>
             {/* <h1>This is the Item Detail Page</h1> */}

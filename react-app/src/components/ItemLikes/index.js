@@ -10,7 +10,10 @@ import './ItemLikes.css'
 
 const ItemLikes = () => {
     const dispatch = useDispatch();
-    const likes = useSelector(state => state.likes.likes.likes)
+    const currentItem = useSelector(state => state.items.currentItem);
+    console.log(currentItem)
+    const allLikes = useSelector(state => state.likes.likes.likes)
+    // console.log(allLikes)
 
     useEffect(() => {
         const seedItemsStored = localStorage.getItem('seedItems');
@@ -34,10 +37,13 @@ const ItemLikes = () => {
     let likesCount = 0;
     let dislikesCount = 0;
     let message = "This item doesn't have likes or dislikes yet, be the first to give it one!";
-    if (likes) {
-        likesCount = likes.filter(like => like.value === true).length;
-        dislikesCount = likes.filter(like => like.value === false).length;
-        message = `Likes: ${likesCount} Dislikes: ${dislikesCount}`;
+    if (allLikes && currentItem) {
+        const likes = allLikes.filter(like => like.itemId === currentItem.itemId);  // filter likes for this specific item
+        if (likes.length > 0) {
+            likesCount = likes.filter(like => like.value === true).length;
+            dislikesCount = likes.filter(like => like.value === false).length;
+            message = `Likes: ${likesCount} Dislikes: ${dislikesCount}`;
+        }
     }
 
     return (
