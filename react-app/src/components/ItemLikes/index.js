@@ -11,7 +11,7 @@ import './ItemLikes.css'
 const ItemLikes = () => {
     const dispatch = useDispatch();
     const currentItem = useSelector(state => state.items.currentItem);
-    const allLikes = useSelector(state => state.likes.likes.likes)
+    const allLikes = useSelector(state => state.likes.likes)
     console.log(allLikes)
 
     let likesCount = 0;

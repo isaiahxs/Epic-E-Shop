@@ -15,7 +15,7 @@ const ItemDetailPage = () => {
     const dailyItems = useSelector(state => state.items.dailyItems);
     const featuredItems = useSelector(state => state.items.featuredItems);
     const itemsLoaded = useSelector(state => state.items.itemsLoaded)
-    const likes = useSelector(state => state.likes.likes.likes)
+    const likes = useSelector(state => state.likes)
 
     //combine both lists
     const allItems = [...seedItems, ...dailyItems, ...featuredItems]
