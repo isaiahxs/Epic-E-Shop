@@ -32,47 +32,6 @@ def get_daily_items():
     result = []
 
     for item in daily_items:
-        #checking if the item already exists in our database
-        # if not item_exists(item['id']):
-            #add the new item to our database
-            # new_item = Item(
-            #     id = item['id'],
-            #     name = item['name'],
-            #     price = item['price'],
-            #     price_icon = item['priceIcon'],
-            #     price_icon_link = item['priceIconLink'],
-            #     # image_link = item['images']['icon']
-            #     images = item['images'],
-            #     rarity = item['rarity'],
-            #     type = item['type'],
-            #     slug = item['slug'],
-            #     readable_type = item['readableType'],
-            #     description = item['description'],
-            #     bundleSet = item['bundleSet'],
-            #     bannerText = item['bannerText'],
-            #     history = item['history']
-            # )
-            # db.session.add(new_item)
-
-        # creating a dictionary to store each item
-        # item_dict = {
-        #     'id': id,
-        #     'name': name,
-        #     'price': price,
-        #     'priceIcon': price_icon,
-        #     'priceIconLink': price_icon_link,
-        #     # 'Image': image_link,
-        #     'images': images,
-        #     'rarity': rarity,
-        #     'type': type,
-        #     'slug': slug,
-        #     'readableType': readable_type,
-        #     'description': description,
-        #     'bundleSet': bundleSet,
-        #     'bannerText': bannerText,
-        #     'history': history
-        # }
-
         item_dict = {
             # 'id': item['id'],
             'itemId': item['id'],
@@ -134,43 +93,65 @@ def get_featured_items():
     result = []
 
     for item in featured_items:
-        id = item['id']
-        name = item['name']
-        price = item['price']
-        price_icon = item['priceIcon']
-        price_icon_link = item['priceIconLink']
-        # image_link = item['images']['icon']
-        images = item['images']
-        rarity = item['rarity']
-        type = item['type']
-        slug = item['slug']
-        readable_type = item['readableType']
-        description = item['description']
-        bundleSet = item['bundleSet']
-        bannerText = item['bannerText']
-        history = item['history']
-
-        #creating a dictionary to store each item
         item_dict = {
-            'id': id,
-            'name': name,
-            'price': price,
-            'priceIcon': price_icon,
-            'priceIconLink': price_icon_link,
-            # 'Image': image_link,
-            'images': images,
-            'rarity': rarity,
-            'type': type,
-            'slug': slug,
-            'readableType': readable_type,
-            'description': description,
-            'bundleSet': bundleSet,
-            'bannerText': bannerText,
-            'history': history
+            # 'id': item['id'],
+            'itemId': item['id'],
+            'name': item['name'],
+            'price': item['price'],
+            'priceIcon': item['priceIcon'],
+            'priceIconLink': item['priceIconLink'],
+            'images': item['images'],
+            'rarity': item['rarity'],
+            'type': item['type'],
+            'slug': item['slug'],
+            'readableType': item['readableType'],
+            'description': item['description'],
+            'bundleSet': item['bundleSet'],
+            'bannerText': item['bannerText'],
+            'history': item['history']
         }
+
+        #check if item is in database
+        existing_item = Item.query.filter_by(item_id=item['id']).first()
+
+        #if it does not, add it to the database
+        if existing_item is None:
+            new_item = Item(
+                item_id=item['id'],
+                name=item['name'],
+                price=item['price'],
+                price_icon=item['priceIcon'],
+                price_icon_link=item['priceIconLink'],
+                images=item['images'],
+                rarity=item['rarity'],
+                type=item['type'],
+                slug=item['slug'],
+                readable_type=item['readableType'],
+                description=item['description'],
+                bundle_set=item['bundleSet'],
+                banner_text=item['bannerText'],
+                history=item['history']
+            )
+            db.session.add(new_item)
 
         #adding the dictionary to the result list
         result.append(item_dict)
 
+    #commit changes to database
+    db.session.commit()
+
     #returning the result list as a json object
     return jsonify(result)
+
+@item_routes.route('/<itemId>', methods=['GET'])
+def get_item(itemId):
+    """
+    Get an item based on its itemId
+    """
+    item = Item.query.filter_by(item_id=itemId).first()
+    # item = Item.query.get(itemId)
+
+    if item:
+        return item.to_dict()
+    else:
+        return {'error': 'Item not found'}, 404

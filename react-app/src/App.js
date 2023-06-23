@@ -7,7 +7,7 @@ import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
 import HomePage from "./components/HomePage";
 import Featured from "./components/Featured";
-import Cart from "./components/CartSection";
+// import Cart from "./components/CartSection";
 import ItemDetailPage from "./components/ItemDetailPage";
 import WishlistPage from "./components/WishlistPage";
 import UserProfilePage from "./components/UserProfile";

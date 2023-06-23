@@ -17,7 +17,7 @@ export const setLikes = (likes) => {
 }
 
 //intial state
-const initialState = { likes: [] };
+const initialState = [];
 
 //thunk action
 export const getLikes = () => async (dispatch) => {
@@ -30,7 +30,7 @@ export const getLikes = () => async (dispatch) => {
     if (response.ok) {
         const data = await response.json();
         console.log("this is the data retrieved from getLikes", data);
-        dispatch(setLikes(data.likes));
+        dispatch(setLikes(data));
         console.log('Loading likes from from API')
     } else {
         console.error('Error', response.statusText);
@@ -41,7 +41,7 @@ export const getLikes = () => async (dispatch) => {
 export default function reducer(state = initialState, action) {
     switch (action.type) {
         case SET_LIKES:
-            return { ...state, likes: action.payload };
+            return action.payload;
         default:
             return state;
     }

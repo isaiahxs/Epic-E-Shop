@@ -3,6 +3,7 @@ const SET_SEED_ITEMS = "items/SET_SEED_ITEMS";
 const SET_DAILY_ITEMS = "items/SET_DAILY_ITEMS";
 const SET_FEATURED_ITEMS = "items/SET_FEATURED_ITEMS";
 const SET_ITEMS_LOADED = "items/SET_ITEMS_LOADED";
+const SET_CURRENT_ITEM = "items/SET_CURRENT_ITEM";
 
 //action creators
 export const setSeedItems = (items) => {
@@ -36,8 +37,10 @@ export const setItemsLoaded = () => ({
     type: SET_ITEMS_LOADED,
 })
 
-//initial state
-const initialState = { seedItems: [], dailyItems: [], featuredItems: [], itemsLoaded: false };
+export const setCurrentItem = (item) => ({
+    type: SET_CURRENT_ITEM,
+    payload: item,
+})
 
 //thunk action
 export const getSeedItems = () => async (dispatch) => {
@@ -86,6 +89,24 @@ export const getFeaturedItems = () => async (dispatch) => {
     }
 };
 
+export const getCurrentItem = (itemId) => async (dispatch) => {
+    const response = await fetch(`/api/items/${itemId}`, {
+        headers: {
+            "Content-Type": "application/json",
+        },
+    });
+
+    if (response.ok) {
+        const data = await response.json();
+        dispatch(setCurrentItem(data));
+        // console.log('Loading current item from API')
+        dispatch(setItemsLoaded()); //set items loaded after fetching items
+    }
+};
+
+//initial state
+const initialState = { seedItems: [], dailyItems: [], featuredItems: [], itemsLoaded: false, currentItem: null };
+
 //reducer
 export default function reducer(state = initialState, action) {
     switch (action.type) {
@@ -100,6 +121,9 @@ export default function reducer(state = initialState, action) {
 
         case SET_ITEMS_LOADED:
             return { ...state, itemsLoaded: true };
+
+        case SET_CURRENT_ITEM:
+            return { ...state, currentItem: action.payload };
 
         default:
             return state;

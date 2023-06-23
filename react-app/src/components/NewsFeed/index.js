@@ -1,8 +1,3 @@
-import {useSelector, useDispatch} from 'react-redux'
-import { getDailyItems, getFeaturedItems } from '../../store/items'
-import { useEffect } from 'react'
-import { getItemBackgroundColor } from '../../utils'
-import { useHistory } from 'react-router-dom'
 import theWilds from '../../assets/images/The-Wilds.jpg'
 import mud from '../../assets/images/Mud.jpg'
 import raptorRiding from '../../assets/images/Raptor-Riding.jpg'
