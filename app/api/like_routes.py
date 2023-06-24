@@ -26,10 +26,17 @@ def like_or_dislike(itemId):
     Like or dislike an item
     """
     value = request.json.get('value') # get the value from the request
+
+    #checking if a like instance already exists for our user
+    like = Like.query.filter_by(user_id=current_user.id, item_id=itemId).first()
+    if like is not None:
+        #a like instance already exists, so do not let them add another like to a like or add another dislike to a dislike
+        return {'error': 'You cannot have two votes on the same item.'}, 400
+    
     like = Like(
         user_id=current_user.id,
         item_id=itemId,
-        value=value # use the value from the request
+        value=value #use the value from the request
     )
     db.session.add(like)
     db.session.commit()
