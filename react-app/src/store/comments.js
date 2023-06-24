@@ -63,25 +63,19 @@ export const createComment = (itemId, comment) => async (dispatch) => {
 }
 
 export const editComment = (commentId, editedComment) => async (dispatch) => {
-    console.log('THIS IS OUR COMMENT ID INSIDE THE THUNK ACTION', commentId)
-    console.log('THIS IS OUR COMMENT INSIDE THE THUNK ACTION', editedComment)
+    // console.log('THIS IS OUR COMMENT ID INSIDE THE THUNK ACTION', commentId)
+    // console.log('THIS IS OUR COMMENT INSIDE THE THUNK ACTION', editedComment)
     const response = await fetch(`/api/comments/${commentId}`, {
         method: "PUT",
         headers: {
             "Content-Type": "application/json",
         },
         body: JSON.stringify(editedComment),
-        // body: JSON.stringify({text: comment.text, userId: comment.userId}),
-        // body: JSON.stringify({text: commentText})
     });
 
     if (response.ok) {
         const updatedComment = await response.json();
-        console.log('THIS IS OUR UPDATED COMMENT', updatedComment)
-        // dispatch({
-        //     type: EDIT_COMMENT,
-        //     payload: updatedComment,
-        // })
+        // console.log('THIS IS OUR UPDATED COMMENT', updatedComment)
         dispatch(editCommentAction(updatedComment));
         return updatedComment;
     }
@@ -107,16 +101,6 @@ export default function reducer(state = initialState, action) {
                     return comment;
                 }
             });
-
-            //OR
-            // const updatedComment = action.payload;
-            // return state.map(comment => {
-            //     if (comment.id === updatedComment.id) {
-            //         return updatedComment;
-            //     } else {
-            //         return comment;
-            //     }
-            // });
 
         default:
             return state;

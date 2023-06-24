@@ -1,6 +1,6 @@
 import {useSelector, useDispatch} from 'react-redux'
 import { useState } from 'react'
-import { setComments, addComment, getComments, createComment } from '../../store/comments'
+import { createComment } from '../../store/comments'
 import { editComment } from '../../store/comments'
 import './Comments.css'
 
