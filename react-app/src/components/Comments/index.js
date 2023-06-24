@@ -1,7 +1,6 @@
 import {useSelector, useDispatch} from 'react-redux'
-import { useState } from 'react'
-import { createComment } from '../../store/comments'
-import { editComment } from '../../store/comments'
+import { useEffect, useState } from 'react'
+import { createComment, editComment, deleteComment, getComments } from '../../store/comments'
 import './Comments.css'
 
 const Comments = () => {
@@ -29,6 +28,11 @@ const Comments = () => {
         await dispatch(editComment(commentId, {text: editText, userId: sessionUser.id}))
         setEditingCommentId(null);
         setEditText('');
+    }
+
+    const handleDelete = async (commentId) => {
+        await dispatch(deleteComment(commentId))
+        dispatch(getComments())
     }
 
     //filtering comments to only include those whose itemId matches the itemId of the currentItem
@@ -62,7 +66,10 @@ const Comments = () => {
 
                         <div>
                         {userId && userId === comment?.userId && editingCommentId !== comment.id && 
+                        <div>
                             <button onClick={() => handleEdit(comment.id, comment.text)}>Edit</button>
+                            <button onClick={() => handleDelete(comment?.id)}>Delete</button>
+                        </div>
                         }
                         </div>
                     </div>

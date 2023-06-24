@@ -2,6 +2,7 @@
 const SET_COMMENTS = "comments/SET_COMMENTS";
 const ADD_COMMENT = "comments/ADD_COMMENT";
 const EDIT_COMMENT = "comments/EDIT_COMMENT";
+const DELETE_COMMENT = "comments/DELETE_COMMENT";
 
 //action creators
 export const setComments = (comments) => {
@@ -24,6 +25,13 @@ export const editCommentAction = (editedComment) => {
     return {
         type: EDIT_COMMENT,
         payload: editedComment,
+    }
+}
+
+export const deleteCommentAction = (id) => {
+    return {
+        type: DELETE_COMMENT,
+        payload: id,
     }
 }
 
@@ -81,6 +89,19 @@ export const editComment = (commentId, editedComment) => async (dispatch) => {
     }
 }
 
+export const deleteComment = (commentId) => async (dispatch) => {
+    const response = await fetch(`/api/comments/${commentId}`, {
+        method: "DELETE",
+    });
+
+    if (response.ok) {
+        const data = await response.json();
+        dispatch(deleteCommentAction(data.id));
+        // return deletedComment;
+    }
+}
+
+
 //initial state
 const initialState = [];
 
@@ -101,6 +122,9 @@ export default function reducer(state = initialState, action) {
                     return comment;
                 }
             });
+
+        case DELETE_COMMENT:
+            return state.filter(comment => comment.id !== action.payload.id);
 
         default:
             return state;

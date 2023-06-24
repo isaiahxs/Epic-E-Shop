@@ -61,3 +61,21 @@ def edit_comment(id):
     db.session.commit()
 
     return comment.to_dict()
+
+@comment_routes.route('/<id>', methods=['DELETE'])
+@login_required
+def delete_comment(id):
+    """
+    Delete a comment by id
+    """
+    comment = Comment.query.get(id)
+    if comment is None:
+        return {'errors': ['Comment not found']}, 404
+    if current_user.id != comment.user_id:
+        return {'errors': ['Unauthorized. You do not have permission to delete this comment.']}, 401
+
+    db.session.delete(comment)
+    db.session.commit()
+
+    # return {'message': 'Comment successfully deleted'}
+    return {'id': id} #returning id of the deleted comment
