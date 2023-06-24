@@ -1,5 +1,6 @@
 //actions
 const SET_COMMENTS = "comments/SET_COMMENTS";
+const ADD_COMMENT = "comments/ADD_COMMENT";
 
 //action creators
 export const setComments = (comments) => {
@@ -8,6 +9,13 @@ export const setComments = (comments) => {
     return {
         type: SET_COMMENTS,
         payload: comments,
+    }
+}
+
+export const addComment = (comment) => {
+    return {
+        type: ADD_COMMENT,
+        payload: comment,
     }
 }
 
@@ -28,6 +36,22 @@ export const getComments = () => async (dispatch) => {
     }
 }
 
+export const createComment = (itemId, comment) => async (dispatch) => {
+    const response = await fetch(`/api/comments/${itemId}`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(comment),
+    });
+
+    if (response.ok) {
+        const newComment = await response.json();
+        dispatch(addComment(newComment));
+        return newComment;
+    }
+}
+
 //initial state
 const initialState = [];
 
@@ -36,6 +60,9 @@ export default function reducer(state = initialState, action) {
     switch (action.type) {
         case SET_COMMENTS:
             return action.payload.comments ? action.payload.comments : [];
+
+        case ADD_COMMENT:
+            return [...state, action.payload];
 
         default:
             return state;
