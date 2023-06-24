@@ -1,24 +1,34 @@
 import {useSelector, useDispatch} from 'react-redux'
 import { useState } from 'react'
-import { setComments, addComment, getComments, createComment } from '../../store/comments'
+import { createComment } from '../../store/comments'
+import { editComment } from '../../store/comments'
 import './Comments.css'
 
 const Comments = () => {
     const dispatch = useDispatch();
-    const currentItem = useSelector(state => state.items.currentItem);
-    console.log(currentItem)
-    const allComments = useSelector(state => state.comments)
+    const currentItem = useSelector(state => state.items.currentItem);    const allComments = useSelector(state => state.comments)
     const sessionUser = useSelector(state => state.session.user);
-    // console.log(allComments)
+    const userId = sessionUser?.id;
     const [commentText, setCommentText] = useState('');
+    const [editText, setEditText] = useState('');
+    const [editingCommentId, setEditingCommentId] = useState(null);
 
     const handleSubmit = (event) => {
         event.preventDefault();
         dispatch(createComment(currentItem.itemId, {text: commentText, userId: sessionUser.id}))
-        // dispatch(createComment({text: commentText, itemId: currentItem.itemId, userId: sessionUser.id}))
-        // dispatch(createComment(currentItem.item_id, commentText))
-
         setCommentText('');
+    }
+
+    const handleEdit = (commentId, text) => {
+        setEditingCommentId(commentId);
+        setCommentText(text);
+    }
+
+    const handleEditSubmit = async (event, commentId) => {
+        event.preventDefault();
+        await dispatch(editComment(commentId, {text: editText, userId: sessionUser.id}))
+        setEditingCommentId(null);
+        setEditText('');
     }
 
     //filtering comments to only include those whose itemId matches the itemId of the currentItem
@@ -30,7 +40,31 @@ const Comments = () => {
                 <h1>Comments ({allComments?.length})</h1>
                 {currentItemComments.map(comment => (
                     <div key={comment.id}>
-                        <h3>{comment.text}</h3>
+                        <div>
+                            <h3>{comment.text}</h3>
+                        </div>
+
+                        <div className='comment-content'>
+                            {editingCommentId === comment?.id ?
+                                <form onSubmit={(e) => handleEditSubmit(e, comment?.id)}>
+                                    <input 
+                                        className='comment-input'
+                                        value={editText} 
+                                        onChange={(e) => setEditText(e.target.value)} 
+                                        required
+                                    />
+                                    <button className='submit-comment' type="submit">Submit Edit</button>
+                                </form>
+                            :
+                                <p>{comment?.content}</p>
+                            }
+                        </div>
+
+                        <div>
+                        {userId && userId === comment?.userId && editingCommentId !== comment.id && 
+                            <button onClick={() => handleEdit(comment.id, comment.text)}>Edit</button>
+                        }
+                        </div>
                     </div>
                 ))}
             </div>

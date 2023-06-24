@@ -1,7 +1,7 @@
-from flask import Blueprint, jsonify, session, request
+from flask import Blueprint, request
 from app.models import Item, Comment, db
-from app.forms import LoginForm, SignUpForm, CommentForm
-from flask_login import current_user, login_user, logout_user, login_required
+from app.forms import CommentForm
+from flask_login import current_user, login_required
 
 comment_routes = Blueprint('comments', __name__)
 
@@ -19,28 +19,13 @@ def create_comment(itemId):
     """
     Create a new comment
     """
-    print("THIS IS OUR ITEM IDDDDDDADFJADJFA;JFSDJDFLJDFLJ", itemId)
-
-    # itemId = int(itemId)
-
+    # print("THIS IS OUR ITEM ID", itemId)
     form = CommentForm()
     form['csrf_token'].data = request.cookies['csrf_token']
 
     if form.validate_on_submit():
-        # comment = Comment(
-        #     user_id=current_user.id,
-        #     item_id=itemId,
-        #     text=form.data['text']
-        # )
-
-        # db.session.add(comment)
-        # db.session.commit()
-        # item = Item.query.get(comment.item_id)
-        # return item.to_dict()
-
-        # item = Item.query.get(itemId)
         item = Item.query.filter_by(item_id=itemId).first()
-        print("THIS IS THE ITEM WE'RE EXPECTING TO SEE", item)
+        # print("THIS IS THE ITEM WE'RE EXPECTING TO SEE", item)
 
         if item is None:
             return {'errors': ['Item not found']}, 404
@@ -56,3 +41,23 @@ def create_comment(itemId):
 
         return comment.to_dict()
     return {'errors': form.errors}, 401
+
+@comment_routes.route('/<id>', methods=['PUT'])
+@login_required
+def edit_comment(id):
+    """
+    Edit a comment by id
+    """
+    data = request.get_json()
+    print('THIS IS THE REQUEST GET JSON', data)
+
+    comment = Comment.query.get(id)
+    if comment is None:
+        return {'errors': ['Comment not found']}, 404
+    if current_user.id != comment.user_id:
+        return {'errors': ['Unauthorized. You do not have permission to edit this comment.']}, 401
+
+    comment.text = data['text']
+    db.session.commit()
+
+    return comment.to_dict()

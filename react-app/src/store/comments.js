@@ -1,6 +1,7 @@
 //actions
 const SET_COMMENTS = "comments/SET_COMMENTS";
 const ADD_COMMENT = "comments/ADD_COMMENT";
+const EDIT_COMMENT = "comments/EDIT_COMMENT";
 
 //action creators
 export const setComments = (comments) => {
@@ -16,6 +17,13 @@ export const addComment = (comment) => {
     return {
         type: ADD_COMMENT,
         payload: comment,
+    }
+}
+
+export const editCommentAction = (editedComment) => {
+    return {
+        type: EDIT_COMMENT,
+        payload: editedComment,
     }
 }
 
@@ -37,8 +45,8 @@ export const getComments = () => async (dispatch) => {
 }
 
 export const createComment = (itemId, comment) => async (dispatch) => {
-    console.log('THIS IS OUR ITEM ID INSIDE THE THUNK ACTION', itemId)
-    console.log('THIS IS OUR COMMENT INSIDE THE THUNK ACTION', comment)
+    // console.log('THIS IS OUR ITEM ID INSIDE THE THUNK ACTION', itemId)
+    // console.log('THIS IS OUR COMMENT INSIDE THE THUNK ACTION', comment)
     const response = await fetch(`/api/comments/${itemId}`, {
         method: "POST",
         headers: {
@@ -54,6 +62,25 @@ export const createComment = (itemId, comment) => async (dispatch) => {
     }
 }
 
+export const editComment = (commentId, editedComment) => async (dispatch) => {
+    // console.log('THIS IS OUR COMMENT ID INSIDE THE THUNK ACTION', commentId)
+    // console.log('THIS IS OUR COMMENT INSIDE THE THUNK ACTION', editedComment)
+    const response = await fetch(`/api/comments/${commentId}`, {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(editedComment),
+    });
+
+    if (response.ok) {
+        const updatedComment = await response.json();
+        // console.log('THIS IS OUR UPDATED COMMENT', updatedComment)
+        dispatch(editCommentAction(updatedComment));
+        return updatedComment;
+    }
+}
+
 //initial state
 const initialState = [];
 
@@ -65,6 +92,15 @@ export default function reducer(state = initialState, action) {
 
         case ADD_COMMENT:
             return [...state, action.payload];
+
+        case EDIT_COMMENT:
+            return state.map(comment => {
+                if (comment.id === action.payload.id) {
+                    return action.payload;
+                } else {
+                    return comment;
+                }
+            });
 
         default:
             return state;
