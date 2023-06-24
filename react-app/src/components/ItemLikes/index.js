@@ -42,15 +42,15 @@ const ItemLikes = () => {
 
     return (
         <div className='item-detail-likes'>
-        <h1>hi</h1>
-        <h3 className='likes'>{message}</h3>
-        {/* <button className='like-button' onClick={() => history.push(`/item/${item.name}/like`)}>Like</button> */}
-        <button className='like-button' onClick={() => addLikeHandler(true)}>Like</button>
-        <button className='remove-like-button' onClick={() => removeLikeHandler()}>Remove Like</button>
-        <button className='dislike-button' onClick={() => dislikeHandler(false)}>Dislike</button>
-        <button className='remove-dislike-button' onClick={() => removeDislikeHandler()}>Remove Dislike</button>
-        <button className='switch-vote-button' onClick={() => switchVoteHandler(true)}>Switch Vote</button>
-    </div>
+            <h1>hi</h1>
+            <h3 className='likes'>{message}</h3>
+            {/* <button className='like-button' onClick={() => history.push(`/item/${item.name}/like`)}>Like</button> */}
+            <button className='like-button' onClick={() => addLikeHandler(true)}>Like</button>
+            <button className='remove-like-button' onClick={() => removeLikeHandler()}>Remove Like</button>
+            <button className='dislike-button' onClick={() => dislikeHandler(false)}>Dislike</button>
+            <button className='remove-dislike-button' onClick={() => removeDislikeHandler()}>Remove Dislike</button>
+            <button className='switch-vote-button' onClick={() => switchVoteHandler(true)}>Switch Vote</button>
+        </div>
     )
 }
 
