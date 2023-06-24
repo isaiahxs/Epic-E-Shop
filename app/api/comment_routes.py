@@ -19,6 +19,7 @@ def create_comment(itemId):
     """
     Create a new comment
     """
+    print("THIS IS OUR ITEM IDDDDDDADFJADJFA;JFSDJDFLJDFLJ", itemId)
 
     form = CommentForm()
     form['csrf_token'].data = request.cookies['csrf_token']
