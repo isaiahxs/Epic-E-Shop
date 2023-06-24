@@ -77,6 +77,7 @@ export const deleteLike = (itemId) => async (dispatch) => {
         headers: {
             "Content-Type": "application/json",
         },
+        body: JSON.stringify({value: true}),
     });
 
     if (response.ok) {
@@ -105,21 +106,22 @@ export const postDislike = (itemId, value) => async (dispatch) => {
     }
 };
 
-// export const deleteDislike = (itemId) => async (dispatch) => {
-//     const response = await fetch(`/api/likes/${itemId}`, {
-//         method: "DELETE",
-//         headers: {
-//             "Content-Type": "application/json",
-//         },
-//     });
+export const deleteDislike = (itemId) => async (dispatch) => {
+    const response = await fetch(`/api/likes/${itemId}`, {
+        method: "DELETE",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({value: false}),
+    });
 
-//     if (response.ok) {
-//         const data = await response.json();
-//         dispatch(removeDislike(data));
-//     } else {
-//         console.error('Error', response.statusText);
-//     }
-// };
+    if (response.ok) {
+        const data = await response.json();
+        dispatch(removeDislike(data));
+    } else {
+        console.error('Error', response.statusText);
+    }
+};
 
 //intial state
 const initialState = [];
@@ -143,8 +145,8 @@ export default function reducer(state = initialState, action) {
         case ADD_DISLIKE:
             return [...state, action.payload];
 
-        // case REMOVE_DISLIKE:
-        //     return state.filter((dislike) => dislike.id !== action.payload.id);
+        case REMOVE_DISLIKE:
+            return state.filter((dislike) => dislike.id !== action.payload.id);
 
         default:
             return state;

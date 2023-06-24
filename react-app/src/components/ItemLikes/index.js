@@ -19,17 +19,17 @@ const ItemLikes = () => {
         dispatch(postLike(currentItem.itemId, value))
     }
 
-    const removeLikeHandler = (value) => {
-        dispatch(deleteLike(currentItem.itemId, value))
+    const removeLikeHandler = () => {
+        dispatch(deleteLike(currentItem.itemId))
     }
 
     const dislikeHandler = (value) => {
         dispatch(postDislike(currentItem.itemId, value))
     }
 
-    // const removeDislikeHandler = (value) => {
-    //     dispatch(deleteDislike(currentItem.itemId, value))
-    // }
+    const removeDislikeHandler = () => {
+        dispatch(deleteDislike(currentItem.itemId))
+    }
 
     let likesCount = 0;
     let dislikesCount = 0;
@@ -51,7 +51,7 @@ const ItemLikes = () => {
         <button className='like-button' onClick={() => addLikeHandler(true)}>Like</button>
         <button className='remove-like-button' onClick={() => removeLikeHandler()}>Remove Like</button>
         <button className='dislike-button' onClick={() => dislikeHandler(false)}>Dislike</button>
-        {/* <button className='remove-dislike-button' onClick={() => removeDislikeHandler()}>Remove Dislike</button> */}
+        <button className='remove-dislike-button' onClick={() => removeDislikeHandler()}>Remove Dislike</button>
     </div>
     )
 }

@@ -18,64 +18,39 @@ def get_likes():
     likes = Like.query.all()
     return {'likes': [like.to_dict() for like in likes]}
 
+#combined like and dislike routes
 @like_routes.route('/<itemId>', methods=['POST'])
 @login_required
-def like(itemId):
+def like_or_dislike(itemId):
     """
-    Like an item
+    Like or dislike an item
     """
+    value = request.json.get('value') # get the value from the request
     like = Like(
         user_id=current_user.id,
         item_id=itemId,
-        value=request.json.get('value')
+        value=value # use the value from the request
     )
     db.session.add(like)
     db.session.commit()
     
     return like.to_dict()
 
+#combined unlike and undislike routes
 @like_routes.route('/<itemId>', methods=['DELETE'])
 @login_required
-def unlike(itemId):
+def remove_like_or_dislike(itemId):
     """
-    Unlike an item
+    Remove a like or dislike from an item
     """
-    like = Like.query.filter_by(user_id=current_user.id, item_id=itemId).first()
+    value = request.json.get('value')  # get the value from the request
+
+    # query for a Like with the specified value
+    like = Like.query.filter_by(user_id=current_user.id, item_id=itemId, value=value).first()
     db.session.delete(like)
     db.session.commit()
 
     return like.to_dict()
-
-@like_routes.route('/<itemId>', methods=['POST'])
-@login_required
-def dislike(itemId):
-    """
-    Dislike an item
-    """
-    print("THIS IS OUR REQUEST JSON", request.json)
-
-    dislike = Like(
-        user_id=current_user.id,
-        item_id=itemId,
-        # value=False
-        value=request.json.get('value')
-    )
-    db.session.add(dislike)
-    db.session.commit()
-
-    return dislike.to_dict()
-
-# @like_routes.route('/<itemId>', methods=['DELETE'])
-# @login_required
-# def undislike(itemId):
-#     """
-#     Undislike an item
-#     """
-#     like = Like.query.filter_by(user_id=current_user.id, item_id=itemId).first()
-#     db.session.delete(like)
-#     db.session.commit()
-
-#     return like.to_dict()
 
 # this will be for the switching of like to dislike or vice versa
 # @like_routes.route('/<itemId>', methods=['PUT'])
