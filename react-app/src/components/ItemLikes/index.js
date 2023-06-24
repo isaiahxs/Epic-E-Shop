@@ -6,7 +6,7 @@ import { getItemBackgroundColor } from '../../utils'
 import { useHistory } from 'react-router-dom'
 import { useState } from 'react'
 import Slider from 'react-slick'
-import { postLike } from '../../store/like'
+import { postLike, deleteLike, postDislike, deleteDislike } from '../../store/like'
 import './ItemLikes.css'
 
 const ItemLikes = () => {
@@ -18,6 +18,18 @@ const ItemLikes = () => {
     const addLikeHandler = (value) => {
         dispatch(postLike(currentItem.itemId, value))
     }
+
+    const removeLikeHandler = (value) => {
+        dispatch(deleteLike(currentItem.itemId, value))
+    }
+
+    const dislikeHandler = (value) => {
+        dispatch(postDislike(currentItem.itemId, value))
+    }
+
+    // const removeDislikeHandler = (value) => {
+    //     dispatch(deleteDislike(currentItem.itemId, value))
+    // }
 
     let likesCount = 0;
     let dislikesCount = 0;
@@ -37,6 +49,9 @@ const ItemLikes = () => {
         <h3 className='likes'>{message}</h3>
         {/* <button className='like-button' onClick={() => history.push(`/item/${item.name}/like`)}>Like</button> */}
         <button className='like-button' onClick={() => addLikeHandler(true)}>Like</button>
+        <button className='remove-like-button' onClick={() => removeLikeHandler()}>Remove Like</button>
+        <button className='dislike-button' onClick={() => dislikeHandler(false)}>Dislike</button>
+        {/* <button className='remove-dislike-button' onClick={() => removeDislikeHandler()}>Remove Dislike</button> */}
     </div>
     )
 }
