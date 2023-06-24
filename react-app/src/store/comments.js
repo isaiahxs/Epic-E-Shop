@@ -1,6 +1,7 @@
 //actions
 const SET_COMMENTS = "comments/SET_COMMENTS";
 const ADD_COMMENT = "comments/ADD_COMMENT";
+const EDIT_COMMENT = "comments/EDIT_COMMENT";
 
 //action creators
 export const setComments = (comments) => {
@@ -18,6 +19,13 @@ export const addComment = (comment) => {
         payload: comment,
     }
 }
+
+// export const editComment = (comment) => {
+//     return {
+//         type: EDIT_COMMENT,
+//         payload: comment,
+//     }
+// }
 
 //thunk action
 export const getComments = () => async (dispatch) => {
@@ -54,6 +62,25 @@ export const createComment = (itemId, comment) => async (dispatch) => {
     }
 }
 
+export const editComment = (commentId, comment) => async (dispatch) => {
+    const response = await fetch(`/api/comments/${commentId}`, {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(comment),
+    });
+
+    if (response.ok) {
+        const updatedComment = await response.json();
+        dispatch({
+            type: EDIT_COMMENT,
+            payload: updatedComment,
+        })
+        return updatedComment;
+    }
+}
+
 //initial state
 const initialState = [];
 
@@ -65,6 +92,25 @@ export default function reducer(state = initialState, action) {
 
         case ADD_COMMENT:
             return [...state, action.payload];
+
+        case EDIT_COMMENT:
+            return state.map(comment => {
+                if (comment.id === action.payload.id) {
+                    return action.payload;
+                } else {
+                    return comment;
+                }
+            });
+
+            //OR
+            // const updatedComment = action.payload;
+            // return state.map(comment => {
+            //     if (comment.id === updatedComment.id) {
+            //         return updatedComment;
+            //     } else {
+            //         return comment;
+            //     }
+            // });
 
         default:
             return state;
