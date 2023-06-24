@@ -1,10 +1,12 @@
 import {useSelector, useDispatch} from 'react-redux'
 import { setSeedItems, setDailyItems, setFeaturedItems, setCurrentItem, getSeedItems, getDailyItems, getFeaturedItems } from '../../store/items'
 import { setLikes, getLikes } from '../../store/like'
+import { getComments } from '../../store/comments'
 import { useEffect } from 'react'
 import { getItemBackgroundColor } from '../../utils'
 import { useParams } from 'react-router-dom'
 import ItemLikes from '../ItemLikes'
+import Comments from '../Comments'
 import './ItemDetailPage.css'
 
 const ItemDetailPage = () => {
@@ -15,6 +17,8 @@ const ItemDetailPage = () => {
     const featuredItems = useSelector(state => state.items.featuredItems);
     const itemsLoaded = useSelector(state => state.items.itemsLoaded)
     const likes = useSelector(state => state.totalLikes)
+    const comments = useSelector(state => state.comments)
+
 
     //combine both lists
     const allItems = [...seedItems, ...dailyItems, ...featuredItems]
@@ -75,6 +79,7 @@ const ItemDetailPage = () => {
 
         //i want to always fetch likes from the server
         dispatch(getLikes());
+        dispatch(getComments());
     }, [dispatch]);
 
     useEffect(() => {
@@ -82,6 +87,14 @@ const ItemDetailPage = () => {
         dispatch(getLikes()).then(() => {
             //store likes data into localStorage after fetching
             localStorage.setItem('likes', JSON.stringify(likes));
+        })
+    }, [dispatch]);
+
+    useEffect(() => {
+        //fetch likes data from the server
+        dispatch(getComments()).then(() => {
+            //store likes data into localStorage after fetching
+            localStorage.setItem('comments', JSON.stringify(comments));
         })
     }, [dispatch]);
 
@@ -144,6 +157,7 @@ const ItemDetailPage = () => {
                     </div>
                     {/* have Likes component here */}
                     <ItemLikes />
+                    <Comments />
             </div>
             ) : (
                 <h1 className='loading-message'>Loading: { itemName }</h1>

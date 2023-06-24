@@ -7,7 +7,6 @@ const REMOVE_DISLIKE = "likes/REMOVE_DISLIKE";
 const SWITCH_VOTE = "likes/SWITCH_VOTE";
 
 //action creators
-
 export const setLikes = (likes) => {
     console.log('Loading likes from localStorage');
     
