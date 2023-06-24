@@ -37,6 +37,8 @@ export const getComments = () => async (dispatch) => {
 }
 
 export const createComment = (itemId, comment) => async (dispatch) => {
+    console.log('THIS IS OUR ITEM ID INSIDE THE THUNK ACTION', itemId)
+    console.log('THIS IS OUR COMMENT INSIDE THE THUNK ACTION', comment)
     const response = await fetch(`/api/comments/${itemId}`, {
         method: "POST",
         headers: {
