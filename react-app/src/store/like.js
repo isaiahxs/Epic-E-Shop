@@ -72,10 +72,12 @@ export default function reducer(state = initialState, action) {
     switch (action.type) {
         case SET_LIKES:
             // return [...state, action.payload];
-            return action.payload;
-
+            // return action.payload;
+            return action.payload.likes ? action.payload.likes : [];
+            
         case ADD_LIKE:
-            // return [...state, action.payload];
+            return [...state, action.payload];
+            // return action.payload;
             
 
         default:

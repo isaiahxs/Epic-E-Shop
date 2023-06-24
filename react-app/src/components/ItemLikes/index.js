@@ -12,7 +12,7 @@ import './ItemLikes.css'
 const ItemLikes = () => {
     const dispatch = useDispatch();
     const currentItem = useSelector(state => state.items.currentItem);
-    const allLikes = useSelector(state => state.totalLikes.likes)
+    const allLikes = useSelector(state => state.totalLikes)
     // console.log(allLikes)
 
     const addLikeHandler = (value) => {
