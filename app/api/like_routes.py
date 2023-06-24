@@ -45,7 +45,7 @@ def remove_like_or_dislike(itemId):
     """
     value = request.json.get('value')  # get the value from the request
 
-    # query for a Like with the specified value
+    #query for a Like with the specified value
     like = Like.query.filter_by(user_id=current_user.id, item_id=itemId, value=value).first()
     db.session.delete(like)
     db.session.commit()
@@ -53,4 +53,20 @@ def remove_like_or_dislike(itemId):
     return like.to_dict()
 
 # this will be for the switching of like to dislike or vice versa
-# @like_routes.route('/<itemId>', methods=['PUT'])
+@like_routes.route('/<itemId>', methods=['PUT'])
+@login_required
+def change_like_or_dislike(itemId):
+    """
+    Change a like to a dislike or a dislike to a like
+    """
+    value = request.json.get('value')
+
+    #query for a Like, regardless of its value
+    like = Like.query.filter_by(user_id=current_user.id, item_id=itemId).first()
+    if like is not None:
+        like.value = not like.value
+        db.session.commit()
+
+        return like.to_dict()
+    else:
+        return {"error": "No like or dislike found for this user and item"}, 400

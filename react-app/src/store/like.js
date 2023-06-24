@@ -4,6 +4,7 @@ const ADD_LIKE = "likes/ADD_LIKE";
 const REMOVE_LIKE = "likes/REMOVE_LIKE";
 const ADD_DISLIKE = "likes/ADD_DISLIKE";
 const REMOVE_DISLIKE = "likes/REMOVE_DISLIKE";
+const SWITCH_VOTE = "likes/SWITCH_VOTE";
 
 //action creators
 
@@ -34,6 +35,11 @@ export const addDislike = (dislike) => ({
 export const removeDislike = (dislike) => ({
     type: REMOVE_DISLIKE,
     payload: dislike,
+});
+
+export const switchVote = (like) => ({
+    type: SWITCH_VOTE,
+    payload: like,
 });
 
 //thunk action
@@ -123,6 +129,23 @@ export const deleteDislike = (itemId) => async (dispatch) => {
     }
 };
 
+export const switchVoteLike = (itemId, value) => async (dispatch) => {
+    const response = await fetch(`/api/likes/${itemId}`, {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({value: value}),
+    });
+
+    if (response.ok) {
+        const data = await response.json();
+        dispatch(switchVote(data));
+    } else {
+        console.error('Error', response.statusText);
+    }
+};
+
 //intial state
 const initialState = [];
 
@@ -147,6 +170,11 @@ export default function reducer(state = initialState, action) {
 
         case REMOVE_DISLIKE:
             return state.filter((dislike) => dislike.id !== action.payload.id);
+
+        case SWITCH_VOTE:
+            return state.map((like) => 
+                like.id === action.payload.id ? action.payload : like
+            );
 
         default:
             return state;
