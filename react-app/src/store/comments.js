@@ -20,12 +20,12 @@ export const addComment = (comment) => {
     }
 }
 
-// export const editComment = (comment) => {
-//     return {
-//         type: EDIT_COMMENT,
-//         payload: comment,
-//     }
-// }
+export const editCommentAction = (editedComment) => {
+    return {
+        type: EDIT_COMMENT,
+        payload: editedComment,
+    }
+}
 
 //thunk action
 export const getComments = () => async (dispatch) => {
@@ -45,8 +45,8 @@ export const getComments = () => async (dispatch) => {
 }
 
 export const createComment = (itemId, comment) => async (dispatch) => {
-    console.log('THIS IS OUR ITEM ID INSIDE THE THUNK ACTION', itemId)
-    console.log('THIS IS OUR COMMENT INSIDE THE THUNK ACTION', comment)
+    // console.log('THIS IS OUR ITEM ID INSIDE THE THUNK ACTION', itemId)
+    // console.log('THIS IS OUR COMMENT INSIDE THE THUNK ACTION', comment)
     const response = await fetch(`/api/comments/${itemId}`, {
         method: "POST",
         headers: {
@@ -62,21 +62,27 @@ export const createComment = (itemId, comment) => async (dispatch) => {
     }
 }
 
-export const editComment = (commentId, comment) => async (dispatch) => {
+export const editComment = (commentId, editedComment) => async (dispatch) => {
+    console.log('THIS IS OUR COMMENT ID INSIDE THE THUNK ACTION', commentId)
+    console.log('THIS IS OUR COMMENT INSIDE THE THUNK ACTION', editedComment)
     const response = await fetch(`/api/comments/${commentId}`, {
         method: "PUT",
         headers: {
             "Content-Type": "application/json",
         },
-        body: JSON.stringify(comment),
+        body: JSON.stringify(editedComment),
+        // body: JSON.stringify({text: comment.text, userId: comment.userId}),
+        // body: JSON.stringify({text: commentText})
     });
 
     if (response.ok) {
         const updatedComment = await response.json();
-        dispatch({
-            type: EDIT_COMMENT,
-            payload: updatedComment,
-        })
+        console.log('THIS IS OUR UPDATED COMMENT', updatedComment)
+        // dispatch({
+        //     type: EDIT_COMMENT,
+        //     payload: updatedComment,
+        // })
+        dispatch(editCommentAction(updatedComment));
         return updatedComment;
     }
 }

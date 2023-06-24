@@ -42,33 +42,64 @@ def create_comment(itemId):
         return comment.to_dict()
     return {'errors': form.errors}, 401
 
-@comment_routes.route('/<itemId>', methods=['PUT'])
+@comment_routes.route('/<id>', methods=['PUT'])
+# @login_required
+# def edit_comment(id):
+#     """
+#     Edit a comment by id
+#     """
+#     print('THIS IS THE REQUEST GET JSON', request.get_json())
+
+#     form = CommentForm()
+#     form['csrf_token'].data = request.cookies['csrf_token']
+
+#     if not form.validate_on_submit():
+#         return {'errors': form.errors}, 400
+
+#     comment = Comment.query.get(id)
+#     if comment is None:
+#         return {'errors': ['Comment not found']}, 404
+#     if current_user.id != comment.user_id:
+#         return {'errors': ['Unauthorized. You do not have permission to edit this comment.']}, 401
+
+#     comment.text = form.data['text']
+#     print('NEW COMMENT TEXT:', comment.text)
+
+#     # manually updating the comment to narrow down where the issue might be
+#     # # Get the comment
+#     # comment = Comment.query.get(4)  # replace with the correct comment id
+#     # print('Old comment text:', comment.text)
+
+#     # # Update the comment
+#     # comment.text = 'New comment text'
+#     # db.session.commit()
+
+#     # # Fetch the comment again and print the new text
+#     # comment = Comment.query.get(4)  # replace with the correct comment id
+#     # print('New comment text:', comment.text)
+
+#     try:
+#         db.session.commit()
+#     except Exception as e:
+#         print('Error while committing:', e)
+
+#     return comment.to_dict()
+
 @login_required
 def edit_comment(id):
     """
     Edit a comment by id
     """
-    form = CommentForm()
-    form['csrf_token'].data = request.cookies['csrf_token']
+    data = request.get_json()
+    print('THIS IS THE REQUEST GET JSON', data)
 
-    data = form.data
     comment = Comment.query.get(id)
     if comment is None:
         return {'errors': ['Comment not found']}, 404
     if current_user.id != comment.user_id:
         return {'errors': ['Unauthorized. You do not have permission to edit this comment.']}, 401
-    comment.user_id = current_user.id
-    comment.item_id = comment.item_id
+
     comment.text = data['text']
     db.session.commit()
-    comment = Comment.query.get(id)
+
     return comment.to_dict()
-
-
-    # if form.validate_on_submit():
-    #     comment = Comment.query.get(id)
-    #     comment.text = form.data['text']
-    #     db.session.commit()
-
-    #     return comment.to_dict()
-    # return {'errors': form.errors}, 401

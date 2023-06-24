@@ -26,7 +26,7 @@ const Comments = () => {
 
     const handleEditSubmit = async (event, commentId) => {
         event.preventDefault();
-        await dispatch(editComment(currentItem.itemId, commentId, {text: commentText, userId: sessionUser.id}))
+        await dispatch(editComment(commentId, {text: editText, userId: sessionUser.id}))
         setEditingCommentId(null);
         setEditText('');
     }
@@ -39,12 +39,26 @@ const Comments = () => {
             <div className='posted-comments'>
                 <h1>Comments ({allComments?.length})</h1>
                 {currentItemComments.map(comment => (
-                    <div>
-                        <div key={comment.id}>
+                    <div key={comment.id}>
+                        <div>
                             <h3>{comment.text}</h3>
                         </div>
 
-                        
+                        <div className='comment-content'>
+                            {editingCommentId === comment?.id ?
+                                <form onSubmit={(e) => handleEditSubmit(e, comment?.id)}>
+                                    <input 
+                                        className='comment-input'
+                                        value={editText} 
+                                        onChange={(e) => setEditText(e.target.value)} 
+                                        required
+                                    />
+                                    <button className='submit-comment' type="submit">Submit Edit</button>
+                                </form>
+                            :
+                                <p>{comment?.content}</p>
+                            }
+                        </div>
 
                         <div>
                         {userId && userId === comment?.userId && editingCommentId !== comment.id && 
