@@ -1,13 +1,13 @@
 import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { setReminders, getReminders, createReminder, createNewReminder } from '../../store/reminders';
+import { setReminders, getReminders, createReminder, createNewReminder, deleteReminder, deleteExistingReminder } from '../../store/reminders';
 import './Reminders.css'
 
 const Reminders = () => {
     const dispatch = useDispatch();
     const sessionUser = useSelector(state => state.session.user);
     const reminders = useSelector(state => state.reminders);
-    console.log("THESE ARE OUR STATE REMINDERS", reminders);
+    // console.log("THESE ARE OUR STATE REMINDERS", reminders);
     const currentItem = useSelector(state => state.items.currentItem);
 
     const [duration, setDuration] = useState(30);
@@ -36,22 +36,65 @@ const Reminders = () => {
         // const createdReminder = await dispatch(createNewReminder(newReminder));
     }
 
+    const handleDeleteReminder = async (e) => {
+        e.preventDefault();
+        const reminderToDelete = {
+            userId: sessionUser.id,
+            itemId: currentItem.itemId,
+        }
+        await dispatch(deleteExistingReminder(reminderToDelete));
+        dispatch(getReminders())
+    }
+
     return (
         <div>
             <h2>Reminders</h2>
             <div className='user-reminders'>
                 <div className='reminder-message'>
                     <div>
-                        {indefiniteMessage &&
-                            <h3>
-                                You've set a reminder for this item that will not expire. We'll let you know as soon as it returns to the shop!
-                            </h3>
-                        }
-                        {userReminderForItem && !indefiniteMessage &&
-                            <h3>
-                                You've already set a reminder for this item that will expire in {userReminderForItem.duration} days. We'll let you know as soon as it returns to the shop!
-                            </h3>
-                        }
+                        {/* if currentItem.itemId is equal to session.user.inventory.items.itemId or something like that */}
+                        {/* <div className='already-owned'>
+                            Looks like you already own this item. Nice collection so far!
+                        </div> */}
+                        <div className='already-reminder-set'>
+                            {indefiniteMessage &&
+                            <>
+                                <h3>
+                                    You've set a reminder for this item that will not expire. We'll let you know as soon as it returns to the shop!
+                                </h3>
+                                <div className='update-reminder-section'>
+                                    Want to change how long your reminder is active for? Click the button below to update it.
+                                </div>
+                                <div className='delete-reminder-section'>
+                                    <div className='delete-message'>
+                                        No longer want this reminder? Click the button below to delete it.
+                                    </div>
+                                    <button className='delete-reminder' onClick={handleDeleteReminder}>
+                                        Delete Reminder
+                                    </button>
+                                </div>
+                            </>
+                            }
+                            {userReminderForItem && !indefiniteMessage &&
+                                <>
+                                    <h3>
+                                        You've already set a reminder for this item that will expire in {userReminderForItem.duration} days. We'll let you know as soon as it returns to the shop!
+                                    </h3>
+                                    <div className='update-reminder-section'>
+                                        Want to change how long your reminder is active for? Click the button below to update it.
+                                    </div>
+                                    <div className='delete-reminder-section'>
+                                        <div className='delete-message'>
+                                            No longer want this reminder? Click the button below to delete it.
+                                        </div>
+                                        <button className='delete-reminder' onClick={handleDeleteReminder}>
+                                            Delete Reminder
+                                        </button>
+                                    </div>
+                                </>
+                            }
+
+                        </div>
                         {!userReminderForItem &&
                             <>
                                 <h3>
