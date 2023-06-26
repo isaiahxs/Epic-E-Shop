@@ -108,7 +108,7 @@ def upgrade():
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('user_id', sa.Integer(), nullable=False),
     sa.Column('item_id', sa.String(length=1000), nullable=False),
-    sa.Column('duration', sa.String(), nullable=False),
+    sa.Column('duration', sa.Integer(), nullable=False),
     # sa.Column('indefinite', sa.Boolean(), default=False),
     sa.Column('reminded', sa.Boolean(), nullable=False),
     sa.Column('created_at', sa.DateTime(), nullable=False),
