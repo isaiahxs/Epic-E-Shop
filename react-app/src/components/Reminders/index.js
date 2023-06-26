@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { setReminders, getReminders, createReminder, createNewReminder, deleteReminder, deleteExistingReminder } from '../../store/reminders';
+import { setReminders, getReminders, createReminder, createNewReminder, deleteReminder, deleteExistingReminder, editReminder, updateExistingReminder } from '../../store/reminders';
 import './Reminders.css'
 
 const Reminders = () => {
@@ -11,6 +11,7 @@ const Reminders = () => {
     const currentItem = useSelector(state => state.items.currentItem);
 
     const [duration, setDuration] = useState(30);
+    const [editDuration, setEditDuration] = useState(30);
 
     useEffect(() => {
         dispatch(getReminders())
@@ -34,6 +35,17 @@ const Reminders = () => {
         await dispatch(createNewReminder({ ...newReminder, itemId: currentItem.itemId }));
         dispatch(getReminders())
         // const createdReminder = await dispatch(createNewReminder(newReminder));
+    }
+
+    const handleUpdateReminder = async (e) => {
+        e.preventDefault();
+        const updatedReminder = {
+            userId: sessionUser.id,
+            // itemId: currentItem.itemId,
+            duration: editDuration,
+        }
+        await dispatch(updateExistingReminder({ ...updatedReminder, itemId: currentItem.itemId }));
+        dispatch(getReminders())
     }
 
     const handleDeleteReminder = async (e) => {
@@ -62,9 +74,25 @@ const Reminders = () => {
                                 <h3>
                                     You've set a reminder for this item that will not expire. We'll let you know as soon as it returns to the shop!
                                 </h3>
+
                                 <div className='update-reminder-section'>
-                                    Want to change how long your reminder is active for? Click the button below to update it.
-                                </div>
+                                        <div className='update-message'>
+                                            Want to change how long your reminder is active for?
+                                        </div>
+                                        <form onSubmit={handleUpdateReminder}>
+                                            <label>New Reminder duration:
+                                                <select value={editDuration} onChange={(e) => setEditDuration(e.target.value)}>
+                                                    <option value={30}>30</option>
+                                                    <option value={60}>60</option>
+                                                    <option value={-1}>Until item returns</option>
+                                                </select>
+                                            </label>
+                                            <button className='create-reminder' type='submit'>
+                                                Update Reminder
+                                            </button>
+                                        </form>
+                                    </div>
+
                                 <div className='delete-reminder-section'>
                                     <div className='delete-message'>
                                         No longer want this reminder? Click the button below to delete it.
@@ -80,9 +108,25 @@ const Reminders = () => {
                                     <h3>
                                         You've already set a reminder for this item that will expire in {userReminderForItem.duration} days. We'll let you know as soon as it returns to the shop!
                                     </h3>
+
                                     <div className='update-reminder-section'>
-                                        Want to change how long your reminder is active for? Click the button below to update it.
+                                        <div className='update-message'>
+                                            Want to change how long your reminder is active for?
+                                        </div>
+                                        <form onSubmit={handleUpdateReminder}>
+                                            <label>New Reminder duration:
+                                                <select value={editDuration} onChange={(e) => setEditDuration(e.target.value)}>
+                                                    <option value={30}>30</option>
+                                                    <option value={60}>60</option>
+                                                    <option value={-1}>Until item returns</option>
+                                                </select>
+                                            </label>
+                                            <button className='create-reminder' type='submit'>
+                                                Update Reminder
+                                            </button>
+                                        </form>
                                     </div>
+
                                     <div className='delete-reminder-section'>
                                         <div className='delete-message'>
                                             No longer want this reminder? Click the button below to delete it.
