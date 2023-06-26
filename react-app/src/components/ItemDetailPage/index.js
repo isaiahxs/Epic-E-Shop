@@ -19,6 +19,7 @@ const ItemDetailPage = () => {
     const itemsLoaded = useSelector(state => state.items.itemsLoaded)
     const likes = useSelector(state => state.totalLikes)
     const comments = useSelector(state => state.comments)
+    const sessionUser = useSelector(state => state.session.user);
 
 
     //combine both lists
@@ -99,7 +100,6 @@ const ItemDetailPage = () => {
     //     })
     // }, [dispatch]);
 
-
     // if (!isLoaded) {
     //     return <p>Loading...</p>
     // }
@@ -156,6 +156,13 @@ const ItemDetailPage = () => {
                         </div>
                         
                     </div>
+                        
+                    {!sessionUser && (
+                        <h2>
+                            Sign in to vote, comment, set a reminder, or shop our items!
+                        </h2>
+                    )}
+
                     {/* have Likes component here */}
                     <ItemLikes />
                     <Comments />

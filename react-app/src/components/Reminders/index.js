@@ -18,21 +18,35 @@ const Reminders = () => {
         reminder.userId === sessionUser?.id && reminder.itemId === currentItem?.itemId
     );
 
+    const indefiniteMessage = reminders.find(reminder => 
+        reminder.userId === sessionUser?.id && reminder.itemId === currentItem?.itemId && reminder.duration === -1
+    );
+
     return (
         <div>
-            <h2>This will be our reminders section</h2>
+            <h2>Reminders</h2>
             <div className='user-reminders'>
                 <div className='reminder-message'>
                     <div>
-                        {userReminderForItem && 
-                            <div>
-                                You've already set a reminder for this item that will expire in {userReminderForItem.duration} days! We'll let you know as soon as it returns to the shop.
-                            </div>
+                        {indefiniteMessage &&
+                            <h3>
+                                You've set a reminder for this item that will not expire. We'll let you know as soon as it returns to the shop!
+                            </h3>
+                        }
+                        {userReminderForItem && !indefiniteMessage &&
+                            <h3>
+                                You've already set a reminder for this item that will expire in {userReminderForItem.duration} days. We'll let you know as soon as it returns to the shop!
+                            </h3>
                         }
                         {!userReminderForItem &&
-                            <div>
-                                Looks like you haven't created a reminder for this item yet. Click the button below to create one!
-                            </div>
+                            <>
+                                <h3>
+                                    Looks like you haven't created a reminder for this item yet. Click the button below to create one!
+                                </h3>
+                                <button className='create-reminder'>
+                                    Create Reminder
+                                </button>
+                            </>
                         }
                     </div>
                 </div>
