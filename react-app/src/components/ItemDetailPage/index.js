@@ -7,6 +7,7 @@ import { getItemBackgroundColor } from '../../utils'
 import { useParams } from 'react-router-dom'
 import ItemLikes from '../ItemLikes'
 import Comments from '../Comments'
+import Reminders from '../Reminders'
 import './ItemDetailPage.css'
 
 const ItemDetailPage = () => {
@@ -82,21 +83,21 @@ const ItemDetailPage = () => {
         dispatch(getComments());
     }, [dispatch]);
 
-    useEffect(() => {
-        //fetch likes data from the server
-        dispatch(getLikes()).then(() => {
-            //store likes data into localStorage after fetching
-            localStorage.setItem('likes', JSON.stringify(likes));
-        })
-    }, [dispatch]);
+    // useEffect(() => {
+    //     //fetch likes data from the server
+    //     dispatch(getLikes()).then(() => {
+    //         //store likes data into localStorage after fetching
+    //         localStorage.setItem('likes', JSON.stringify(likes));
+    //     })
+    // }, [dispatch]);
 
-    useEffect(() => {
-        //fetch likes data from the server
-        dispatch(getComments()).then(() => {
-            //store likes data into localStorage after fetching
-            localStorage.setItem('comments', JSON.stringify(comments));
-        })
-    }, [dispatch]);
+    // useEffect(() => {
+    //     //fetch likes data from the server
+    //     dispatch(getComments()).then(() => {
+    //         //store likes data into localStorage after fetching
+    //         localStorage.setItem('comments', JSON.stringify(comments));
+    //     })
+    // }, [dispatch]);
 
 
     // if (!isLoaded) {
@@ -158,6 +159,7 @@ const ItemDetailPage = () => {
                     {/* have Likes component here */}
                     <ItemLikes />
                     <Comments />
+                    <Reminders />
             </div>
             ) : (
                 <h1 className='loading-message'>Loading: { itemName }</h1>

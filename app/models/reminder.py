@@ -13,8 +13,9 @@ class Reminder(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')), nullable=False)
     item_id = db.Column(db.String(1000), db.ForeignKey(add_prefix_for_prod('items.item_id')), nullable=False)
-    reminder_time = db.Column(db.DateTime, nullable=False)
-    duration = db.Column(db.String, nullable=False)
+    duration = db.Column(db.Integer, nullable=True)
+    # indefinite = db.Column(db.Boolean, default=False)
+    reminded = db.Column(db.Boolean, default=False, nullable=False)
     created_at = db.Column(db.DateTime, default=datetime.utcnow, nullable=False)
     updated_at = db.Column(db.DateTime, default=datetime.utcnow, onupdate=datetime.utcnow, nullable=False)
 
@@ -29,8 +30,9 @@ class Reminder(db.Model):
             'id': self.id,
             'userId': self.user_id,
             'itemId': self.item_id,
-            'reminderTime': self.reminder_time,
             'duration': self.duration,
+            # 'indefinite': self.indefinite,
+            'reminded': self.reminded,
             'createdAt': self.created_at,
             'updatedAt': self.updated_at
         }

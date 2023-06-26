@@ -26,15 +26,16 @@ const HomePage = () => {
         dispatch(getSeedItems())
         dispatch(getDailyItems())
         dispatch(getFeaturedItems())
-        dispatch(getLikes())
+        // dispatch(getLikes())
     }, [dispatch])
 
     useEffect(() => {
         localStorage.setItem('seedItems', JSON.stringify(seedItems));
         localStorage.setItem('dailyItems', JSON.stringify(dailyItems));
         localStorage.setItem('featuredItems', JSON.stringify(featuredItems));
-        localStorage.setItem('likes', JSON.stringify(likes));
-    }, [seedItems, dailyItems, featuredItems, likes]);
+        // localStorage.setItem('likes', JSON.stringify(likes));
+    // }, [seedItems, dailyItems, featuredItems, likes]);
+    }, [seedItems, dailyItems, featuredItems]);
 
     return (
         <div className='home-container'>
