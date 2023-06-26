@@ -15,7 +15,7 @@ class Reminder(db.Model):
     item_id = db.Column(db.String(1000), db.ForeignKey(add_prefix_for_prod('items.item_id')), nullable=False)
     duration = db.Column(db.Integer, nullable=True)
     # indefinite = db.Column(db.Boolean, default=False)
-    reminded = db.Column(db.Boolean, default=False, nullable=False)
+    reminded = db.Column(db.Boolean, default=False)
     created_at = db.Column(db.DateTime, default=datetime.utcnow, nullable=False)
     updated_at = db.Column(db.DateTime, default=datetime.utcnow, onupdate=datetime.utcnow, nullable=False)
 

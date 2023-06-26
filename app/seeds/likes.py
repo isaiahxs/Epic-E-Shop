@@ -2,6 +2,7 @@ from app.models import db, Like, environment, SCHEMA
 from sqlalchemy.sql import text
 
 def seed_likes():
+    Like.query.delete()
 
     like1 = Like(user_id=1, item_id='61bb53b3bd358a192111d97c', value=True)
     like2 = Like(user_id=2, item_id='61bb53b3bd358a192111d97c', value=True)

@@ -48,7 +48,7 @@ def update_reminder(itemId):
     Update a reminder
     """
     duration = request.json.get('duration')
-    reminded = request.json.get('reminded')
+    reminded = request.json.get('reminded', False)
     
     reminder = Reminder.query.filter_by(user_id=current_user.id, item_id=itemId).first()
     if reminder is None:

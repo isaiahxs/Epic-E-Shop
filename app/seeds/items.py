@@ -2,6 +2,8 @@ from app.models import db, Item, environment, SCHEMA
 from sqlalchemy.sql import text
 
 def seed_items():
+    Item.query.delete()
+
     elite_agent = Item(
         item_id='5ab16ae85f957f27504aa4df',
         name='Elite Agent',

@@ -2,6 +2,7 @@ from app.models import db, Reminder, environment, SCHEMA
 from sqlalchemy.sql import text
 
 def seed_reminders():
+    Reminder.query.delete()
 
     reminder1 = Reminder(user_id=1, item_id='61bb53b3bd358a192111d97c', duration=30, reminded=False)
     reminder2 = Reminder(user_id=2, item_id='61bb53b3bd358a192111d97c', duration=60, reminded=False)
