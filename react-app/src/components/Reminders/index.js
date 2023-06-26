@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { setReminders, getReminders } from '../../store/reminders';
+import { setReminders, getReminders, createReminder, createNewReminder } from '../../store/reminders';
 import './Reminders.css'
 
 const Reminders = () => {
@@ -9,6 +9,8 @@ const Reminders = () => {
     const reminders = useSelector(state => state.reminders);
     console.log("THESE ARE OUR STATE REMINDERS", reminders);
     const currentItem = useSelector(state => state.items.currentItem);
+
+    const [duration, setDuration] = useState(30);
 
     useEffect(() => {
         dispatch(getReminders())
@@ -21,6 +23,18 @@ const Reminders = () => {
     const indefiniteMessage = reminders.find(reminder => 
         reminder.userId === sessionUser?.id && reminder.itemId === currentItem?.itemId && reminder.duration === -1
     );
+
+    const handleCreateReminder = async (e) => {
+        e.preventDefault();
+        const newReminder = {
+            userId: sessionUser.id,
+            // itemId: currentItem.itemId,
+            duration,
+        }
+        await dispatch(createNewReminder({ ...newReminder, itemId: currentItem.itemId }));
+        dispatch(getReminders())
+        // const createdReminder = await dispatch(createNewReminder(newReminder));
+    }
 
     return (
         <div>
@@ -43,9 +57,18 @@ const Reminders = () => {
                                 <h3>
                                     Looks like you haven't created a reminder for this item yet. Click the button below to create one!
                                 </h3>
-                                <button className='create-reminder'>
-                                    Create Reminder
-                                </button>
+                                <form onSubmit={handleCreateReminder}>
+                                    <label>Reminder duration:
+                                        <select value={duration} onChange={(e) => setDuration(e.target.value)}>
+                                            <option value={30}>30</option>
+                                            <option value={60}>60</option>
+                                            <option value={-1}>Until item returns</option>
+                                        </select>
+                                    </label>
+                                    <button className='create-reminder' type='submit'>
+                                        Create Reminder
+                                    </button>
+                                </form>
                             </>
                         }
                     </div>
