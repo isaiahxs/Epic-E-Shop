@@ -8,7 +8,7 @@ import vbucks from '../../assets/images/vbucks-icon.webp'
 import './Cart.css'
 import { getInventory } from '../../store/inventory'
 import { checkout } from '../../store/cart'
-// import { authenticate } from '../../store/session'
+import { authenticate } from '../../store/session'
 // import { setUser } from '../../store/session'
 
 
@@ -51,7 +51,7 @@ const Cart = () => {
     const handleCheckout = () => {
         dispatch(checkout())
         .then(() => {
-            // dispatch(authenticate())
+            dispatch(authenticate())
             dispatch(getInventory())
             dispatch(getCart())    
         });

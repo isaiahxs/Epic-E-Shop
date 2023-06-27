@@ -46,5 +46,6 @@
 .additional-money-message {
     font-family: 'Poppins', calibri, helvetica, arial, sans-serif;
     font-weight: bold;
-    color: #d0b66d;
+    /* color: #d0b66d; */
+    color: #cfb56d;
 }

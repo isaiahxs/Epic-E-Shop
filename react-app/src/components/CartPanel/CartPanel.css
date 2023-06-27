@@ -5,3 +5,10 @@
 .add-remove-cart-buttons {
     margin: 10px 0;
 }
+
+.gift-message {
+    font-family: 'Poppins', calibri, helvetica, arial, sans-serif;
+    ;
+    font-weight: bold;
+    color: #cfb56d;
+}
