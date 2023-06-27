@@ -14,7 +14,7 @@
 
     margin: 30px 0;
     display: grid;
-    grid-template-columns: 1fr 2fr 3fr;
+    grid-template-columns: 0.5fr 2fr 3fr;
     align-items: center;
     gap: 20px;
     width: 600px;

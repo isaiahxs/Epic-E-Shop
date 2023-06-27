@@ -36,60 +36,67 @@ const Comments = () => {
     }
 
     //filtering comments to only include those whose itemId matches the itemId of the currentItem
-    const currentItemComments = allComments.filter(comment => comment.itemId === currentItem.itemId);
+    // const currentItemComments = allComments.filter(comment => comment.itemId === currentItem.itemId);
+    const currentItemComments = currentItem ? allComments.filter(comment => comment.itemId === currentItem.itemId) : [];
+
 
     return (
-        <div className='item-detail-comments'>
-            <h2>Comments ({currentItemComments?.length})</h2>
-            <div className='posted-comments'>
-                {currentItemComments.map(comment => (
-                    <div key={comment.id}>
-                        <div>
-                            <h3>{comment.text}</h3>
-                        </div>
+        currentItem ? (
+            <div className='item-detail-comments'>
+                <h2>Comments ({currentItemComments?.length})</h2>
+                <div className='posted-comments'>
+                    {currentItemComments.map(comment => (
+                        <div key={comment.id}>
+                            <div>
+                                <h3>{comment.text}</h3>
+                            </div>
 
-                        <div className='comment-content'>
-                            {editingCommentId === comment?.id ?
-                                <form className='edit-comment-form' onSubmit={(e) => handleEditSubmit(e, comment?.id)}>
-                                    <input 
-                                        className='comment-input'
-                                        value={editText} 
-                                        onChange={(e) => setEditText(e.target.value)} 
-                                        required
-                                    />
-                                    <button className='submit-comment' type="submit">Submit Edit</button>
-                                </form>
-                            :
-                                <p>{comment?.content}</p>
+                            <div className='comment-content'>
+                                {editingCommentId === comment?.id ?
+                                    <form className='edit-comment-form' onSubmit={(e) => handleEditSubmit(e, comment?.id)}>
+                                        <input 
+                                            className='comment-input'
+                                            value={editText} 
+                                            onChange={(e) => setEditText(e.target.value)} 
+                                            required
+                                        />
+                                        <button className='submit-comment' type="submit">Submit Edit</button>
+                                    </form>
+                                :
+                                    <p>{comment?.content}</p>
+                                }
+                            </div>
+
+                            <div>
+                            {userId && userId === comment?.userId && editingCommentId !== comment.id && 
+                            <div>
+                                <button onClick={() => handleEdit(comment.id, comment.text)}>Edit</button>
+                                <button onClick={() => handleDelete(comment?.id)}>Delete</button>
+                            </div>
                             }
+                            </div>
                         </div>
+                    ))}
+                </div>
 
-                        <div>
-                        {userId && userId === comment?.userId && editingCommentId !== comment.id && 
-                        <div>
-                            <button onClick={() => handleEdit(comment.id, comment.text)}>Edit</button>
-                            <button onClick={() => handleDelete(comment?.id)}>Delete</button>
-                        </div>
-                        }
-                        </div>
-                    </div>
-                ))}
+                <div className='new-comment-section'>
+                    {sessionUser &&
+                        <form className='new-comment-form' onSubmit={handleSubmit}>
+                            <input
+                            className='comment-input'
+                            value={commentText}    
+                            onChange={(e) => setCommentText(e.target.value)}
+                            placeholder='Add a comment...'
+                            />
+                            <button className='submit-comment' type='submit'>Submit</button>
+                        </form>
+                    }
+                </div>
             </div>
-
-            <div className='new-comment-section'>
-                {sessionUser &&
-                    <form className='new-comment-form' onSubmit={handleSubmit}>
-                        <input
-                        className='comment-input'
-                        value={commentText}    
-                        onChange={(e) => setCommentText(e.target.value)}
-                        placeholder='Add a comment...'
-                        />
-                        <button className='submit-comment' type='submit'>Submit</button>
-                    </form>
-                }
+        ) :
+            <div>
+                Loading...
             </div>
-        </div>
     )
 }
 
