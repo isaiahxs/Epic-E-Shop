@@ -1,0 +1,45 @@
+.cart-items-heading {
+    /* text-align: center; */
+    font-size: 1.5rem;
+    margin: 20px auto;
+}
+
+.cart-item-list {
+    display: flex;
+    flex-direction: column;
+    /* align-items: stretch; */
+    margin: 10px 0px;
+    font-family: 'Poppins', calibri, helvetica, arial, sans-serif;
+    font-weight: bold;
+    max-width: 400px;
+}
+
+.cart-item-container {
+    display: flex;
+    flex-direction: row;
+    max-height: 100%;
+    justify-content: space-between;
+}
+
+.individual-cart-item {
+    margin: 10px 0;
+}
+
+.item-detail-price {
+    margin: 5px 0;
+}
+
+.cart-item-image-container {
+    max-height: 100px;
+    max-width: 100px;
+}
+
+.cart-item-image {
+    height: 100%;
+}
+
+.additional-money-message {
+    font-family: 'Poppins', calibri, helvetica, arial, sans-serif;
+    font-weight: bold;
+    color: #d0b66d;
+}

@@ -3,6 +3,8 @@ import { getDailyItems, getFeaturedItems } from '../../store/items'
 import { useEffect } from 'react'
 import { getItemBackgroundColor } from '../../utils'
 import { useHistory } from 'react-router-dom'
+import { getCart, removeFromCart } from '../../store/cart'
+import vbucks from '../../assets/images/vbucks-icon.webp'
 import './Cart.css'
 
 const Cart = () => {
@@ -27,7 +29,19 @@ const Cart = () => {
         };
     });
 
-    // console.log('ITEMS IN CART', itemsInCart)
+    // console.log('ITEMS IN CART LISTTTTTT', itemsInCart)
+
+    const handleRemoveFromCart = (itemId) => {
+        console.log('itemId within handleRemoveFromCart function', itemId)
+
+        dispatch(removeFromCart(itemId))
+        .then(() => dispatch(getCart()));
+    }
+
+    //this function will add commas to numbers
+    function numberWithCommas(x) {
+        return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    } 
 
     return (
         <>
@@ -35,16 +49,51 @@ const Cart = () => {
                 {/* {itemsInCart.length === 0 && <div>You currently have no items in your cart.</div>} */}
                 {itemsInCart.length !== 0 &&
                     <>
-                        <div>These are the items you currently have in your cart:</div>
-                        <div>
+                        <div className='cart-items-heading'>These are the items you currently have in your cart:</div>
+                        <div className='cart-item-list'>
                             {itemsInCart.map(item => {
                                 return (
-                                    <div key={item.itemId}>
-                                        <div>{item.quantity}</div>
-                                        <div>{item.name}</div>
+                                    <div className='individual-cart-item' key={item.itemId}>
+                                        <div className='cart-item-container'>
+
+                                            <div className='cart-item-information'>
+                                                <div>{item.quantity} {item.name}</div>
+                                                <div className='item-detail-price'>
+                                                    <img className='vbucks-icon' src={item.priceIconLink} />
+                                                    <div>{item.price} vbucks</div>
+                                                </div>
+                                                <button onClick={() => handleRemoveFromCart(item.itemId)}>Remove from cart</button>
+                                            </div>
+
+                                            <div className='cart-item-image-container'>
+                                                <img className='item-detail-image cart-item-image' src={item.images.icon} style={{ backgroundColor: getItemBackgroundColor(item.rarity) }}/>
+                                            </div>
+
+                                        </div>
                                     </div>
                                 )
                             })}
+
+                            <div className='cart-total'>
+                                <div className='cart-total-heading'>Cart Total:</div>
+                                <div className='cart-total-price'>
+                                    <img className='vbucks-icon' src={vbucks} />
+                                    {/* <div>
+                                        {itemsInCart.reduce((total, item) => {
+                                            // console.log(`Price: ${item.price}, Quantity: ${item.quantity}`);
+
+                                            //second argument here is the radix, or base, which is 10, which means we're using decimal
+                                            const price = parseInt(item.price.replace(/,/g, ''), 10);
+                                            return total + price * item.quantity;
+                                        }, 0)} vbucks
+                                    </div> */}
+                                    <div>{numberWithCommas(itemsInCart.reduce((total, item) => {
+                                    const price = parseInt(item.price.replace(/,/g, ''), 10);
+                                    return total + price * item.quantity;
+                                    }, 0))} vbucks
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </>
                 }
@@ -54,9 +103,11 @@ const Cart = () => {
                     </>
                 }
             </div>
-
-        <div>Need more vbucks? You can buy some more with your starter cash!</div>
-        <div>If you've ran out of cash, you can earn more by completing daily tasks such as setting reminders, leaving comments, and likes!</div>
+            
+            <div className='additional-money-message'>
+                <div>Need more vbucks? You can buy some more with your starter cash!</div>
+                <div>If you've ran out of cash, you can earn more by completing daily tasks such as setting reminders, leaving comments, and likes!</div>
+            </div>
         </>
     )
 }
