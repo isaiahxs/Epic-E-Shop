@@ -1,7 +1,7 @@
 # contains routes for actions related to user's cart, like adding, removing, getting current contents of the cart, etc.
 
 from flask import Blueprint, jsonify, session, request
-from app.models import Cart, Inventory, db
+from app.models import Cart, Inventory, Item, db
 from app.forms import LoginForm
 from app.forms import SignUpForm
 from flask_login import current_user, login_required
@@ -70,8 +70,14 @@ def checkout():
     #get user's cart items
     cart = Cart.query.filter_by(user_id=current_user.id).all()
 
+    #get all items in the db
+    all_items = Item.query.all()
+    all_items_dict = {item.item_id: item for item in all_items}  #dictionary for faster lookup
+
     #calculate the total cost
-    total_cost = sum(int(item.to_dict()['price'].replace(',', '')) for item in cart)
+    # total_cost = sum(int(item.to_dict()['price'].replace(',', '')) for item in cart)
+    total_cost = sum(int(all_items_dict[cart_item.item_id].price.replace(',', '')) for cart_item in cart)
+
 
     #check if user has enough vbucks
     if current_user.vbucks < total_cost:
@@ -87,7 +93,7 @@ def checkout():
         db.session.add(inventory_item)
 
         #subtract cost from the user's vbucks balance
-        current_user.vbucks -= int(cart_item.to_dict()['price'].replace(',', ''))
+        current_user.vbucks -= int(all_items_dict[cart_item.item_id].price.replace(',', ''))
 
     #commit changes to db
     db.session.commit()
