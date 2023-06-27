@@ -75,7 +75,6 @@ def checkout():
     all_items_dict = {item.item_id: item for item in all_items}  #dictionary for faster lookup
 
     #calculate the total cost
-    # total_cost = sum(int(item.to_dict()['price'].replace(',', '')) for item in cart)
     total_cost = sum(int(all_items_dict[cart_item.item_id].price.replace(',', '')) for cart_item in cart)
 
 

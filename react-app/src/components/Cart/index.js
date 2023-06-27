@@ -6,6 +6,7 @@ import { useHistory } from 'react-router-dom'
 import { getCart, removeFromCart } from '../../store/cart'
 import vbucks from '../../assets/images/vbucks-icon.webp'
 import './Cart.css'
+import { getInventory } from '../../store/inventory'
 
 const Cart = () => {
     const dispatch = useDispatch();
@@ -42,6 +43,11 @@ const Cart = () => {
     function numberWithCommas(x) {
         return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     } 
+
+    const handleCheckout = () => {
+        //////
+        dispatch(getInventory())
+    }
 
     return (
         <>
@@ -84,6 +90,10 @@ const Cart = () => {
                                     }, 0))} vbucks
                                     </div>
                                 </div>
+                            </div>
+
+                            <div className='checkout-button-container'>
+                                <button className='checkout-button'>Checkout</button>
                             </div>
                         </div>
                     </>

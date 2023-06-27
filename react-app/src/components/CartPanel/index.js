@@ -2,6 +2,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import { setCart, getCart, addItem, addToCart, removeItem, removeFromCart } from '../../store/cart';
 import Cart from '../Cart';
+import vbucks from '../../assets/images/vbucks-icon.webp';
 import './CartPanel.css'
 
 const CartPanel = () => {
@@ -36,8 +37,14 @@ const CartPanel = () => {
 
     return (
         <div>
-            <button className='add-this-item-to-cart-button' onClick={() => handleAddToCart()}>Add this item to your cart</button>
-            <button className='remove-this-item-from-cart-button' onClick={() => handleRemoveFromCart(currentItem.itemId)}>Remove this item from your cart</button>
+            <div className='item-detail-price current-wallet'>
+                <img className='vbucks-icon' src={vbucks} alt='vbucks icon' />
+                <div className='current-vbucks'>Current V-Bucks: {sessionUser.vbucks}</div>
+            </div>
+            <div className='add-remove-cart-buttons'>
+                <button className='add-this-item-to-cart-button' onClick={() => handleAddToCart()}>Add this item to your cart</button>
+                <button className='remove-this-item-from-cart-button' onClick={() => handleRemoveFromCart(currentItem.itemId)}>Remove this item from your cart</button>
+            </div>
             <Cart />
         </div>
     )
