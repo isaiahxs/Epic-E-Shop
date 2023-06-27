@@ -1,6 +1,7 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import { setCart, getCart } from '../../store/cart';
+import Cart from '../Cart';
 import './CartPanel.css'
 
 const CartPanel = () => {
@@ -17,7 +18,9 @@ const CartPanel = () => {
 
     return (
         <div>
-            This is the CartPanel
+            <button>Add item to cart</button>
+            <button>Remove item from cart</button>
+            <Cart />
         </div>
     )
 }

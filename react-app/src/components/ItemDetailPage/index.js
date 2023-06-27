@@ -165,11 +165,10 @@ const ItemDetailPage = () => {
                         </h2>
                     )}
 
-                    {/* have Likes component here */}
+                    <CartPanel />
                     <ItemLikes />
                     <Comments />
                     <Reminders />
-                    <CartPanel />
             </div>
             ) : (
                 <h1 className='loading-message'>Loading: { itemName }</h1>
