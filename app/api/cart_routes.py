@@ -40,3 +40,23 @@ def add_to_cart(itemId):
     db.session.commit()
 
     return cart_item.to_dict()
+
+@cart_routes.route('/<itemId>', methods=['DELETE'])
+@login_required
+def remove_from_cart(itemId):
+    """
+    Remove an item from the user's cart
+    """
+    print('THIS IS THE itemId FROM INSIDE THE REMOVE_FROM_CART ROUTE', itemId)
+
+    cart_item = Cart.query.filter_by(user_id=current_user.id, item_id=itemId).first()
+    print('THIS IS THE CART_ITEM FROM INSIDE THE REMOVE_FROM_CART ROUTE', cart_item)
+
+    if not cart_item:
+        return jsonify({'error': 'Item not in cart.'}), 400
+
+    db.session.delete(cart_item)
+    db.session.commit()
+
+    # return cart_item.to_dict()
+    return {"message": 'Item removed from cart.'}

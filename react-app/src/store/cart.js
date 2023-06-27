@@ -1,6 +1,7 @@
 //action
 const SET_CART = 'cart/SET_CART';
 const ADD_ITEM = 'cart/ADD_ITEM';
+const REMOVE_ITEM = 'cart/REMOVE_ITEM';
 
 //action creators
 export const setCart = (cart) => ({
@@ -10,6 +11,11 @@ export const setCart = (cart) => ({
 
 export const addItem = (item) => ({
     type: ADD_ITEM,
+    payload: item,
+});
+
+export const removeItem = (item) => ({
+    type: REMOVE_ITEM,
     payload: item,
 });
 
@@ -44,6 +50,21 @@ export const addToCart = (item) => async (dispatch) => {
     }
 };
 
+export const removeFromCart = (itemId) => async (dispatch) => {
+    const response = await fetch(`/api/carts/${itemId}`, {
+        method: "DELETE",
+        headers: {
+            "Content-Type": "application/json",
+        },
+    });
+
+    if (response.ok) {
+        const cart = await response.json();
+        dispatch(setCart(cart));
+        // return cart;
+    }
+};
+
 //initial state
 const initialState = [];
 
@@ -55,6 +76,9 @@ export default function reducer(state = initialState, action) {
 
         case ADD_ITEM:
             return [...state, action.payload];
+
+        case REMOVE_ITEM:
+            return state.filter((item) => item.id !== action.payload);
 
         default:
             return state;

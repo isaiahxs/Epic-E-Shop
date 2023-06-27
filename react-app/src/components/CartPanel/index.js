@@ -1,6 +1,6 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
-import { setCart, getCart, addItem, addToCart } from '../../store/cart';
+import { setCart, getCart, addItem, addToCart, removeItem, removeFromCart } from '../../store/cart';
 import Cart from '../Cart';
 import './CartPanel.css'
 
@@ -29,10 +29,15 @@ const CartPanel = () => {
         .then(() => dispatch(getCart())) //only want to dispatch the re-render after the addToCart thunk action has completed
     }
 
+    const handleRemoveFromCart = (itemId) => {
+        dispatch(removeFromCart(itemId))
+        .then(() => dispatch(getCart())) //only want to dispatch the re-render after the addToCart thunk action has completed
+    }
+
     return (
         <div>
-            <button className='add-to-cart-button' onClick={() => handleAddToCart()}>Add this item to your cart</button>
-            <button>Remove this item from your cart</button>
+            <button className='add-this-item-to-cart-button' onClick={() => handleAddToCart()}>Add this item to your cart</button>
+            <button className='remove-this-item-from-cart-button' onClick={() => handleRemoveFromCart(currentItem.itemId)}>Remove this item from your cart</button>
             <Cart />
         </div>
     )
