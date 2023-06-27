@@ -26,7 +26,7 @@ const CartPanel = () => {
             // quantity: 1,
         }
         dispatch(addToCart(item))
-        dispatch(getCart())
+        .then(() => dispatch(getCart())) //only want to dispatch the re-render after the addToCart thunk action has completed
     }
 
     return (
