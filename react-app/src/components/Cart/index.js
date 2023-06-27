@@ -49,7 +49,7 @@ const Cart = () => {
                 {/* {itemsInCart.length === 0 && <div>You currently have no items in your cart.</div>} */}
                 {itemsInCart.length !== 0 &&
                     <>
-                        <div className='cart-items-heading'>These are the items you currently have in your cart:</div>
+                        <h2 className='cart-items-heading'>These are the items you currently have in your cart:</h2>
                         <div className='cart-item-list'>
                             {itemsInCart.map(item => {
                                 return (
@@ -75,18 +75,9 @@ const Cart = () => {
                             })}
 
                             <div className='cart-total'>
-                                <div className='cart-total-heading'>Cart Total:</div>
-                                <div className='cart-total-price'>
+                                <h2 className='cart-total-heading'>Cart Total:</h2>
+                                <div className='item-detail-price cart-total-price'>
                                     <img className='vbucks-icon' src={vbucks} />
-                                    {/* <div>
-                                        {itemsInCart.reduce((total, item) => {
-                                            // console.log(`Price: ${item.price}, Quantity: ${item.quantity}`);
-
-                                            //second argument here is the radix, or base, which is 10, which means we're using decimal
-                                            const price = parseInt(item.price.replace(/,/g, ''), 10);
-                                            return total + price * item.quantity;
-                                        }, 0)} vbucks
-                                    </div> */}
                                     <div>{numberWithCommas(itemsInCart.reduce((total, item) => {
                                     const price = parseInt(item.price.replace(/,/g, ''), 10);
                                     return total + price * item.quantity;

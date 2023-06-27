@@ -1,7 +1,7 @@
 # contains routes for actions related to user's cart, like adding, removing, getting current contents of the cart, etc.
 
 from flask import Blueprint, jsonify, session, request
-from app.models import Cart, db
+from app.models import Cart, Inventory, db
 from app.forms import LoginForm
 from app.forms import SignUpForm
 from flask_login import current_user, login_required
@@ -60,3 +60,39 @@ def remove_from_cart(itemId):
 
     # return cart_item.to_dict()
     return {"message": 'Item removed from cart.'}
+
+@cart_routes.route('/checkout', methods=['POST'])
+@login_required
+def checkout():
+    """
+    Checkout the current user's cart
+    """
+    #get user's cart items
+    cart = Cart.query.filter_by(user_id=current_user.id).all()
+
+    #calculate the total cost
+    total_cost = sum(int(item.to_dict()['price'].replace(',', '')) for item in cart)
+
+    #check if user has enough vbucks
+    if current_user.vbucks < total_cost:
+        return jsonify({'error': 'Insufficient vbucks.'}), 400
+    
+    #process each item in cart
+    for cart_item in cart:
+        #remove item from cart
+        db.session.delete(cart_item)
+
+        #add item to inventory
+        inventory_item = Inventory(user_id=current_user.id, item_id=cart_item.item_id, quantity=1)
+        db.session.add(inventory_item)
+
+        #subtract cost from the user's vbucks balance
+        current_user.vbucks -= int(cart_item.to_dict()['price'].replace(',', ''))
+
+    #commit changes to db
+    db.session.commit()
+
+    #can also return the user's updated vbucks balance
+    # return {'vbucks': current_user.vbucks}
+
+    return {'message': 'Checkout successful.'}

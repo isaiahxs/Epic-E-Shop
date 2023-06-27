@@ -38,6 +38,11 @@
     height: 100%;
 }
 
+.cart-total-heading {
+    margin: 0;
+    /* font-weight: bold; */
+}
+
 .additional-money-message {
     font-family: 'Poppins', calibri, helvetica, arial, sans-serif;
     font-weight: bold;

@@ -50,12 +50,12 @@ const HomePage = () => {
                 </div>
                 <RefreshCounter />
             </div>
+            <FanFavorites />
             <DailyItems />
             <h2 className='featured-items-button' onClick={() => history.push(`/featured_items`)}>Check out the rest of today's featured items!</h2>
             {/* <div>
                 <div>Recent Articles</div>
             </div> */}
-            <FanFavorites />
             <NewsFeed />
         </div>
     )
