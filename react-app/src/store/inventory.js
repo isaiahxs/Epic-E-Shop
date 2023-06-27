@@ -1,13 +1,13 @@
-//action
+// //action
 const SET_INVENTORY = 'inventory/SET_INVENTORY';
 
-//action creators
+// //action creators
 export const setInventory = (inventory) => ({
     type: SET_INVENTORY,
     payload: inventory,
 });
 
-//thunk action
+// //thunk action
 export const getInventory = () => async (dispatch) => {
     const response = await fetch("/api/inventories/", {
         headers: {
@@ -21,10 +21,10 @@ export const getInventory = () => async (dispatch) => {
     }
 };
 
-//initial state
+// //initial state
 const initialState = [];
 
-//reducer
+// //reducer
 export default function reducer(state = initialState, action) {
     switch (action.type) {
         case SET_INVENTORY:

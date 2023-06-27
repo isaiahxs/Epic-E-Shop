@@ -7,6 +7,8 @@ import { getCart, removeFromCart } from '../../store/cart'
 import vbucks from '../../assets/images/vbucks-icon.webp'
 import './Cart.css'
 import { getInventory } from '../../store/inventory'
+import { checkout } from '../../store/cart'
+
 
 const Cart = () => {
     const dispatch = useDispatch();
@@ -45,8 +47,11 @@ const Cart = () => {
     } 
 
     const handleCheckout = () => {
-        //////
-        dispatch(getInventory())
+        dispatch(checkout())
+        .then(() => {
+            dispatch(getInventory())
+            dispatch(getCart())    
+        });
     }
 
     return (
@@ -58,26 +63,28 @@ const Cart = () => {
                         <h2 className='cart-items-heading'>These are the items you currently have in your cart:</h2>
                         <div className='cart-item-list'>
                             {itemsInCart.map(item => {
-                                return (
-                                    <div className='individual-cart-item' key={item.itemId}>
-                                        <div className='cart-item-container'>
+                                if (item.images) {
+                                    return (
+                                        <div className='individual-cart-item' key={item.itemId}>
+                                            <div className='cart-item-container'>
 
-                                            <div className='cart-item-information'>
-                                                <div>{item.quantity} {item.name}</div>
-                                                <div className='item-detail-price'>
-                                                    <img className='vbucks-icon' src={item.priceIconLink} />
-                                                    <div>{item.price} vbucks</div>
+                                                <div className='cart-item-information'>
+                                                    <div>{item.quantity} {item.name}</div>
+                                                    <div className='item-detail-price'>
+                                                        <img className='vbucks-icon' src={item.priceIconLink} />
+                                                        <div>{item.price} vbucks</div>
+                                                    </div>
+                                                    <button onClick={() => handleRemoveFromCart(item.itemId)}>Remove from cart</button>
                                                 </div>
-                                                <button onClick={() => handleRemoveFromCart(item.itemId)}>Remove from cart</button>
-                                            </div>
 
-                                            <div className='cart-item-image-container'>
-                                                <img className='item-detail-image cart-item-image' src={item.images.icon} style={{ backgroundColor: getItemBackgroundColor(item.rarity) }}/>
-                                            </div>
+                                                <div className='cart-item-image-container'>
+                                                    <img className='item-detail-image cart-item-image' src={item.images.icon} style={{ backgroundColor: getItemBackgroundColor(item.rarity) }}/>
+                                                </div>
 
+                                            </div>
                                         </div>
-                                    </div>
-                                )
+                                    )
+                                }
                             })}
 
                             <div className='cart-total'>
@@ -93,7 +100,7 @@ const Cart = () => {
                             </div>
 
                             <div className='checkout-button-container'>
-                                <button className='checkout-button'>Checkout</button>
+                                <button className='checkout-button' onClick={handleCheckout}>Checkout</button>
                             </div>
                         </div>
                     </>

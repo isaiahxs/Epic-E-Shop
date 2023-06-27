@@ -1,3 +1,5 @@
+import { setInventory } from "./inventory";
+
 //action
 const SET_CART = 'cart/SET_CART';
 const ADD_ITEM = 'cart/ADD_ITEM';
@@ -34,7 +36,7 @@ export const getCart = () => async (dispatch) => {
 };
 
 export const addToCart = (item) => async (dispatch) => {
-    console.log('THIS IS OUR ITEM ID INSIDE THE THUNK ACTION', item)
+    // console.log('THIS IS OUR ITEM ID INSIDE THE THUNK ACTION', item)
     const response = await fetch(`/api/carts/${item.itemId}`, {
         method: "POST",
         headers: {
@@ -62,6 +64,25 @@ export const removeFromCart = (itemId) => async (dispatch) => {
         const cart = await response.json();
         dispatch(setCart(cart));
         // return cart;
+    }
+};
+
+export const checkout = () => async (dispatch) => {
+    const response = await fetch(`/api/carts/checkout`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+    });
+
+    if (response.ok) {
+        const inventory = await response.json();
+        dispatch(setInventory(inventory));
+        //clear cart
+        dispatch(setCart([]));
+    } else {
+        const errorData = await response.json();
+        console.error(errorData);
     }
 };
 
