@@ -50,7 +50,7 @@ const Comments = () => {
 
                         <div className='comment-content'>
                             {editingCommentId === comment?.id ?
-                                <form onSubmit={(e) => handleEditSubmit(e, comment?.id)}>
+                                <form className='edit-comment-form' onSubmit={(e) => handleEditSubmit(e, comment?.id)}>
                                     <input 
                                         className='comment-input'
                                         value={editText} 

@@ -10,6 +10,7 @@ import DailyItems from '../DailyItems'
 import RefreshCounter from '../RefreshCounter'
 import FanFavorites from '../FanFavorites'
 import './HomePage.css'
+import { getInventory } from '../../store/inventory'
 
 const HomePage = () => {
     const history = useHistory()
@@ -26,6 +27,7 @@ const HomePage = () => {
         dispatch(getSeedItems())
         dispatch(getDailyItems())
         dispatch(getFeaturedItems())
+        dispatch(getInventory())
         // dispatch(getLikes())
     }, [dispatch])
 
@@ -50,12 +52,12 @@ const HomePage = () => {
                 </div>
                 <RefreshCounter />
             </div>
+            <FanFavorites />
             <DailyItems />
             <h2 className='featured-items-button' onClick={() => history.push(`/featured_items`)}>Check out the rest of today's featured items!</h2>
             {/* <div>
                 <div>Recent Articles</div>
             </div> */}
-            <FanFavorites />
             <NewsFeed />
         </div>
     )

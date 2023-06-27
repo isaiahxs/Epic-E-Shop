@@ -6,6 +6,11 @@ import { useHistory } from 'react-router-dom'
 import { getCart, removeFromCart } from '../../store/cart'
 import vbucks from '../../assets/images/vbucks-icon.webp'
 import './Cart.css'
+import { getInventory } from '../../store/inventory'
+import { checkout } from '../../store/cart'
+import { authenticate } from '../../store/session'
+// import { setUser } from '../../store/session'
+
 
 const Cart = () => {
     const dispatch = useDispatch();
@@ -29,7 +34,7 @@ const Cart = () => {
         };
     });
 
-    // console.log('ITEMS IN CART LISTTTTTT', itemsInCart)
+    console.log('ITEMS IN CART LISTTTTTT', itemsInCart)
 
     const handleRemoveFromCart = (itemId) => {
         console.log('itemId within handleRemoveFromCart function', itemId)
@@ -43,56 +48,62 @@ const Cart = () => {
         return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     } 
 
+    const handleCheckout = () => {
+        dispatch(checkout())
+        .then(() => {
+            dispatch(authenticate())
+            dispatch(getInventory())
+            dispatch(getCart())    
+        });
+    }
+
     return (
         <>
             <div className='current-cart-items'>
                 {/* {itemsInCart.length === 0 && <div>You currently have no items in your cart.</div>} */}
                 {itemsInCart.length !== 0 &&
                     <>
-                        <div className='cart-items-heading'>These are the items you currently have in your cart:</div>
+                        <h2 className='cart-items-heading'>These are the items you currently have in your cart:</h2>
                         <div className='cart-item-list'>
                             {itemsInCart.map(item => {
-                                return (
-                                    <div className='individual-cart-item' key={item.itemId}>
-                                        <div className='cart-item-container'>
+                                if (item.images) {
+                                    return (
+                                        <div className='individual-cart-item' key={item.id}>
+                                            <div className='cart-item-container'>
 
-                                            <div className='cart-item-information'>
-                                                <div>{item.quantity} {item.name}</div>
-                                                <div className='item-detail-price'>
-                                                    <img className='vbucks-icon' src={item.priceIconLink} />
-                                                    <div>{item.price} vbucks</div>
+                                                <div className='cart-item-information'>
+                                                    <div>{item.quantity} {item.name}</div>
+                                                    <div className='item-detail-price'>
+                                                        <img className='vbucks-icon' src={item.priceIconLink} />
+                                                        <div>{item.price} vbucks</div>
+                                                    </div>
+                                                    <button onClick={() => handleRemoveFromCart(item.itemId)}>Remove from cart</button>
                                                 </div>
-                                                <button onClick={() => handleRemoveFromCart(item.itemId)}>Remove from cart</button>
-                                            </div>
 
-                                            <div className='cart-item-image-container'>
-                                                <img className='item-detail-image cart-item-image' src={item.images.icon} style={{ backgroundColor: getItemBackgroundColor(item.rarity) }}/>
-                                            </div>
+                                                <div className='cart-item-image-container'>
+                                                    <img className='item-detail-image cart-item-image' src={item.images.icon} style={{ backgroundColor: getItemBackgroundColor(item.rarity) }}/>
+                                                </div>
 
+                                            </div>
                                         </div>
-                                    </div>
-                                )
+                                    )
+                                }
                             })}
 
                             <div className='cart-total'>
-                                <div className='cart-total-heading'>Cart Total:</div>
-                                <div className='cart-total-price'>
+                                <h2 className='cart-total-heading'>Cart Total:</h2>
+                                <div className='item-detail-price cart-total-price'>
                                     <img className='vbucks-icon' src={vbucks} />
-                                    {/* <div>
-                                        {itemsInCart.reduce((total, item) => {
-                                            // console.log(`Price: ${item.price}, Quantity: ${item.quantity}`);
-
-                                            //second argument here is the radix, or base, which is 10, which means we're using decimal
-                                            const price = parseInt(item.price.replace(/,/g, ''), 10);
-                                            return total + price * item.quantity;
-                                        }, 0)} vbucks
-                                    </div> */}
                                     <div>{numberWithCommas(itemsInCart.reduce((total, item) => {
                                     const price = parseInt(item.price.replace(/,/g, ''), 10);
                                     return total + price * item.quantity;
                                     }, 0))} vbucks
                                     </div>
                                 </div>
+                            </div>
+
+                            <div className='checkout-button-container'>
+                                <button className='checkout-button' onClick={handleCheckout}>Checkout</button>
                             </div>
                         </div>
                     </>

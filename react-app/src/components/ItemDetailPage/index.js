@@ -10,6 +10,8 @@ import Comments from '../Comments'
 import Reminders from '../Reminders'
 import CartPanel from '../CartPanel'
 import './ItemDetailPage.css'
+import { getInventory } from '../../store/inventory'
+import { getReminders } from '../../store/reminders'
 
 const ItemDetailPage = () => {
     const { itemName } = useParams();
@@ -84,6 +86,8 @@ const ItemDetailPage = () => {
         //i want to always fetch likes from the server
         dispatch(getLikes());
         dispatch(getComments());
+        dispatch(getInventory());
+        dispatch(getReminders());
     }, [dispatch]);
 
     // useEffect(() => {
