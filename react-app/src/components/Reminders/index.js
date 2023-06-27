@@ -142,7 +142,7 @@ const Reminders = () => {
                         {!userReminderForItem &&
                             <>
                                 <h3>
-                                    Looks like you haven't created a reminder for this item yet. Click the button below to create one!
+                                    Looks like you don't have a reminder for this item yet. Complete the form below to create one!
                                 </h3>
                                 <form onSubmit={handleCreateReminder}>
                                     <label>Reminder duration:

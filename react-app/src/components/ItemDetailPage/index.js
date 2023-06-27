@@ -2,12 +2,13 @@ import {useSelector, useDispatch} from 'react-redux'
 import { setSeedItems, setDailyItems, setFeaturedItems, setCurrentItem, getSeedItems, getDailyItems, getFeaturedItems } from '../../store/items'
 import { setLikes, getLikes } from '../../store/like'
 import { getComments } from '../../store/comments'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { getItemBackgroundColor } from '../../utils'
 import { useParams } from 'react-router-dom'
 import ItemLikes from '../ItemLikes'
 import Comments from '../Comments'
 import Reminders from '../Reminders'
+import CartPanel from '../CartPanel'
 import './ItemDetailPage.css'
 
 const ItemDetailPage = () => {
@@ -20,6 +21,7 @@ const ItemDetailPage = () => {
     const likes = useSelector(state => state.totalLikes)
     const comments = useSelector(state => state.comments)
     const sessionUser = useSelector(state => state.session.user);
+    const [showCart, setShowCart] = useState(false);
 
 
     //combine both lists
@@ -167,6 +169,7 @@ const ItemDetailPage = () => {
                     <ItemLikes />
                     <Comments />
                     <Reminders />
+                    <CartPanel />
             </div>
             ) : (
                 <h1 className='loading-message'>Loading: { itemName }</h1>
