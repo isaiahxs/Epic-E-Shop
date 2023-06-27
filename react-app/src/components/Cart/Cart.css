@@ -7,11 +7,11 @@
 .cart-item-list {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    /* align-items: center; */
-    margin: 20px auto;
+    /* align-items: stretch; */
+    margin: 10px 0px;
     font-family: 'Poppins', calibri, helvetica, arial, sans-serif;
     font-weight: bold;
+    max-width: 400px;
 }
 
 .cart-item-container {
@@ -31,7 +31,7 @@
 
 .cart-item-image-container {
     max-height: 100px;
-    /* max-width: 100px; */
+    max-width: 100px;
 }
 
 .cart-item-image {

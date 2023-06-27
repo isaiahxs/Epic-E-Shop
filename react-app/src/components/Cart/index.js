@@ -4,6 +4,7 @@ import { useEffect } from 'react'
 import { getItemBackgroundColor } from '../../utils'
 import { useHistory } from 'react-router-dom'
 import { getCart, removeFromCart } from '../../store/cart'
+import vbucks from '../../assets/images/vbucks-icon.webp'
 import './Cart.css'
 
 const Cart = () => {
@@ -28,7 +29,7 @@ const Cart = () => {
         };
     });
 
-    console.log('ITEMS IN CART LISTTTTTT', itemsInCart)
+    // console.log('ITEMS IN CART LISTTTTTT', itemsInCart)
 
     const handleRemoveFromCart = (itemId) => {
         console.log('itemId within handleRemoveFromCart function', itemId)
@@ -36,6 +37,11 @@ const Cart = () => {
         dispatch(removeFromCart(itemId))
         .then(() => dispatch(getCart()));
     }
+
+    //this function will add commas to numbers
+    function numberWithCommas(x) {
+        return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    } 
 
     return (
         <>
@@ -60,13 +66,34 @@ const Cart = () => {
                                             </div>
 
                                             <div className='cart-item-image-container'>
-                                                <img className='item-detail-image cart-item-image' src={item.images.icon} />
+                                                <img className='item-detail-image cart-item-image' src={item.images.icon} style={{ backgroundColor: getItemBackgroundColor(item.rarity) }}/>
                                             </div>
 
                                         </div>
                                     </div>
                                 )
                             })}
+
+                            <div className='cart-total'>
+                                <div className='cart-total-heading'>Cart Total:</div>
+                                <div className='cart-total-price'>
+                                    <img className='vbucks-icon' src={vbucks} />
+                                    {/* <div>
+                                        {itemsInCart.reduce((total, item) => {
+                                            // console.log(`Price: ${item.price}, Quantity: ${item.quantity}`);
+
+                                            //second argument here is the radix, or base, which is 10, which means we're using decimal
+                                            const price = parseInt(item.price.replace(/,/g, ''), 10);
+                                            return total + price * item.quantity;
+                                        }, 0)} vbucks
+                                    </div> */}
+                                    <div>{numberWithCommas(itemsInCart.reduce((total, item) => {
+                                    const price = parseInt(item.price.replace(/,/g, ''), 10);
+                                    return total + price * item.quantity;
+                                    }, 0))} vbucks
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </>
                 }
