@@ -47,7 +47,7 @@
 }
 
 .nav-home,
-.nav-shop,
+.nav-inventory,
 .nav-about-me,
 .nav-view-cart,
 .user-icon {
@@ -64,7 +64,7 @@
 }
 
 .nav-home:hover,
-.nav-shop:hover,
+.nav-inventory:hover,
 .nav-about-me:hover,
 .nav-view-cart:hover,
 .user-icon:hover {

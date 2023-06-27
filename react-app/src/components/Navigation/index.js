@@ -20,7 +20,9 @@ function Navigation({ isLoaded }){
 				<NavLink to="/" exact className="nav-home" activeClassName="active-link">
                     Home
                 </NavLink>
-				<div className='nav-shop'>Shop</div>
+				<NavLink to="/inventory" className="nav-inventory" activeClassName="active-link">
+					Inventory
+				</NavLink>
 				<NavLink to="/about_me" className="nav-about-me" activeClassName="active-link">
                     About Me
                 </NavLink>
