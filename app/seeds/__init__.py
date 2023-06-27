@@ -4,6 +4,8 @@ from .items import seed_items, undo_items
 from .likes import seed_likes, undo_likes
 from .comments import seed_comments, undo_comments
 from .reminders import seed_reminders, undo_reminders
+from .carts import seed_carts, undo_carts
+from .inventory import seed_inventory, undo_inventory
 
 from app.models.db import db, environment, SCHEMA
 
@@ -25,12 +27,16 @@ def seed():
         undo_likes()
         undo_comments()
         undo_reminders()
+        undo_carts()
+        undo_inventory()
 
     seed_users()
     seed_items()
     seed_likes()
     seed_comments()
     seed_reminders()
+    seed_carts()
+    seed_inventory()
     # Add other seed functions here
 
 
@@ -42,4 +48,6 @@ def undo():
     undo_likes()
     undo_comments()
     undo_reminders()
+    undo_carts()
+    undo_inventory()
     # Add other undo functions here

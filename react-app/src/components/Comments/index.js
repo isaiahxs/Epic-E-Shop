@@ -40,7 +40,7 @@ const Comments = () => {
 
     return (
         <div className='item-detail-comments'>
-            <h2>Comments ({allComments?.length})</h2>
+            <h2>Comments ({currentItemComments?.length})</h2>
             <div className='posted-comments'>
                 {currentItemComments.map(comment => (
                     <div key={comment.id}>
