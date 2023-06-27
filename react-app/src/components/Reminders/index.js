@@ -13,9 +13,9 @@ const Reminders = () => {
     const [duration, setDuration] = useState(30);
     const [editDuration, setEditDuration] = useState(30);
 
-    useEffect(() => {
-        dispatch(getReminders())
-    }, [dispatch])
+    // useEffect(() => {
+    //     dispatch(getReminders())
+    // }, [dispatch])
 
     const userReminderForItem = reminders.find(reminder => 
         reminder.userId === sessionUser?.id && reminder.itemId === currentItem?.itemId

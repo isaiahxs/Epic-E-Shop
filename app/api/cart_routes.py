@@ -25,11 +25,13 @@ def add_to_cart(itemId):
     """
 
     #check if the item already exists in the cart
-    existing_item = Cart.query.filter_by(user_id=current_user.id, item_id=itemId).first()
+    # existing_item = Cart.query.filter_by(user_id=current_user.id, item_id=itemId).first()
     
-    #ff it does, return an error message
-    if existing_item:
-        return jsonify({'error': 'Item already in cart.'}), 400
+    # #if it does, return an error message
+    # if existing_item:
+    #     return jsonify({'error': 'Item already in cart.'}), 400
+    
+    #although, if i want to implement the gifting system, i shouldn't limit cart items to one per user
     
     cart_item = Cart(
         user_id=current_user.id,

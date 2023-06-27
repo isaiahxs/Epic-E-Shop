@@ -8,6 +8,8 @@ import vbucks from '../../assets/images/vbucks-icon.webp'
 import './Cart.css'
 import { getInventory } from '../../store/inventory'
 import { checkout } from '../../store/cart'
+// import { authenticate } from '../../store/session'
+// import { setUser } from '../../store/session'
 
 
 const Cart = () => {
@@ -32,7 +34,7 @@ const Cart = () => {
         };
     });
 
-    // console.log('ITEMS IN CART LISTTTTTT', itemsInCart)
+    console.log('ITEMS IN CART LISTTTTTT', itemsInCart)
 
     const handleRemoveFromCart = (itemId) => {
         console.log('itemId within handleRemoveFromCart function', itemId)
@@ -49,6 +51,7 @@ const Cart = () => {
     const handleCheckout = () => {
         dispatch(checkout())
         .then(() => {
+            // dispatch(authenticate())
             dispatch(getInventory())
             dispatch(getCart())    
         });
@@ -65,7 +68,7 @@ const Cart = () => {
                             {itemsInCart.map(item => {
                                 if (item.images) {
                                     return (
-                                        <div className='individual-cart-item' key={item.itemId}>
+                                        <div className='individual-cart-item' key={item.id}>
                                             <div className='cart-item-container'>
 
                                                 <div className='cart-item-information'>
