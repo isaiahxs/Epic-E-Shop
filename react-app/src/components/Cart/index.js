@@ -8,7 +8,7 @@ import './Cart.css'
 const Cart = () => {
     const dispatch = useDispatch();
     const currentCart = useSelector(state => state.cart);
-    console.log('CURRENT CART', currentCart)
+    // console.log('CURRENT CART', currentCart)
 
     const seedItems = useSelector(state => state.items.seedItems);
     const dailyItems = useSelector(state => state.items.dailyItems);
@@ -27,22 +27,32 @@ const Cart = () => {
         };
     });
 
-    console.log('ITEMS IN CART', itemsInCart)
+    // console.log('ITEMS IN CART', itemsInCart)
 
     return (
         <>
             <div className='current-cart-items'>
-                <div>These are the items you currently have in your cart:</div>
-                <div>
-                    {itemsInCart.map(item => {
-                        return (
-                            <div key={item.itemId}>
-                                <div>{item.quantity}</div>
-                                <div>{item.name}</div>
-                            </div>
-                        )
-                    })}
-                </div>
+                {/* {itemsInCart.length === 0 && <div>You currently have no items in your cart.</div>} */}
+                {itemsInCart.length !== 0 &&
+                    <>
+                        <div>These are the items you currently have in your cart:</div>
+                        <div>
+                            {itemsInCart.map(item => {
+                                return (
+                                    <div key={item.itemId}>
+                                        <div>{item.quantity}</div>
+                                        <div>{item.name}</div>
+                                    </div>
+                                )
+                            })}
+                        </div>
+                    </>
+                }
+                {itemsInCart.length === 0 &&
+                    <>
+                        <div>Looks like you don't have any items in your cart yet!</div>
+                    </>
+                }
             </div>
 
         <div>Need more vbucks? You can buy some more with your starter cash!</div>

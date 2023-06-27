@@ -1,13 +1,15 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
-import { setCart, getCart } from '../../store/cart';
+import { setCart, getCart, addItem, addToCart } from '../../store/cart';
 import Cart from '../Cart';
 import './CartPanel.css'
 
 const CartPanel = () => {
     const dispatch = useDispatch();
     const sessionUser = useSelector(state => state.session.user);
-    console.log('SESSION USER', sessionUser)
+    // console.log('SESSION USER', sessionUser)
+
+    const currentItem = useSelector(state => state.items.currentItem);
 
     //dispatch getCart whenever CartPanel is mounted or whenever sessionUser changes
     useEffect(() => {
@@ -16,10 +18,21 @@ const CartPanel = () => {
         }
     }, [dispatch, sessionUser])
 
+    const handleAddToCart = (e) => {
+        // e.preventDefault();
+        const item = {
+            userId: sessionUser.id,
+            itemId: currentItem.itemId,
+            // quantity: 1,
+        }
+        dispatch(addToCart(item))
+        dispatch(getCart())
+    }
+
     return (
         <div>
-            <button>Add item to cart</button>
-            <button>Remove item from cart</button>
+            <button className='add-to-cart-button' onClick={() => handleAddToCart()}>Add this item to your cart</button>
+            <button>Remove this item from your cart</button>
             <Cart />
         </div>
     )
