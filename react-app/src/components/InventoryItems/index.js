@@ -63,7 +63,7 @@ const InventoryItems = () => {
 
                 return item ? (
                     <div className='inventory-item' key={inventoryItem.itemId}>
-                        <div className='inventory-quantity'>{inventoryItem.quantity}x</div>
+                        {/* <div className='inventory-quantity'>{inventoryItem.quantity}x</div> */}
                         <div className='img-container'>
                             <img className='home-item-image' src={item.images.icon} alt={item.name} style={{ backgroundColor: getItemBackgroundColor(item.rarity) }}/>
                         </div>
@@ -77,6 +77,7 @@ const InventoryItems = () => {
                                 <div className='inventory-item-price'>{item.price}</div>
                             </div>
                         </div>
+                        <div className='inventory-quantity'>Quantity: {inventoryItem.quantity}x</div>
                     </div>
                 ) : null;
             })}

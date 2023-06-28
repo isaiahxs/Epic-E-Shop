@@ -6,10 +6,11 @@
 
     margin: 30px 0;
     display: grid;
-    grid-template-columns: 0.5fr 2fr 3fr;
+    /* grid-template-columns: 0.5fr 2fr 3fr; */
+    grid-template-columns: 1fr 1fr 1fr;
     align-items: center;
     gap: 20px;
-    width: 600px;
+    width: 700px;
 
     /* background-color: red; */
     /* justify-content: space-around; */
@@ -32,5 +33,6 @@
 .inventory-quantity {
     display: flex;
     justify-content: center;
+    /* align-items: center; */
     font-size: 1.4rem;
 }

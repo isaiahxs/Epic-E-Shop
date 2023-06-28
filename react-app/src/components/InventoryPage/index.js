@@ -56,7 +56,10 @@ const InventoryPage = () => {
                 dispatch(getSeedItems()),
                 dispatch(getDailyItems()),
                 dispatch(getFeaturedItems()),
-                dispatch(getInventory())
+                dispatch(getInventory()),
+                dispatch(getReminders()),
+                dispatch(getComments()),
+                dispatch(getLikes()),
             ]);
             setIsLoading(false);
         };
@@ -86,7 +89,7 @@ const InventoryPage = () => {
 
                             return item ? (
                                 <div className='inventory-item' key={reminder.itemId}>
-                                    <div className='inventory-quantity'>{reminder.duration}x</div>
+                                    
                                     <div className='img-container'>
                                         <img className='home-item-image' src={item.images.icon} alt={item.name} style={{ backgroundColor: getItemBackgroundColor(item.rarity) }}/>
                                     </div>
@@ -100,13 +103,78 @@ const InventoryPage = () => {
                                             <div className='inventory-item-price'>{item.price}</div>
                                         </div>
                                     </div>
+                                    {reminder.duration === -1 &&
+                                    <div className='inventory-quantity'>Duration: Until item returns</div>
+                                    }
+                                    {reminder.duration !== -1 &&
+                                    <div className='inventory-quantity'>Duration: {reminder.duration} days</div>
+                                    }
                                 </div>
                             ) : null;
                         })}
 
                     </div>
-                    <h2>Your Comments: ({userComments.length})</h2>
-                    <h2>Your Likes: ({userLikes.length})</h2>
+
+
+                    <div className='inventory-comments'>
+                        <h2>Your Comments: ({userComments.length})</h2>
+
+                        {userComments.map(comment => {
+                            const item = allItems.find(item => item.itemId === comment.itemId);
+
+                            return item ? (
+                                <div className='inventory-item' key={comment.itemId}>
+                                    
+                                    <div className='img-container'>
+                                        <img className='home-item-image' src={item.images.icon} alt={item.name} style={{ backgroundColor: getItemBackgroundColor(item.rarity) }}/>
+                                    </div>
+                                    <div className='inventory-item-info'>
+                                        <div className='inventory-item-name'>Item name: {item.name}</div>
+                                        <div className='inventory-rarity-section'>Rarity: <span className='rarity' style={{ backgroundColor: getItemBackgroundColor(item.rarity) }}>{item.rarity}</span></div>
+
+                                        <div className='inventory-item-type'>Type: {item.type}</div>
+                                        <div className='item-detail-price'>
+                                            <img src={item.priceIconLink} alt={item.priceIcon} className='vbucks-icon'/>
+                                            <div className='inventory-item-price'>{item.price}</div>
+                                        </div>
+                                    </div>
+                                    <div className='inventory-comment'>
+                                        <div className='inventory-comment-text inventory-quantity'>Comment: {comment.text}</div>
+                                    </div>
+                                </div>
+                            ) : null;
+                        })}
+
+                    </div>
+
+
+                    <div className='inventory-likes'>
+                        <h2>Your Votes: ({userLikes.length})</h2>
+
+                        {userLikes.map(vote => {
+                            const item = allItems.find(item => item.itemId === vote.itemId);
+
+                            return item ? (
+                                <div className='inventory-item' key={vote.itemId}>
+                                    
+                                    <div className='img-container'>
+                                        <img className='home-item-image' src={item.images.icon} alt={item.name} style={{ backgroundColor: getItemBackgroundColor(item.rarity) }}/>
+                                    </div>
+                                    <div className='inventory-item-info'>
+                                        <div className='inventory-item-name'>Item name: {item.name}</div>
+                                        <div className='inventory-rarity-section'>Rarity: <span className='rarity' style={{ backgroundColor: getItemBackgroundColor(item.rarity) }}>{item.rarity}</span></div>
+
+                                        <div className='inventory-item-type'>Type: {item.type}</div>
+                                        <div className='item-detail-price'>
+                                            <img src={item.priceIconLink} alt={item.priceIcon} className='vbucks-icon'/>
+                                            <div className='inventory-item-price'>{item.price}</div>
+                                        </div>
+                                    </div>
+                                    <div className='vote-value inventory-quantity'>{vote.value ? "Liked" : "Disliked"}</div>
+                                </div>
+                            ) : null;
+                        })}
+                    </div>
                 </>
             }
             {!sessionUser &&
