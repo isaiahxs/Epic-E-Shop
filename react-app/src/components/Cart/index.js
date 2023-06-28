@@ -3,7 +3,7 @@ import { getDailyItems, getFeaturedItems } from '../../store/items'
 import { useEffect } from 'react'
 import { getItemBackgroundColor } from '../../utils'
 import { useHistory } from 'react-router-dom'
-import { getCart, removeFromCart } from '../../store/cart'
+import { getCart, removeFromCart, addToCart } from '../../store/cart'
 import vbucks from '../../assets/images/vbucks-icon.webp'
 import './Cart.css'
 import { getInventory } from '../../store/inventory'
@@ -25,17 +25,52 @@ const Cart = ({isCartOpen}) => {
     //combine both lists
     const allItems = [...seedItems, ...dailyItems, ...featuredItems]
 
-    const itemsInCart = currentCart.map(cartItem => {
-        //find the item in allItems
-        const item = allItems.find(item => item.itemId === cartItem.itemId);
-        return {
-            //spread item and cartItem to create a new object that has properties from both
-            ...item,
-            ...cartItem,
-        };
-    });
+    const consolidateCartItems = (cartItems) => {
+        let consolidated = {};
+        cartItems.forEach(item => {
+            if (!consolidated[item.itemId]) {
+                consolidated[item.itemId] = { ...item };
+            } else {
+                consolidated[item.itemId].quantity += item.quantity;
+            }
+        });
+        return Object.values(consolidated);
+    };
 
-    // console.log('ITEMS IN CART LISTTTTTT', itemsInCart)
+    const itemsInCart = consolidateCartItems(
+        currentCart.map(cartItem => {
+            //find the item in allItems
+            const item = allItems.find(item => item.itemId === cartItem.itemId);
+            return {
+                //spread item and cartItem to create a new object that has properties from both
+                ...item,
+                ...cartItem,
+            };
+        })
+    );
+
+    // const itemsInCart = currentCart.map(cartItem => {
+    //     //find the item in allItems
+    //     const item = allItems.find(item => item.itemId === cartItem.itemId);
+    //     return {
+    //         //spread item and cartItem to create a new object that has properties from both
+    //         ...item,
+    //         ...cartItem,
+    //     };
+    // });
+
+    console.log('ITEMS IN CART LISTTTTTT', itemsInCart)
+
+    const handleAddToCart = (itemId) => {
+        // e.preventDefault();
+        const item = {
+            userId: sessionUser.id,
+            itemId: itemId,
+            // quantity: 1,
+        }
+        dispatch(addToCart(item))
+        .then(() => dispatch(getCart())) //only want to dispatch the re-render after the addToCart thunk action has completed
+    }
 
     const handleRemoveFromCart = (itemId) => {
         console.log('itemId within handleRemoveFromCart function', itemId)
@@ -90,12 +125,13 @@ const Cart = ({isCartOpen}) => {
                                             <div className='cart-item-container'>
 
                                                 <div className='cart-item-information'>
-                                                    <div>{item.quantity} {item.name}</div>
+                                                    <div>{item.quantity}x {item.name}</div>
                                                     <div className='item-detail-price'>
                                                         <img className='vbucks-icon' src={item.priceIconLink} />
                                                         <div>{item.price} V-Bucks</div>
                                                     </div>
-                                                    <button onClick={() => handleRemoveFromCart(item.itemId)}>Remove from cart</button>
+                                                    <button onClick={() => handleAddToCart(item.itemId)}>+1</button>
+                                                    <button onClick={() => handleRemoveFromCart(item.itemId)}>-1</button>
                                                 </div>
 
                                                 <div className='cart-item-image-container'>
