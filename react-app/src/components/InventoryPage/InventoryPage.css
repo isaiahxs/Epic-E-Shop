@@ -24,7 +24,9 @@
     /* max-width: 500px; */
 }
 
-
+.inventory-vbuck {
+    margin-left: 10px;
+}
 
 .inventory-item-info {
     /* display: flex; */

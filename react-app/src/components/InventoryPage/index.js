@@ -7,6 +7,7 @@ import { getItemBackgroundColor } from '../../utils'
 import { useHistory } from 'react-router-dom'
 import { getInventory } from '../../store/inventory'
 import { getReminders } from '../../store/reminders'
+import vbucks from '../../assets/images/vbucks-icon.webp'
 import './InventoryPage.css'
 
 const InventoryPage = () => {
@@ -43,6 +44,27 @@ const InventoryPage = () => {
 
     const allItems = [...seedItems, ...dailyItems, ...featuredItems]
 
+    function numberWithCommas(x) {
+        return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    } 
+
+    //calculating the total value of the inventory
+    const totalValue = inventory.reduce((total, inventoryItem) => {
+        const item = allItems.find(item => item.itemId === inventoryItem.itemId);
+        if (item) {
+            const itemPrice = parseInt(item.price.replace(',', ''), 10);
+            return total + (inventoryItem.quantity * itemPrice);
+        }
+        return total;
+    }, 0);
+
+    const formattedTotalValue = numberWithCommas(totalValue);
+
+    //calculating the total quantity of the inventory
+    const totalItems = inventory.reduce((total, inventoryItem) => {
+        return total + inventoryItem.quantity;
+    }, 0);
+
     return (
         <>
             {sessionUser &&
@@ -52,8 +74,12 @@ const InventoryPage = () => {
                             <h1 className='inventory-welcome'>Nice collection so far, {sessionUser.username}!</h1>
                         }
                         <h2>Member since: {sessionUser.created_at}</h2>
-                        <h2>Your Inventory value:</h2>
-                        <h2>Total items:</h2>
+                        <div className='item-detail-price'>
+                            <h2>Total Inventory value:</h2>
+                            <img src={vbucks} className='vbucks-icon inventory-vbuck'/>
+                            <h2>{formattedTotalValue}</h2>
+                        </div>
+                        <h2>Total items: ({totalItems})</h2>
                         <h2>Unique items: ({inventory.length})</h2>
                     </div>
 
