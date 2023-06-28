@@ -73,7 +73,7 @@ const InventoryPage = () => {
                         {inventory.length > 0 &&
                             <h1 className='inventory-welcome'>Nice collection so far, {sessionUser.username}!</h1>
                         }
-                        <h2>Member since: {sessionUser.created_at}</h2>
+                        <h2>Member since: {sessionUser.created_at.slice(0, 16)}</h2>
                         <div className='item-detail-price'>
                             <h2>Total Inventory value:</h2>
                             <img src={vbucks} className='vbucks-icon inventory-vbuck'/>
