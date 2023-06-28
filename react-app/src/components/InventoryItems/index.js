@@ -45,43 +45,43 @@ const InventoryItems = () => {
 
     return (
         <>
-        <div className='inventory-heading'>
-                        {inventory.length > 0 &&
-                            <h1 className='inventory-welcome'>Nice collection so far, {sessionUser.username}!</h1>
-                        }
-                        <h2>Member since: {sessionUser.created_at.slice(0, 16)}</h2>
-                        <div className='item-detail-price'>
-                            <h2>Total Inventory value:</h2>
-                            <img src={vbucks} className='vbucks-icon inventory-vbuck'/>
-                            <h2>{formattedTotalValue}</h2>
+            <div className='inventory-heading'>
+                {inventory.length > 0 &&
+                    <h1 className='inventory-welcome'>Nice collection so far, {sessionUser.username}!</h1>
+                }
+                <h2>Member since: {sessionUser.created_at.slice(0, 16)}</h2>
+                <div className='item-detail-price'>
+                    <h2>Total Inventory value:</h2>
+                    <img src={vbucks} className='vbucks-icon inventory-vbuck'/>
+                    <h2>{formattedTotalValue}</h2>
+                </div>
+                <h2>Total items: ({totalItems})</h2>
+                <h2>Unique items: ({inventory.length})</h2>
+            </div>
+
+            {inventory.map(inventoryItem => {
+                const item = allItems.find(item => item.itemId === inventoryItem.itemId);
+
+                return item ? (
+                    <div className='inventory-item' key={inventoryItem.itemId}>
+                        <div className='inventory-quantity'>{inventoryItem.quantity}x</div>
+                        <div className='img-container'>
+                            <img className='home-item-image' src={item.images.icon} alt={item.name} style={{ backgroundColor: getItemBackgroundColor(item.rarity) }}/>
                         </div>
-                        <h2>Total items: ({totalItems})</h2>
-                        <h2>Unique items: ({inventory.length})</h2>
-                    </div>
+                        <div className='inventory-item-info'>
+                            <div className='inventory-item-name'>Item name: {item.name}</div>
+                            <div className='inventory-rarity-section'>Rarity: <span className='rarity' style={{ backgroundColor: getItemBackgroundColor(item.rarity) }}>{item.rarity}</span></div>
 
-                    {inventory.map(inventoryItem => {
-                        const item = allItems.find(item => item.itemId === inventoryItem.itemId);
-
-                        return item ? (
-                            <div className='inventory-item' key={inventoryItem.itemId}>
-                                <div className='inventory-quantity'>{inventoryItem.quantity}x</div>
-                                <div className='img-container'>
-                                    <img className='home-item-image' src={item.images.icon} alt={item.name} style={{ backgroundColor: getItemBackgroundColor(item.rarity) }}/>
-                                </div>
-                                <div className='inventory-item-info'>
-                                    <div className='inventory-item-name'>Item name: {item.name}</div>
-                                    <div className='inventory-rarity-section'>Rarity: <span className='rarity' style={{ backgroundColor: getItemBackgroundColor(item.rarity) }}>{item.rarity}</span></div>
-
-                                    <div className='inventory-item-type'>Type: {item.type}</div>
-                                    <div className='item-detail-price'>
-                                        <img src={item.priceIconLink} alt={item.priceIcon} className='vbucks-icon'/>
-                                        <div className='inventory-item-price'>{item.price}</div>
-                                    </div>
-                                </div>
+                            <div className='inventory-item-type'>Type: {item.type}</div>
+                            <div className='item-detail-price'>
+                                <img src={item.priceIconLink} alt={item.priceIcon} className='vbucks-icon'/>
+                                <div className='inventory-item-price'>{item.price}</div>
                             </div>
-                        ) : null;
-                    })}
-                    </>
+                        </div>
+                    </div>
+                ) : null;
+            })}
+        </>
     )
 } 
 
