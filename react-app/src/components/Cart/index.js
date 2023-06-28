@@ -34,7 +34,7 @@ const Cart = () => {
         };
     });
 
-    console.log('ITEMS IN CART LISTTTTTT', itemsInCart)
+    // console.log('ITEMS IN CART LISTTTTTT', itemsInCart)
 
     const handleRemoveFromCart = (itemId) => {
         console.log('itemId within handleRemoveFromCart function', itemId)

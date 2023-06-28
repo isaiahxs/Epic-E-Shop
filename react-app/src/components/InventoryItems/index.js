@@ -12,8 +12,9 @@ import './InventoryItems.css'
 
 const InventoryItems = () => {
     const dispatch = useDispatch();
+    const history = useHistory();
     const inventory = useSelector(state => state.inventory);
-    console.log('INVENTORY', inventory)
+    // console.log('INVENTORY', inventory)
     const sessionUser = useSelector(state => state.session.user);
     const reminders = useSelector(state => state.reminders);
     const seedItems = useSelector(state => state.items.seedItems);
@@ -62,8 +63,8 @@ const InventoryItems = () => {
                 const item = allItems.find(item => item.itemId === inventoryItem.itemId);
 
                 return item ? (
-                    <div className='inventory-item' key={inventoryItem.itemId}>
-                        <div className='inventory-quantity'>{inventoryItem.quantity}x</div>
+                    <div className='inventory-item' onClick={() => history.push(`/item/${item.name}`)} key={inventoryItem.itemId}>
+                        {/* <div className='inventory-quantity'>{inventoryItem.quantity}x</div> */}
                         <div className='img-container'>
                             <img className='home-item-image' src={item.images.icon} alt={item.name} style={{ backgroundColor: getItemBackgroundColor(item.rarity) }}/>
                         </div>
@@ -77,6 +78,7 @@ const InventoryItems = () => {
                                 <div className='inventory-item-price'>{item.price}</div>
                             </div>
                         </div>
+                        <div className='inventory-quantity'>Quantity: {inventoryItem.quantity}x</div>
                     </div>
                 ) : null;
             })}
