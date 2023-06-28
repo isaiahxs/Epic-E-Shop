@@ -21,7 +21,6 @@ const InventoryItems = () => {
     const featuredItems = useSelector(state => state.items.featuredItems);
 
     const allItems = [...seedItems, ...dailyItems, ...featuredItems]
-
     function numberWithCommas(x) {
         return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     } 
