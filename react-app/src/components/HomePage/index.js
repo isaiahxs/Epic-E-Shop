@@ -27,7 +27,7 @@ const HomePage = () => {
         dispatch(getSeedItems())
         dispatch(getDailyItems())
         dispatch(getFeaturedItems())
-        dispatch(getInventory())
+        // dispatch(getInventory())
         // dispatch(getLikes())
     }, [dispatch])
 
