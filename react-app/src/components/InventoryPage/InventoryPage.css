@@ -1,0 +1,48 @@
+.inventory-heading {
+    font-family: 'Poppins', calibri, helvetica, arial, sans-serif;
+}
+
+.inventory-welcome {
+    font-family: "Luckiest Guy", cursive;
+}
+
+.inventory-item {
+    /* margin: 30px 0;
+    display: flex;
+    align-items: center;
+    width: 600px; */
+
+    margin: 30px 0;
+    display: grid;
+    grid-template-columns: 0.5fr 2fr 3fr;
+    align-items: center;
+    gap: 20px;
+    width: 600px;
+
+    /* background-color: red; */
+    /* justify-content: space-around; */
+    /* max-width: 500px; */
+}
+
+.inventory-vbuck {
+    margin-left: 10px;
+}
+
+.inventory-item-info {
+    /* display: flex; */
+    /* flex-direction: column; */
+    /* justify-content: space-between; */
+    margin: 20px 0px;
+    font-size: 1.2rem;
+    /* padding: 10px 0px; */
+}
+
+.inventory-item-info > div {
+    margin-bottom: 15px;
+}
+
+.inventory-quantity {
+    display: flex;
+    justify-content: center;
+    font-size: 1.4rem;
+}
