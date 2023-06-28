@@ -11,6 +11,7 @@
     align-items: center;
     gap: 20px;
     width: 700px;
+    cursor: pointer;
 
     /* background-color: red; */
     /* justify-content: space-around; */
@@ -23,6 +24,7 @@
     /* justify-content: space-between; */
     margin: 20px 0px;
     font-size: 1.2rem;
+    cursor: pointer;
     /* padding: 10px 0px; */
 }
 
@@ -35,4 +37,5 @@
     justify-content: center;
     /* align-items: center; */
     font-size: 1.4rem;
+    /* cursor: pointer; */
 }

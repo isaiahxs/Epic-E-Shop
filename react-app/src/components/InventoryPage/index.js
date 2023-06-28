@@ -13,6 +13,7 @@ import './InventoryPage.css'
 
 const InventoryPage = () => {
     const dispatch = useDispatch();
+    const history = useHistory();
     const [isLoading, setIsLoading] = useState(true);
 
     // const inventory = useSelector(state => state.inventory);
@@ -26,36 +27,31 @@ const InventoryPage = () => {
     const dailyItems = useSelector(state => state.items.dailyItems);
     const featuredItems = useSelector(state => state.items.featuredItems);
 
-    // useEffect(() => {
-    //     const seedItemsStored = localStorage.getItem('seedItems');
-    //     const dailyItemsStored = localStorage.getItem('dailyItems');
-    //     const featuredItemsStored = localStorage.getItem('featuredItems');
+    useEffect(() => {
+        const seedItemsStored = localStorage.getItem('seedItems');
+        const dailyItemsStored = localStorage.getItem('dailyItems');
+        const featuredItemsStored = localStorage.getItem('featuredItems');
     
-    //     if (!seedItemsStored || !dailyItemsStored || !featuredItemsStored) {
-    //         dispatch(getSeedItems())
-    //         dispatch(getDailyItems())
-    //         dispatch(getFeaturedItems())
-    //     } else {
-    //         dispatch(setSeedItems(JSON.parse(seedItemsStored)));
-    //         dispatch(setDailyItems(JSON.parse(dailyItemsStored)));
-    //         dispatch(setFeaturedItems(JSON.parse(featuredItemsStored)));
-    //     }
+        if (!seedItemsStored || !dailyItemsStored || !featuredItemsStored) {
+            dispatch(getSeedItems())
+            dispatch(getDailyItems())
+            dispatch(getFeaturedItems())
+        } else {
+            dispatch(setSeedItems(JSON.parse(seedItemsStored)));
+            dispatch(setDailyItems(JSON.parse(dailyItemsStored)));
+            dispatch(setFeaturedItems(JSON.parse(featuredItemsStored)));
+        }
 
-    //     //i want to always fetch likes from the server
-    //     // dispatch(getLikes());
-    //     // dispatch(getComments());
-    //     // dispatch(getInventory());
-    //     // dispatch(getReminders());
-    // }, [dispatch]);
+    }, [dispatch]);
 
     const allItems = [...seedItems, ...dailyItems, ...featuredItems]
 
     useEffect(() => {
         const fetchAllData = async () => {
             await Promise.all([
-                dispatch(getSeedItems()),
-                dispatch(getDailyItems()),
-                dispatch(getFeaturedItems()),
+                // dispatch(getSeedItems()),
+                // dispatch(getDailyItems()),
+                // dispatch(getFeaturedItems()),
                 dispatch(getInventory()),
                 dispatch(getReminders()),
                 dispatch(getComments()),
@@ -68,7 +64,7 @@ const InventoryPage = () => {
     }, [dispatch]);
 
     const userReminders = reminders.filter(reminder => reminder.userId === sessionUser.id)
-    console.log('USER REMINDERS', userReminders);
+    // console.log('USER REMINDERS', userReminders);
 
     const userComments = comments.filter(comment => comment.userId === sessionUser.id)
     const userLikes = likes.filter(like => like.userId === sessionUser.id)
@@ -88,7 +84,7 @@ const InventoryPage = () => {
                             const item = allItems.find(item => item.itemId === reminder.itemId);
 
                             return item ? (
-                                <div className='inventory-item' key={reminder.itemId}>
+                                <div className='inventory-item' key={reminder.itemId} onClick={() => history.push(`/item/${item.name}`)}>
                                     
                                     <div className='img-container'>
                                         <img className='home-item-image' src={item.images.icon} alt={item.name} style={{ backgroundColor: getItemBackgroundColor(item.rarity) }}/>
@@ -123,7 +119,7 @@ const InventoryPage = () => {
                             const item = allItems.find(item => item.itemId === comment.itemId);
 
                             return item ? (
-                                <div className='inventory-item' key={comment.itemId}>
+                                <div className='inventory-item' key={comment.itemId} onClick={() => history.push(`/item/${item.name}`)}>
                                     
                                     <div className='img-container'>
                                         <img className='home-item-image' src={item.images.icon} alt={item.name} style={{ backgroundColor: getItemBackgroundColor(item.rarity) }}/>
@@ -155,7 +151,7 @@ const InventoryPage = () => {
                             const item = allItems.find(item => item.itemId === vote.itemId);
 
                             return item ? (
-                                <div className='inventory-item' key={vote.itemId}>
+                                <div className='inventory-item' key={vote.itemId} onClick={() => history.push(`/item/${item.name}`)}>
                                     
                                     <div className='img-container'>
                                         <img className='home-item-image' src={item.images.icon} alt={item.name} style={{ backgroundColor: getItemBackgroundColor(item.rarity) }}/>
