@@ -78,7 +78,33 @@ const InventoryPage = () => {
             {sessionUser &&
                 <>
                     <InventoryItems />
-                    <h2>Your Reminders: ({userReminders.length})</h2>
+                    <div className='inventory-reminders'>
+                        <h2>Your Reminders: ({userReminders.length})</h2>
+
+                            {userReminders.map(reminder => {
+                            const item = allItems.find(item => item.itemId === reminder.itemId);
+
+                            return item ? (
+                                <div className='inventory-item' key={reminder.itemId}>
+                                    <div className='inventory-quantity'>{reminder.duration}x</div>
+                                    <div className='img-container'>
+                                        <img className='home-item-image' src={item.images.icon} alt={item.name} style={{ backgroundColor: getItemBackgroundColor(item.rarity) }}/>
+                                    </div>
+                                    <div className='inventory-item-info'>
+                                        <div className='inventory-item-name'>Item name: {item.name}</div>
+                                        <div className='inventory-rarity-section'>Rarity: <span className='rarity' style={{ backgroundColor: getItemBackgroundColor(item.rarity) }}>{item.rarity}</span></div>
+
+                                        <div className='inventory-item-type'>Type: {item.type}</div>
+                                        <div className='item-detail-price'>
+                                            <img src={item.priceIconLink} alt={item.priceIcon} className='vbucks-icon'/>
+                                            <div className='inventory-item-price'>{item.price}</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            ) : null;
+                        })}
+
+                    </div>
                     <h2>Your Comments: ({userComments.length})</h2>
                     <h2>Your Likes: ({userLikes.length})</h2>
                 </>
