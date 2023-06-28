@@ -8,10 +8,9 @@ import { useHistory } from 'react-router-dom'
 import { getInventory } from '../../store/inventory'
 import { getReminders } from '../../store/reminders'
 import vbucks from '../../assets/images/vbucks-icon.webp'
-import './InventoryPage.css'
-import InventoryItems from '../InventoryItems'
+import './InventoryItems.css'
 
-const InventoryPage = () => {
+const InventoryItems = () => {
     const dispatch = useDispatch();
     const inventory = useSelector(state => state.inventory);
     console.log('INVENTORY', inventory)
@@ -21,56 +20,32 @@ const InventoryPage = () => {
     const dailyItems = useSelector(state => state.items.dailyItems);
     const featuredItems = useSelector(state => state.items.featuredItems);
 
-    useEffect(() => {
-        const seedItemsStored = localStorage.getItem('seedItems');
-        const dailyItemsStored = localStorage.getItem('dailyItems');
-        const featuredItemsStored = localStorage.getItem('featuredItems');
-    
-        if (!seedItemsStored || !dailyItemsStored || !featuredItemsStored) {
-            dispatch(getSeedItems())
-            dispatch(getDailyItems())
-            dispatch(getFeaturedItems())
-        } else {
-            dispatch(setSeedItems(JSON.parse(seedItemsStored)));
-            dispatch(setDailyItems(JSON.parse(dailyItemsStored)));
-            dispatch(setFeaturedItems(JSON.parse(featuredItemsStored)));
-        }
-
-        //i want to always fetch likes from the server
-        dispatch(getLikes());
-        dispatch(getComments());
-        dispatch(getInventory());
-        dispatch(getReminders());
-    }, [dispatch]);
-
     const allItems = [...seedItems, ...dailyItems, ...featuredItems]
+    
+    function numberWithCommas(x) {
+        return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    } 
 
-    // function numberWithCommas(x) {
-    //     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-    // } 
+    //calculating the total value of the inventory
+    const totalValue = inventory.reduce((total, inventoryItem) => {
+        const item = allItems.find(item => item.itemId === inventoryItem.itemId);
+        if (item) {
+            const itemPrice = parseInt(item.price.replace(',', ''), 10);
+            return total + (inventoryItem.quantity * itemPrice);
+        }
+        return total;
+    }, 0);
 
-    // //calculating the total value of the inventory
-    // const totalValue = inventory.reduce((total, inventoryItem) => {
-    //     const item = allItems.find(item => item.itemId === inventoryItem.itemId);
-    //     if (item) {
-    //         const itemPrice = parseInt(item.price.replace(',', ''), 10);
-    //         return total + (inventoryItem.quantity * itemPrice);
-    //     }
-    //     return total;
-    // }, 0);
+    const formattedTotalValue = numberWithCommas(totalValue);
 
-    // const formattedTotalValue = numberWithCommas(totalValue);
-
-    // //calculating the total quantity of the inventory
-    // const totalItems = inventory.reduce((total, inventoryItem) => {
-    //     return total + inventoryItem.quantity;
-    // }, 0);
+    //calculating the total quantity of the inventory
+    const totalItems = inventory.reduce((total, inventoryItem) => {
+        return total + inventoryItem.quantity;
+    }, 0);
 
     return (
         <>
-            {sessionUser &&
-                <>
-                    {/* <div className='inventory-heading'>
+        <div className='inventory-heading'>
                         {inventory.length > 0 &&
                             <h1 className='inventory-welcome'>Nice collection so far, {sessionUser.username}!</h1>
                         }
@@ -105,17 +80,9 @@ const InventoryPage = () => {
                                 </div>
                             </div>
                         ) : null;
-                    })} */}
-                    <InventoryItems />
-
-                    <h2>Your Reminders: ({reminders.length})</h2>
-                </>
-            }
-            {!sessionUser &&
-                <h1>Sign in to view your account details!</h1>
-            }
-        </>
+                    })}
+                    </>
     )
-}
+} 
 
-export default InventoryPage;
+export default InventoryItems;
