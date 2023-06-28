@@ -19,9 +19,12 @@ const InventoryPage = () => {
     // console.log('INVENTORY', inventory)
     const sessionUser = useSelector(state => state.session.user);
     const reminders = useSelector(state => state.reminders);
-    // const seedItems = useSelector(state => state.items.seedItems);
-    // const dailyItems = useSelector(state => state.items.dailyItems);
-    // const featuredItems = useSelector(state => state.items.featuredItems);
+    const comments = useSelector(state => state.comments);
+    const likes = useSelector(state => state.totalLikes);
+
+    const seedItems = useSelector(state => state.items.seedItems);
+    const dailyItems = useSelector(state => state.items.dailyItems);
+    const featuredItems = useSelector(state => state.items.featuredItems);
 
     // useEffect(() => {
     //     const seedItemsStored = localStorage.getItem('seedItems');
@@ -39,13 +42,13 @@ const InventoryPage = () => {
     //     }
 
     //     //i want to always fetch likes from the server
-    //     dispatch(getLikes());
-    //     dispatch(getComments());
-    //     dispatch(getInventory());
-    //     dispatch(getReminders());
+    //     // dispatch(getLikes());
+    //     // dispatch(getComments());
+    //     // dispatch(getInventory());
+    //     // dispatch(getReminders());
     // }, [dispatch]);
 
-    // const allItems = [...seedItems, ...dailyItems, ...featuredItems]
+    const allItems = [...seedItems, ...dailyItems, ...featuredItems]
 
     useEffect(() => {
         const fetchAllData = async () => {
@@ -61,6 +64,12 @@ const InventoryPage = () => {
         fetchAllData();
     }, [dispatch]);
 
+    const userReminders = reminders.filter(reminder => reminder.userId === sessionUser.id)
+    console.log('USER REMINDERS', userReminders);
+
+    const userComments = comments.filter(comment => comment.userId === sessionUser.id)
+    const userLikes = likes.filter(like => like.userId === sessionUser.id)
+
     if (isLoading) {
         return <div>Loading...</div>
     }
@@ -69,7 +78,9 @@ const InventoryPage = () => {
             {sessionUser &&
                 <>
                     <InventoryItems />
-                    <h2>Your Reminders: ({reminders.length})</h2>
+                    <h2>Your Reminders: ({userReminders.length})</h2>
+                    <h2>Your Comments: ({userComments.length})</h2>
+                    <h2>Your Likes: ({userLikes.length})</h2>
                 </>
             }
             {!sessionUser &&
