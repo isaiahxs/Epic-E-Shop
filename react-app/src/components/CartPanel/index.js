@@ -58,17 +58,21 @@ const CartPanel = () => {
         };
     }, []);
 
+    function numberWithCommas(x) {
+        return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    } 
+
     return (
         <div>
             {isCartOpen && <div className="overlay" onClick={toggleCartOpen}></div>}
             <div className='item-detail-price current-wallet'>
                 <img className='vbucks-icon' src={vbucks} alt='vbucks icon' />
                 {sessionUser &&
-                <div className='current-vbucks'>Current V-Bucks: {sessionUser.vbucks}</div>
+                <div className='current-vbucks'>Current V-Bucks: {numberWithCommas(sessionUser.vbucks)}</div>
                 }
 
                 {!sessionUser &&
-                <div className='cart-not-logged-in'>Sign in to view your vbucks balance</div>
+                <div className='cart-not-logged-in'>Sign in to view your V-Bucks balance</div>
                 }
             </div>
             <div className='gift-message'>

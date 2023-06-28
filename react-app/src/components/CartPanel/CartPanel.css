@@ -11,6 +11,12 @@
     margin: 10px 0;
 }
 
+.current-vbucks {
+    font-family: 'Poppins', calibri, helvetica, arial, sans-serif;
+    ;
+    font-weight: bold;
+}
+
 .gift-message {
     font-family: 'Poppins', calibri, helvetica, arial, sans-serif;
     ;

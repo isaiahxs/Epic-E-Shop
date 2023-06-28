@@ -20,6 +20,7 @@ const Cart = ({isCartOpen}) => {
     const seedItems = useSelector(state => state.items.seedItems);
     const dailyItems = useSelector(state => state.items.dailyItems);
     const featuredItems = useSelector(state => state.items.featuredItems);
+    const sessionUser = useSelector(state => state.session.user);
 
     //combine both lists
     const allItems = [...seedItems, ...dailyItems, ...featuredItems]
@@ -61,6 +62,10 @@ const Cart = ({isCartOpen}) => {
         e.stopPropagation();
     }
 
+    function numberWithCommas(x) {
+        return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    } 
+
     return (
         // <div className={`cart ${isCartOpen ? 'cart-open' : 'cart-closed'}`}>
         <div className={`cart ${isCartOpen ? 'cart-open' : 'cart-closed'}`} onClick={handleClick}>
@@ -69,6 +74,14 @@ const Cart = ({isCartOpen}) => {
                 {itemsInCart.length !== 0 &&
                     <>
                         <h2 className='cart-items-heading'>These are the items you currently have in your cart:</h2>
+                        {sessionUser &&
+                            <>
+                                <div className='item-detail-price'>
+                                    <img src={vbucks} className='vbucks-icon' />
+                                    <h3 className='current-vbucks'>Current V-Bucks: {numberWithCommas(sessionUser.vbucks)}</h3>
+                                </div>
+                            </>
+                        }
                         <div className='cart-item-list'>
                             {itemsInCart.map(item => {
                                 if (item.images) {
@@ -80,7 +93,7 @@ const Cart = ({isCartOpen}) => {
                                                     <div>{item.quantity} {item.name}</div>
                                                     <div className='item-detail-price'>
                                                         <img className='vbucks-icon' src={item.priceIconLink} />
-                                                        <div>{item.price} vbucks</div>
+                                                        <div>{item.price} V-Bucks</div>
                                                     </div>
                                                     <button onClick={() => handleRemoveFromCart(item.itemId)}>Remove from cart</button>
                                                 </div>
@@ -102,7 +115,7 @@ const Cart = ({isCartOpen}) => {
                                     <div>{numberWithCommas(itemsInCart.reduce((total, item) => {
                                     const price = parseInt(item.price.replace(/,/g, ''), 10);
                                     return total + price * item.quantity;
-                                    }, 0))} vbucks
+                                    }, 0))} V-Bucks
                                     </div>
                                 </div>
                             </div>
@@ -115,7 +128,7 @@ const Cart = ({isCartOpen}) => {
                 }
                 {itemsInCart.length === 0 &&
                     <>
-                        <div>Looks like you don't have any items in your cart yet!</div>
+                        <h2>Looks like you don't have any items in your cart yet!</h2>
                     </>
                 }
             </div>
