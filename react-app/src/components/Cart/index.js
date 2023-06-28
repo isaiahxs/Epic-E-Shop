@@ -12,7 +12,7 @@ import { authenticate } from '../../store/session'
 // import { setUser } from '../../store/session'
 
 
-const Cart = () => {
+const Cart = ({isCartOpen}) => {
     const dispatch = useDispatch();
     const currentCart = useSelector(state => state.cart);
     // console.log('CURRENT CART', currentCart)
@@ -57,8 +57,13 @@ const Cart = () => {
         });
     }
 
+    const handleClick = (e) => {
+        e.stopPropagation();
+    }
+
     return (
-        <>
+        // <div className={`cart ${isCartOpen ? 'cart-open' : 'cart-closed'}`}>
+        <div className={`cart ${isCartOpen ? 'cart-open' : 'cart-closed'}`} onClick={handleClick}>
             <div className='current-cart-items'>
                 {/* {itemsInCart.length === 0 && <div>You currently have no items in your cart.</div>} */}
                 {itemsInCart.length !== 0 &&
@@ -119,7 +124,7 @@ const Cart = () => {
                 <div>Need more vbucks? You can buy some more with your starter cash!</div>
                 <div>If you've ran out of cash, you can earn more by completing daily tasks such as setting reminders, leaving comments, and likes!</div>
             </div>
-        </>
+        </div>
     )
 }
 

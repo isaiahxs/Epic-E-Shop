@@ -1,5 +1,10 @@
-.current-wallet {
+/* .current-wallet {
 
+} */
+
+.no-scroll {
+    overflow: hidden;
+    /* opacity: 0.5; */
 }
 
 .add-remove-cart-buttons {
@@ -11,4 +16,14 @@
     ;
     font-weight: bold;
     color: #cfb56d;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.6);
+    z-index: 1;
 }
