@@ -129,6 +129,14 @@ const Cart = ({isCartOpen}) => {
                 {itemsInCart.length === 0 &&
                     <>
                         <h2>Looks like you don't have any items in your cart yet!</h2>
+                        {sessionUser &&
+                            <>
+                                <div className='item-detail-price'>
+                                    <img src={vbucks} className='vbucks-icon' />
+                                    <h3 className='current-vbucks'>Current V-Bucks: {numberWithCommas(sessionUser.vbucks)}</h3>
+                                </div>
+                            </>
+                        }
                     </>
                 }
             </div>

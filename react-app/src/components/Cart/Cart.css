@@ -6,7 +6,7 @@
     height: 100%;
     transition: transform 0.4s ease-in-out;
     /* overflow: auto; */
-    overflow-y: hidden;
+    overflow-y: scroll;
     overflow-x: hidden;
     z-index: 100;
     background-color: #1e223a;
@@ -83,4 +83,5 @@
     font-weight: bold;
     /* color: #d0b66d; */
     color: #cfb56d;
+    margin: 40px 0;
 }
