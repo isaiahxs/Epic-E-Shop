@@ -109,14 +109,6 @@ const Cart = ({isCartOpen}) => {
                 {itemsInCart.length !== 0 &&
                     <>
                         <h2 className='cart-items-heading'>These are the items you currently have in your cart:</h2>
-                        {sessionUser &&
-                            <>
-                                <div className='item-detail-price'>
-                                    <img src={vbucks} className='vbucks-icon' />
-                                    <h3 className='current-vbucks'>Current V-Bucks: {numberWithCommas(sessionUser.vbucks)}</h3>
-                                </div>
-                            </>
-                        }
                         <div className='cart-item-list'>
                             {itemsInCart.map(item => {
                                 if (item.images) {
@@ -130,8 +122,10 @@ const Cart = ({isCartOpen}) => {
                                                         <img className='vbucks-icon' src={item.priceIconLink} />
                                                         <div>{item.price} V-Bucks</div>
                                                     </div>
-                                                    <button onClick={() => handleAddToCart(item.itemId)}>+1</button>
-                                                    <button onClick={() => handleRemoveFromCart(item.itemId)}>-1</button>
+                                                    <div className='in-cart-updates'>
+                                                        <button className='in-cart-add' onClick={() => handleAddToCart(item.itemId)}>+1</button>
+                                                        <button className='in-cart-remove' onClick={() => handleRemoveFromCart(item.itemId)}>-1</button>
+                                                    </div>
                                                 </div>
 
                                                 <div className='cart-item-image-container'>
@@ -144,16 +138,28 @@ const Cart = ({isCartOpen}) => {
                                 }
                             })}
 
+                            {sessionUser &&
+                                <>
+                                    <div className='inventory-balance-container'>
+                                        <h2 className='current-vbucks'>Current V-Bucks Balance:</h2>
+                                        <div className='item-detail-price inventory-balance'>
+                                            <img src={vbucks} className='vbucks-icon' />
+                                            <h3 className='balance-amount'>{numberWithCommas(sessionUser.vbucks)}</h3>
+                                        </div>
+                                    </div>
+                                </>
+                            }
+
                             <div className='cart-total'>
                                 <h2 className='cart-total-heading'>Cart Total:</h2>
-                                <div className='item-detail-price cart-total-price'>
+                                <h3 className='item-detail-price cart-total-price'>
                                     <img className='vbucks-icon' src={vbucks} />
                                     <div>{numberWithCommas(itemsInCart.reduce((total, item) => {
                                     const price = parseInt(item.price.replace(/,/g, ''), 10);
                                     return total + price * item.quantity;
                                     }, 0))} V-Bucks
                                     </div>
-                                </div>
+                                </h3>
                             </div>
 
                             <div className='checkout-button-container'>

@@ -85,3 +85,75 @@
     color: #cfb56d;
     margin: 40px 0;
 }
+
+.current-vbucks {
+    margin-bottom: 0;
+}
+
+.inventory-balance {
+    margin-bottom: 20px;
+}
+
+.balance-amount {
+    margin: 0;
+}
+
+.in-cart-updates {
+    display: flex;
+    /* flex-direction: column; */
+    /* justify-content: space-around; */
+}
+
+.in-cart-add {
+    margin-right: 15px;
+    color: #222222;
+    background-color: #35ff1f;
+    transition: 0.5s all;
+}
+
+.in-cart-add:hover {
+    background-color: 	#32ef1d;
+}
+
+.in-cart-remove {
+    background-color: #ff1f35;
+    transition: 0.5s all;
+}
+
+.in-cart-remove:hover {
+    background-color: 	#e11d30;
+}
+
+.in-cart-add,
+.in-cart-remove {
+    /* background-color: #222222; */
+    border: 1px solid white;
+    font-family: "Luckiest Guy", cursive;
+    font-size: 1.2rem;
+    margin-top: 5px;
+    cursor: pointer;
+}
+
+.checkout-button-container {
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+}
+
+.checkout-button {
+    /* background: #FF6347; */
+    background: #0e6ff8;
+    border: 1px solid white;
+    padding: 10px;
+    font-family: "Luckiest Guy", cursive;
+    font-size: 1.6rem;
+    margin-top: 20px;
+    color: white;
+    cursor: pointer;
+    transition: 0.5s all;
+}
+
+.checkout-button:hover {
+    background: #2138ff;
+    color: white;
+}
