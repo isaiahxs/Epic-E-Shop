@@ -45,7 +45,7 @@
   margin: 0;
   top: 110%;
   right: -95%;
-  z-index: 50;
+  /* z-index: 10; */
 }
 
 .dropdown-options {
