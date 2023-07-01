@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { setCart, getCart, addItem, addToCart, removeItem, removeFromCart } from '../../store/cart';
 import Cart from '../Cart';
 import vbucks from '../../assets/images/vbucks-icon.webp';
@@ -11,6 +11,8 @@ const CartPanel = () => {
     // console.log('SESSION USER', sessionUser)
 
     const currentItem = useSelector(state => state.items.currentItem);
+
+    const [isCartOpen, setIsCartOpen] = useState(false);
 
     //dispatch getCart whenever CartPanel is mounted or whenever sessionUser changes
     useEffect(() => {
@@ -35,26 +37,55 @@ const CartPanel = () => {
         .then(() => dispatch(getCart())) //only want to dispatch the re-render after the addToCart thunk action has completed
     }
 
+    // const toggleCartOpen = () => {
+    //     setIsCartOpen(!isCartOpen);
+    // }
+
+    //so i can disable background scrolling while cart is opened
+    const toggleCartOpen = () => {
+        setIsCartOpen(!isCartOpen);
+        if (!isCartOpen) {
+            document.body.classList.add('no-scroll');
+        } else {
+            document.body.classList.remove('no-scroll');
+        }
+    }
+
+    useEffect(() => {
+        return () => {
+            //removes the no-scroll class when the component unmounts
+            document.body.classList.remove('no-scroll');
+        };
+    }, []);
+
+    function numberWithCommas(x) {
+        return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    } 
+
     return (
         <div>
+            {isCartOpen && <div className="overlay" onClick={toggleCartOpen}></div>}
             <div className='item-detail-price current-wallet'>
                 <img className='vbucks-icon' src={vbucks} alt='vbucks icon' />
                 {sessionUser &&
-                <div className='current-vbucks'>Current V-Bucks: {sessionUser.vbucks}</div>
+                <div className='current-vbucks'>Current V-Bucks: {numberWithCommas(sessionUser.vbucks)}</div>
                 }
 
                 {!sessionUser &&
-                <div className='cart-not-logged-in'>Sign in to view your vbucks balance</div>
+                <div className='cart-not-logged-in'>Sign in to view your V-Bucks balance</div>
                 }
             </div>
             <div className='gift-message'>
                 <div>Feature coming soon: You can also purchase multiple of the same item in case you'd like to gift one to a friend!</div>
             </div>
+            <button className='toggle-cart' onClick={toggleCartOpen}>
+                {isCartOpen ? 'Close Cart' : 'Open Cart'}
+            </button>
             <div className='add-remove-cart-buttons'>
-                <button className='add-this-item-to-cart-button' onClick={() => handleAddToCart()}>Add this item to your cart</button>
-                <button className='remove-this-item-from-cart-button' onClick={() => handleRemoveFromCart(currentItem.itemId)}>Remove this item from your cart</button>
+                <button className='add-this-item-to-cart-button' onClick={() => handleAddToCart()}>Add to cart</button>
+                <button className='remove-this-item-from-cart-button' onClick={() => handleRemoveFromCart(currentItem.itemId)}>Remove from cart</button>
             </div>
-            <Cart />
+            <Cart isCartOpen={isCartOpen}/>
         </div>
     )
 }

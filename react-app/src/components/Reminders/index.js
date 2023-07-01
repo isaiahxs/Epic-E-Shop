@@ -97,7 +97,7 @@ const Reminders = () => {
                                     <div className='delete-message'>
                                         No longer want this reminder? Click the button below to delete it.
                                     </div>
-                                    <button className='delete-reminder' onClick={handleDeleteReminder}>
+                                    <button className='delete-reminder-button' onClick={handleDeleteReminder}>
                                         Delete Reminder
                                     </button>
                                 </div>
@@ -131,7 +131,7 @@ const Reminders = () => {
                                         <div className='delete-message'>
                                             No longer want this reminder? Click the button below to delete it.
                                         </div>
-                                        <button className='delete-reminder' onClick={handleDeleteReminder}>
+                                        <button className='delete-reminder-button' onClick={handleDeleteReminder}>
                                             Delete Reminder
                                         </button>
                                     </div>

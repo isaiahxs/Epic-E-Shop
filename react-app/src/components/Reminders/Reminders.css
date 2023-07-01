@@ -1,3 +1,7 @@
 .reminder-message {
     font-family: 'Poppins', calibri, helvetica, arial, sans-serif;
 }
+
+.delete-reminder-button {
+    background-color: #c52434;
+}

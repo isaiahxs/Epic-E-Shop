@@ -70,8 +70,8 @@ const Comments = () => {
                             <div>
                             {userId && userId === comment?.userId && editingCommentId !== comment.id && 
                             <div>
-                                <button onClick={() => handleEdit(comment.id, comment.text)}>Edit</button>
-                                <button onClick={() => handleDelete(comment?.id)}>Delete</button>
+                                <button className='edit-comment-button' onClick={() => handleEdit(comment.id, comment.text)}>Edit</button>
+                                <button className='delete-comment-button' onClick={() => handleDelete(comment?.id)}>Delete</button>
                             </div>
                             }
                             </div>
