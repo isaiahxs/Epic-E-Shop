@@ -41,8 +41,7 @@ function ProfileButton({ user }) {
   const closeMenu = () => setShowMenu(false);
 
   return (
-    // <div style={{position: 'relative'}}>
-    <div>
+    <div style={{position: 'relative'}}>
       <button onClick={openMenu}>
         <i className="fas fa-user-circle" />
       </button>
@@ -56,19 +55,22 @@ function ProfileButton({ user }) {
             </div>
           </div>
         ) : (
-          <>
+          <div className="dropdown-options">
             <OpenModalButton
-              buttonText="Log In"
+              className="login-button"
+              buttonText="Log in"
               onItemClick={closeMenu}
               modalComponent={<LoginFormModal />}
             />
+
+            <div className="dropdown-or">or</div>
 
             <OpenModalButton
               buttonText="Sign Up"
               onItemClick={closeMenu}
               modalComponent={<SignupFormModal />}
             />
-          </>
+          </div>
         )}
       </ul>
     </div>

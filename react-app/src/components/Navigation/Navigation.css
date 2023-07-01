@@ -36,10 +36,39 @@
 
 .profile-dropdown {
   position: absolute;
-  /* top: 100%; */
-  /* left: 0; */
-  /* top: 50px; */
-  /* right: 50px; */
+  display: flex;
+  /* flex-direction: row; */
+  align-items: center;
+  padding: 0px;
+  background-color: #0e1220;
+  border: 1px solid white;
+  margin: 0;
+  top: 110%;
+  right: -95%;
+  z-index: 50;
+}
+
+.dropdown-options {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+  /* margin: 10px 0; */
+  padding: 8px;
+}
+
+.login-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* width: 100%; */
+  margin-bottom: 10px;
+}
+
+.dropdown-or {
+  margin: 5px 0;
+  font-size: 1.1rem;
 }
 
 .hidden {
