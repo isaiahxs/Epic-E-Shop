@@ -78,12 +78,12 @@ const CartPanel = () => {
             <div className='gift-message'>
                 <div>Feature coming soon: You can also purchase multiple of the same item in case you'd like to gift one to a friend!</div>
             </div>
-            <button onClick={toggleCartOpen}>
+            <button className='toggle-cart' onClick={toggleCartOpen}>
                 {isCartOpen ? 'Close Cart' : 'Open Cart'}
             </button>
             <div className='add-remove-cart-buttons'>
-                <button className='add-this-item-to-cart-button' onClick={() => handleAddToCart()}>Add this item to your cart</button>
-                <button className='remove-this-item-from-cart-button' onClick={() => handleRemoveFromCart(currentItem.itemId)}>Remove this item from your cart</button>
+                <button className='add-this-item-to-cart-button' onClick={() => handleAddToCart()}>Add to cart</button>
+                <button className='remove-this-item-from-cart-button' onClick={() => handleRemoveFromCart(currentItem.itemId)}>Remove from cart</button>
             </div>
             <Cart isCartOpen={isCartOpen}/>
         </div>

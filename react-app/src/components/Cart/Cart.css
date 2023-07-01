@@ -106,7 +106,6 @@
 
 .in-cart-add {
     margin-right: 15px;
-    color: #222222;
     background-color: #35ff1f;
     transition: 0.5s all;
 }
@@ -132,6 +131,7 @@
     font-size: 1.2rem;
     margin-top: 5px;
     cursor: pointer;
+    color: #1d1d1d;
 }
 
 .checkout-button-container {

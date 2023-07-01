@@ -97,10 +97,6 @@ const Cart = ({isCartOpen}) => {
         e.stopPropagation();
     }
 
-    function numberWithCommas(x) {
-        return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-    } 
-
     return (
         // <div className={`cart ${isCartOpen ? 'cart-open' : 'cart-closed'}`}>
         <div className={`cart ${isCartOpen ? 'cart-open' : 'cart-closed'}`} onClick={handleClick}>
