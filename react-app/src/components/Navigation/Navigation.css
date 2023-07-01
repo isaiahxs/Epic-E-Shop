@@ -6,7 +6,6 @@
   margin: auto;
   height: 50px;
   font-size: 1.3rem;
-  /* background-color: lightgray; */
 }
 
 .nav-logo {
@@ -15,14 +14,11 @@
   display: flex;
   align-items: center;
   cursor: pointer;
-  /* border: 1px solid black; */
-  /* box-shadow: 4px 4px 0px 0px rgba(0, 0, 0, 1); */
 }
 
 .nav-options {
   display: flex;
   align-items: center;
-  /* background-color: blue; */
 }
 
 .active-link {
@@ -37,7 +33,6 @@
 .profile-dropdown {
   position: absolute;
   display: flex;
-  /* flex-direction: row; */
   align-items: center;
   padding: 0px;
   background-color: #0e1220;
@@ -45,7 +40,6 @@
   margin: 0;
   top: 110%;
   right: -95%;
-  /* z-index: 10; */
 }
 
 .dropdown-options {
@@ -54,15 +48,22 @@
   align-items: center;
   justify-content: center;
   white-space: nowrap;
-  /* margin: 10px 0; */
   padding: 8px;
+  cursor: default;
+}
+
+.dropdown-username {
+  margin-bottom: 10px;
+}
+
+.dropdown-logout-button {
+  background-color: #ff1f35;
 }
 
 .login-button {
   display: flex;
   justify-content: center;
   align-items: center;
-  /* width: 100%; */
   margin-bottom: 10px;
 }
 
@@ -83,7 +84,6 @@
   margin: 0 10px;
   cursor: pointer;
   text-decoration: none;
-  /* color: white; */
 }
 
 .nav-home:visited,
@@ -97,7 +97,5 @@
 .nav-about-me:hover,
 .nav-view-cart:hover,
 .user-icon:hover {
-  /* margin: 0 10px; */
-  /* cursor: pointer; */
   text-decoration: underline;
 }
