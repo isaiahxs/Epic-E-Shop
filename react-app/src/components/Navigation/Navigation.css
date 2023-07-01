@@ -38,8 +38,10 @@
   background-color: #0e1220;
   border: 1px solid white;
   margin: 0;
-  top: 110%;
+  top: 130%;
   right: -95%;
+  z-index: 1;
+  /* transform: translateZ(0); */
 }
 
 .dropdown-options {
@@ -48,7 +50,7 @@
   align-items: center;
   justify-content: center;
   white-space: nowrap;
-  padding: 8px;
+  padding: 10px;
   cursor: default;
 }
 
@@ -61,10 +63,11 @@
 }
 
 .login-button {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 10px;
+  background-color: #1e8513;
+}
+
+.signup-button {
+  background-color: #0e6ff8;
 }
 
 .dropdown-or {

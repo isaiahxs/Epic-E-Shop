@@ -32,7 +32,7 @@ def add_to_cart(itemId):
     #     return jsonify({'error': 'Item already in cart.'}), 400
     
     #although, if i want to implement the gifting system, i shouldn't limit cart items to one per user
-    
+
     cart_item = Cart(
         user_id=current_user.id,
         item_id=itemId
