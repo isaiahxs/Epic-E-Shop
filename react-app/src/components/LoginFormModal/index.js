@@ -42,6 +42,7 @@ function LoginFormModal() {
           <input
             type="text"
             value={email}
+            // placeholder="Please enter a valid email address"
             onChange={(e) => setEmail(e.target.value)}
             required
             className="form-input-field"
@@ -54,6 +55,7 @@ function LoginFormModal() {
           <input
             type="password"
             value={password}
+            // placeholder="Please enter your password"
             onChange={(e) => setPassword(e.target.value)}
             required
             className="form-input-field"

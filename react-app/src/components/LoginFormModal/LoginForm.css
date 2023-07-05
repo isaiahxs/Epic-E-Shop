@@ -44,10 +44,18 @@
     color: rgb(255, 87, 87);
 }
 
+.demo-user-button,
 .modal-submit-button {
-    margin: 20px 0px;
+    margin: 10px 0px;
     padding: 10px;
     background-color: #0e6ff8;
+    transition: 0.3s all;
+}
+
+.demo-user-button:hover,
+.modal-submit-button:hover {
+    background-color: #125cc4;
+    /* background-color: #0c4697; */
 }
 
 .modal-submit-button:disabled {

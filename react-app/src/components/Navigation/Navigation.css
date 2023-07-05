@@ -21,6 +21,11 @@
   align-items: center;
 }
 
+.nav-cart {
+  background-color:#0e1220;
+  border: none;
+}
+
 .active-link {
   color: #0fb8dd;
   text-decoration: underline;

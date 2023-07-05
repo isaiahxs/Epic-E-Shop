@@ -57,7 +57,7 @@ function Navigation({ isLoaded }){
                     About Me
                 </NavLink>
 				{/* <div className='nav-view-cart'>View Cart</div> */}
-				<button className='toggle-cart' onClick={toggleCartOpen}>
+				<button className='nav-cart' onClick={toggleCartOpen}>
                 	{isCartOpen ? 'Close Cart' : 'View Cart'}
             	</button>
 				{isLoaded && (
