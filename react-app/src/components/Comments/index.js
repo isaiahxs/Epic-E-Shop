@@ -39,6 +39,21 @@ const Comments = () => {
     // const currentItemComments = allComments.filter(comment => comment.itemId === currentItem.itemId);
     const currentItemComments = currentItem ? allComments.filter(comment => comment.itemId === currentItem.itemId) : [];
 
+    function formatDate(dateString) {
+        const date = new Date(dateString);
+        const day = date.getDate();
+        const month = date.toLocaleString('default', { month: 'long' }); //this will get the month name
+        const year = date.getFullYear();
+        
+        //function to convert day into ordinal number (1st, 2nd, 3rd, etc.)
+        function getOrdinal(n) {
+            const s = ["th","st","nd","rd"],
+            v = n % 100;
+            return n + (s[(v-20)%10] || s[v] || s[0]);
+        }
+    
+        return `${month} ${getOrdinal(day)}, ${year}`;
+    }
 
     return (
         currentItem ? (
@@ -47,8 +62,20 @@ const Comments = () => {
                 <div className='posted-comments'>
                     {currentItemComments.map(comment => (
                         <div key={comment.id}>
-                            <div>
-                                <h3>{comment.text}</h3>
+                            <div className='old-comments'>
+
+                                <div className='comment-profile-image-container'>
+                                    <img src={comment?.profileImage} alt='profile' className='comment-profile-image' />
+                                </div>
+
+                                <div className='old-comment-content'>
+                                    <h3>{comment.text}</h3>
+                                    <h3>{comment.username} - {formatDate(comment.createdAt)}</h3>
+                                    {comment.updatedAt !== comment.createdAt &&
+                                        <h3>Edited on {formatDate(comment.updatedAt)}</h3>
+                                    }
+                                </div>
+
                             </div>
 
                             <div className='comment-content'>

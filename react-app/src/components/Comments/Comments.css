@@ -1,3 +1,33 @@
+.old-comments {
+    display: flex;
+    /* justify-content: space-between; */
+    max-width: 400px;
+    align-items: center;
+}
+
+.old-comment-content {
+    margin-left: 20px;
+    /* margin: 0 auto; */
+}
+
+.old-comment-content h3 {
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+.comment-profile-image-container {
+    height: 75px;
+    width: 75px;
+}
+
+.comment-profile-image {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 2px solid white;
+}
+
 .posted-comments {
     font-family: 'Poppins', calibri, helvetica, arial, sans-serif;
 }

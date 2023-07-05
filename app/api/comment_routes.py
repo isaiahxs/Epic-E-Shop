@@ -11,7 +11,15 @@ def get_comments():
     Query for all comments and returns them in a list of comment dictionaries
     """
     comments = Comment.query.all()
-    return {'comments': [comment.to_dict() for comment in comments]}
+    # return {'comments': [comment.to_dict() for comment in comments]}
+
+    comments_list = []
+    for comment in comments:
+        comment_dict = comment.to_dict()
+        comment_dict['username'] = comment.user.username  #append the username to the comment dictionary
+        comment_dict['profileImage'] = comment.user.profile_image  #append the profile image to the comment dictionary
+        comments_list.append(comment_dict)
+    return {'comments': comments_list}
 
 @comment_routes.route('/<itemId>', methods=['POST'])
 @login_required

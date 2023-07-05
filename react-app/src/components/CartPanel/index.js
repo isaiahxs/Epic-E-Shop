@@ -72,7 +72,7 @@ const CartPanel = () => {
                 }
 
                 {!sessionUser &&
-                <div className='cart-not-logged-in'>Sign in to view your V-Bucks balance</div>
+                <h2 className='cart-not-logged-in'>Sign in to view your V-Bucks balance</h2>
                 }
             </div>
             <div className='gift-message'>
