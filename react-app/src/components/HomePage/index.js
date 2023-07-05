@@ -11,6 +11,7 @@ import RefreshCounter from '../RefreshCounter'
 import FanFavorites from '../FanFavorites'
 import './HomePage.css'
 import { getInventory } from '../../store/inventory'
+import { getCart } from '../../store/cart'
 
 const HomePage = () => {
     const history = useHistory()

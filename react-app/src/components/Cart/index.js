@@ -166,13 +166,18 @@ const Cart = ({isCartOpen}) => {
                 }
                 {itemsInCart.length === 0 &&
                     <>
-                        <h2>Looks like you don't have any items in your cart yet!</h2>
                         {sessionUser &&
                             <>
-                                <div className='item-detail-price'>
-                                    <img src={vbucks} className='vbucks-icon' />
-                                    <h3 className='current-vbucks'>Current V-Bucks: {numberWithCommas(sessionUser.vbucks)}</h3>
-                                </div>
+                                <h2>Looks like you don't have any items in your cart yet!</h2>
+                                    <div className='item-detail-price current-wallet'>
+                                        <img src={vbucks} className='vbucks-icon' />
+                                        <h3 className='current-vbucks'>Current V-Bucks: {numberWithCommas(sessionUser.vbucks)}</h3>
+                                    </div>
+                            </>
+                        }
+                        {!sessionUser &&
+                            <>
+                                <h2>Sign in to start adding items to your cart!</h2>
                             </>
                         }
                     </>
@@ -180,7 +185,7 @@ const Cart = ({isCartOpen}) => {
             </div>
             
             <div className='additional-money-message'>
-                <div>Need more vbucks? You can buy some more with your starter cash!</div>
+                <div>Need more V-Bucks? You can buy some more with your starter cash!</div>
                 <div>If you've ran out of cash, you can earn more by completing daily tasks such as setting reminders, leaving comments, and likes!</div>
             </div>
         </div>

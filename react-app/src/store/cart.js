@@ -2,6 +2,7 @@ import { setInventory } from "./inventory";
 
 //action
 const SET_CART = 'cart/SET_CART';
+const CLEAR_CART = 'cart/CLEAR_CART';
 const ADD_ITEM = 'cart/ADD_ITEM';
 const REMOVE_ITEM = 'cart/REMOVE_ITEM';
 
@@ -9,6 +10,10 @@ const REMOVE_ITEM = 'cart/REMOVE_ITEM';
 export const setCart = (cart) => ({
     type: SET_CART,
     payload: cart,
+});
+
+export const clearCart = () => ({
+    type: CLEAR_CART,
 });
 
 export const addItem = (item) => ({
@@ -94,6 +99,9 @@ export default function reducer(state = initialState, action) {
     switch (action.type) {
         case SET_CART:
             return action.payload.cart ? action.payload.cart : [];
+
+        case CLEAR_CART:
+            return [];
 
         case ADD_ITEM:
             return [...state, action.payload];
