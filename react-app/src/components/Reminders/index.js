@@ -139,7 +139,7 @@ const Reminders = () => {
                             }
 
                         </div>
-                        {!userReminderForItem &&
+                        {!userReminderForItem && sessionUser &&
                             <>
                                 <h3>
                                     Looks like you don't have a reminder for this item yet. Complete the form below to create one!
@@ -156,6 +156,14 @@ const Reminders = () => {
                                         Create Reminder
                                     </button>
                                 </form>
+                            </>
+                        }
+
+                        {!sessionUser &&
+                            <>
+                                <h3>
+                                    You must be logged in to set a reminder for this item.
+                                </h3>
                             </>
                         }
                     </div>

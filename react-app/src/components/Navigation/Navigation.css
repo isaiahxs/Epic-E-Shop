@@ -69,16 +69,25 @@
 
 .login-button {
   background-color: #1e8513;
+  margin-bottom: 10px;
+}
+
+.login-button:hover {
+  background-color: #17650f;
 }
 
 .signup-button {
   background-color: #0e6ff8;
 }
 
-.dropdown-or {
+.signup-button:hover {
+  background-color: #125cc4;
+}
+
+/* .dropdown-or {
   margin: 5px 0;
   font-size: 1.1rem;
-}
+} */
 
 .hidden {
   display: none;

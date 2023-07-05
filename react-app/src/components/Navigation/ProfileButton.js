@@ -40,6 +40,7 @@ function ProfileButton({ user }) {
   };
 
   const ulClassName = "profile-dropdown" + (showMenu ? "" : " hidden");
+
   const closeMenu = () => setShowMenu(false);
 
   return (
@@ -64,7 +65,7 @@ function ProfileButton({ user }) {
               modalComponent={<LoginFormModal />}
             />
 
-            <div className="dropdown-or">or</div>
+            {/* <div className="dropdown-or">or</div> */}
 
             <OpenModalButton
               className="signup-button"
