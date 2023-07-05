@@ -27,6 +27,11 @@ function LoginFormModal() {
     }
   };
 
+  const handleDemoLogin = () => {
+    dispatch(login('isaiahxs@gmail.com', 'password'));
+    closeModal();
+  }
+
   return (
     <div className="login-form-modal">
       <h1 className="modal-header">Log In</h1>
@@ -55,6 +60,8 @@ function LoginFormModal() {
           />
           {errors.password && <div className="error-message">{errors.password}</div>}
         </label>
+
+        <button className="demo-user-button" onClick={handleDemoLogin}>Demo User</button>
 
         <button className="modal-submit-button" type="submit" disabled={email.length === 0 || password.length === 0}>Log In</button>
       </form>
