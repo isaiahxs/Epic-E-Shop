@@ -1,6 +1,6 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { setReminders, getReminders, createReminder, createNewReminder, deleteReminder, deleteExistingReminder, editReminder, updateExistingReminder } from '../../store/reminders';
+import { getReminders, createNewReminder, deleteExistingReminder, updateExistingReminder } from '../../store/reminders';
 import './Reminders.css'
 
 const Reminders = () => {
@@ -60,7 +60,7 @@ const Reminders = () => {
 
     return (
         <div>
-            <h2>Reminders</h2>
+            <h2 className='idp-subheading'>Reminders</h2>
             <div className='user-reminders'>
                 <div className='reminder-message'>
                     <div>
@@ -79,15 +79,15 @@ const Reminders = () => {
                                         <div className='update-message'>
                                             Want to change how long your reminder is active for?
                                         </div>
-                                        <form onSubmit={handleUpdateReminder}>
+                                        <form className='reminder-form' onSubmit={handleUpdateReminder}>
                                             <label>New Reminder duration:
-                                                <select value={editDuration} onChange={(e) => setEditDuration(e.target.value)}>
+                                                <select className='select-field' value={editDuration} onChange={(e) => setEditDuration(e.target.value)}>
                                                     <option value={30}>30</option>
                                                     <option value={60}>60</option>
                                                     <option value={-1}>Until item returns</option>
                                                 </select>
                                             </label>
-                                            <button className='create-reminder' type='submit'>
+                                            <button className='create-reminder update-reminder' type='submit'>
                                                 Update Reminder
                                             </button>
                                         </form>
@@ -95,7 +95,7 @@ const Reminders = () => {
 
                                 <div className='delete-reminder-section'>
                                     <div className='delete-message'>
-                                        No longer want this reminder? Click the button below to delete it.
+                                        No longer want this reminder? Click the button below to delete it!
                                     </div>
                                     <button className='delete-reminder-button' onClick={handleDeleteReminder}>
                                         Delete Reminder
@@ -113,40 +113,46 @@ const Reminders = () => {
                                         <div className='update-message'>
                                             Want to change how long your reminder is active for?
                                         </div>
-                                        <form onSubmit={handleUpdateReminder}>
-                                            <label>New Reminder duration:
-                                                <select value={editDuration} onChange={(e) => setEditDuration(e.target.value)}>
+                                        <form className='reminder-form' onSubmit={handleUpdateReminder}>
+                                            <label>New reminder duration:
+                                                <select className='select-field' value={editDuration} onChange={(e) => setEditDuration(e.target.value)}>
                                                     <option value={30}>30</option>
                                                     <option value={60}>60</option>
                                                     <option value={-1}>Until item returns</option>
                                                 </select>
                                             </label>
-                                            <button className='create-reminder' type='submit'>
+                                            <button className='create-reminder update-reminder' type='submit'>
                                                 Update Reminder
                                             </button>
+                                            
                                         </form>
                                     </div>
 
                                     <div className='delete-reminder-section'>
                                         <div className='delete-message'>
-                                            No longer want this reminder? Click the button below to delete it.
+                                            No longer want this reminder?
+
+                                            <button className='delete-reminder-button' onClick={handleDeleteReminder}>
+                                                Delete Reminder
+                                            </button>
+
                                         </div>
-                                        <button className='delete-reminder-button' onClick={handleDeleteReminder}>
+                                        {/* <button className='delete-reminder-button' onClick={handleDeleteReminder}>
                                             Delete Reminder
-                                        </button>
+                                        </button> */}
                                     </div>
                                 </>
                             }
 
                         </div>
-                        {!userReminderForItem &&
+                        {!userReminderForItem && sessionUser &&
                             <>
                                 <h3>
                                     Looks like you don't have a reminder for this item yet. Complete the form below to create one!
                                 </h3>
-                                <form onSubmit={handleCreateReminder}>
+                                <form className='reminder-form' onSubmit={handleCreateReminder}>
                                     <label>Reminder duration:
-                                        <select value={duration} onChange={(e) => setDuration(e.target.value)}>
+                                        <select className='select-field' value={duration} onChange={(e) => setDuration(e.target.value)}>
                                             <option value={30}>30</option>
                                             <option value={60}>60</option>
                                             <option value={-1}>Until item returns</option>
@@ -156,6 +162,14 @@ const Reminders = () => {
                                         Create Reminder
                                     </button>
                                 </form>
+                            </>
+                        }
+
+                        {!sessionUser &&
+                            <>
+                                <h3 className='reminder-message-logged-out'>
+                                    You must be logged in to set a reminder for this item.
+                                </h3>
                             </>
                         }
                     </div>

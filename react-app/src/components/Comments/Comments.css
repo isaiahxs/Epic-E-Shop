@@ -1,3 +1,35 @@
+.old-comments {
+    display: flex;
+    /* justify-content: space-between; */
+    /* max-width: 500px; */
+    align-items: center;
+    height: auto;
+    margin-bottom: 15px;
+}
+
+.old-comment-content {
+    margin-left: 20px;
+    /* margin: 0 auto; */
+}
+
+.old-comment-content h3 {
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+.comment-profile-image-container {
+    height: 75px;
+    width: 75px;
+}
+
+.comment-profile-image {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 2px solid white;
+}
+
 .posted-comments {
     font-family: 'Poppins', calibri, helvetica, arial, sans-serif;
 }
@@ -8,4 +40,31 @@
 
 .delete-comment-button {
     background-color: #c52434;
+    margin-left: 10px;
+}
+
+.edit-delete-comment-buttons {
+    margin-top: 20px;
+}
+
+.edit-comment-form,
+.new-comment-form {
+    display: flex;
+    align-items: center;
+}
+
+.comment-input {
+    height: 16px;
+    margin-right: 10px;
+    font-family: 'Poppins', calibri, helvetica, arial, sans-serif;
+    padding: 5px;
+}
+
+.submit-comment {
+    background-color: #1e8513;
+}
+
+.submit-comment:disabled {
+    background-color: grey;
+    cursor: not-allowed;
 }

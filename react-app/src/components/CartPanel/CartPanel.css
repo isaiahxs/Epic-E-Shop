@@ -22,6 +22,7 @@
     ;
     font-weight: bold;
     color: #cfb56d;
+    margin-bottom: 20px;
 }
 
 .overlay {
@@ -40,6 +41,7 @@
 
 .add-this-item-to-cart-button {
     background-color: #1e8513;
+    margin: 0 10px;
 }
 
 .remove-this-item-from-cart-button {

@@ -7,13 +7,13 @@ def seed_users():
     User.query.delete()
     
     demo = User(
-        username='Demo', email='demo@aa.io', password='password')
+        username='Demo', email='demo@aa.io', password='password', profile_image='https://image.fnbr.co/outfit/5fa125c7da8456464f40038e/icon.png')
     marnie = User(
-        username='marnie', email='marnie@aa.io', password='password')
+        username='marnie', email='marnie@aa.io', password='password', profile_image='https://image.fnbr.co/outfit/5fa12630da845698dc4003a0/icon.png')
     bobbie = User(
-        username='bobbie', email='bobbie@aa.io', password='password')
+        username='bobbie', email='bobbie@aa.io', password='password', profile_image='https://image.fnbr.co/outfit/5fa12620da84561a8440039d/icon.png')
     isaiah = User(
-        username='isaiahxs', email='isaiahxs@gmail.com', password='password')
+        username='isaiahxs', email='isaiahxs@gmail.com', password='password', profile_image='https://image.fnbr.co/outfit/5fa1260eda845607cf40039a/icon.png')
 
     db.session.add(demo)
     db.session.add(marnie)

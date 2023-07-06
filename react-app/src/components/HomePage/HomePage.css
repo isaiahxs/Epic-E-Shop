@@ -27,10 +27,12 @@
     margin: auto;
     /* max-height: 400px; */
     transition: transform 1s ease;
+    /* z-index: -1; */
 }
 
 .hero-banner:hover {
     transform: scale(1.05);
+    /* z-index: -1; */
 }
 
 .home-heading {
@@ -48,6 +50,7 @@
     /* display: flex; */
     /* justify-content: center; */
     /* align-items: center; */
+    /* z-index: -1; */
 }
 
 .featured-items-button {

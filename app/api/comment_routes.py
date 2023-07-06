@@ -11,7 +11,15 @@ def get_comments():
     Query for all comments and returns them in a list of comment dictionaries
     """
     comments = Comment.query.all()
-    return {'comments': [comment.to_dict() for comment in comments]}
+    # return {'comments': [comment.to_dict() for comment in comments]}
+
+    comments_list = []
+    for comment in comments:
+        comment_dict = comment.to_dict()
+        comment_dict['username'] = comment.user.username  #append the username to the comment dictionary
+        comment_dict['profileImage'] = comment.user.profile_image  #append the profile image to the comment dictionary
+        comments_list.append(comment_dict)
+    return {'comments': comments_list}
 
 @comment_routes.route('/<itemId>', methods=['POST'])
 @login_required
@@ -33,13 +41,18 @@ def create_comment(itemId):
         comment = Comment(
             user_id=current_user.id,
             item_id=itemId,
-            text=form.data['text']
+            text=form.data['text'],
         )
 
         db.session.add(comment)
         db.session.commit()
 
-        return comment.to_dict()
+        # return comment.to_dict()
+        comment_dict = comment.to_dict()
+        comment_dict['username'] = current_user.username  #append the username to the comment dictionary
+        comment_dict['profileImage'] = current_user.profile_image  #append the profile image to the comment dictionary
+
+        return comment_dict
     return {'errors': form.errors}, 401
 
 @comment_routes.route('/<id>', methods=['PUT'])
@@ -60,7 +73,13 @@ def edit_comment(id):
     comment.text = data['text']
     db.session.commit()
 
-    return comment.to_dict()
+    # return comment.to_dict()
+    # return comment.to_dict()
+    comment_dict = comment.to_dict()
+    comment_dict['username'] = current_user.username  #append the username to the comment dictionary
+    comment_dict['profileImage'] = current_user.profile_image  #append the profile image to the comment dictionary
+
+    return comment_dict
 
 @comment_routes.route('/<id>', methods=['DELETE'])
 @login_required

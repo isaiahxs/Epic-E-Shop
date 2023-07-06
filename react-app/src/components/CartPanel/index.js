@@ -1,6 +1,6 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect, useState } from 'react';
-import { setCart, getCart, addItem, addToCart, removeItem, removeFromCart } from '../../store/cart';
+import { getCart, addToCart, removeFromCart } from '../../store/cart';
 import Cart from '../Cart';
 import vbucks from '../../assets/images/vbucks-icon.webp';
 import './CartPanel.css'
@@ -11,6 +11,7 @@ const CartPanel = () => {
     // console.log('SESSION USER', sessionUser)
 
     const currentItem = useSelector(state => state.items.currentItem);
+    const cart = useSelector(state => state.cart);
 
     const [isCartOpen, setIsCartOpen] = useState(false);
 
@@ -66,25 +67,34 @@ const CartPanel = () => {
         <div>
             {isCartOpen && <div className="overlay" onClick={toggleCartOpen}></div>}
             <div className='item-detail-price current-wallet'>
-                <img className='vbucks-icon' src={vbucks} alt='vbucks icon' />
                 {sessionUser &&
-                <div className='current-vbucks'>Current V-Bucks: {numberWithCommas(sessionUser.vbucks)}</div>
-                }
-
-                {!sessionUser &&
-                <div className='cart-not-logged-in'>Sign in to view your V-Bucks balance</div>
+                    <>
+                        <img className='vbucks-icon' src={vbucks} alt='vbucks icon' />
+                        <div className='current-vbucks'>Current V-Bucks: {numberWithCommas(sessionUser.vbucks)}</div>
+                    </>
                 }
             </div>
+
             <div className='gift-message'>
                 <div>Feature coming soon: You can also purchase multiple of the same item in case you'd like to gift one to a friend!</div>
             </div>
-            <button className='toggle-cart' onClick={toggleCartOpen}>
-                {isCartOpen ? 'Close Cart' : 'Open Cart'}
-            </button>
-            <div className='add-remove-cart-buttons'>
-                <button className='add-this-item-to-cart-button' onClick={() => handleAddToCart()}>Add to cart</button>
-                <button className='remove-this-item-from-cart-button' onClick={() => handleRemoveFromCart(currentItem.itemId)}>Remove from cart</button>
-            </div>
+            
+            <h2>Cart ({cart.length})</h2>
+            {!sessionUser &&
+                <button className='toggle-cart' onClick={toggleCartOpen}>
+                    {isCartOpen ? 'Close Cart' : 'Open Cart'}
+                </button>
+            }
+
+            {sessionUser &&
+                <div className='add-remove-cart-buttons'>
+                    <button className='toggle-cart' onClick={toggleCartOpen}>
+                        {isCartOpen ? 'Close Cart' : 'Open Cart'}
+                    </button>
+                    <button className='add-this-item-to-cart-button' onClick={() => handleAddToCart()}>Add to cart</button>
+                    <button className='remove-this-item-from-cart-button' onClick={() => handleRemoveFromCart(currentItem.itemId)}>Remove from cart</button>
+                </div>
+            }
             <Cart isCartOpen={isCartOpen}/>
         </div>
     )

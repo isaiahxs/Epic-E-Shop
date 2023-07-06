@@ -6,23 +6,25 @@
   margin: auto;
   height: 50px;
   font-size: 1.3rem;
-  /* background-color: lightgray; */
+  margin-top: 20px;
 }
 
 .nav-logo {
-  height: 50%;
-  width: 50%;
+  height: 70%;
+  width: 70%;
   display: flex;
   align-items: center;
   cursor: pointer;
-  /* border: 1px solid black; */
-  /* box-shadow: 4px 4px 0px 0px rgba(0, 0, 0, 1); */
 }
 
 .nav-options {
   display: flex;
   align-items: center;
-  /* background-color: blue; */
+}
+
+.nav-cart {
+  background-color:#0e1220;
+  border: none;
 }
 
 .active-link {
@@ -36,10 +38,78 @@
 
 .profile-dropdown {
   position: absolute;
-  /* top: 100%; */
-  /* left: 0; */
-  /* top: 50px; */
-  /* right: 50px; */
+  display: flex;
+  align-items: center;
+  padding: 0px;
+  background-color: #0e1220;
+  border: 1px solid white;
+  margin: 0;
+  top: 130%;
+  right: -95%;
+  z-index: 1;
+  /* transform: translateZ(0); */
+}
+
+/* .fa-user-circle::before {
+  background-color: red;
+  height: 50px;
+  width: 50px;
+} */
+
+/* .fas {
+  background-color: blue;
+} */
+
+.dropdown-options {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+  padding: 10px;
+  cursor: default;
+}
+
+.dropdown-username {
+  margin-bottom: 10px;
+}
+
+.dropdown-logout-button {
+  background-color: #ff1f35;
+}
+
+.login-button {
+  background-color: #1e8513;
+  margin-bottom: 10px;
+}
+
+.login-button:hover {
+  background-color: #17650f;
+}
+
+.signup-button {
+  background-color: #0e6ff8;
+}
+
+.signup-button:hover {
+  background-color: #125cc4;
+}
+
+.profile-icon-default,
+.profile-icon {
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid white;
+  cursor: pointer;
+  background-color: white;
+}
+
+.profile-icon-button {
+  border: none;
+  background-color: transparent;
+  /* position: relative; */
 }
 
 .hidden {
@@ -54,7 +124,6 @@
   margin: 0 10px;
   cursor: pointer;
   text-decoration: none;
-  /* color: white; */
 }
 
 .nav-home:visited,
@@ -68,7 +137,5 @@
 .nav-about-me:hover,
 .nav-view-cart:hover,
 .user-icon:hover {
-  /* margin: 0 10px; */
-  /* cursor: pointer; */
   text-decoration: underline;
 }
