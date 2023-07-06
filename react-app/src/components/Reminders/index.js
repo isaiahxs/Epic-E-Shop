@@ -161,7 +161,7 @@ const Reminders = () => {
 
                         {!sessionUser &&
                             <>
-                                <h3>
+                                <h3 className='reminder-message-logged-out'>
                                     You must be logged in to set a reminder for this item.
                                 </h3>
                             </>

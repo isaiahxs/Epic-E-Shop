@@ -59,7 +59,7 @@ const Cart = ({isCartOpen}) => {
     //     };
     // });
 
-    console.log('ITEMS IN CART LISTTTTTT', itemsInCart)
+    // console.log('ITEMS IN CART LISTTTTTT', itemsInCart)
 
     const handleAddToCart = (itemId) => {
         // e.preventDefault();
@@ -73,7 +73,7 @@ const Cart = ({isCartOpen}) => {
     }
 
     const handleRemoveFromCart = (itemId) => {
-        console.log('itemId within handleRemoveFromCart function', itemId)
+        // console.log('itemId within handleRemoveFromCart function', itemId)
 
         dispatch(removeFromCart(itemId))
         .then(() => dispatch(getCart()));

@@ -5,3 +5,7 @@
 .delete-reminder-button {
     background-color: #c52434;
 }
+
+.reminder-message-logged-out {
+    margin-top: 0px;
+}

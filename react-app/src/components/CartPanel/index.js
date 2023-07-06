@@ -11,6 +11,7 @@ const CartPanel = () => {
     // console.log('SESSION USER', sessionUser)
 
     const currentItem = useSelector(state => state.items.currentItem);
+    const cart = useSelector(state => state.cart);
 
     const [isCartOpen, setIsCartOpen] = useState(false);
 
@@ -66,21 +67,27 @@ const CartPanel = () => {
         <div>
             {isCartOpen && <div className="overlay" onClick={toggleCartOpen}></div>}
             <div className='item-detail-price current-wallet'>
-                <img className='vbucks-icon' src={vbucks} alt='vbucks icon' />
                 {sessionUser &&
-                <div className='current-vbucks'>Current V-Bucks: {numberWithCommas(sessionUser.vbucks)}</div>
+                    <>
+                        <img className='vbucks-icon' src={vbucks} alt='vbucks icon' />
+                        <div className='current-vbucks'>Current V-Bucks: {numberWithCommas(sessionUser.vbucks)}</div>
+                    </>
                 }
 
-                {!sessionUser &&
+                {/* {!sessionUser &&
                 <h2 className='cart-not-logged-in'>Sign in to view your V-Bucks balance</h2>
-                }
+                } */}
             </div>
+
             <div className='gift-message'>
                 <div>Feature coming soon: You can also purchase multiple of the same item in case you'd like to gift one to a friend!</div>
             </div>
+            
+            <h2>Cart ({cart.length})</h2>
             <button className='toggle-cart' onClick={toggleCartOpen}>
                 {isCartOpen ? 'Close Cart' : 'Open Cart'}
             </button>
+
             {sessionUser &&
                 <div className='add-remove-cart-buttons'>
                     <button className='add-this-item-to-cart-button' onClick={() => handleAddToCart()}>Add to cart</button>
