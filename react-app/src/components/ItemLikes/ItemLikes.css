@@ -1,5 +1,6 @@
 .likes {
     font-family: 'Poppins', calibri, helvetica, arial, sans-serif;
+    margin: 10px 0px;
 }
 
 .like-button {
@@ -8,8 +9,10 @@
 
 .dislike-button {
     background-color: #c52434;
+    margin-left: 10px;
 }
 
 .switch-vote-button {
     background-color: #c422dd;
+    margin-left: 10px;
 }
