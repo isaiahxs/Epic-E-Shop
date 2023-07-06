@@ -1,17 +1,19 @@
 import React, { useState, useEffect, useRef } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../store/session";
 import { clearCart } from "../../store/cart";
 import OpenModalButton from "../OpenModalButton";
 import LoginFormModal from "../LoginFormModal";
 import SignupFormModal from "../SignupFormModal";
-import { useHistory } from "react-router-dom"
+import { useHistory } from "react-router-dom";
+import userIcon from '../../assets/images/user.png';
 
 function ProfileButton({ user }) {
   const dispatch = useDispatch();
   const history = useHistory();
   const [showMenu, setShowMenu] = useState(false);
   const ulRef = useRef();
+  const sessionUser = useSelector(state => state.session.user);
 
   const openMenu = () => {
     if (showMenu) return;
@@ -45,8 +47,15 @@ function ProfileButton({ user }) {
 
   return (
     <div style={{position: 'relative'}}>
-      <button onClick={openMenu}>
-        <i className="fas fa-user-circle" />
+      <button className="profile-icon-button" onClick={openMenu}>
+        {!sessionUser &&
+          // <i className="fas fa-user-circle profile-icon-default" />
+          <img src={userIcon} alt="profile" className="profile-icon-default" />
+        }
+
+        {sessionUser &&
+          <img src={sessionUser?.profile_image} alt="profile" className="profile-icon" />
+        }
       </button>
       <ul className={ulClassName} ref={ulRef}>
         {user ? (

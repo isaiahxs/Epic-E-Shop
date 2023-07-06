@@ -41,9 +41,9 @@
 
 .add-this-item-to-cart-button {
     background-color: #1e8513;
+    margin: 0 10px;
 }
 
 .remove-this-item-from-cart-button {
     background-color: #c52434;
-    margin-left: 10px;
 }

@@ -1,6 +1,6 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect, useState } from 'react';
-import { setCart, getCart, addItem, addToCart, removeItem, removeFromCart } from '../../store/cart';
+import { getCart, addToCart, removeFromCart } from '../../store/cart';
 import Cart from '../Cart';
 import vbucks from '../../assets/images/vbucks-icon.webp';
 import './CartPanel.css'
@@ -73,10 +73,6 @@ const CartPanel = () => {
                         <div className='current-vbucks'>Current V-Bucks: {numberWithCommas(sessionUser.vbucks)}</div>
                     </>
                 }
-
-                {/* {!sessionUser &&
-                <h2 className='cart-not-logged-in'>Sign in to view your V-Bucks balance</h2>
-                } */}
             </div>
 
             <div className='gift-message'>
@@ -84,12 +80,17 @@ const CartPanel = () => {
             </div>
             
             <h2>Cart ({cart.length})</h2>
-            <button className='toggle-cart' onClick={toggleCartOpen}>
-                {isCartOpen ? 'Close Cart' : 'Open Cart'}
-            </button>
+            {!sessionUser &&
+                <button className='toggle-cart' onClick={toggleCartOpen}>
+                    {isCartOpen ? 'Close Cart' : 'Open Cart'}
+                </button>
+            }
 
             {sessionUser &&
                 <div className='add-remove-cart-buttons'>
+                    <button className='toggle-cart' onClick={toggleCartOpen}>
+                        {isCartOpen ? 'Close Cart' : 'Open Cart'}
+                    </button>
                     <button className='add-this-item-to-cart-button' onClick={() => handleAddToCart()}>Add to cart</button>
                     <button className='remove-this-item-from-cart-button' onClick={() => handleRemoveFromCart(currentItem.itemId)}>Remove from cart</button>
                 </div>

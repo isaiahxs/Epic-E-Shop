@@ -1,8 +1,5 @@
 import { useSelector, useDispatch } from 'react-redux'
-import { getDailyItems, getFeaturedItems } from '../../store/items'
-import { useEffect } from 'react'
 import { getItemBackgroundColor } from '../../utils'
-import { useHistory } from 'react-router-dom'
 import { getCart, removeFromCart, addToCart } from '../../store/cart'
 import vbucks from '../../assets/images/vbucks-icon.webp'
 import './Cart.css'

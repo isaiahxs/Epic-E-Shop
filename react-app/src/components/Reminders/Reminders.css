@@ -4,8 +4,37 @@
 
 .delete-reminder-button {
     background-color: #c52434;
+    margin-top: 10px;
 }
 
 .reminder-message-logged-out {
     margin-top: 0px;
+}
+
+.select-field {
+    height: 30px;
+    margin: 0 10px;
+    font-family: 'Poppins', calibri, helvetica, arial, sans-serif;
+    padding: 5px;
+}
+
+.reminder-form {
+    display: flex;
+    align-items: center;
+}
+
+.delete-reminder-section {
+    margin: 20px 0;
+}
+
+.delete-reminder-button {
+    margin-left: 10px;
+}
+
+.update-message {
+    margin-bottom: 5px;
+}
+
+.update-reminder {
+    background-color: #c422dd;
 }

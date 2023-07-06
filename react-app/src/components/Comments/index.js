@@ -1,5 +1,5 @@
 import {useSelector, useDispatch} from 'react-redux'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { createComment, editComment, deleteComment, getComments } from '../../store/comments'
 import './Comments.css'
 
@@ -93,7 +93,7 @@ const Comments = () => {
                                             onChange={(e) => setEditText(e.target.value)} 
                                             required
                                         />
-                                        <button className='submit-comment' type="submit">Submit Edit</button>
+                                        <button className='submit-comment' type="submit" disabled={editText.length === 0}>Submit Edit</button>
                                     </form>
                                 }
                             </div>
@@ -121,8 +121,9 @@ const Comments = () => {
                             value={newCommentText}    
                             onChange={(e) => setNewCommentText(e.target.value)}
                             placeholder='Add a comment...'
+                            required
                             />
-                            <button className='submit-comment' type='submit'>Submit</button>
+                            <button className='submit-comment' type='submit' disabled={newCommentText.length === 0}>Submit</button>
                         </form>
                     }
                 </div>

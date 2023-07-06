@@ -6,11 +6,12 @@
   margin: auto;
   height: 50px;
   font-size: 1.3rem;
+  margin-top: 20px;
 }
 
 .nav-logo {
-  height: 50%;
-  width: 50%;
+  height: 70%;
+  width: 70%;
   display: flex;
   align-items: center;
   cursor: pointer;
@@ -49,6 +50,16 @@
   /* transform: translateZ(0); */
 }
 
+/* .fa-user-circle::before {
+  background-color: red;
+  height: 50px;
+  width: 50px;
+} */
+
+/* .fas {
+  background-color: blue;
+} */
+
 .dropdown-options {
   display: flex;
   flex-direction: column;
@@ -84,10 +95,22 @@
   background-color: #125cc4;
 }
 
-/* .dropdown-or {
-  margin: 5px 0;
-  font-size: 1.1rem;
-} */
+.profile-icon-default,
+.profile-icon {
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid white;
+  cursor: pointer;
+  background-color: white;
+}
+
+.profile-icon-button {
+  border: none;
+  background-color: transparent;
+  /* position: relative; */
+}
 
 .hidden {
   display: none;

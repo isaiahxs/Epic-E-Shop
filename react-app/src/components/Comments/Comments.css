@@ -46,3 +46,25 @@
 .edit-delete-comment-buttons {
     margin-top: 20px;
 }
+
+.edit-comment-form,
+.new-comment-form {
+    display: flex;
+    align-items: center;
+}
+
+.comment-input {
+    height: 16px;
+    margin-right: 10px;
+    font-family: 'Poppins', calibri, helvetica, arial, sans-serif;
+    padding: 5px;
+}
+
+.submit-comment {
+    background-color: #1e8513;
+}
+
+.submit-comment:disabled {
+    background-color: grey;
+    cursor: not-allowed;
+}
