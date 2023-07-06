@@ -12,10 +12,11 @@ const Comments = () => {
     const [editText, setEditText] = useState('');
     const [editingCommentId, setEditingCommentId] = useState(null);
 
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
         dispatch(createComment(currentItem.itemId, {text: commentText, userId: sessionUser.id}))
         setCommentText('');
+        // dispatch(getComments());
     }
 
     const handleEdit = (commentId, text) => {
@@ -58,7 +59,7 @@ const Comments = () => {
     return (
         currentItem ? (
             <div className='item-detail-comments'>
-                <h2>Comments ({currentItemComments?.length})</h2>
+                <h2 className='idp-subheading'>Comments ({currentItemComments?.length})</h2>
                 <div className='posted-comments'>
                     {currentItemComments.map(comment => (
                         <div key={comment.id}>
@@ -79,18 +80,17 @@ const Comments = () => {
                             </div>
 
                             <div className='comment-content'>
-                                {editingCommentId === comment?.id ?
+                                {editingCommentId === comment?.id &&
                                     <form className='edit-comment-form' onSubmit={(e) => handleEditSubmit(e, comment?.id)}>
                                         <input 
                                             className='comment-input'
+                                            placeholder={commentText}
                                             value={editText} 
                                             onChange={(e) => setEditText(e.target.value)} 
                                             required
                                         />
                                         <button className='submit-comment' type="submit">Submit Edit</button>
                                     </form>
-                                :
-                                    <p>{comment?.content}</p>
                                 }
                             </div>
 

@@ -60,7 +60,7 @@ const Reminders = () => {
 
     return (
         <div>
-            <h2>Reminders</h2>
+            <h2 className='idp-subheading'>Reminders</h2>
             <div className='user-reminders'>
                 <div className='reminder-message'>
                     <div>

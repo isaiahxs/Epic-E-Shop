@@ -1,8 +1,10 @@
 .old-comments {
     display: flex;
     /* justify-content: space-between; */
-    max-width: 400px;
+    /* max-width: 500px; */
     align-items: center;
+    height: auto;
+    margin-bottom: 15px;
 }
 
 .old-comment-content {
