@@ -130,13 +130,17 @@ const ItemDetailPage = () => {
                                 {item.price}
                             </div>
                             <div>{item.description}</div>
-                            <div>Release Date: {formatDate(item.history.firstSeen)}</div>
-                            <div>Last Seen: {formatDate(item.history.lastSeen)}</div>
-                            <div>Occurrences: {item.history.occurrences}</div>
+                            {item.history.dates &&
+                                <>
+                                    <div>Release Date: {formatDate(item.history.firstSeen)}</div>
+                                    <div>Last Seen: {formatDate(item.history.lastSeen)}</div>
+                                    <div>Occurrences: {item.history.occurrences}</div>
+                                </>
+                            }
                         </div>
 
                         <div className='item-history'>
-                            { item.history === false || !item.history.dates ? 
+                            {item.history === false || !item.history.dates ? 
                                 (
                                     <h3 className='occurrences'>
                                         Unfortunately, this item was a battle-pass exclusive, so you are not able to add it to your cart!

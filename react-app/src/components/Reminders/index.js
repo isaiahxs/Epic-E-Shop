@@ -59,7 +59,7 @@ const Reminders = () => {
     }
 
     return (
-        <div>
+        <div className='item-detail-reminders'>
             <h2 className='idp-subheading'>Reminders</h2>
             <div className='user-reminders'>
                 <div className='reminder-message'>

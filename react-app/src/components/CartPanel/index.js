@@ -64,7 +64,7 @@ const CartPanel = () => {
     } 
 
     return (
-        <div>
+        <div className='cart-panel-container'>
             {isCartOpen && <div className="overlay" onClick={toggleCartOpen}></div>}
             <div className='item-detail-price current-wallet'>
                 {sessionUser &&

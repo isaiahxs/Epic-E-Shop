@@ -1,3 +1,8 @@
+.item-detail-likes {
+    max-width: 1000px;
+    margin: 20px auto;
+}
+
 .likes {
     font-family: 'Poppins', calibri, helvetica, arial, sans-serif;
     margin: 10px 0px;

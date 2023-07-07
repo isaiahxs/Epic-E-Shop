@@ -53,6 +53,13 @@
     /* z-index: -1; */
 }
 
+.featured-items-button-container {
+    display: flex;
+    justify-content: center;
+}
+
 .featured-items-button {
-    cursor: pointer;
+    background-color: #ae35ea;
+    margin-top: 20px;
+    margin-bottom: 30px;
 }
