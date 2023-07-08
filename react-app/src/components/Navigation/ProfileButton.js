@@ -5,7 +5,7 @@ import { clearCart } from "../../store/cart";
 import OpenModalButton from "../OpenModalButton";
 import LoginFormModal from "../LoginFormModal";
 import SignupFormModal from "../SignupFormModal";
-import { useHistory } from "react-router-dom";
+import { useHistory, NavLink } from "react-router-dom";
 import userIcon from '../../assets/images/user.png';
 
 function ProfileButton({ user }) {
@@ -63,6 +63,7 @@ function ProfileButton({ user }) {
             <div className="dropdown-username">
               Hi, {user.username}
             </div>
+            <button className="dropdown-inventory-button" onClick={() => history.push("/inventory")}>Inventory</button>
             <button className="dropdown-logout-button" onClick={handleLogout}>Log Out</button>
           </div>
         ) : (

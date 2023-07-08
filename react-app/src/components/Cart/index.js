@@ -9,7 +9,7 @@ import { authenticate } from '../../store/session'
 // import { setUser } from '../../store/session'
 
 
-const Cart = ({isCartOpen}) => {
+const Cart = ({isCartOpen, toggleCartOpen}) => {
     const dispatch = useDispatch();
     const currentCart = useSelector(state => state.cart);
     // console.log('CURRENT CART', currentCart)
@@ -95,10 +95,9 @@ const Cart = ({isCartOpen}) => {
     }
 
     return (
-        // <div className={`cart ${isCartOpen ? 'cart-open' : 'cart-closed'}`}>
         <div className={`cart ${isCartOpen ? 'cart-open' : 'cart-closed'}`} onClick={handleClick}>
+            <button className='close-cart-button' onClick={toggleCartOpen}>X</button>
             <div className='current-cart-items'>
-                {/* {itemsInCart.length === 0 && <div>You currently have no items in your cart.</div>} */}
                 {itemsInCart.length !== 0 &&
                     <>
                         <h2 className='cart-items-heading'>These are the items you currently have in your cart:</h2>
@@ -122,7 +121,7 @@ const Cart = ({isCartOpen}) => {
                                                 </div>
 
                                                 <div className='cart-item-image-container'>
-                                                    <img className='item-detail-image cart-item-image' src={item.images.icon} style={{ backgroundColor: getItemBackgroundColor(item.rarity) }}/>
+                                                    <img className='cart-item-image' src={item.images.icon} style={{ backgroundColor: getItemBackgroundColor(item.rarity) }}/>
                                                 </div>
 
                                             </div>
@@ -135,7 +134,7 @@ const Cart = ({isCartOpen}) => {
                                 <>
                                     <div className='inventory-balance-container'>
                                         <h2 className='current-vbucks'>Current V-Bucks Balance:</h2>
-                                        <div className='item-detail-price inventory-balance'>
+                                        <div className='item-detail-price inventory-balance cart-content'>
                                             <img src={vbucks} className='vbucks-icon' />
                                             <h3 className='balance-amount'>{numberWithCommas(sessionUser.vbucks)}</h3>
                                         </div>
@@ -165,8 +164,8 @@ const Cart = ({isCartOpen}) => {
                     <>
                         {sessionUser &&
                             <>
-                                <h2>Looks like you don't have any items in your cart yet!</h2>
-                                    <div className='item-detail-price current-wallet'>
+                                <h2 className='cart-content-header cart-content'>Looks like you don't have any items in your cart yet!</h2>
+                                    <div className='item-detail-price current-wallet cart-content'>
                                         <img src={vbucks} className='vbucks-icon' />
                                         <h3 className='current-vbucks'>Current V-Bucks: {numberWithCommas(sessionUser.vbucks)}</h3>
                                     </div>

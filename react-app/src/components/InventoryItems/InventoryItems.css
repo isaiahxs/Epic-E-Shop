@@ -1,10 +1,13 @@
-.inventory-item {
-    /* margin: 30px 0;
+.inventory-container {
     display: flex;
-    align-items: center;
-    width: 600px; */
+    flex-direction: column;
+    margin: 0 auto;
+    max-width: 1000px;
+}
 
-    margin: 30px 0;
+.inventory-item {
+    /* margin: 10px 0; */
+    margin-bottom: 45px;
     display: grid;
     /* grid-template-columns: 0.5fr 2fr 3fr; */
     grid-template-columns: 1fr 1fr 1fr;
@@ -12,10 +15,17 @@
     gap: 20px;
     width: 700px;
     cursor: pointer;
+    /* border: 1px solid white; */
+}
 
-    /* background-color: red; */
-    /* justify-content: space-around; */
-    /* max-width: 500px; */
+.inventory-heading h2 {
+    margin: 0px;
+}
+
+.inventory-subheading {
+    margin-top: 25px;
+    margin-bottom: 10px;
+    font-family: "Luckiest Guy", cursive;
 }
 
 .inventory-item-info {
@@ -25,7 +35,6 @@
     margin: 20px 0px;
     font-size: 1.2rem;
     cursor: pointer;
-    /* padding: 10px 0px; */
 }
 
 .inventory-item-info > div {
@@ -38,4 +47,17 @@
     /* align-items: center; */
     font-size: 1.4rem;
     /* cursor: pointer; */
+}
+
+@media screen and (max-width: 705px) {
+    .inventory-item {
+        display: flex;
+        flex-direction: column;
+        width: auto;
+        /* justify-content: space-between; */
+    }
+
+    .inventory-item-info {
+        margin: 0px;
+    }
 }

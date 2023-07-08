@@ -69,6 +69,13 @@ const InventoryPage = () => {
     const userComments = comments.filter(comment => comment.userId === sessionUser.id)
     const userLikes = likes.filter(like => like.userId === sessionUser.id)
 
+    const scrollToTop = () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    };
+
     if (isLoading) {
         return <div>Loading...</div>
     }
@@ -77,8 +84,8 @@ const InventoryPage = () => {
             {sessionUser &&
                 <>
                     <InventoryItems />
-                    <div className='inventory-reminders'>
-                        <h2>Your Reminders: ({userReminders.length})</h2>
+                    <div className='inventory-reminders inventory-container'>
+                        <h2 className='inventory-subheading'>Your Reminders: ({userReminders.length})</h2>
 
                             {userReminders.map(reminder => {
                             const item = allItems.find(item => item.itemId === reminder.itemId);
@@ -112,8 +119,8 @@ const InventoryPage = () => {
                     </div>
 
 
-                    <div className='inventory-comments'>
-                        <h2>Your Comments: ({userComments.length})</h2>
+                    <div className='inventory-comments inventory-container'>
+                        <h2 className='inventory-subheading'>Your Comments: ({userComments.length})</h2>
 
                         {userComments.map(comment => {
                             const item = allItems.find(item => item.itemId === comment.itemId);
@@ -144,8 +151,8 @@ const InventoryPage = () => {
                     </div>
 
 
-                    <div className='inventory-likes'>
-                        <h2>Your Votes: ({userLikes.length})</h2>
+                    <div className='inventory-likes inventory-container'>
+                        <h2 className='inventory-subheading'>Your Votes: ({userLikes.length})</h2>
 
                         {userLikes.map(vote => {
                             const item = allItems.find(item => item.itemId === vote.itemId);
@@ -173,6 +180,9 @@ const InventoryPage = () => {
                     </div>
                 </>
             }
+            <div className='back-to-top-button-container'>
+                <button className='back-to-top-button' onClick={scrollToTop}>Back to Top</button>
+            </div>
             {!sessionUser &&
                 <h1>Sign in to view your account details!</h1>
             }

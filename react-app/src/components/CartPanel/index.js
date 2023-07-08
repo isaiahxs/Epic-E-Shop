@@ -101,7 +101,7 @@ const CartPanel = () => {
                         }
                     </div>
                 }
-                <Cart isCartOpen={isCartOpen}/>
+                <Cart isCartOpen={isCartOpen} toggleCartOpen={toggleCartOpen}/>
             </div>
             ) : (
                 <h1 className='loading-message'>Loading...</h1>
