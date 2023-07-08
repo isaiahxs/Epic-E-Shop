@@ -1,6 +1,7 @@
 .item-detail-comments {
     max-width: 1000px;
-    margin: 20px auto;
+    margin: 0px auto;
+    padding: 15px;
 }
 
 .old-comments {
@@ -51,6 +52,22 @@
 .edit-delete-comment-buttons {
     margin-top: 20px;
 }
+
+@media screen and (max-width: 805px) {
+    .edit-comment-button {
+        width: 50%;
+    }
+
+    .delete-comment-button {
+        width: 50%;
+    }
+
+    .edit-delete-comment-buttons {
+        display: flex;
+        justify-content: space-between;
+    }
+}
+
 
 .edit-comment-form,
 .new-comment-form {

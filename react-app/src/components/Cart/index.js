@@ -103,6 +103,9 @@ const Cart = ({isCartOpen, toggleCartOpen}) => {
                         <h2 className='cart-items-heading'>These are the items you currently have in your cart:</h2>
                         <div className='cart-item-list'>
                             {itemsInCart.map(item => {
+                                if (!item.price) {
+                                    console.error('Item with no price: ', item);
+                                }
                                 if (item.images) {
                                     return (
                                         <div className='individual-cart-item' key={item.id}>
@@ -146,10 +149,16 @@ const Cart = ({isCartOpen, toggleCartOpen}) => {
                                 <h2 className='cart-total-heading'>Cart Total:</h2>
                                 <h3 className='item-detail-price cart-total-price'>
                                     <img className='vbucks-icon' src={vbucks} />
-                                    <div>{numberWithCommas(itemsInCart.reduce((total, item) => {
+                                    {/* <div>{numberWithCommas(itemsInCart.reduce((total, item) => {
                                     const price = parseInt(item.price.replace(/,/g, ''), 10);
                                     return total + price * item.quantity;
                                     }, 0))} V-Bucks
+                                    </div> */}
+                                    <div>
+                                        {numberWithCommas(itemsInCart.reduce((total, item) => {
+                                            const price = item.price ? parseInt(item.price.replace(/,/g, ''), 10) : 0;
+                                            return total + price * item.quantity;
+                                        }, 0))} V-Bucks
                                     </div>
                                 </h3>
                             </div>

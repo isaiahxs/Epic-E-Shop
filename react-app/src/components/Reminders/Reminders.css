@@ -1,6 +1,7 @@
 .item-detail-reminders {
     max-width: 1000px;
-    margin: 20px auto;
+    margin: 0px auto;
+    padding: 15px;
 }
 
 .reminder-message {
@@ -26,18 +27,20 @@
 
 .reminder-form {
     display: flex;
-    /* align-items: center; */
-    flex-direction: column;
+    align-items: center;
+    /* flex-direction: column; */
 }
 
 .delete-reminder-section {
     display: flex;
-    flex-direction: column;
+    align-items: center;
+    /* flex-direction: column; */
     margin: 20px 0;
 }
 
-/* .delete-reminder-button {
-} */
+.delete-reminder-button {
+    margin-left: 10px;
+}
 
 .update-message {
     margin-bottom: 5px;
@@ -46,4 +49,20 @@
 .update-reminder {
     margin-top: 10px;
     background-color: #c422dd;
+}
+
+@media screen and (max-width: 600px) {
+    .reminder-form {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .delete-reminder-section {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .delete-reminder-button {
+        margin-left: 0px;
+    }
 }
