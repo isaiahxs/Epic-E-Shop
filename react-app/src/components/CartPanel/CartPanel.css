@@ -9,7 +9,10 @@
 }
 
 .add-remove-cart-buttons {
+    display: flex;
+    /* flex-direction: column; */
     margin: 10px 0;
+    /* width: 100px; */
 }
 
 .current-vbucks {

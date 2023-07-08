@@ -18,6 +18,7 @@
 
 .select-field {
     height: 30px;
+    width: 50px;
     margin: 0 10px;
     font-family: 'Poppins', calibri, helvetica, arial, sans-serif;
     padding: 5px;
@@ -25,21 +26,24 @@
 
 .reminder-form {
     display: flex;
-    align-items: center;
+    /* align-items: center; */
+    flex-direction: column;
 }
 
 .delete-reminder-section {
+    display: flex;
+    flex-direction: column;
     margin: 20px 0;
 }
 
-.delete-reminder-button {
-    margin-left: 10px;
-}
+/* .delete-reminder-button {
+} */
 
 .update-message {
     margin-bottom: 5px;
 }
 
 .update-reminder {
+    margin-top: 10px;
     background-color: #c422dd;
 }
