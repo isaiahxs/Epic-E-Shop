@@ -118,51 +118,53 @@ const ItemDetailPage = () => {
                         <div>
                             <img className='item-detail-image' src={item.images.icon} alt={item.name} style={{ backgroundColor: getItemBackgroundColor(item.rarity) }}/>
                         </div>
-                        <div className='item-details'>
-                            <h1 className='item-detail-name'>{item.name}</h1>
-                            <div className='item-rarity-section'>
-                                {/* <h3>Rarity:</h3> */}
-                                <h3 className='rarity' style={{ backgroundColor: getItemBackgroundColor(item.rarity) }}>{item.rarity}</h3>
-                                <h3 className='item-type'>{item.type}</h3>
-                            </div>
-                            <div className='item-detail-price'>
-                                <img className='vbucks-icon' src={item.priceIconLink} alt='vbucks' />
-                                {item.price}
-                            </div>
-                            <div>{item.description}</div>
-                            {item.history.dates &&
-                                <>
-                                    <div>Release Date: {formatDate(item.history.firstSeen)}</div>
-                                    <div>Last Seen: {formatDate(item.history.lastSeen)}</div>
-                                    <div>Occurrences: {item.history.occurrences}</div>
-                                </>
-                            }
-                        </div>
-
-                        <div className='item-history'>
-                            {item.history === false || !item.history.dates ? 
-                                (
-                                    <h3 className='occurrences'>
-                                        Unfortunately, this item was a battle-pass exclusive, so you are not able to add it to your cart!
-                                    </h3>
-                                ) : (
+                        <div className='item-detail-stats'>
+                            <div className='item-details'>
+                                <h1 className='item-detail-name'>{item.name}</h1>
+                                <div className='item-rarity-section'>
+                                    {/* <h3>Rarity:</h3> */}
+                                    <h3 className='rarity' style={{ backgroundColor: getItemBackgroundColor(item.rarity) }}>{item.rarity}</h3>
+                                    <h3 className='item-type'>{item.type}</h3>
+                                </div>
+                                <div className='item-detail-price'>
+                                    <img className='vbucks-icon' src={item.priceIconLink} alt='vbucks' />
+                                    {item.price}
+                                </div>
+                                <div>{item.description}</div>
+                                {item.history.dates &&
                                     <>
-                                        <h3 className='occurrences'>Shop Occurrences</h3>
-                                        <div className='time-days'>
-                                            <div className='date-days'>
-                                                <div>Date</div>
-                                                <div>Days Ago</div>
-                                            </div>
-                                            {item.history.dates.sort((a, b) => new Date(b) - new Date(a)).map(date => (
-                                                <div key={date} className="date-item">
-                                                    <div className='date'>{formatDate(date)}</div>
-                                                    <div className='days'>{daysAgo(date)}</div>
-                                                </div>
-                                            ))}
-                                        </div>
+                                        <div>Release Date: {formatDate(item.history.firstSeen)}</div>
+                                        <div>Last Seen: {formatDate(item.history.lastSeen)}</div>
+                                        <div>Occurrences: {item.history.occurrences}</div>
                                     </>
-                                )
-                            }
+                                }
+                            </div>
+
+                            <div className='item-history'>
+                                {item.history === false || !item.history.dates ? 
+                                    (
+                                        <h3 className='occurrences'>
+                                            Unfortunately, this item was a battle-pass exclusive, so you are not able to add it to your cart!
+                                        </h3>
+                                    ) : (
+                                        <>
+                                            <h3 className='occurrences'>Shop Occurrences</h3>
+                                            <div className='time-days'>
+                                                <div className='date-days'>
+                                                    <div>Date</div>
+                                                    <div>Days Ago</div>
+                                                </div>
+                                                {item.history.dates.sort((a, b) => new Date(b) - new Date(a)).map(date => (
+                                                    <div key={date} className="date-item">
+                                                        <div className='date'>{formatDate(date)}</div>
+                                                        <div className='days'>{daysAgo(date)}</div>
+                                                    </div>
+                                                ))}
+                                            </div>
+                                        </>
+                                    )
+                                }
+                            </div>
                         </div>
                         
                     </div>
