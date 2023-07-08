@@ -9,13 +9,38 @@ const FanFavorites = () => {
     const fanFavorites = useSelector(state => state.items.seedItems)
     const history = useHistory()
 
+    // const settings = {
+    //     infinite: true,
+    //     speed: 500,
+    //     slidesToShow: 2,
+    //     slidesToScroll: 2,
+    //     centerMode: true,
+    //     centerPadding: "110px",
+    // };
+
     const settings = {
         infinite: true,
         speed: 500,
-        slidesToShow: 2,
-        slidesToScroll: 2,
-        centerMode: true,
-        centerPadding: "110px",
+        slidesToShow: 3,
+        slidesToScroll: 3,
+        // centerMode: true,
+        // centerPadding: "110px",
+        responsive: [
+            {
+                breakpoint: 670,
+                settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 2,
+                }
+            },
+            {
+                breakpoint: 480,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                }
+            }
+        ]
     };
 
     return (

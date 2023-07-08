@@ -79,16 +79,18 @@ button {
 }
 
 /* THIS IS WHAT WE WILL WANT FOR MOBILE DIMENSIONS */
-@media screen and (max-width: 600px) {
+/* @media screen and (max-width: 600px) {
     .slick-list {
         padding: 0 65px !important;
     }
-}
-
-
-/* .slick-slide {
-    width: 200px !important;
 } */
+
+
+.slick-slide {
+    /* width: 200px !important; */
+    display: flex !important;
+    justify-content: center !important;
+}
 
 /* .slick-track {
     display: flex;
