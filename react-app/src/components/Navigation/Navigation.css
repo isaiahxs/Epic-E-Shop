@@ -135,3 +135,41 @@
 .user-icon:hover {
   text-decoration: underline;
 }
+
+@media screen and (max-width: 450px) {
+  .nav-bar {
+      flex-direction: column;
+      align-items: flex-start;
+      height: auto;
+      padding: 10px;
+  }
+
+  .nav-options {
+      width: 100%;
+      justify-content: space-between;
+      margin-top: 10px;
+  }
+  
+  .nav-logo {
+      height: 50%;
+      width: 50%;
+  }
+  
+  .nav-home,
+  .nav-inventory,
+  .nav-about-me,
+  .nav-view-cart,
+  .user-icon {
+      margin: 5px;
+  }
+  
+  .nav-cart {
+      font-size: 1rem;
+  }
+  
+  .nav-home,
+  .nav-about-me,
+  .nav-inventory {
+      font-size: 1rem;
+  }
+}
