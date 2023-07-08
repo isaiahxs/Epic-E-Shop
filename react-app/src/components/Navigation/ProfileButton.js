@@ -60,10 +60,10 @@ function ProfileButton({ user }) {
       <ul className={ulClassName} ref={ulRef}>
         {user ? (
           <div className="dropdown-options">
-            <div className="dropdown-username">Hi, {user.username}</div>
-            <div>
-              <button className="dropdown-logout-button" onClick={handleLogout}>Log Out</button>
+            <div className="dropdown-username">
+              Hi, {user.username}
             </div>
+            <button className="dropdown-logout-button" onClick={handleLogout}>Log Out</button>
           </div>
         ) : (
           <div className="dropdown-options">

@@ -27,6 +27,10 @@
   border: none;
 }
 
+.nav-cart:hover {
+  text-decoration: underline;
+}
+
 .active-link {
   color: #0fb8dd;
   text-decoration: underline;
@@ -44,30 +48,22 @@
   background-color: #0e1220;
   border: 1px solid white;
   margin: 0;
-  top: 130%;
-  right: -95%;
+  top: 110%;
+  right: -40%;
   z-index: 1;
-  /* transform: translateZ(0); */
 }
 
-/* .fa-user-circle::before {
-  background-color: red;
-  height: 50px;
-  width: 50px;
-} */
-
-/* .fas {
-  background-color: blue;
+/* .profile-dropdown::after {
+  z-index: 0;
 } */
 
 .dropdown-options {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
   white-space: nowrap;
   padding: 10px;
   cursor: default;
+  justify-content: center;
 }
 
 .dropdown-username {
@@ -138,4 +134,42 @@
 .nav-view-cart:hover,
 .user-icon:hover {
   text-decoration: underline;
+}
+
+@media screen and (max-width: 450px) {
+  .nav-bar {
+      flex-direction: column;
+      align-items: flex-start;
+      height: auto;
+      padding: 10px;
+  }
+
+  .nav-options {
+      width: 100%;
+      justify-content: space-between;
+      margin-top: 10px;
+  }
+  
+  .nav-logo {
+      height: 50%;
+      width: 50%;
+  }
+  
+  .nav-home,
+  .nav-inventory,
+  .nav-about-me,
+  .nav-view-cart,
+  .user-icon {
+      margin: 5px;
+  }
+  
+  .nav-cart {
+      font-size: 1rem;
+  }
+  
+  .nav-home,
+  .nav-about-me,
+  .nav-inventory {
+      font-size: 1rem;
+  }
 }

@@ -1,3 +1,8 @@
+.item-detail-reminders {
+    max-width: 1000px;
+    margin: 20px auto;
+}
+
 .reminder-message {
     font-family: 'Poppins', calibri, helvetica, arial, sans-serif;
 }

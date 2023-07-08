@@ -3,10 +3,14 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    /* background-color: red; */
+    /* color: #f2c233; */
+    font-size: 1.3rem;
+    /* color: red; */
 }
 
 .time-left {
     margin-bottom: 10px;
     margin-top: -10px;
+    /* text-decoration: underline; */
+    /* color: #f8b00c; */
 }

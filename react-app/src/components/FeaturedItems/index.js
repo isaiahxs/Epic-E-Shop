@@ -2,13 +2,13 @@ import {useSelector, useDispatch} from 'react-redux'
 import { getItemBackgroundColor } from '../../utils'
 import { useHistory } from 'react-router-dom'
 import Slider from 'react-slick'
-import './FanFavorites.css'
+import './FeaturedItems.css'
 
-const FanFavorites = () => {
-    const dispatch = useDispatch()
-    const fanFavorites = useSelector(state => state.items.seedItems)
+const FeaturedItems = () => {
+    const allFeaturedItems = useSelector(state => state.items.featuredItems)
     const history = useHistory()
 
+    // setting up options for the carousel
     // const settings = {
     //     infinite: true,
     //     speed: 500,
@@ -45,13 +45,13 @@ const FanFavorites = () => {
 
     return (
         <div className='carousel-container'>
-            <div className='daily-items-carousel'>
+            <div className='featured-items-carousel'>
                 <div className='home-subheading-container'>
-                    <h2 className='home-subheading'>All-time fan favorites</h2>
+                    <h2 className='home-subheading'>Today's Featured Items</h2>
                 </div>
                 <Slider {...settings}>
                     {/* check if the items array is not empty before trying to map over it */}
-                    {fanFavorites.length > 0 && fanFavorites.slice(0, 5).map((item, idx) => (
+                    {allFeaturedItems.length > 0 && allFeaturedItems.map((item, idx) => (
                         <div className='item-unit' key={idx} onClick={() => history.push(`/item/${item.name}`)}>
                             {/* possible image options are: featured, gallery, icon, png, resizeAvailable: boolean */}
                             <div className='img-container'>
@@ -72,4 +72,4 @@ const FanFavorites = () => {
     )
 }
 
-export default FanFavorites;
+export default FeaturedItems;

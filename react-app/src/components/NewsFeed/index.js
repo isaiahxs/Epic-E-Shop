@@ -9,60 +9,62 @@ import './NewsFeed.css'
 const NewsFeed = () => {
     return (
         <>
-            <h2>Latest News</h2>
-            <div className='news-feed'>
-                <div className='latest-news'>
-                    <div className='feed-image-container'>
-                        <img className='news-image' src={theWilds} alt='The Wilds' />
+            <div className='news-container'>
+            <h2 className='home-subheading latest-news-header'>Latest News</h2>
+                <div className='news-feed'>
+                    <div className='latest-news'>
+                        <div className='feed-image-container'>
+                            <img className='news-image' src={theWilds} alt='The Wilds' />
+                        </div>
+                        <div className='news-text'>
+                            <h3 className='news-text-heading'>Chapter 4 Season 3: WILDS</h3>
+                            <p className='news-text-body'>The WILDS await! Explore the vast jungle on the back of a raptor, ascend the high canopies or slide through the mud for additional speed and camouflage.</p>
+                        </div>
                     </div>
-                    <div className='news-text'>
-                        <h3 className='news-text-heading'>Chapter 4 Season 3: WILDS</h3>
-                        <p className='news-text-body'>The WILDS await! Explore the vast jungle on the back of a raptor, ascend the high canopies or slide through the mud for additional speed and camouflage.</p>
+                    <div className='latest-news'>
+                        <div className='feed-image-container'>
+                            <img className='news-image' src={raptorRiding} alt='Raptor Riding' />
+                        </div>
+                        <div className='news-text'>
+                            <h3 className='news-text-heading'>Raptor Riding</h3>
+                            <p className='news-text-body'>Raptors are running wild! Make your enemies go extinct as you traverse the jungles on these fearsome creatures.</p>
+                        </div>
                     </div>
-                </div>
-                <div className='latest-news'>
-                    <div className='feed-image-container'>
-                        <img className='news-image' src={raptorRiding} alt='Raptor Riding' />
+                    <div className='latest-news'>
+                        <div className='feed-image-container'>
+                            <img className='news-image' src={mud} alt='Mud' />
+                        </div>
+                        <div className='news-text'>
+                            <h3 className='news-text-heading'>Mud</h3>
+                            <p className='news-text-body'>Watch your step! Slide through a puddle of mud for a boost in speed and gain camouflage.</p>
+                        </div>
                     </div>
-                    <div className='news-text'>
-                        <h3 className='news-text-heading'>Raptor Riding</h3>
-                        <p className='news-text-body'>Raptors are running wild! Make your enemies go extinct as you traverse the jungles on these fearsome creatures.</p>
+                    <div className='latest-news'>
+                        <div className='feed-image-container'>
+                            <img className='news-image' src={wildsCharacters} alt='Shockwave Grenades' />
+                        </div>
+                        <div className='news-text'>
+                            <h3 className='news-text-heading'>Shockwave Grenades</h3>
+                            <p className='news-text-body'>Now available in Zero Build, bounce around the jungle with Shockwave Grenades!</p>
+                        </div>
                     </div>
-                </div>
-                <div className='latest-news'>
-                    <div className='feed-image-container'>
-                        <img className='news-image' src={mud} alt='Mud' />
+                    <div className='latest-news'>
+                        <div className='feed-image-container'>
+                            <img className='news-image' src={autograph} alt='Autograph Please!' />
+                        </div>
+                        <div className='news-text'>
+                            <h3 className='news-text-heading'>Autograph Please!</h3>
+                            <p className='news-text-body'>A long awaited emote is expected to return soon!</p>
+                        </div>
                     </div>
-                    <div className='news-text'>
-                        <h3 className='news-text-heading'>Mud</h3>
-                        <p className='news-text-body'>Watch your step! Slide through a puddle of mud for a boost in speed and gain camouflage.</p>
-                    </div>
-                </div>
-                <div className='latest-news'>
-                    <div className='feed-image-container'>
-                        <img className='news-image' src={wildsCharacters} alt='Shockwave Grenades' />
-                    </div>
-                    <div className='news-text'>
-                        <h3 className='news-text-heading'>Shockwave Grenades</h3>
-                        <p className='news-text-body'>Now available in Zero Build, bounce around the jungle with Shockwave Grenades!</p>
-                    </div>
-                </div>
-                <div className='latest-news'>
-                    <div className='feed-image-container'>
-                        <img className='news-image' src={autograph} alt='Autograph Please!' />
-                    </div>
-                    <div className='news-text'>
-                        <h3 className='news-text-heading'>Autograph Please!</h3>
-                        <p className='news-text-body'>A long awaited emote is expected to return soon!</p>
-                    </div>
-                </div>
-                <div className='latest-news'>
-                    <div className='feed-image-container'>
-                        <img className='news-image' src={airphoria} alt='Welcome to Airphoria' />
-                    </div>
-                    <div className='news-text'>
-                        <h3 className='news-text-heading'>Welcome to Airphoria</h3>
-                        <p className='news-text-body'>Explore the sky city Airphoria and recover Airie’s lost sneakers. Play the Airphoria Island for 10 minutes to receive the Air Max 1 '86 Back Bling</p>
+                    <div className='latest-news'>
+                        <div className='feed-image-container'>
+                            <img className='news-image' src={airphoria} alt='Welcome to Airphoria' />
+                        </div>
+                        <div className='news-text'>
+                            <h3 className='news-text-heading'>Welcome to Airphoria</h3>
+                            <p className='news-text-body'>Explore the sky city Airphoria and recover Airie’s lost sneakers. Play the Airphoria Island for 10 minutes to receive the Air Max 1 '86 Back Bling</p>
+                        </div>
                     </div>
                 </div>
             </div>

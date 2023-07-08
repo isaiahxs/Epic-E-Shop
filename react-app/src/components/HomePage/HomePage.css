@@ -17,6 +17,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    font-size: 2.2rem;
 }
 
 .hero-banner {
@@ -53,6 +54,66 @@
     /* z-index: -1; */
 }
 
+.featured-items-button-container {
+    display: flex;
+    justify-content: center;
+}
+
 .featured-items-button {
+    background-color: #ae35ea;
+    /* margin-top: 20px; */
+    /* margin-bottom: 30px; */
+    font-size: 1.35rem;
+}
+
+.home-item-information {
+    display: flex;
+    flex-direction: column;
+}
+
+.icon-and-price {
+    display: flex;
+    align-items: center;
+}
+
+.item-name {
     cursor: pointer;
 }
+
+.item-price {
+    cursor: pointer;
+}
+
+.vbucks-icon {
+    height: 25px;
+    width: 25px;
+    cursor: pointer;
+    margin-right: 5px;
+}
+
+.home-item-image {
+    height: 200px;
+    width: 200px;
+    cursor: pointer;
+    transition: transform 1s ease;
+    padding: none;
+}
+
+.home-item-image:hover {
+    transform: scale(1.07);
+}
+
+.item-unit {
+    display: flex;
+    /* flex-direction: column; */
+    /* justify-content: center; */
+    max-width: 200px;
+    margin: 0 10px;
+}
+
+/* .item-unit-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+} */
