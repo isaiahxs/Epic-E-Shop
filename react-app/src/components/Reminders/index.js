@@ -95,11 +95,11 @@ const Reminders = () => {
 
                                 <div className='delete-reminder-section'>
                                     <div className='delete-message'>
-                                        No longer want this reminder? Click the button below to delete it!
+                                        No longer want this reminder?
+                                        <button className='delete-reminder-button' onClick={handleDeleteReminder}>
+                                            Delete Reminder
+                                        </button>
                                     </div>
-                                    <button className='delete-reminder-button' onClick={handleDeleteReminder}>
-                                        Delete Reminder
-                                    </button>
                                 </div>
                             </>
                             }
@@ -145,7 +145,7 @@ const Reminders = () => {
                             }
 
                         </div>
-                        {!userReminderForItem && sessionUser &&
+                        {!userReminderForItem && sessionUser && currentItem.history.dates &&
                             <>
                                 <h3>
                                     Looks like you don't have a reminder for this item yet. Complete the form below to create one!
@@ -162,6 +162,12 @@ const Reminders = () => {
                                         Create Reminder
                                     </button>
                                 </form>
+                            </>
+                        }
+
+                        {!currentItem.history.dates &&
+                            <>
+                                <h3>Unfortunately, this item was a battle-pass exclusive from a previous season so it will not be coming to the shop.</h3>
                             </>
                         }
 
