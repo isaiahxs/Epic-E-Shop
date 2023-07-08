@@ -44,7 +44,7 @@ const InventoryItems = () => {
     }, 0);
 
     return (
-        <>
+        <div className='inventory-container'>
             <div className='inventory-heading'>
                 {inventory.length > 0 &&
                     <h1 className='inventory-welcome'>Nice collection so far, {sessionUser.username}!</h1>
@@ -55,8 +55,10 @@ const InventoryItems = () => {
                     <img src={vbucks} className='vbucks-icon inventory-vbuck'/>
                     <h2>{formattedTotalValue}</h2>
                 </div>
-                <h2>Total items: ({totalItems})</h2>
-                <h2>Unique items: ({inventory.length})</h2>
+                <div className='inventory-subheading'>
+                    <h2>Total items: ({totalItems})</h2>
+                    <h2>Unique items: ({inventory.length})</h2>
+                </div>
             </div>
 
             {inventory.map(inventoryItem => {
@@ -64,7 +66,6 @@ const InventoryItems = () => {
 
                 return item ? (
                     <div className='inventory-item' onClick={() => history.push(`/item/${item.name}`)} key={inventoryItem.itemId}>
-                        {/* <div className='inventory-quantity'>{inventoryItem.quantity}x</div> */}
                         <div className='img-container'>
                             <img className='home-item-image' src={item.images.icon} alt={item.name} style={{ backgroundColor: getItemBackgroundColor(item.rarity) }}/>
                         </div>
@@ -82,7 +83,7 @@ const InventoryItems = () => {
                     </div>
                 ) : null;
             })}
-        </>
+        </div>
     )
 } 
 

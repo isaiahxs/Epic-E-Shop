@@ -42,31 +42,28 @@ function Navigation({ isLoaded }){
 	return (
 		<div className='nav-bar'>
 			{isCartOpen && <div className="overlay" onClick={toggleCartOpen}></div>}
-			<div>
-				<img src={logo} className='nav-logo' alt='Battle Royale logo' onClick={() => history.push('/')}/>
-			</div>
-
 			<div className='nav-options'>
-				<NavLink to="/" exact className="nav-home" activeClassName="active-link">
-                    Home
-                </NavLink>
-				<NavLink to="/inventory" className="nav-inventory" activeClassName="active-link">
-					Inventory
-				</NavLink>
-				<NavLink to="/about_me" className="nav-about-me" activeClassName="active-link">
-                    About Me
-                </NavLink>
-				{/* <div className='nav-view-cart'>View Cart</div> */}
-				<button className='nav-cart' onClick={toggleCartOpen}>
-                	{isCartOpen ? 'Close Cart' : 'View Cart'}
-            	</button>
-				{isLoaded && (
-					<div className='user-icon'>
-						<ProfileButton user={sessionUser} />
-					</div>
-				)}
+				<div className='nav-logo-container'>
+					<img src={logo} className='nav-logo' alt='Battle Royale logo' onClick={() => history.push('/')}/>
+				</div>
+				<div className='nav-alt-container'>
+					<NavLink to="/" exact className="nav-home" activeClassName="active-link">
+						Home
+					</NavLink>
+					<NavLink to="/about_me" className="nav-about-me" activeClassName="active-link">
+						About Me
+					</NavLink>
+					<button className='nav-cart' onClick={toggleCartOpen}>
+						{isCartOpen ? 'Close Cart' : 'View Cart'}
+					</button>
+					{isLoaded && (
+						<div className='user-icon'>
+							<ProfileButton user={sessionUser} />
+						</div>
+					)}
+				</div>
 			</div>
-			<Cart isCartOpen={isCartOpen}/>
+			<Cart isCartOpen={isCartOpen} toggleCartOpen={toggleCartOpen}/>
 		</div>
 	);
 }
