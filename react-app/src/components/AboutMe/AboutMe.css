@@ -10,9 +10,9 @@
     justify-content: space-between;
 }
 
-.about-me-details {
-    padding: 0 20px;
-}
+/* .about-me-details { */
+    /* padding: 0 0px; */
+/* } */
 
 .about-me-rarity {
     background-color: #ff5a5f;
@@ -22,13 +22,18 @@
     width: 230px;
 }
 
+.about-me-body-container {
+    display: flex;
+    justify-content: center;
+}
+
 .about-me-body {
     display: flex;
     justify-content: center;
     flex-direction: column;
     align-items: center;
     /* margin-top: 50px; */
-    margin: 50px;
+    /* margin-left: 50px; */
     font-family: 'Poppins', calibri, helvetica, arial, sans-serif;
 }
 
@@ -47,7 +52,7 @@
     display: flex;
     justify-content: space-between;
     /* align-items: center; */
-    width: 450px;
+    max-width: 450px;
     margin-bottom: 50px;
 }
 
@@ -114,4 +119,57 @@
 
 .separator {
     margin: 0 5px;
+}
+
+@media screen and (max-width: 805px) {
+    .about-me-body {
+        margin-top: 300px;
+        max-width: 500px;
+    }
+
+    .about-me-history {
+        margin: 0px;
+    }
+
+    .about-me-details {
+        margin: 20px auto;
+        max-width: 400px;
+    }
+
+    .body-headers {
+        display: flex;
+        font-size: 1.5rem;
+    }
+
+    .about-body-subheading {
+        display: flex;
+        justify-content: center;
+        max-width: 300px;
+    }
+
+    .other-projects {
+        flex-direction: column;
+    }
+
+    .well-done {
+        margin-top: 30px;
+    }
+
+    .serene-haven,
+    .well-done {
+        margin-right: 0px;
+        margin-left: 0px;
+    }
+
+    .project-image {
+        height: 250px;
+        width: auto;
+    }
+}
+
+@media screen and (max-width: 535px) {
+    .about-me-body {
+        margin-top: 70px;
+        max-width: 500px;
+    }
 }
