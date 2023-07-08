@@ -64,43 +64,49 @@ const CartPanel = () => {
     } 
 
     return (
-        <div className='cart-panel-container'>
-            {isCartOpen && <div className="overlay" onClick={toggleCartOpen}></div>}
-            <div className='item-detail-price current-wallet'>
-                {sessionUser &&
-                    <>
-                        <img className='vbucks-icon' src={vbucks} alt='vbucks icon' />
-                        <div className='current-vbucks'>Current V-Bucks: {numberWithCommas(sessionUser.vbucks)}</div>
-                    </>
-                }
-            </div>
-
-            <div className='gift-message'>
-                <div>Feature coming soon: You can also purchase multiple of the same item in case you'd like to gift one to a friend!</div>
-            </div>
-            
-            <h2>Cart ({cart.length})</h2>
-            {!sessionUser &&
-                <button className='toggle-cart' onClick={toggleCartOpen}>
-                    {isCartOpen ? 'Close Cart' : 'Open Cart'}
-                </button>
-            }
-
-            {sessionUser &&
-                <div className='add-remove-cart-buttons'>
-                    <button className='toggle-cart' onClick={toggleCartOpen}>
-                        {isCartOpen ? 'Close Cart' : 'Open Cart'}
-                    </button>
-                    {currentItem.history.dates &&
+        <>
+            {currentItem ? (
+            <div className='cart-panel-container'>
+                {isCartOpen && <div className="overlay" onClick={toggleCartOpen}></div>}
+                <div className='item-detail-price current-wallet'>
+                    {sessionUser &&
                         <>
-                            <button className='add-this-item-to-cart-button' onClick={() => handleAddToCart()}>Add to cart</button>
-                            <button className='remove-this-item-from-cart-button' onClick={() => handleRemoveFromCart(currentItem.itemId)}>Remove from cart</button>
+                            <img className='vbucks-icon' src={vbucks} alt='vbucks icon' />
+                            <div className='current-vbucks'>Current V-Bucks: {numberWithCommas(sessionUser.vbucks)}</div>
                         </>
                     }
                 </div>
-            }
-            <Cart isCartOpen={isCartOpen}/>
-        </div>
+
+                <div className='gift-message'>
+                    <div>Feature coming soon: You can also purchase multiple of the same item in case you'd like to gift one to a friend!</div>
+                </div>
+                
+                <h2>Cart ({cart.length})</h2>
+                {!sessionUser &&
+                    <button className='toggle-cart' onClick={toggleCartOpen}>
+                        {isCartOpen ? 'Close Cart' : 'Open Cart'}
+                    </button>
+                }
+
+                {sessionUser &&
+                    <div className='add-remove-cart-buttons'>
+                        <button className='toggle-cart' onClick={toggleCartOpen}>
+                            {isCartOpen ? 'Close Cart' : 'Open Cart'}
+                        </button>
+                        {currentItem.history.dates &&
+                            <>
+                                <button className='add-this-item-to-cart-button' onClick={() => handleAddToCart()}>Add to cart</button>
+                                <button className='remove-this-item-from-cart-button' onClick={() => handleRemoveFromCart(currentItem.itemId)}>Remove from cart</button>
+                            </>
+                        }
+                    </div>
+                }
+                <Cart isCartOpen={isCartOpen}/>
+            </div>
+            ) : (
+                <h1 className='loading-message'>Loading...</h1>
+            )}
+        </>
     )
 }
 
