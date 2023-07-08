@@ -51,7 +51,7 @@
     background-color: #c422dd;
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 805px) {
     .reminder-form {
         flex-direction: column;
         align-items: flex-start;
@@ -62,7 +62,12 @@
         align-items: flex-start;
     }
 
+    .update-reminder {
+        width: 100%;
+    }
+
     .delete-reminder-button {
         margin-left: 0px;
+        width: 100%;
     }
 }
