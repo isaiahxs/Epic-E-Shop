@@ -1,6 +1,8 @@
 import {useSelector, useDispatch} from 'react-redux'
 import { getItemBackgroundColor } from '../../utils'
 import { useHistory } from 'react-router-dom'
+// import { useEffect, useState } from 'react'
+// import { getDailyItems } from '../../store/items'
 import Slider from 'react-slick'
 import './DailyItems.css'
 
@@ -64,19 +66,38 @@ const DailyItems = () => {
     const settings = {
         infinite: true,
         speed: 500,
-        slidesToShow: 2,
-        slidesToScroll: 2,
-        centerMode: true,
-        centerPadding: "110px",
+        slidesToShow: 3,
+        slidesToScroll: 3,
+        // centerMode: true,
+        // centerPadding: "110px",
+        responsive: [
+            {
+                breakpoint: 670,
+                settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 2,
+                }
+            },
+            {
+                breakpoint: 480,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                }
+            }
+        ]
     };
 
     return (
         <div className='carousel-container'>
             <div className='daily-items-carousel'>
-                <h2>Today's Daily Items</h2>
+                <div className='home-subheading-container'>
+                    <h2 className='home-subheading'>Today's Daily Items</h2>
+                </div>
                 <Slider {...settings}>
                     {/* check if the items array is not empty before trying to map over it */}
                     {allDailyItems.length > 0 && allDailyItems.map((item, idx) => (
+                    // <div className='item-unit-container'>
                         <div className='item-unit' key={idx} onClick={() => history.push(`/item/${item.name}`)}>
                             {/* possible image options are: featured, gallery, icon, png, resizeAvailable: boolean */}
                             <div className='img-container'>
@@ -90,6 +111,7 @@ const DailyItems = () => {
                                 </div>
                             </div>
                         </div>
+                    // </div>
                     ))}
                 </Slider>
             </div>
@@ -97,6 +119,6 @@ const DailyItems = () => {
     )
 }
 
-export default DailyItems;
-
 // export default DailyItems;
+
+export default DailyItems;

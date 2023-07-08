@@ -30,21 +30,36 @@ const Featured = () => {
         }
     }, [dispatch]);
 
+    const scrollToTop = () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    };
+
     return (
-        <div>
-            <h1>Featured Items</h1>
-            {featuredItems.length > 0 && featuredItems.map((item, idx) => (
-                <div key={idx} onClick={() => history.push(`/item/${item.name}`)}>
-                    <div className='home-item-information'>
-                        <div className='item-name home-item-name'>{item.name}</div>
-                        <img className='vbucks-icon' src={item.priceIconLink} alt='vbucks' />
-                        <div className='item-price home-item-price'>{item.price}</div>
+        <>
+            <h1 className='featured-header'>Today's Featured Items</h1>
+            <div className='featured-items-container'>
+                {featuredItems.length > 0 && featuredItems.map((item, idx) => (
+                    <div key={idx} onClick={() => history.push(`/item/${item.name}`)}>
+                        <div className='featured-item'>
+                            <div className='img-container'>
+                                <img className='home-item-image' src={item.images.icon} alt={item.name} style={{ backgroundColor: getItemBackgroundColor(item.rarity) }}/>
+                            </div>
+                            <div className='item-name home-item-name'>{item.name}</div>
+                            <div className='item-detail-price'>
+                                <img className='vbucks-icon' src={item.priceIconLink} alt='vbucks' />
+                                <div className='item-price home-item-price'>{item.price}</div>
+                            </div>
+                        </div>
                     </div>
-                    {/* possible image options are: featured, gallery, icon, png, resizeAvailable: boolean */}
-                    <img className='home-item-image' src={item.images.icon} alt={item.name} style={{ backgroundColor: getItemBackgroundColor(item.rarity) }}/>                    
-                </div>
-            ))}
-        </div>
+                ))}
+            </div>
+            <div className='back-to-top-button-container'>
+                <button className='back-to-top-button' onClick={scrollToTop}>Back to Top</button>
+            </div>
+        </>
     )
 }
 

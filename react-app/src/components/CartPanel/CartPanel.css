@@ -1,6 +1,7 @@
-/* .current-wallet {
-
-} */
+.cart-panel-container {
+    max-width: 1000px;
+    margin: 20px auto;
+}
 
 .no-scroll {
     overflow: hidden;

@@ -1,5 +1,3 @@
-/* TODO Add site wide styles */
-
 body {
     font-family: "Luckiest Guy", cursive;
     /* font-weight: light; */
@@ -7,11 +5,6 @@ body {
     color: #ffffff;
     background-color: #0e1220;
 }
-
-/* img {
-    border: 1px solid black;
-    box-shadow: 4px 4px 0px 0px rgba(0, 0, 0, 1);
-} */
 
 .item-name {
     font-family: 'Poppins', calibri, helvetica, arial, sans-serif;
@@ -36,3 +29,75 @@ button {
     transition: 0.5s all;
     cursor: pointer;
 }
+
+.home-subheading-container {
+    display: flex;
+    justify-content: center;
+}
+
+.home-subheading {
+    font-size: 1.8rem;
+}
+
+.img-container {
+    overflow: hidden;
+    border: 1px solid white;
+    border-right: 2px solid white;
+    border-left: 2px solid white;
+    height: 200px;
+    width: 200px;
+    margin-bottom: 10px;
+}
+
+.carousel-container {
+    margin-bottom: 35px;
+}
+
+
+.slick-next {
+    right: 15px !important;
+}
+
+.slick-prev {
+    left: 15px !important;
+}
+
+.slick-next,
+.slick-prev {
+    z-index: 1;
+    /* margin-bottom: 60px !important; */
+    top: 110px;
+}
+
+.slick-prev:before,
+.slick-next:before {
+    opacity: 1 !important;
+}
+
+.slick-list {
+    padding: 0 0% !important;
+}
+
+/* THIS IS WHAT WE WILL WANT FOR MOBILE DIMENSIONS */
+/* @media screen and (max-width: 600px) {
+    .slick-list {
+        padding: 0 65px !important;
+    }
+} */
+
+
+.slick-slide {
+    /* width: 200px !important; */
+    display: flex !important;
+    justify-content: center !important;
+}
+
+/* .slick-track {
+    display: flex;
+    justify-content: center;
+    max-height: 260px !important;
+} */
+
+/* .arrow-button {
+    cursor: pointer;
+} */

@@ -64,7 +64,7 @@ const CartPanel = () => {
     } 
 
     return (
-        <div>
+        <div className='cart-panel-container'>
             {isCartOpen && <div className="overlay" onClick={toggleCartOpen}></div>}
             <div className='item-detail-price current-wallet'>
                 {sessionUser &&
@@ -91,8 +91,12 @@ const CartPanel = () => {
                     <button className='toggle-cart' onClick={toggleCartOpen}>
                         {isCartOpen ? 'Close Cart' : 'Open Cart'}
                     </button>
-                    <button className='add-this-item-to-cart-button' onClick={() => handleAddToCart()}>Add to cart</button>
-                    <button className='remove-this-item-from-cart-button' onClick={() => handleRemoveFromCart(currentItem.itemId)}>Remove from cart</button>
+                    {currentItem.history.dates &&
+                        <>
+                            <button className='add-this-item-to-cart-button' onClick={() => handleAddToCart()}>Add to cart</button>
+                            <button className='remove-this-item-from-cart-button' onClick={() => handleRemoveFromCart(currentItem.itemId)}>Remove from cart</button>
+                        </>
+                    }
                 </div>
             }
             <Cart isCartOpen={isCartOpen}/>

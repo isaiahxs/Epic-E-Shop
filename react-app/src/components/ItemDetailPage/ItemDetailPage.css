@@ -41,8 +41,13 @@
     align-items: center;
 }
 
+/* .item-details {
+    max-width: 230px;
+} */
+
 .item-history {
     height: 100%;
+    max-width: 230px;
 }
 
 .occurrences {
@@ -75,13 +80,6 @@
     border: 1px solid #1e223a;
     padding: 0.4rem 0.6rem;
 }
-
-/* .item-details {
-    margin: none;
-    padding: 0 10px;
-    margin-top: none;
-    height: 100%;
-} */
 
 .item-detail-image {
     height: 100%;
