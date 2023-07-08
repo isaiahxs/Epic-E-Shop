@@ -21,7 +21,9 @@ const FeaturedItems = () => {
     return (
         <div className='carousel-container'>
             <div className='featured-items-carousel'>
-                <h2>Today's Featured Items</h2>
+                <div className='home-subheading-container'>
+                    <h2 className='home-subheading'>Today's Featured Items</h2>
+                </div>
                 <Slider {...settings}>
                     {/* check if the items array is not empty before trying to map over it */}
                     {allFeaturedItems.length > 0 && allFeaturedItems.map((item, idx) => (

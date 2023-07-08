@@ -73,7 +73,9 @@ const DailyItems = () => {
     return (
         <div className='carousel-container'>
             <div className='daily-items-carousel'>
-                <h2>Today's Daily Items</h2>
+                <div className='home-subheading-container'>
+                    <h2 className='home-subheading'>Today's Daily Items</h2>
+                </div>
                 <Slider {...settings}>
                     {/* check if the items array is not empty before trying to map over it */}
                     {allDailyItems.length > 0 && allDailyItems.map((item, idx) => (

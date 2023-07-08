@@ -36,3 +36,12 @@ button {
     transition: 0.5s all;
     cursor: pointer;
 }
+
+.home-subheading-container {
+    display: flex;
+    justify-content: center;
+}
+
+.carousel-container {
+    margin-bottom: 35px;
+}
