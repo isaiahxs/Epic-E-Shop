@@ -53,7 +53,7 @@ def upgrade():
     sa.Column('email', sa.String(length=255), nullable=False),
     sa.Column('hashed_password', sa.String(length=255), nullable=False),
     sa.Column('vbucks', sa.Integer(), nullable=True),
-    sa.Column('profile_image', sa.String(length=255), nullable=True),
+    sa.Column('profile_image', sa.String(length=255), nullable=False),
     sa.Column('created_at', sa.DateTime(), nullable=False),
     sa.Column('updated_at', sa.DateTime(), nullable=False),
     sa.PrimaryKeyConstraint('id'),

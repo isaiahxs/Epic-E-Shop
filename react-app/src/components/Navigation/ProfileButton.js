@@ -53,9 +53,14 @@ function ProfileButton({ user }) {
           <img src={userIcon} alt="profile" className="profile-icon-default" />
         }
 
-        {sessionUser &&
+        {sessionUser && sessionUser.profile_image &&
           <img src={sessionUser?.profile_image} alt="profile" className="profile-icon" />
         }
+
+        {sessionUser && !sessionUser.profile_image &&
+          <img src={userIcon} alt="profile" className="profile-icon-default" />
+        }
+
       </button>
       <ul className={ulClassName} ref={ulRef}>
         {user ? (
@@ -74,8 +79,6 @@ function ProfileButton({ user }) {
               onItemClick={closeMenu}
               modalComponent={<LoginFormModal />}
             />
-
-            {/* <div className="dropdown-or">or</div> */}
 
             <OpenModalButton
               className="signup-button"

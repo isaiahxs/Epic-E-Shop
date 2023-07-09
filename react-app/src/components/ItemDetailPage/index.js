@@ -170,12 +170,6 @@ const ItemDetailPage = () => {
                         </div>
                         
                     </div>
-                        
-                    {!sessionUser && (
-                        <h2>
-                            Sign in to vote, comment, set a reminder, or shop our items!
-                        </h2>
-                    )}
 
                     <CartPanel />
                     <ItemLikes />
