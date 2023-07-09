@@ -5,6 +5,9 @@ const SET_FEATURED_ITEMS = "items/SET_FEATURED_ITEMS";
 const SET_ITEMS_LOADED = "items/SET_ITEMS_LOADED";
 const SET_CURRENT_ITEM = "items/SET_CURRENT_ITEM";
 const SET_SEARCH_RESULTS = "items/SET_SEARCH_RESULTS";
+const SET_SEARCH_ERROR = "items/SET_SEARCH_ERROR";
+const CLEAR_SEARCH_RESULTS = "items/CLEAR_SEARCH_RESULTS";
+
 
 //action creators
 export const setSeedItems = (items) => {
@@ -47,6 +50,15 @@ export const setSearchResults = (items) => ({
     type: SET_SEARCH_RESULTS,
     payload: items,
 })
+
+export const setSearchError = (message) => ({
+    type: SET_SEARCH_ERROR,
+    payload: message,
+})
+
+export const clearSearchResults = () => ({
+    type: CLEAR_SEARCH_RESULTS
+});
 
 //thunk action
 export const getSeedItems = () => async (dispatch) => {
@@ -112,6 +124,8 @@ export const getCurrentItem = (itemId) => async (dispatch) => {
 
 //encodeURIComponent is used to ensure the query string is properly formatted
 export const searchItems = (query) => async (dispatch) => {
+    dispatch(clearSearchResults());
+    
     const response = await fetch(`/api/items/search?name=${encodeURIComponent(query)}`, {
         headers: {
             "Content-Type": "application/json",
@@ -121,11 +135,15 @@ export const searchItems = (query) => async (dispatch) => {
     if (response.ok) {
         const data = await response.json();
         dispatch(setSearchResults(data));
+    } else if (response.status === 404) {
+        dispatch(setSearchError("Sorry, we were not able to find your item."));
+    } else if (response.status === 400) {
+        dispatch(setSearchError("Please enter an item to search."));
     }
 };
 
 //initial state
-const initialState = { seedItems: [], dailyItems: [], featuredItems: [], itemsLoaded: false, currentItem: null, searchResults: []};
+const initialState = { seedItems: [], dailyItems: [], featuredItems: [], itemsLoaded: false, currentItem: null, searchResults: [], searchError: null};
 
 //reducer
 export default function reducer(state = initialState, action) {
@@ -147,6 +165,12 @@ export default function reducer(state = initialState, action) {
 
         case SET_SEARCH_RESULTS:
             return { ...state, searchResults: action.payload };
+
+        case SET_SEARCH_ERROR:
+            return { ...state, searchError: action.payload };
+
+        case CLEAR_SEARCH_RESULTS:
+            return { ...state, searchResults: null, searchError: null };
 
         default:
             return state;

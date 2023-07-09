@@ -4,18 +4,11 @@ import { searchItems } from '../../store/items'
 import './SearchPage.css'
 
 const SearchPage = () => {
-    // const dispatch = useDispatch();
-    // const seedItems = useSelector(state => state.items.seedItems);
-    // const dailyItems = useSelector(state => state.items.dailyItems);
-    // const featuredItems = useSelector(state => state.items.featuredItems);
-    // const sessionUser = useSelector(state => state.session.user);
-
-    // //combine both lists
-    // const allItems = [...seedItems, ...dailyItems, ...featuredItems]
-
     const dispatch = useDispatch();
     const [searchTerm, setSearchTerm] = useState('');
     const searchResults = useSelector(state => state.items.searchResults);
+    const searchError = useSelector(state => state.items.searchError);
+
 
     const handleSearch = (e) => {
         e.preventDefault();
@@ -34,9 +27,11 @@ const SearchPage = () => {
                     />
                     <button type="submit">Search</button>
             </form>
-            {/* {!searchResults &&
-                <h2>We were unable to find your item.</h2>
-            } */}
+            
+            {searchError &&
+                <h2>{searchError}</h2>
+            }
+
             {searchResults && searchResults.map(item => (
                 <div key={item.itemId}>
                     <h2>{item.name}</h2>
