@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useModal } from "../../context/Modal";
 import { signUp } from "../../store/session";
+import profileImages from "./profileImages";
 import "./SignupForm.css";
 
 function SignupFormModal() {

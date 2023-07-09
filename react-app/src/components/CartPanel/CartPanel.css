@@ -9,10 +9,10 @@
     /* opacity: 0.5; */
 }
 
-.cart-button-container {
+/* .cart-button-container { */
     /* background-color: red; */
     /* display: flex; */
-}
+/* } */
 
 
 .add-remove-cart-buttons {
@@ -23,6 +23,10 @@
 .toggle-cart {
     background-color: #0e6ff8;
     width: 100%;
+}
+
+.toggle-cart-signed-out {
+    width: 200px;
 }
 
 .add-this-item-to-cart-button {
