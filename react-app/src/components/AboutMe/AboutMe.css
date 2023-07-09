@@ -24,6 +24,7 @@
 .about-me-body-container {
     display: flex;
     justify-content: center;
+    margin-bottom: 50px;
 }
 
 .about-me-body {
@@ -112,7 +113,7 @@
     margin: 0 5px;
 }
 
-@media screen and (max-width: 805px) {
+@media screen and (max-width: 900px) {
     .about-me-body {
         margin-top: 300px;
         max-width: 500px;
@@ -171,7 +172,7 @@
 
 @media screen and (max-width: 535px) {
     .about-me-body {
-        margin-top: 70px;
+        margin-top: 20px;
         max-width: 500px;
     }
 
