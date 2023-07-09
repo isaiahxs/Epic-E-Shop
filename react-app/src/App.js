@@ -14,6 +14,7 @@ import UserProfilePage from "./components/UserProfile";
 import RemindersPage from "./components/RemindersPage";
 import InventoryPage from "./components/InventoryPage";
 import AboutMe from "./components/AboutMe";
+import SearchPage from "./components/SearchPage";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
@@ -68,6 +69,10 @@ function App() {
 
           <Route path="/about_me">
             <AboutMe />
+          </Route>
+
+          <Route path="/search">
+            <SearchPage />
           </Route>
 
         </Switch>
