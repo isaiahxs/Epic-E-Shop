@@ -111,6 +111,10 @@ const Comments = () => {
                     ))}
                 </div>
 
+                {!sessionUser &&
+                    <h3 className='must-be-logged-in'>You must be logged in to leave a comment on this item.</h3>
+                }
+
                 <div className='new-comment-section'>
                     {sessionUser && !userHasPosted &&
                         <form className='new-comment-form' onSubmit={handleSubmit}>

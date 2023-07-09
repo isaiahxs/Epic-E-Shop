@@ -40,6 +40,10 @@
     font-family: 'Poppins', calibri, helvetica, arial, sans-serif;
 }
 
+.must-be-logged-in {
+    font-family: 'Poppins', calibri, helvetica, arial, sans-serif;
+}
+
 .edit-comment-button {
     background-color: #c422dd;
 }
