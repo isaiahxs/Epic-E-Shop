@@ -22,6 +22,12 @@
     margin: 0px;
 }
 
+.total-value {
+    display: flex;
+    font-size: 1.5rem;
+    align-items: center;
+}
+
 .inventory-subheading {
     margin-top: 25px;
     margin-bottom: 10px;
@@ -49,7 +55,36 @@
     /* cursor: pointer; */
 }
 
-@media screen and (max-width: 705px) {
+.inventory-comment-text {
+    max-width: 400px;
+    text-align: center;
+}
+
+.inventory-detail-price {
+    display: flex;
+    /* align-items: center; */
+    flex-direction: row;
+}
+
+.member-since {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+}
+
+.user-creation-date {
+    margin-left: 10px !important;
+}
+
+@media screen and (max-width: 735px) {
+    .inventory-heading {
+        text-align: center;
+    }
+
+    .inventory-detail-price {
+        justify-content: center;
+    }
+
     .inventory-item {
         display: flex;
         flex-direction: column;
@@ -59,5 +94,32 @@
 
     .inventory-item-info {
         margin: 0px;
+        text-align: center;
+    }
+
+    .inventory-subheading {
+        text-align: center;
+    }
+
+    .total-value {
+        justify-content: center;
+    }
+
+    .member-since {
+        justify-content: center;
+    }
+}
+
+@media screen and (max-width: 420px) {
+    .inventory-detail-price-heading {
+        flex-direction: column;
+    }
+
+    .member-since {
+        flex-direction: column;
+    }
+
+    .user-creation-date {
+        margin-left: 0px;
     }
 }

@@ -49,11 +49,22 @@ const InventoryItems = () => {
                 {inventory.length > 0 &&
                     <h1 className='inventory-welcome'>Nice collection so far, {sessionUser.username}!</h1>
                 }
-                <h2>Member since: {sessionUser.created_at.slice(0, 16)}</h2>
-                <div className='item-detail-price'>
-                    <h2>Total Inventory value:</h2>
-                    <img src={vbucks} className='vbucks-icon inventory-vbuck'/>
-                    <h2>{formattedTotalValue}</h2>
+
+                <div className='member-since'>
+                    <h2>Member since: </h2>
+                    <h2 className='user-creation-date'>{sessionUser.created_at.slice(0, 16)}</h2>
+                </div>
+
+                <div className='item-detail-price inventory-detail-price inventory-detail-price-heading'>
+                    <div>
+                        <h2>Total Inventory value:</h2>
+                    </div>
+                    <div>
+                        <h2 className='total-value'>
+                            <img src={vbucks} className='vbucks-icon inventory-vbuck'/>
+                            {formattedTotalValue}
+                        </h2>
+                    </div>
                 </div>
                 <div className='inventory-subheading'>
                     <h2>Total items: ({totalItems})</h2>
@@ -74,7 +85,7 @@ const InventoryItems = () => {
                             <div className='inventory-rarity-section'>Rarity: <span className='rarity' style={{ backgroundColor: getItemBackgroundColor(item.rarity) }}>{item.rarity}</span></div>
 
                             <div className='inventory-item-type'>Type: {item.type}</div>
-                            <div className='item-detail-price'>
+                            <div className='item-detail-price inventory-detail-price'>
                                 <img src={item.priceIconLink} alt={item.priceIcon} className='vbucks-icon'/>
                                 <div className='inventory-item-price'>{item.price}</div>
                             </div>
