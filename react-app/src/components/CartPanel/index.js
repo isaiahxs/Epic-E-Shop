@@ -89,16 +89,18 @@ const CartPanel = () => {
                 }
 
                 {sessionUser &&
-                    <div className='add-remove-cart-buttons'>
-                        <button className='toggle-cart' onClick={toggleCartOpen}>
-                            {isCartOpen ? 'Close Cart' : 'Open Cart'}
-                        </button>
-                        {currentItem.history.dates &&
-                            <>
-                                <button className='add-this-item-to-cart-button' onClick={() => handleAddToCart()}>Add to cart</button>
-                                <button className='remove-this-item-from-cart-button' onClick={() => handleRemoveFromCart(currentItem.itemId)}>Remove from cart</button>
-                            </>
-                        }
+                    <div className='cart-button-container'>
+                        <div className='add-remove-cart-buttons'>
+                            <button className='toggle-cart' onClick={toggleCartOpen}>
+                                {isCartOpen ? 'Close Cart' : 'Open Cart'}
+                            </button>
+                            {currentItem.history.dates &&
+                                <>
+                                    <button className='add-this-item-to-cart-button' onClick={() => handleAddToCart()}>Add to cart</button>
+                                    <button className='remove-this-item-from-cart-button' onClick={() => handleRemoveFromCart(currentItem.itemId)}>Remove from cart</button>
+                                </>
+                            }
+                        </div>
                     </div>
                 }
                 <Cart isCartOpen={isCartOpen} toggleCartOpen={toggleCartOpen}/>

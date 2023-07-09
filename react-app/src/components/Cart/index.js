@@ -103,6 +103,9 @@ const Cart = ({isCartOpen, toggleCartOpen}) => {
                         <h2 className='cart-items-heading'>These are the items you currently have in your cart:</h2>
                         <div className='cart-item-list'>
                             {itemsInCart.map(item => {
+                                if (!item.price) {
+                                    console.error('Item with no price: ', item);
+                                }
                                 if (item.images) {
                                     return (
                                         <div className='individual-cart-item' key={item.id}>
@@ -133,23 +136,29 @@ const Cart = ({isCartOpen, toggleCartOpen}) => {
                             {sessionUser &&
                                 <>
                                     <div className='inventory-balance-container'>
-                                        <h2 className='current-vbucks'>Current V-Bucks Balance:</h2>
+                                        <h3 className='current-vbucks'>Current Balance:</h3>
                                         <div className='item-detail-price inventory-balance cart-content'>
                                             <img src={vbucks} className='vbucks-icon' />
-                                            <h3 className='balance-amount'>{numberWithCommas(sessionUser.vbucks)}</h3>
+                                            <h3 className='balance-amount'>{numberWithCommas(sessionUser.vbucks)} V-Bucks</h3>
                                         </div>
                                     </div>
                                 </>
                             }
 
                             <div className='cart-total'>
-                                <h2 className='cart-total-heading'>Cart Total:</h2>
+                                <h3 className='cart-total-heading'>Cart Total:</h3>
                                 <h3 className='item-detail-price cart-total-price'>
                                     <img className='vbucks-icon' src={vbucks} />
-                                    <div>{numberWithCommas(itemsInCart.reduce((total, item) => {
+                                    {/* <div>{numberWithCommas(itemsInCart.reduce((total, item) => {
                                     const price = parseInt(item.price.replace(/,/g, ''), 10);
                                     return total + price * item.quantity;
                                     }, 0))} V-Bucks
+                                    </div> */}
+                                    <div>
+                                        {numberWithCommas(itemsInCart.reduce((total, item) => {
+                                            const price = item.price ? parseInt(item.price.replace(/,/g, ''), 10) : 0;
+                                            return total + price * item.quantity;
+                                        }, 0))} V-Bucks
                                     </div>
                                 </h3>
                             </div>
@@ -181,7 +190,8 @@ const Cart = ({isCartOpen, toggleCartOpen}) => {
             </div>
             
             <div className='additional-money-message'>
-                <div>Need more V-Bucks? You can buy some more with your starter cash!</div>
+                <div>Additional features coming soon:</div>
+                <div className='starter-cash-message'>Need more V-Bucks? You can buy some more with your starter cash!</div>
                 <div>If you've ran out of cash, you can earn more by completing daily tasks such as setting reminders, leaving comments, and likes!</div>
             </div>
         </div>

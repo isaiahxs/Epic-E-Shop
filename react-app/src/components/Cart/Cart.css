@@ -38,8 +38,12 @@
     background-color: red;
     display: flex;
     position: relative;
+    justify-content: center;
+    align-items: center;
     left: 310px;
     margin-bottom: 10px;
+    height: 35px;
+    width: 35px;
 }
 
 .cart-open {
@@ -104,6 +108,10 @@
     margin: 40px 0;
 }
 
+.starter-cash-message {
+    margin: 15px 0px;
+}
+
 .current-vbucks {
     margin-bottom: 0;
     margin-top: 0;
@@ -111,11 +119,11 @@
 
 .inventory-balance-container {
     margin: 15px 0;
-    font-size: 1.0rem;
 }
 
 .inventory-balance {
     /* margin-bottom: 20px; */
+    padding: 0px;
 }
 
 .balance-amount {
@@ -156,6 +164,11 @@
     margin-top: 5px;
     cursor: pointer;
     color: #1d1d1d;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 35px;
+    width: 35px;
 }
 
 .checkout-button-container {
