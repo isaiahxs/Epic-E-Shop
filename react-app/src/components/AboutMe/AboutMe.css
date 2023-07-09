@@ -1,8 +1,7 @@
 .about-me-image {
     background-color: #ff5a5f;
-    /* height: 100%; */
     height: 250px;
-    width: 100%;
+    width: 250px;
     border: 1px solid white;
 }
 
@@ -121,6 +120,11 @@
         max-width: 500px;
     }
 
+    .about-me-image {
+        height: 300px;
+        width: 300px;
+    }
+
     .about-me-history {
         margin: 0px;
     }
@@ -176,6 +180,11 @@
     .about-me-body {
         margin-top: 0px;
         max-width: 500px;
+    }
+
+    .about-me-image {
+        height: 250px;
+        width: 250px;
     }
 
     .small-item-details,

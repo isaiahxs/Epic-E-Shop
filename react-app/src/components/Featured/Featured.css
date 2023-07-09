@@ -1,7 +1,7 @@
 .featured-header {
     display: flex;
-    justify-content: center;
     margin-bottom: 40px;
+    justify-content: center;
 }
 
 .featured-items-container {
