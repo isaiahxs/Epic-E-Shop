@@ -11,6 +11,12 @@
     justify-items: center;
 }
 
+@media screen and (max-width: 400px) {
+    .featured-header {
+        text-align: center;
+    }
+}
+
 @media (min-width: 750px) {
     .featured-items-container {
         grid-template-columns: repeat(2, 1fr);
