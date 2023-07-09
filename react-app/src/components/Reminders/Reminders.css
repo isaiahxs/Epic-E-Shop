@@ -31,6 +31,10 @@
     /* flex-direction: column; */
 }
 
+.create-reminder {
+    background-color: #1e8513;
+}
+
 .delete-reminder-section {
     display: flex;
     align-items: center;
@@ -69,5 +73,11 @@
     .delete-reminder-button {
         margin-left: 0px;
         width: 100%;
+    }
+
+    .create-reminder {
+        margin-top: 20px;
+        width: 100%;
+        /* background-color: #1e8513; */
     }
 }

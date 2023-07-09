@@ -14,11 +14,11 @@ const AboutMe = () => {
                 </div>
                 <div className='item-details about-me-details'>
                     <h1 className='item-detail-name'>Isaiah Sinnathamby</h1>
-                    <div className='item-rarity-section'>
+                    <div className='item-rarity-section about-item-rarity-section'>
                         <h3 className='rarity about-me-rarity'>Mythic</h3>
                         <h3 className='item-type'>Outfit</h3>
                     </div>
-                    <div className='item-detail-price'>
+                    <div className='item-detail-price about-item-detail-price'>
                         <img className='vbucks-icon' src={"https://image.fnbr.co/price/icon_vbucks.png"} alt='Many vbucks' />
                         1,000,000
                     </div>
