@@ -1,10 +1,14 @@
+.inventory-container {
+    padding: 15px;
+}
+
 .inventory-heading {
     font-family: 'Poppins', calibri, helvetica, arial, sans-serif;
 }
 
 .inventory-welcome {
     font-family: "Luckiest Guy", cursive;
-    margin-top: 50px;
+    margin-top: 20px;
 }
 
 .inventory-vbuck {

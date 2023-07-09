@@ -59,22 +59,22 @@ const ItemLikes = () => {
             <h3 className='likes'>{message}</h3>
 
             {sessionUser && currentUserVote === null &&
-                <>
+                <div className='like-dislike-container'>
                     <button className='like-button' onClick={() => addLikeHandler(true)}>Like</button>
                     <button className='dislike-button' onClick={() => dislikeHandler(false)}>Dislike</button>
-                </>
+                </div>
             }
             {sessionUser && currentUserVote === 'like' &&
-                <>
+                <div className='like-dislike-container'>
                     <button className='remove-like-button' onClick={() => removeLikeHandler()}>Remove Like</button>
                     <button className='switch-vote-button' onClick={() => switchVoteHandler(false)}>Switch to Dislike</button>
-                </>
+                </div>
             }
             {sessionUser && currentUserVote === 'dislike' &&
-                <>
+                <div className='like-dislike-container'>
                     <button className='remove-dislike-button' onClick={() => removeDislikeHandler()}>Remove Dislike</button>
                     <button className='switch-vote-button' onClick={() => switchVoteHandler(true)}>Switch to Like</button>
-                </>
+                </div>
             }
         </div>
     )

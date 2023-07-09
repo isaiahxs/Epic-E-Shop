@@ -3,7 +3,7 @@
   justify-content: space-between;
   align-items: center;
   max-width: 800px;
-  margin: auto;
+  margin: 15px auto;
   height: 50px;
   font-size: 1.3rem;
 }
@@ -31,6 +31,7 @@
 }
 
 .nav-cart {
+  font-size: 1.3rem;
   background-color:#0e1220;
   border: none;
 }
@@ -148,18 +149,18 @@
   text-decoration: underline;
 }
 
-@media screen and (max-width: 450px) {
+@media screen and (max-width: 465px) {
   .nav-bar {
       flex-direction: column;
       align-items: flex-start;
       height: auto;
-      padding: 10px;
+      padding: 0px 10px;
+      margin-bottom: 0px;
   }
 
   .nav-options {
       width: 100%;
       justify-content: space-between;
-      margin-top: 10px;
   }
 
   .nav-home {

@@ -133,15 +133,10 @@ const Reminders = () => {
                                         <div className='delete-reminder-section'>
                                             <div className='delete-message'>
                                                 No longer want this reminder?
-
-                                                <button className='delete-reminder-button' onClick={handleDeleteReminder}>
-                                                    Delete Reminder
-                                                </button>
-
                                             </div>
-                                            {/* <button className='delete-reminder-button' onClick={handleDeleteReminder}>
+                                            <button className='delete-reminder-button' onClick={handleDeleteReminder}>
                                                 Delete Reminder
-                                            </button> */}
+                                            </button>
                                         </div>
                                     </>
                                 }

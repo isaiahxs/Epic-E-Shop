@@ -10,11 +10,9 @@
     display: flex;
     justify-content: center;
     flex-direction: column;
-    overflow-y: hidden;
     border: 1px solid white;
     font-size: 1.2rem;
     color: white;
-    width: 400px;
 }
 
 .form-input-section {
@@ -28,6 +26,12 @@
     justify-content: center;
     flex-direction: column;
     padding: 20px 50px;
+}
+
+@media screen and (max-width: 400px) {
+    .login-form-options {
+        padding: 20px 20px;
+    }
 }
 
 .form-input-field {
@@ -50,7 +54,6 @@
 .demo-user-button:hover,
 .modal-submit-button:hover {
     background-color: #125cc4;
-    /* background-color: #0c4697; */
 }
 
 .modal-submit-button:disabled {

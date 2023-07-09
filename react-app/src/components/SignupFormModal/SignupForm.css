@@ -1,5 +1,4 @@
 .signup-form-modal {
-    /* z-index: 50; */
     background-color: #0e1220;
     display: flex;
     justify-content: center;
@@ -8,7 +7,6 @@
     border: 1px solid white;
     font-size: 1.2rem;
     color: white;
-    width: 400px;
 }
 
 .signup-form-options {
@@ -16,4 +14,40 @@
     justify-content: center;
     flex-direction: column;
     padding: 20px 50px;
+}
+
+@media screen and (max-width: 430px) {
+    .signup-form-options {
+        padding: 10px 20px;
+    }
+
+    .modal-header {
+        margin-top: 10px;
+    }
+}
+
+.profile-images-section {
+    display: flex;
+    overflow-x: auto;
+    max-width: 273px;
+    margin-bottom: 20px;
+    margin-top: 10px;
+    /* border: 1px solid white; */
+}
+
+.profile-image-option {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    margin-right: 10px;
+    border: 3px solid white;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: 0.5s all;
+}
+
+.profile-image-option.selected {
+    border-color: #0e6ff8;
+    /* border: 3px solid blue; */
+    background-color: #e6dada;
 }

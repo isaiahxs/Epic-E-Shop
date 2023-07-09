@@ -18,6 +18,8 @@
     justify-content: center;
     align-items: center;
     font-size: 2.2rem;
+    text-align: center;
+    margin-top: 0px;
 }
 
 .hero-banner {
@@ -41,6 +43,7 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    padding: 15px;
     /* margin: 20px 0; */
 }
 
@@ -57,6 +60,7 @@
 .featured-items-button-container {
     display: flex;
     justify-content: center;
+    padding: 15px;
 }
 
 .featured-items-button {
@@ -64,6 +68,7 @@
     /* margin-top: 20px; */
     /* margin-bottom: 30px; */
     font-size: 1.35rem;
+    /* padding: 8px; */
 }
 
 .home-item-information {
@@ -117,3 +122,5 @@
     align-items: center;
     flex-direction: column;
 } */
+
+/* @media screen and (max-width: ) */

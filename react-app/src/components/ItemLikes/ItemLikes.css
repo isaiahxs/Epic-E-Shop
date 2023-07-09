@@ -1,6 +1,11 @@
 .item-detail-likes {
     max-width: 1000px;
-    margin: 20px auto;
+    margin: 0px auto;
+    padding: 15px;
+}
+
+.like-dislike-container {
+    display: flex;
 }
 
 .likes {
@@ -20,4 +25,14 @@
 .switch-vote-button {
     background-color: #c422dd;
     margin-left: 10px;
+}
+
+@media screen and (max-width: 805px) {
+    .like-button,
+    .dislike-button,
+    .remove-like-button,
+    .remove-dislike-button,
+    .switch-vote-button {
+        width: 50%;
+    }
 }

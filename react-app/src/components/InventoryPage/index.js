@@ -101,7 +101,7 @@ const InventoryPage = () => {
                                         <div className='inventory-rarity-section'>Rarity: <span className='rarity' style={{ backgroundColor: getItemBackgroundColor(item.rarity) }}>{item.rarity}</span></div>
 
                                         <div className='inventory-item-type'>Type: {item.type}</div>
-                                        <div className='item-detail-price'>
+                                        <div className='item-detail-price inventory-detail-price'>
                                             <img src={item.priceIconLink} alt={item.priceIcon} className='vbucks-icon'/>
                                             <div className='inventory-item-price'>{item.price}</div>
                                         </div>
@@ -136,7 +136,7 @@ const InventoryPage = () => {
                                         <div className='inventory-rarity-section'>Rarity: <span className='rarity' style={{ backgroundColor: getItemBackgroundColor(item.rarity) }}>{item.rarity}</span></div>
 
                                         <div className='inventory-item-type'>Type: {item.type}</div>
-                                        <div className='item-detail-price'>
+                                        <div className='item-detail-price inventory-detail-price'>
                                             <img src={item.priceIconLink} alt={item.priceIcon} className='vbucks-icon'/>
                                             <div className='inventory-item-price'>{item.price}</div>
                                         </div>
@@ -168,7 +168,7 @@ const InventoryPage = () => {
                                         <div className='inventory-rarity-section'>Rarity: <span className='rarity' style={{ backgroundColor: getItemBackgroundColor(item.rarity) }}>{item.rarity}</span></div>
 
                                         <div className='inventory-item-type'>Type: {item.type}</div>
-                                        <div className='item-detail-price'>
+                                        <div className='item-detail-price inventory-detail-price'>
                                             <img src={item.priceIconLink} alt={item.priceIcon} className='vbucks-icon'/>
                                             <div className='inventory-item-price'>{item.price}</div>
                                         </div>
