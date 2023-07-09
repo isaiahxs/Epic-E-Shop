@@ -2,7 +2,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  max-width: 800px;
+  max-width: 600px;
   margin: 15px auto;
   height: 50px;
   font-size: 1.3rem;
@@ -185,5 +185,14 @@
   .nav-about-me,
   .nav-inventory {
       font-size: 1.3rem;
+  }
+}
+
+@media screen and (max-width: 388px) {
+  .nav-cart,
+  .nav-home,
+  .nav-about-me,
+  .nav-inventory {
+      font-size: 1.2rem;
   }
 }

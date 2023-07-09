@@ -1,6 +1,8 @@
 .about-me-image {
     background-color: #ff5a5f;
-    height: 100%;
+    /* height: 100%; */
+    height: 250px;
+    width: 100%;
     border: 1px solid white;
 }
 
@@ -115,7 +117,7 @@
 
 @media screen and (max-width: 900px) {
     .about-me-body {
-        margin-top: 300px;
+        margin-top: 230px;
         max-width: 500px;
     }
 
@@ -170,9 +172,9 @@
     }
 }
 
-@media screen and (max-width: 535px) {
+@media screen and (max-width: 550px) {
     .about-me-body {
-        margin-top: 20px;
+        margin-top: 0px;
         max-width: 500px;
     }
 
@@ -187,5 +189,9 @@
     .small-rarity-section {
         display: flex;
         justify-content: center;
+    }
+
+    .body-headers {
+        text-align: center;
     }
 }

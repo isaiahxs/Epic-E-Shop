@@ -13,7 +13,7 @@ def seed_users():
     bobbie = User(
         username='bobbie', email='bobbie@aa.io', password='password', profile_image='https://image.fnbr.co/outfit/5fa12620da84561a8440039d/icon.png')
     isaiah = User(
-        username='isaiahxs', email='isaiahxs@gmail.com', password='password', profile_image='https://image.fnbr.co/outfit/5fa1260eda845607cf40039a/icon.png')
+        username='isaiahxs', email='isaiahxs@gmail.com', password='password', profile_image='https://image.fnbr.co/outfit/5ab16ae85f957f27504aa4df/variant1.png')
 
     db.session.add(demo)
     db.session.add(marnie)
