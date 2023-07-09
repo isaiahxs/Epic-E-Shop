@@ -1,6 +1,6 @@
 #  contains routes for getting information about items, like getting an item by ID
 import os
-from flask import Blueprint, jsonify, request
+from flask import Blueprint, jsonify, request, abort
 import requests
 import json
 from app.models import Item
@@ -162,6 +162,8 @@ def search_item():
     Search for an item based on its name
     """
     item_name = request.args.get('name')  #this will get the 'name' query parameter
+    if not item_name:
+        return {'error': 'No name provided'}, 400
 
     #making a request to the API to search for the item
     url = f"https://fnbr.co/api/images?search={item_name}"
@@ -169,6 +171,9 @@ def search_item():
     response = requests.get(url, headers=headers)
     data = json.loads(response.text)
 
+    if not data['data']:
+        return {'error': 'Item not found'}, 404
+    
     items = data['data']
     result = []
 

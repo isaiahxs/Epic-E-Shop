@@ -4,6 +4,7 @@ const SET_DAILY_ITEMS = "items/SET_DAILY_ITEMS";
 const SET_FEATURED_ITEMS = "items/SET_FEATURED_ITEMS";
 const SET_ITEMS_LOADED = "items/SET_ITEMS_LOADED";
 const SET_CURRENT_ITEM = "items/SET_CURRENT_ITEM";
+const SET_SEARCH_RESULTS = "items/SET_SEARCH_RESULTS";
 
 //action creators
 export const setSeedItems = (items) => {
@@ -40,6 +41,11 @@ export const setItemsLoaded = () => ({
 export const setCurrentItem = (item) => ({
     type: SET_CURRENT_ITEM,
     payload: item,
+})
+
+export const setSearchResults = (items) => ({
+    type: SET_SEARCH_RESULTS,
+    payload: items,
 })
 
 //thunk action
@@ -104,8 +110,22 @@ export const getCurrentItem = (itemId) => async (dispatch) => {
     }
 };
 
+//encodeURIComponent is used to ensure the query string is properly formatted
+export const searchItems = (query) => async (dispatch) => {
+    const response = await fetch(`/api/items/search?name=${encodeURIComponent(query)}`, {
+        headers: {
+            "Content-Type": "application/json",
+        },
+    });
+
+    if (response.ok) {
+        const data = await response.json();
+        dispatch(setSearchResults(data));
+    }
+};
+
 //initial state
-const initialState = { seedItems: [], dailyItems: [], featuredItems: [], itemsLoaded: false, currentItem: null };
+const initialState = { seedItems: [], dailyItems: [], featuredItems: [], itemsLoaded: false, currentItem: null, searchResults: []};
 
 //reducer
 export default function reducer(state = initialState, action) {
@@ -124,6 +144,9 @@ export default function reducer(state = initialState, action) {
 
         case SET_CURRENT_ITEM:
             return { ...state, currentItem: action.payload };
+
+        case SET_SEARCH_RESULTS:
+            return { ...state, searchResults: action.payload };
 
         default:
             return state;
