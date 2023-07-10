@@ -1,0 +1,11 @@
+.search-image,
+.search-details {
+    cursor: pointer;
+}
+
+.search-input {
+    /* height: 16px; */
+    margin-right: 10px;
+    font-family: 'Poppins', calibri, helvetica, arial, sans-serif;
+    padding: 5px;
+}

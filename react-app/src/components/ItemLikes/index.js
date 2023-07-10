@@ -33,7 +33,15 @@ const ItemLikes = () => {
 
     let likesCount = 0;
     let dislikesCount = 0;
-    let message = "This item doesn't have likes or dislikes yet, be the first to give it one!";
+    // let message = null;
+    // if (sessionUser) {
+    //     message = "This item doesn't have likes or dislikes yet, be the first to give it one!";
+    // } else {
+    //     message = "You must be logged in to vote on this item.";
+    // }
+
+    let message = "This item doesn't have likes or dislikes yet, be the first to give it one!"
+
     if (allLikes && currentItem) {
         const likes = allLikes.filter(like => like.itemId === currentItem.itemId);  // filter likes for this specific item
         if (likes.length > 0) {
@@ -55,8 +63,13 @@ const ItemLikes = () => {
 
     return (
         <div className='item-detail-likes'>
-            <h2 className='idp-subheading'>Votes ({likesCount + dislikesCount})</h2>
-            <h3 className='likes'>{message}</h3>
+            <>
+                <h2 className='idp-subheading'>Votes ({likesCount + dislikesCount})</h2>
+                <h3 className='likes'>{message}</h3>
+                {!sessionUser &&
+                <h3 className='likes'>You must be logged in to vote on this item.</h3>
+                }
+            </>
 
             {sessionUser && currentUserVote === null &&
                 <div className='like-dislike-container'>
