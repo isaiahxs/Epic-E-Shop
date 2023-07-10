@@ -77,7 +77,7 @@ const InventoryItems = () => {
 
                 return item ? (
                     <div className='inventory-item' onClick={() => history.push(`/item/${item.name}`)} key={inventoryItem.itemId}>
-                        <div className='img-container'>
+                        <div className={`img-container ${item.rarity}-container`}>
                             <img className='home-item-image' src={item.images.icon} alt={item.name} style={{ backgroundColor: getItemBackgroundColor(item.rarity) }}/>
                         </div>
                         <div className='inventory-item-info'>

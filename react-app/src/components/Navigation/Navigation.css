@@ -9,11 +9,12 @@
 }
 
 .nav-logo {
-  height: 50px;
-  width: 50px;
+  height: 30px;
+  width: 100%;
   display: flex;
   align-items: center;
   cursor: pointer;
+  /* background-color: #0e6ff8; */
 }
 
 .nav-options {
@@ -78,10 +79,12 @@
 
 .dropdown-username {
   margin-bottom: 10px;
+  text-align: center;
 }
 
 .dropdown-inventory-button {
   margin-bottom: 10px;
+  background-color: #0e6ff8;
 }
 
 .dropdown-logout-button {
@@ -195,7 +198,8 @@
   .nav-cart,
   .nav-home,
   .nav-about-me,
-  .nav-inventory {
+  .nav-inventory,
+  .nav-search {
       font-size: 1.2rem;
   }
 }

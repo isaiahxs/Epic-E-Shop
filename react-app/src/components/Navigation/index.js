@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { NavLink, useHistory } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import ProfileButton from './ProfileButton';
-import logo from '../../assets/images/logo.png';
+import logo from '../../assets/images/Logo.png';
 import { getCart } from '../../store/cart';
 import Cart from '../Cart';
 import './Navigation.css';

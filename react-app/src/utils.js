@@ -20,6 +20,8 @@ export const getItemBackgroundColor = (rarity) => {
             return "#ba2f2f";
         case 'gaming_legends':
             return "#4c3fc6";
+        case 'slurp':
+            return "#20d5a3";
         default:
             return 'grey';
     }

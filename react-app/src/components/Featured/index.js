@@ -44,7 +44,7 @@ const Featured = () => {
                 {featuredItems.length > 0 && featuredItems.map((item, idx) => (
                     <div key={idx} onClick={() => history.push(`/item/${item.name}`)}>
                         <div className='featured-item'>
-                            <div className='img-container'>
+                            <div className={`img-container ${item.rarity}-container`}>
                                 <img className='home-item-image' src={item.images.icon} alt={item.name} style={{ backgroundColor: getItemBackgroundColor(item.rarity) }}/>
                             </div>
                             <div className='item-name home-item-name'>{item.name}</div>

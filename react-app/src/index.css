@@ -29,6 +29,7 @@ button {
     transition: 0.5s all;
     cursor: pointer;
     padding: 6px;
+    align-items: center;
 }
 
 .home-subheading-container {
@@ -42,11 +43,13 @@ button {
 
 .img-container {
     overflow: hidden;
-    border: 1px solid white;
-    border-right: 2px solid white;
-    border-left: 2px solid white;
+    /* border: 1px solid white; */
+    /* border-right: 2px solid white; */
+    /* border-left: 2px solid white; */
     height: 200px;
     width: 200px;
+    /* height: 204.8px;
+    width: 204.8px; */
     margin-bottom: 10px;
 }
 

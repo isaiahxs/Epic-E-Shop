@@ -2,6 +2,7 @@ import theWilds from '../../assets/images/The-Wilds.jpg'
 import mud from '../../assets/images/Mud.jpg'
 import raptorRiding from '../../assets/images/Raptor-Riding.jpg'
 import autograph from '../../assets/images/Autograph-Please.jpg'
+import summerEscape from '../../assets/images/Summer-Escape.jpeg'
 import wildsCharacters from '../../assets/images/Wilds-Characters.jpeg'
 import airphoria from '../../assets/images/Airphoria.jpeg'
 import './NewsFeed.css'
@@ -48,13 +49,22 @@ const NewsFeed = () => {
                             <p className='news-text-body'>Now available in Zero Build, bounce around the jungle with Shockwave Grenades!</p>
                         </div>
                     </div>
-                    <div className='latest-news'>
+                    {/* <div className='latest-news'>
                         <div className='feed-image-container'>
                             <img className='news-image' src={autograph} alt='Autograph Please!' />
                         </div>
                         <div className='news-text'>
                             <h3 className='news-text-heading'>Autograph Please!</h3>
                             <p className='news-text-body'>A long awaited emote is expected to return soon!</p>
+                        </div>
+                    </div> */}
+                    <div className='latest-news'>
+                        <div className='feed-image-container'>
+                            <img className='news-image' src={summerEscape} alt='Summer Escape' />
+                        </div>
+                        <div className='news-text'>
+                            <h3 className='news-text-heading'>Summer Escape</h3>
+                            <p className='news-text-body'>Catch some rays at Sunswoon Lagoon, complete Quests, and find your new summer vibe. Summer Escape is on</p>
                         </div>
                     </div>
                     <div className='latest-news'>

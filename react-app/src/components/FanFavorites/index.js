@@ -54,8 +54,8 @@ const FanFavorites = () => {
                     {fanFavorites.length > 0 && fanFavorites.slice(0, 5).map((item, idx) => (
                         <div className='item-unit' key={idx} onClick={() => history.push(`/item/${item.name}`)}>
                             {/* possible image options are: featured, gallery, icon, png, resizeAvailable: boolean */}
-                            <div className='img-container'>
-                                <img className='home-item-image' src={item.images.icon} alt={item.name} style={{ backgroundColor: getItemBackgroundColor(item.rarity) }}/>
+                            <div className={`img-container ${item.rarity}-container`}>
+                                <img className={`home-item-image ${item.rarity}`} src={item.images.icon} alt={item.name} style={{ backgroundColor: getItemBackgroundColor(item.rarity) }}/>
                             </div>
                             <div className='home-item-information'>
                                 <div className='item-name'>{item.name}</div>

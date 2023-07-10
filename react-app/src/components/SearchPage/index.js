@@ -67,7 +67,7 @@ const SearchPage = () => {
             {searchResults && searchResults.map(item => (
                 <div className='item-detail-heading' key={item.itemId}>
                     <div>
-                        <img className='item-detail-image search-image' onClick={() => history.push(`/item/${item.name}`)} src={item.images.icon} alt={item.name} style={{ backgroundColor: getItemBackgroundColor(item.rarity) }}/>
+                        <img className={`item-detail-image search-image ${item.rarity}`} onClick={() => history.push(`/item/${item.name}`)} src={item.images.icon} alt={item.name} style={{ backgroundColor: getItemBackgroundColor(item.rarity) }}/>
                     </div>
                     <div className='item-detail-stats'>
                         <div className='item-details search-details' onClick={() => history.push(`/item/${item.name}`)}>
