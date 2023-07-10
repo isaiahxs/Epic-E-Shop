@@ -19,11 +19,9 @@ const ItemDetailPage = () => {
     const seedItems = useSelector(state => state.items.seedItems);
     const dailyItems = useSelector(state => state.items.dailyItems);
     const featuredItems = useSelector(state => state.items.featuredItems);
+    const currentItem = useSelector(state => state.items.currentItem);
     const itemsLoaded = useSelector(state => state.items.itemsLoaded)
-    const likes = useSelector(state => state.totalLikes)
-    const comments = useSelector(state => state.comments)
     const sessionUser = useSelector(state => state.session.user);
-    const [showCart, setShowCart] = useState(false);
 
 
     //combine both lists
@@ -68,47 +66,52 @@ const ItemDetailPage = () => {
         return daysDiff;
     }
 
+    //USING LOCAL STORAGE but going from search to idp didn't set seed data immediately yet
+    //but since the seed data is in my database and we're not interacting with the external api anymore, it should still be very fast
+    // useEffect(() => {
+    //     const seedItemsStored = localStorage.getItem('seedItems');
+    //     const dailyItemsStored = localStorage.getItem('dailyItems');
+    //     const featuredItemsStored = localStorage.getItem('featuredItems');
+    
+    //     if (!seedItemsStored || !dailyItemsStored || !featuredItemsStored) {
+    //         dispatch(getSeedItems())
+    //         dispatch(getDailyItems())
+    //         dispatch(getFeaturedItems())
+    //     } else {
+    //         dispatch(setSeedItems(JSON.parse(seedItemsStored)));
+    //         dispatch(setDailyItems(JSON.parse(dailyItemsStored)));
+    //         dispatch(setFeaturedItems(JSON.parse(featuredItemsStored)));
+    //     }
+
+    //     //i want to always fetch likes from the server
+    //     dispatch(getLikes());
+    //     dispatch(getComments());
+    //     dispatch(getInventory());
+    //     dispatch(getReminders());
+    // }, [dispatch]);
+
     useEffect(() => {
-        const seedItemsStored = localStorage.getItem('seedItems');
+        // const seedItemsStored = localStorage.getItem('seedItems');
         const dailyItemsStored = localStorage.getItem('dailyItems');
         const featuredItemsStored = localStorage.getItem('featuredItems');
     
-        if (!seedItemsStored || !dailyItemsStored || !featuredItemsStored) {
-            dispatch(getSeedItems())
+        if (!dailyItemsStored || !featuredItemsStored) {
+            // dispatch(getSeedItems())
             dispatch(getDailyItems())
             dispatch(getFeaturedItems())
         } else {
-            dispatch(setSeedItems(JSON.parse(seedItemsStored)));
+            // dispatch(setSeedItems(JSON.parse(seedItemsStored)));
             dispatch(setDailyItems(JSON.parse(dailyItemsStored)));
             dispatch(setFeaturedItems(JSON.parse(featuredItemsStored)));
         }
 
-        //i want to always fetch likes from the server
+        dispatch(getSeedItems());
         dispatch(getLikes());
         dispatch(getComments());
         dispatch(getInventory());
         dispatch(getReminders());
     }, [dispatch]);
 
-    // useEffect(() => {
-    //     //fetch likes data from the server
-    //     dispatch(getLikes()).then(() => {
-    //         //store likes data into localStorage after fetching
-    //         localStorage.setItem('likes', JSON.stringify(likes));
-    //     })
-    // }, [dispatch]);
-
-    // useEffect(() => {
-    //     //fetch likes data from the server
-    //     dispatch(getComments()).then(() => {
-    //         //store likes data into localStorage after fetching
-    //         localStorage.setItem('comments', JSON.stringify(comments));
-    //     })
-    // }, [dispatch]);
-
-    // if (!isLoaded) {
-    //     return <p>Loading...</p>
-    // }
     return (
         <div className='item-detail-container'>
             {/* <h1>This is the Item Detail Page</h1> */}

@@ -71,8 +71,10 @@ export const getSeedItems = () => async (dispatch) => {
 
     if (response.ok) {
         const data = await response.json();
+        console.log('Data from getSeedItems', data);
+
         dispatch(setSeedItems(data.seeded_items));
-        console.log('Loading seed items from API')
+        console.log('Loading seed items from API');
         dispatch(setItemsLoaded()); //set items loaded after fetching items
     }
 };
@@ -125,7 +127,7 @@ export const getCurrentItem = (itemId) => async (dispatch) => {
 //encodeURIComponent is used to ensure the query string is properly formatted
 export const searchItems = (query) => async (dispatch) => {
     dispatch(clearSearchResults());
-    
+
     const response = await fetch(`/api/items/search?name=${encodeURIComponent(query)}`, {
         headers: {
             "Content-Type": "application/json",
@@ -134,7 +136,10 @@ export const searchItems = (query) => async (dispatch) => {
 
     if (response.ok) {
         const data = await response.json();
+        console.log('data from searchItems', data)
         dispatch(setSearchResults(data));
+
+        // dispatch(getSeedItems());
     } else if (response.status === 404) {
         dispatch(setSearchError("Sorry, we were not able to find your item."));
     } else if (response.status === 400) {

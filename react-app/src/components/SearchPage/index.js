@@ -1,20 +1,24 @@
 import {useSelector, useDispatch} from 'react-redux'
-import { useState } from 'react'
-import { searchItems } from '../../store/items'
+import { useEffect, useState } from 'react'
+import { getSeedItems, searchItems } from '../../store/items'
+import { setCurrentItem } from '../../store/items'
+import { useHistory } from 'react-router-dom'
 import { getItemBackgroundColor } from '../../utils'
 import vbucks from '../../assets/images/vbucks-icon.webp'
 import './SearchPage.css'
 
 const SearchPage = () => {
     const dispatch = useDispatch();
+    const history = useHistory();
     const [searchTerm, setSearchTerm] = useState('');
     const searchResults = useSelector(state => state.items.searchResults);
+    // console.log('searchResults', searchResults);
+    const seedItems = useSelector(state => state.items.seedItems);
     const searchError = useSelector(state => state.items.searchError);
-
 
     const handleSearch = (e) => {
         e.preventDefault();
-        dispatch(searchItems(searchTerm));
+        dispatch(searchItems(searchTerm))
     }
 
     function formatDate(dateString) {
@@ -63,10 +67,10 @@ const SearchPage = () => {
             {searchResults && searchResults.map(item => (
                 <div className='item-detail-heading' key={item.itemId}>
                     <div>
-                        <img className='item-detail-image search-image' src={item.images.icon} alt={item.name} style={{ backgroundColor: getItemBackgroundColor(item.rarity) }}/>
+                        <img className='item-detail-image search-image' onClick={() => history.push(`/item/${item.name}`)} src={item.images.icon} alt={item.name} style={{ backgroundColor: getItemBackgroundColor(item.rarity) }}/>
                     </div>
                     <div className='item-detail-stats'>
-                        <div className='item-details search-details'>
+                        <div className='item-details search-details' onClick={() => history.push(`/item/${item.name}`)}>
                             <h1 className='item-detail-name'>{item.name}</h1>
                             <div className='item-rarity-section small-rarity-section'>
                                 <h3 className='rarity' style={{ backgroundColor: getItemBackgroundColor(item.rarity) }}>{item.rarity}</h3>
@@ -77,7 +81,7 @@ const SearchPage = () => {
                                     {item.price}
                                 </div>
                             }
-                            
+
                             {item.price && item.priceIconLink &&
                                 <div className='item-detail-price small-detail-price'>
                                     <img className='vbucks-icon' src={item.priceIconLink} alt='vbucks' />
