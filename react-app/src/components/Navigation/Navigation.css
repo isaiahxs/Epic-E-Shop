@@ -34,6 +34,7 @@
   font-size: 1.3rem;
   background-color:#0e1220;
   border: none;
+  padding: 0px;
 }
 
 .nav-cart:hover {
@@ -127,19 +128,20 @@
 
 .nav-home,
 /* .nav-inventory, */
+.nav-search,
 .nav-about-me,
-.nav-view-cart,
+.nav-cart,
 .user-icon {
-  margin: 0 10px;
+  margin: 0 5px;
   cursor: pointer;
   text-decoration: none;
 }
 
-.nav-home:visited,
+/* .nav-home:visited,
 .nav-about-me:visited {
   color: white;
   text-decoration: none;
-}
+} */
 
 .nav-home:hover,
 /* .nav-inventory:hover, */
@@ -162,6 +164,7 @@
       width: 100%;
       justify-content: space-between;
   }
+
 
   .nav-home {
     display: none;
