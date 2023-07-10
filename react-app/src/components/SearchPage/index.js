@@ -60,7 +60,7 @@ const SearchPage = () => {
             </form>
             
             {searchError &&
-                <h2 className='featured-header'>{searchError}</h2>
+                <h2 className='featured-header error-message'>{searchError}</h2>
             }
 
             <div className='item-detail-body'>
@@ -71,7 +71,7 @@ const SearchPage = () => {
                     </div>
                     <div className='item-detail-stats'>
                         <div className='item-details search-details' onClick={() => history.push(`/item/${item.name}`)}>
-                            <h1 className='item-detail-name'>{item.name}</h1>
+                            <h2 className='item-detail-name search-item-detail-name'>{item.name}</h2>
                             <div className='item-rarity-section small-rarity-section'>
                                 <h3 className='rarity' style={{ backgroundColor: getItemBackgroundColor(item.rarity) }}>{item.rarity}</h3>
                                 <h3 className='item-type'>{item.type}</h3>
@@ -103,7 +103,7 @@ const SearchPage = () => {
                         <div className='item-history'>
                             {item.history === false || !item.history.dates ? 
                                 (
-                                    <h3 className='occurrences'>
+                                    <h3 className='occurrences bp-exclusive'>
                                         Unfortunately, this item was a battle-pass exclusive, so you are not able to add it to your cart!
                                     </h3>
                                 ) : (
@@ -128,6 +128,32 @@ const SearchPage = () => {
                     </div>
                 </div>
             ))}
+            </div>
+            <div className='popular-searches'>
+                <h2 className='featured-header examples-message'>Examples of Popular Searches</h2>
+                <div className='popular-searches-list'>
+                    <div className='searches-columns'>
+                        <div className='searches-column-1'>
+                            <h3>Travis Scott</h3>
+                            <h3>Renegade Raider</h3>
+                            <h3>Leviathan Axe</h3>
+                            <h3>Ghoul Trooper</h3>
+                            <h3>Star Wand</h3>
+                            <h3>Candy Axe</h3>
+                            <h3>Harley Hitter</h3>
+                        </div>
+                        <div className='searches-column-2'>
+                            <h3>Reaper</h3>
+                            <h3>Get Griddy</h3>
+                            <h3>John Wick</h3>
+                            <h3>Marshmello</h3>
+                            <h3>Brilliant Bomber</h3>
+                            {/* <h3>Aura</h3> */}
+                            <h3>Chun-Li</h3>
+                            <h3>Harley Quinn</h3>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     )
