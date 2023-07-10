@@ -126,10 +126,18 @@ const ItemDetailPage = () => {
                                     <h3 className='rarity' style={{ backgroundColor: getItemBackgroundColor(item.rarity) }}>{item.rarity}</h3>
                                     <h3 className='item-type'>{item.type}</h3>
                                 </div>
-                                <div className='item-detail-price small-detail-price'>
-                                    <img className='vbucks-icon' src={item.priceIconLink} alt='vbucks' />
-                                    {item.price}
-                                </div>
+                                {item.price && !item.priceIconLink &&
+                                    <div className='item-detail-price small-detail-price'>
+                                        {item.price}
+                                    </div>
+                                }
+                                
+                                {item.price && item.priceIconLink &&
+                                    <div className='item-detail-price small-detail-price'>
+                                        <img className='vbucks-icon' src={item.priceIconLink} alt='vbucks' />
+                                        {item.price}
+                                    </div>
+                                }
                                 <div className='small-item-details'>
                                     <div>{item.description}</div>
                                     {item.history.dates &&
