@@ -44,7 +44,6 @@
     .cart-button-container {
         display: flex;
         flex-direction: row;
-        /* justify-content: space-around; */
         width: 600px;
     }
 
@@ -53,8 +52,18 @@
         width: 100%;
     }
 
+    .smaller-toggle-cart {
+        width: 195px;
+    }
+
     .add-this-item-to-cart-button {
         margin: 0px 10px;
+    }
+}
+
+@media screen and (max-width: 805px) {
+    .toggle-cart-signed-out {
+        width: 100%;
     }
 }
 

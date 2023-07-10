@@ -118,9 +118,14 @@
         margin-left: 20px;
     }
 
+    
     .item-detail-stats {
         width: 100%;
         justify-content: space-between;
+    }
+
+    .smaller-toggle-cart {
+        width: 195px;
     }
 }
 
@@ -147,10 +152,6 @@
         justify-content: space-between;
         margin-top: 20px;
     }
-
-    /* .item-history { */
-        /* margin-left: 20px; */
-    /* } */
 }
 
 @media screen and (max-width: 550px) {

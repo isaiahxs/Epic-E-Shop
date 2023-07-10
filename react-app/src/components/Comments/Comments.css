@@ -54,6 +54,8 @@
 }
 
 .edit-delete-comment-buttons {
+    display: flex;
+    /* justify-content: space-between; */
     margin-top: 20px;
 }
 
@@ -67,7 +69,6 @@
     }
 
     .edit-delete-comment-buttons {
-        display: flex;
         justify-content: space-between;
     }
 }

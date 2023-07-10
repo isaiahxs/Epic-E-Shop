@@ -93,7 +93,7 @@ const CartPanel = () => {
                     </button>
                 }
 
-                {sessionUser &&
+                {sessionUser && currentItem.history.dates &&
                     <div className='cart-button-container'>
                         <div className='add-remove-cart-buttons'>
                             <button className='toggle-cart' onClick={toggleCartOpen}>
@@ -108,6 +108,17 @@ const CartPanel = () => {
                         </div>
                     </div>
                 }
+
+                {sessionUser && !currentItem.history.dates &&
+                    <div className='cart-button-container'>
+                        <div className='add-remove-cart-buttons'>
+                            <button className='toggle-cart smaller-toggle-cart' onClick={toggleCartOpen}>
+                                {isCartOpen ? 'Close Cart' : 'Open Cart'}
+                            </button>
+                        </div>
+                    </div>
+                }
+
                 <Cart isCartOpen={isCartOpen} toggleCartOpen={toggleCartOpen}/>
             </div>
             ) : (
