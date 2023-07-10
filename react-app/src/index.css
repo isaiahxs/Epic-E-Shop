@@ -21,6 +21,7 @@ a:hover {
 }
 
 button {
+    display: flex;
     font-family: "Luckiest Guy", cursive;
     font-size: 1.2rem;
     background-color: #222222;
@@ -29,6 +30,7 @@ button {
     transition: 0.5s all;
     cursor: pointer;
     padding: 6px;
+    justify-content: center;
     align-items: center;
 }
 
