@@ -56,7 +56,7 @@ const SearchPage = () => {
                         placeholder="Enter your search term"
                         className='search-input'
                     />
-                    <button className='submit-comment' type="submit">Search</button>
+                    <button className='submit-comment' type="submit" disabled={searchTerm.length === 0}>Search</button>
             </form>
             
             {searchError &&
@@ -66,8 +66,8 @@ const SearchPage = () => {
             <div className='item-detail-body'>
             {searchResults && searchResults.map(item => (
                 <div className='item-detail-heading' key={item.itemId}>
-                    <div>
-                        <img className='item-detail-image search-image' onClick={() => history.push(`/item/${item.name}`)} src={item.images.icon} alt={item.name} style={{ backgroundColor: getItemBackgroundColor(item.rarity) }}/>
+                    <div className={`item-detail-image-container ${item.rarity}-container`}>
+                        <img className={`item-detail-image search-image ${item.rarity}`} onClick={() => history.push(`/item/${item.name}`)} src={item.images.icon} alt={item.name} style={{ backgroundColor: getItemBackgroundColor(item.rarity) }}/>
                     </div>
                     <div className='item-detail-stats'>
                         <div className='item-details search-details' onClick={() => history.push(`/item/${item.name}`)}>
