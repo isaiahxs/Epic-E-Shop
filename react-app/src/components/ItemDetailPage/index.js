@@ -118,17 +118,18 @@ const ItemDetailPage = () => {
             {item ? (
                 <div className='item-detail-body'>
                     <div className='item-detail-heading'>
-                        <div>
-                            <img className='item-detail-image' src={item.images.icon} alt={item.name} style={{ backgroundColor: getItemBackgroundColor(item.rarity) }}/>
+                        <div className={`item-detail-image-container ${item.rarity}-container`}>
+                            <img className={`item-detail-image ${item.rarity}`} src={item.images.icon} alt={item.name} style={{ backgroundColor: getItemBackgroundColor(item.rarity) }}/>
                         </div>
                         <div className='item-detail-stats'>
                             <div className='item-details'>
                                 <h1 className='item-detail-name'>{item.name}</h1>
+
                                 <div className='item-rarity-section small-rarity-section'>
-                                    {/* <h3>Rarity:</h3> */}
                                     <h3 className='rarity' style={{ backgroundColor: getItemBackgroundColor(item.rarity) }}>{item.rarity}</h3>
                                     <h3 className='item-type'>{item.type}</h3>
                                 </div>
+
                                 {item.price && !item.priceIconLink &&
                                     <div className='item-detail-price small-detail-price'>
                                         {item.price}

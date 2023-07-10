@@ -1,6 +1,5 @@
 .item-detail-heading {
     display: flex;
-    /* justify-content: space-around; */
     margin: 10px auto;
     max-width: 1000px;
     height: 250px;
@@ -9,10 +8,14 @@
     padding: 15px;
 }
 
-.item-detail-image {
+.item-detail-image-container {
     height: 250px;
     width: auto;
-    border: 1px solid white;
+}
+
+.item-detail-image {
+    height: 100%;
+    width: auto;
 }
 
 .item-detail-stats {
@@ -36,6 +39,7 @@
 }
 
 .rarity {
+    align-items: center;
     margin-right: 3px;
     padding: 4px 8px;
     margin: 0;
@@ -127,9 +131,14 @@
         margin-bottom: 300px;
     }
 
-    .item-detail-image {
+    .item-detail-image-container {
         height: 300px;
         width: 300px;
+    }
+
+    .item-detail-image {
+        height: 100%;
+        width: 100%;
     }
 
     .item-detail-stats {
@@ -151,16 +160,18 @@
         margin-bottom: 550px;
     }
 
-    .item-detail-image {
+    .item-detail-image-container {
         height: 250px;
         width: 250px;
     }
 
+    .item-detail-image {
+        height: 100%;
+        width: 100%;
+    }
+
     .item-detail-stats {
         flex-direction: column;
-        /* align-items: center; */
-        /* justify-content: space-between; */
-        /* margin-bottom: 550px; */
         margin-top: 0px;
     }
 
@@ -171,7 +182,6 @@
 
     .small-rarity-section,
     .small-detail-price {
-        /* text-align: center; */
         display: flex;
         justify-content: center;
     }

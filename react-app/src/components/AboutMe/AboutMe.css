@@ -1,18 +1,22 @@
 .about-me-image {
-    background-color: #ff5a5f;
-    height: 250px;
-    width: 250px;
-    border: 1px solid white;
+    /* background-color: #ff5a5f; */
+    background: radial-gradient(#ff797d, #ff3e44);
+    /* height: 250px; */
+    /* width: 250px; */
+    height: 100%;
+    width: auto;
+    border: 3px solid #ff3e44;
 }
+
+/* .about-me-image-container {
+    height: 100%;
+    width: auto;
+} */
 
 .about-me-heading {
     display: flex;
     justify-content: space-between;
 }
-
-/* .about-me-details { */
-    /* padding: 0 0px; */
-/* } */
 
 .about-me-rarity {
     background-color: #ff5a5f;
@@ -78,10 +82,6 @@
     margin: 0 20px;
 }
 
-/* .about-img-container {
-    overflow: hidden;
-} */
-
 .project-name {
     font-size: 1.5rem;
     margin-top: 0;
@@ -115,6 +115,9 @@
 }
 
 @media screen and (max-width: 900px) {
+    .about-me-body-container {
+        margin-top: 350px;
+    }
     .about-me-body {
         margin-top: 230px;
         max-width: 500px;
