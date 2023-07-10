@@ -1,6 +1,6 @@
 #  contains routes for getting information about items, like getting an item by ID
 import os
-from flask import Blueprint, jsonify
+from flask import Blueprint, jsonify, request, abort
 import requests
 import json
 from app.models import Item
@@ -53,7 +53,7 @@ def get_daily_items():
         #check if item is in database
         existing_item = Item.query.filter_by(item_id=item['id']).first()
 
-        #if it does not, add it to the database
+        #if it is not, add it to the database
         if existing_item is None:
             new_item = Item(
                 item_id=item['id'],
@@ -114,7 +114,7 @@ def get_featured_items():
         #check if item is in database
         existing_item = Item.query.filter_by(item_id=item['id']).first()
 
-        #if it does not, add it to the database
+        #if it is not, add it to the database
         if existing_item is None:
             new_item = Item(
                 item_id=item['id'],
@@ -155,3 +155,70 @@ def get_item(itemId):
         return item.to_dict()
     else:
         return {'error': 'Item not found'}, 404
+    
+@item_routes.route('/search', methods=['GET'])
+def search_item():
+    """
+    Search for an item based on its name
+    """
+    item_name = request.args.get('name')  #this will get the 'name' query parameter
+    if not item_name:
+        return {'error': 'No name provided'}, 400
+
+    #making a request to the API to search for the item
+    url = f"https://fnbr.co/api/images?search={item_name}"
+    headers = {'x-api-key': os.getenv("API_KEY")}
+    response = requests.get(url, headers=headers)
+    data = json.loads(response.text)
+
+    if not data['data']:
+        return {'error': 'Item not found'}, 404
+    
+    items = data['data']
+    result = []
+
+    for item in items:
+        item_dict = {
+            'itemId': item['id'],
+            'name': item['name'],
+            'price': item['price'],
+            'priceIcon': item['priceIcon'],
+            'priceIconLink': item['priceIconLink'],
+            'images': item['images'],
+            'rarity': item['rarity'],
+            'type': item['type'],
+            'slug': item['slug'],
+            'readableType': item['readableType'],
+            'description': item['description'],
+            'history': item['history']
+        }
+
+        #check if item is in database
+        existing_item = Item.query.filter_by(item_id=item['id']).first()
+
+        #if it is not, add it to the database
+        if existing_item is None:
+            new_item = Item(
+                item_id=item['id'],
+                name=item['name'],
+                price=item['price'],
+                price_icon=item['priceIcon'],
+                price_icon_link=item['priceIconLink'],
+                images=item['images'],
+                rarity=item['rarity'],
+                type=item['type'],
+                slug=item['slug'],
+                readable_type=item['readableType'],
+                description=item['description'],
+                history=item['history']
+            )
+            db.session.add(new_item)
+
+        #adding the dictionary to the result list
+        result.append(item_dict)
+
+    #commit changes to database
+    db.session.commit()
+
+    #returning the result list as a json object
+    return jsonify(result)
