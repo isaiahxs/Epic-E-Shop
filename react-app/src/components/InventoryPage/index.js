@@ -49,7 +49,7 @@ const InventoryPage = () => {
     useEffect(() => {
         const fetchAllData = async () => {
             await Promise.all([
-                // dispatch(getSeedItems()),
+                dispatch(getSeedItems()),
                 // dispatch(getDailyItems()),
                 // dispatch(getFeaturedItems()),
                 dispatch(getInventory()),

@@ -9,3 +9,48 @@
     font-family: 'Poppins', calibri, helvetica, arial, sans-serif;
     padding: 5px;
 }
+
+/* .bp-exclusive { */
+    /* text-align: center; */
+/* } */
+
+.search-item-detail-name {
+    font-size: 2.0rem;
+}
+
+.examples-message {
+    margin-bottom: 20px;
+    margin-top: 60px;
+    font-size: 1.8rem;
+}
+
+.popular-searches {
+    margin-top: 30px;
+    padding: 0px 15px;
+}
+
+.popular-searches-list {
+    display: flex;
+    justify-content: center;
+    /* flex-direction: row; */
+}
+
+.searches-columns {
+    display: flex;
+    justify-content: space-between;
+    max-width: 900px;
+    min-width: 335px;
+    font-family: 'Poppins', calibri, helvetica, arial, sans-serif;
+    text-align: center;
+}
+
+@media screen and (max-width: 900px) {
+    .examples-message {
+        /* margin-top: 0px; */
+    }
+
+    .popular-searches {
+        /* margin-bottom: 350px; */
+        /* position: static; */
+    }
+}
