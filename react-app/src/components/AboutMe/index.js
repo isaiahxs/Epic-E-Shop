@@ -9,7 +9,7 @@ const AboutMe = () => {
     return (
         <div className='item-detail-container'>
             <div className='item-detail-heading about-me-heading'>
-                <div>
+                <div className={`item-detail-image-container about-me-image-container`}>
                     <img className='item-detail-image about-me-image' src={cavalry} alt="Isaiah as a Fortnite Character"/>
                 </div>
                 <div className='item-details about-me-details'>

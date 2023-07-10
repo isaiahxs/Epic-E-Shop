@@ -105,3 +105,123 @@ button {
 /* .arrow-button {
     cursor: pointer;
 } */
+
+.common {
+    background: radial-gradient(#bebebe,#646464);
+}
+
+.common-container {
+    border: 3px solid #b1b1b1;
+}
+
+.uncommon {
+    background: radial-gradient(#6abb1e, #175117);
+}
+
+.uncommon-container {
+    border: 3px solid #88e339;
+}
+
+.rare {
+    background: radial-gradient(#2cc0ff, #143877);
+}
+
+.rare-container {
+    border: 3px solid #37d0ff;
+}
+
+.epic {
+    background: radial-gradient(#c359ff, #4c2483);
+}
+
+.epic-container {
+    border: 3px solid #ea5eff;
+}
+
+.legendary {
+    background: radial-gradient(#ea8d23, #78371d);
+}
+
+.legendary-container {
+    border: 3px solid #e98d4b;
+}
+
+.dc {
+    background: radial-gradient(#5475c7,#243461);
+}
+
+.dc-container {
+    border: 3px solid #6094ce;
+}
+
+.marvel {
+    background: radial-gradient(#c53333, #761b1b);
+}
+
+.marvel-container {
+    border: 3px solid #ef3537;
+}
+
+.icon_series {
+    background: radial-gradient(#36b7b7, #256b6b);
+}
+
+.icon_series-container {
+    border: 3px solid #52e0e0;
+}
+
+.shadow {
+    background: radial-gradient(#717171, #191919);
+}
+
+.shadow-container {
+    border: 3px solid #949494;
+}
+
+.gaming_legends {
+    background: radial-gradient(#5447d4, #312497);
+}
+
+.gaming_legends-container {
+    border: 3px solid #8078ff;
+}
+
+.slurp {
+    background: radial-gradient(#29f1a3, #12a9a4);
+}
+
+.slurp-container {
+    border: 3px solid #53f0ff;
+}
+
+.frozen {
+    background: radial-gradient(#94dfff,#269ed6);;
+}
+
+.frozen-container {
+    border: 3px solid #c4dff7;
+}
+
+.lava {
+    background: radial-gradient(#ea8d23,#6a0a31);
+}
+
+.lava-container {
+    border: 3px solid #d19635;
+}
+
+.dark {
+    background: radial-gradient(#fb22df,#520c6f);
+}
+
+.dark-container {
+    border: 3px solid #ff42e7;
+}
+
+.star_wars {
+    background: radial-gradient(#1b366e,#081737);
+}
+
+.star_wars-container {
+    border: 3px solid #e7c413;
+}

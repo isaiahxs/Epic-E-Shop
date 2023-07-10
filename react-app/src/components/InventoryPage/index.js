@@ -94,7 +94,7 @@ const InventoryPage = () => {
                                 <div className='inventory-item' key={reminder.itemId} onClick={() => history.push(`/item/${item.name}`)}>
                                     
                                     <div className={`img-container ${item.rarity}-container`}>
-                                        <img className='home-item-image' src={item.images.icon} alt={item.name} style={{ backgroundColor: getItemBackgroundColor(item.rarity) }}/>
+                                        <img className={`home-item-image ${item.rarity}`} src={item.images.icon} alt={item.name} style={{ backgroundColor: getItemBackgroundColor(item.rarity) }}/>
                                     </div>
                                     <div className='inventory-item-info'>
                                         <div className='inventory-item-name'>Item name: {item.name}</div>
@@ -129,7 +129,7 @@ const InventoryPage = () => {
                                 <div className='inventory-item' key={comment.itemId} onClick={() => history.push(`/item/${item.name}`)}>
                                     
                                     <div className={`img-container ${item.rarity}-container`}>
-                                        <img className='home-item-image' src={item.images.icon} alt={item.name} style={{ backgroundColor: getItemBackgroundColor(item.rarity) }}/>
+                                        <img className={`home-item-image ${item.rarity}`} src={item.images.icon} alt={item.name} style={{ backgroundColor: getItemBackgroundColor(item.rarity) }}/>
                                     </div>
                                     <div className='inventory-item-info'>
                                         <div className='inventory-item-name'>Item name: {item.name}</div>
@@ -161,7 +161,7 @@ const InventoryPage = () => {
                                 <div className='inventory-item' key={vote.itemId} onClick={() => history.push(`/item/${item.name}`)}>
                                     
                                     <div className={`img-container ${item.rarity}-container`}>
-                                        <img className='home-item-image' src={item.images.icon} alt={item.name} style={{ backgroundColor: getItemBackgroundColor(item.rarity) }}/>
+                                        <img className={`home-item-image ${item.rarity}`} src={item.images.icon} alt={item.name} style={{ backgroundColor: getItemBackgroundColor(item.rarity) }}/>
                                     </div>
                                     <div className='inventory-item-info'>
                                         <div className='inventory-item-name'>Item name: {item.name}</div>
