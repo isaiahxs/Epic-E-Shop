@@ -1,4 +1,4 @@
-import {useSelector, useDispatch} from 'react-redux'
+import {useSelector} from 'react-redux'
 import { getItemBackgroundColor } from '../../utils'
 import { useHistory } from 'react-router-dom'
 import Slider from 'react-slick'
@@ -7,16 +7,6 @@ import './FeaturedItems.css'
 const FeaturedItems = () => {
     const allFeaturedItems = useSelector(state => state.items.featuredItems)
     const history = useHistory()
-
-    // setting up options for the carousel
-    // const settings = {
-    //     infinite: true,
-    //     speed: 500,
-    //     slidesToShow: 2,
-    //     slidesToScroll: 2,
-    //     centerMode: true,
-    //     centerPadding: "110px",
-    // };
 
     const settings = {
         infinite: true,
