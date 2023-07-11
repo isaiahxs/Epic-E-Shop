@@ -74,6 +74,9 @@
     }
 }
 
+.edit-comment-form {
+    margin-bottom: 20px;
+}
 
 .edit-comment-form,
 .new-comment-form {
@@ -124,6 +127,10 @@
     .comment-input {
         width: 97%;
         margin-right: 0px;
+    }
+
+    .new-comment-input {
+        margin-right: 10px;
     }
 
     .submit-edit {
