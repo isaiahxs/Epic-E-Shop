@@ -76,8 +76,8 @@ function ProfileButton({ user }) {
             <div className="dropdown-username">
               Hi, {user.username}
             </div>
-            <button className="dropdown-inventory-button" onClick={handleInventory}>Inventory</button>
-            <button className="dropdown-logout-button" onClick={handleLogout}>Log Out</button>
+            <button className="dropdown-inventory-button blue-button" onClick={handleInventory}>Inventory</button>
+            <button className="dropdown-logout-button red-button" onClick={handleLogout}>Log Out</button>
           </div>
         ) : (
           <div className="dropdown-options">

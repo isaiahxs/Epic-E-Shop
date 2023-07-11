@@ -13,12 +13,12 @@
     margin: 10px 0px;
 }
 
-.like-button {
+/* .like-button {
     background-color: #1e8513;
-}
+} */
 
 .dislike-button {
-    background-color: #c52434;
+    /* background-color: #c52434; */
     margin-left: 10px;
 }
 
@@ -30,8 +30,7 @@
 @media screen and (max-width: 805px) {
     .like-button,
     .dislike-button,
-    .remove-like-button,
-    .remove-dislike-button,
+    .remove-vote-button,
     .switch-vote-button {
         width: 50%;
     }

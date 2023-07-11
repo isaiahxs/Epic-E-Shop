@@ -13,11 +13,9 @@ const Comments = () => {
     const [editingCommentId, setEditingCommentId] = useState(null);
     const [newCommentText, setNewCommentText] = useState('');
 
-
     const handleSubmit = async (event) => {
         event.preventDefault();
         dispatch(createComment(currentItem.itemId, {text: newCommentText, userId: sessionUser.id}))
-        // setCommentText('');
         setNewCommentText('');
     }
 
@@ -94,11 +92,9 @@ const Comments = () => {
                                                 onChange={(e) => setEditText(e.target.value)} 
                                                 required
                                             />
-                                            {/* <button className='submit-comment' type="submit" disabled={editText.length === 0}>Submit Edit</button>
-                                            <button className='cancel-edit' onClick={() => setEditingCommentId(null)}>Cancel</button> */}
                                             <div className='active-edit-delete-comment-buttons'>
                                                 <button className='submit-comment submit-edit' type="submit" disabled={editText.length === 0}>Submit Edit</button>
-                                                <button className='cancel-edit' onClick={() => setEditingCommentId(null)}>Cancel</button>
+                                                <button className='cancel-edit red-button' onClick={() => setEditingCommentId(null)}>Cancel</button>
                                             </div>
                                         </form>
                                     </div>
@@ -108,8 +104,8 @@ const Comments = () => {
                             <div>
                                 {userId && userId === comment?.userId && editingCommentId !== comment.id && 
                                     <div className='edit-delete-comment-buttons'>
-                                        <button className='edit-comment-button' onClick={() => handleEdit(comment.id, comment.text)}>Edit</button>
-                                        <button className='delete-comment-button' onClick={() => handleDelete(comment?.id)}>Delete</button>
+                                        <button className='edit-comment-button green-button' onClick={() => handleEdit(comment.id, comment.text)}>Edit</button>
+                                        <button className='delete-comment-button red-button' onClick={() => handleDelete(comment?.id)}>Delete</button>
                                     </div>
                                 }
                             </div>
@@ -127,8 +123,6 @@ const Comments = () => {
                         <form className='new-comment-form' onSubmit={handleSubmit}>
                             <input
                             className='comment-input new-comment-input'
-                            // value={commentText}    
-                            // onChange={(e) => setCommentText(e.target.value)}
                             value={newCommentText}    
                             onChange={(e) => setNewCommentText(e.target.value)}
                             placeholder='Add a comment...'

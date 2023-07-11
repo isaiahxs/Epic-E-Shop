@@ -91,6 +91,10 @@
     background-color: #1e8513;
 }
 
+.submit-comment:hover {
+    background-color: #137908;
+}
+
 .submit-comment:disabled {
     opacity: 0.5;
     cursor: not-allowed;

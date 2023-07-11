@@ -178,19 +178,6 @@
 }
 
 .checkout-button {
-    /* background: #FF6347; */
-    background: #0e6ff8;
-    border: 1px solid white;
-    padding: 10px;
-    font-family: "Luckiest Guy", cursive;
     font-size: 1.6rem;
     margin-top: 20px;
-    color: white;
-    cursor: pointer;
-    transition: 0.5s all;
-}
-
-.checkout-button:hover {
-    background: #2138ff;
-    color: white;
 }

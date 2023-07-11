@@ -155,7 +155,7 @@ const Reminders = () => {
                                                 <option value={-1}>Until item returns</option>
                                             </select>
                                         </label>
-                                        <button className='create-reminder' type='submit'>
+                                        <button className='create-reminder green-button' type='submit'>
                                             Create Reminder
                                         </button>
                                     </form>

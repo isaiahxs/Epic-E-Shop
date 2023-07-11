@@ -34,6 +34,45 @@ button {
     align-items: center;
 }
 
+.blue-button {
+    background-color: #0e6ff8;
+}
+
+.blue-button:hover {
+    background-color: #2138ff;
+}
+
+.red-button {
+    background-color: #dd2336;
+}
+
+.red-button:hover {
+    background-color: #b51625;
+}
+.green-button {
+    background-color: #1e8513;
+}
+
+.green-button:hover {
+    background-color: #137908;
+}
+
+.purple-button {
+    background-color: #c422dd;
+}
+
+.purple-button:hover {
+    background-color: #9c1db6;
+}
+
+.dark-button {
+    background-color: #2e2e2e;
+}
+
+.dark-button:hover {
+    background-color: #1a1a1a;
+}
+
 .home-subheading-container {
     display: flex;
     justify-content: center;

@@ -21,7 +21,6 @@
 }
 
 .toggle-cart {
-    background-color: #0e6ff8;
     width: 100%;
 }
 
@@ -30,13 +29,11 @@
 }
 
 .add-this-item-to-cart-button {
-    background-color: #1e8513;
     margin: 10px 0px;
     width: 100%;
 }
 
 .remove-this-item-from-cart-button {
-    background-color: #c52434;
     width: 100%;
 }
 

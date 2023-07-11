@@ -164,7 +164,7 @@ const Cart = ({isCartOpen, toggleCartOpen}) => {
                             </div>
 
                             <div className='checkout-button-container'>
-                                <button className='checkout-button' onClick={handleCheckout}>Checkout</button>
+                                <button className='checkout-button blue-button' onClick={handleCheckout}>Checkout</button>
                             </div>
                         </div>
                     </>

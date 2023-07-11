@@ -14,8 +14,12 @@
     align-items: center;
     gap: 20px;
     width: 800px;
-    cursor: pointer;
+    /* cursor: pointer; */
     /* border: 1px solid white; */
+}
+
+.inv-clickable {
+    cursor: pointer;
 }
 
 .inventory-heading h2 {
