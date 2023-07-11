@@ -7,6 +7,7 @@ import LoginFormModal from "../LoginFormModal";
 import SignupFormModal from "../SignupFormModal";
 import { useHistory, NavLink } from "react-router-dom";
 import userIcon from '../../assets/images/user.png';
+import './ProfileButton.css';
 
 function ProfileButton({ user }) {
   const dispatch = useDispatch();
