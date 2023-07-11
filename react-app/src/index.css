@@ -1,14 +1,8 @@
 body {
     font-family: "Luckiest Guy", cursive;
-    /* font-weight: light; */
     font-weight: 200;
     color: #ffffff;
     background-color: #0e1220;
-}
-
-.item-name {
-    font-family: 'Poppins', calibri, helvetica, arial, sans-serif;
-    font-weight: bold;
 }
 
 a {
@@ -21,6 +15,7 @@ a:hover {
 }
 
 button {
+    display: flex;
     font-family: "Luckiest Guy", cursive;
     font-size: 1.2rem;
     background-color: #222222;
@@ -29,9 +24,30 @@ button {
     transition: 0.5s all;
     cursor: pointer;
     padding: 6px;
+    justify-content: center;
     align-items: center;
 }
 
+.item-name {
+    font-family: 'Poppins', calibri, helvetica, arial, sans-serif;
+    font-weight: bold;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* SUBHEADINGS AND CONTAINERS */
 .home-subheading-container {
     display: flex;
     justify-content: center;
@@ -53,6 +69,77 @@ button {
     margin-bottom: 10px;
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* BUTTON COLORS */
+.blue-button {
+    background-color: #0e6ff8;
+}
+
+.blue-button:hover {
+    background-color: #2138ff;
+}
+
+.red-button {
+    background-color: #dd2336;
+}
+
+.red-button:hover {
+    background-color: #b51625;
+}
+.green-button {
+    background-color: #1e8513;
+}
+
+.green-button:hover {
+    background-color: #137908;
+}
+
+.purple-button {
+    background-color: #c422dd;
+}
+
+.purple-button:hover {
+    background-color: #9c1db6;
+}
+
+.dark-button {
+    background-color: #2e2e2e;
+}
+
+.dark-button:hover {
+    background-color: #1a1a1a;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* CAROUSEL CSS */
 .carousel-container {
     margin-bottom: 35px;
 }
@@ -82,16 +169,7 @@ button {
     padding: 0 0% !important;
 }
 
-/* THIS IS WHAT WE WILL WANT FOR MOBILE DIMENSIONS */
-/* @media screen and (max-width: 600px) {
-    .slick-list {
-        padding: 0 65px !important;
-    }
-} */
-
-
 .slick-slide {
-    /* width: 200px !important; */
     display: flex !important;
     justify-content: center !important;
 }
@@ -106,6 +184,22 @@ button {
     cursor: pointer;
 } */
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ITEM BACKGROUNDS */
 .common {
     background: radial-gradient(#bebebe,#646464);
 }

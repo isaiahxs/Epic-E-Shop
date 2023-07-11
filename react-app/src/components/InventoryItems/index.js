@@ -76,11 +76,11 @@ const InventoryItems = () => {
                 const item = allItems.find(item => item.itemId === inventoryItem.itemId);
 
                 return item ? (
-                    <div className='inventory-item' onClick={() => history.push(`/item/${item.name}`)} key={inventoryItem.itemId}>
-                        <div className={`img-container ${item.rarity}-container`}>
+                    <div className='inventory-item' key={inventoryItem.itemId}>
+                        <div className={`img-container ${item.rarity}-container inv-clickable`} onClick={() => history.push(`/item/${item.name}`)}>
                             <img className={`home-item-image ${item.rarity}`} src={item.images.icon} alt={item.name} style={{ backgroundColor: getItemBackgroundColor(item.rarity) }}/>
                         </div>
-                        <div className='inventory-item-info'>
+                        <div className='inventory-item-info inv-clickable' onClick={() => history.push(`/item/${item.name}`)}>
                             <div className='inventory-item-name'>Item name: {item.name}</div>
                             <div className='inventory-rarity-section'>Rarity: <span className='rarity' style={{ backgroundColor: getItemBackgroundColor(item.rarity) }}>{item.rarity}</span></div>
 
@@ -90,7 +90,7 @@ const InventoryItems = () => {
                                 <div className='inventory-item-price'>{item.price}</div>
                             </div>
                         </div>
-                        <div className='inventory-quantity'>Quantity: {inventoryItem.quantity}x</div>
+                        <div className='inventory-quantity inv-clickable' onClick={() => history.push(`/item/${item.name}`)}>Quantity: {inventoryItem.quantity}x</div>
                     </div>
                 ) : null;
             })}

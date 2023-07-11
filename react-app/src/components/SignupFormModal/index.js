@@ -104,7 +104,7 @@ function SignupFormModal() {
 				{errors.confirmPassword && <div className="error-message">{errors.confirmPassword}</div>}
 			</label>
 
-			Available Profile Images:
+			Please select a profile image
 			{errors.profileImage && <div className="error-message">{errors.profileImage}</div>}
 			<div className="profile-images-section">
 				{profileImages.map((imageURL, index) => (

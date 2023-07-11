@@ -13,11 +13,9 @@ const Comments = () => {
     const [editingCommentId, setEditingCommentId] = useState(null);
     const [newCommentText, setNewCommentText] = useState('');
 
-
     const handleSubmit = async (event) => {
         event.preventDefault();
         dispatch(createComment(currentItem.itemId, {text: newCommentText, userId: sessionUser.id}))
-        // setCommentText('');
         setNewCommentText('');
     }
 
@@ -85,24 +83,29 @@ const Comments = () => {
 
                             <div className='comment-content'>
                                 {editingCommentId === comment?.id &&
-                                    <form className='edit-comment-form' onSubmit={(e) => handleEditSubmit(e, comment?.id)}>
-                                        <input 
-                                            className='comment-input'
-                                            placeholder={commentText}
-                                            value={editText} 
-                                            onChange={(e) => setEditText(e.target.value)} 
-                                            required
-                                        />
-                                        <button className='submit-comment' type="submit" disabled={editText.length === 0}>Submit Edit</button>
-                                    </form>
+                                    <div className='edit-comment-container'>
+                                        <form className='edit-comment-form' onSubmit={(e) => handleEditSubmit(e, comment?.id)}>
+                                            <input 
+                                                className='comment-input'
+                                                placeholder={commentText}
+                                                value={editText} 
+                                                onChange={(e) => setEditText(e.target.value)} 
+                                                required
+                                            />
+                                            <div className='active-edit-delete-comment-buttons'>
+                                                <button className='submit-comment submit-edit' type="submit" disabled={editText.length === 0}>Submit Edit</button>
+                                                <button className='cancel-edit red-button' onClick={() => setEditingCommentId(null)}>Cancel</button>
+                                            </div>
+                                        </form>
+                                    </div>
                                 }
                             </div>
 
                             <div>
                                 {userId && userId === comment?.userId && editingCommentId !== comment.id && 
                                     <div className='edit-delete-comment-buttons'>
-                                        <button className='edit-comment-button' onClick={() => handleEdit(comment.id, comment.text)}>Edit</button>
-                                        <button className='delete-comment-button' onClick={() => handleDelete(comment?.id)}>Delete</button>
+                                        <button className='edit-comment-button green-button' onClick={() => handleEdit(comment.id, comment.text)}>Edit</button>
+                                        <button className='delete-comment-button red-button' onClick={() => handleDelete(comment?.id)}>Delete</button>
                                     </div>
                                 }
                             </div>
@@ -119,9 +122,7 @@ const Comments = () => {
                     {sessionUser && !userHasPosted &&
                         <form className='new-comment-form' onSubmit={handleSubmit}>
                             <input
-                            className='comment-input'
-                            // value={commentText}    
-                            // onChange={(e) => setCommentText(e.target.value)}
+                            className='comment-input new-comment-input'
                             value={newCommentText}    
                             onChange={(e) => setNewCommentText(e.target.value)}
                             placeholder='Add a comment...'

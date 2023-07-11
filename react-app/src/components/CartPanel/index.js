@@ -93,21 +93,32 @@ const CartPanel = () => {
                     </button>
                 }
 
-                {sessionUser &&
+                {sessionUser && currentItem.history.dates &&
                     <div className='cart-button-container'>
                         <div className='add-remove-cart-buttons'>
-                            <button className='toggle-cart' onClick={toggleCartOpen}>
+                            <button className='toggle-cart blue-button' onClick={toggleCartOpen}>
                                 {isCartOpen ? 'Close Cart' : 'Open Cart'}
                             </button>
                             {currentItem.history.dates &&
                                 <>
-                                    <button className='add-this-item-to-cart-button' onClick={() => handleAddToCart()}>Add to cart</button>
-                                    <button className='remove-this-item-from-cart-button' onClick={() => handleRemoveFromCart(currentItem.itemId)}>Remove from cart</button>
+                                    <button className='add-this-item-to-cart-button green-button' onClick={() => handleAddToCart()}>Add to cart</button>
+                                    <button className='remove-this-item-from-cart-button red-button' onClick={() => handleRemoveFromCart(currentItem.itemId)}>Remove from cart</button>
                                 </>
                             }
                         </div>
                     </div>
                 }
+
+                {sessionUser && !currentItem.history.dates &&
+                    <div className='cart-button-container'>
+                        <div className='add-remove-cart-buttons'>
+                            <button className='toggle-cart smaller-toggle-cart' onClick={toggleCartOpen}>
+                                {isCartOpen ? 'Close Cart' : 'Open Cart'}
+                            </button>
+                        </div>
+                    </div>
+                }
+
                 <Cart isCartOpen={isCartOpen} toggleCartOpen={toggleCartOpen}/>
             </div>
             ) : (
