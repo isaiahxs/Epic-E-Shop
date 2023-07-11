@@ -6,6 +6,13 @@
     padding: 0px 10px;
 }
 
+.filter-bar {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 40px;
+    font-family: 'Poppins', calibri, helvetica, arial, sans-serif;
+}
+
 .featured-items-container {
     display: grid;
     grid-template-columns: repeat(1, 1fr);

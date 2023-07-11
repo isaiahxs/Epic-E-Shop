@@ -1,15 +1,22 @@
 import {useSelector, useDispatch} from 'react-redux'
 import { setSeedItems, setDailyItems, setFeaturedItems, getSeedItems, getDailyItems, getFeaturedItems } from '../../store/items'
 import { setLikes, getLikes } from '../../store/like'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { getItemBackgroundColor } from '../../utils'
 import { useHistory } from 'react-router-dom'
 import './Featured.css'
 
 const Featured = () => {
-    const dispatch = useDispatch()
-    const featuredItems = useSelector(state => state.items.featuredItems)
-    const history = useHistory()
+    const dispatch = useDispatch();
+    const featuredItems = useSelector(state => state.items.featuredItems);
+    console.log('featuredItems', featuredItems);
+    const history = useHistory();
+
+    const [filterType, setFilterType] = useState('all');
+    const [filterRarity, setFilterRarity] = useState('all');
+    const [priceFilter, setPriceFilter] = useState('');
+
+
 
     useEffect(() => {
         const seedItemsStored = localStorage.getItem('seedItems');
@@ -37,11 +44,81 @@ const Featured = () => {
         });
     };
 
+    const filteredItems = featuredItems.filter(item => {
+        const itemTypeMatches = filterType === 'all' || item.type === filterType;
+        const rarityMatches = filterRarity === 'all' || item.rarity === filterRarity;
+    
+        const price = Number(item.price.replace(",", ""));
+        let priceMatches;
+        switch(priceFilter) {
+            case "< 500 V-Bucks":
+                priceMatches = price < 500;
+                break;
+            case "500 - 1500 V-Bucks":
+                priceMatches = price >= 500 && price <= 1500;
+                break;
+            case "> 1500 V-Bucks":
+                priceMatches = price > 1500;
+                break;
+            default:
+                priceMatches = true;
+        }
+        
+        return itemTypeMatches && rarityMatches && priceMatches;
+    });
+
     return (
         <>
             <h1 className='featured-header'>Today's Featured Items</h1>
+            <div className='filter-bar'>
+                <label className='type-filter'>
+                    Type:
+                    <select value={filterType} onChange={e => setFilterType(e.target.value)}>
+                        <option value="all">All</option>
+                        <option value="outfit">Outfit</option>
+                        <option value="pickaxe">Pickaxe</option>
+                        <option value="glider">Glider</option>
+                        <option value="emote">Emote</option>
+                        <option value="backpack">Backpack</option>
+                        <option value="music">Music</option>
+                        <option value="wrap">Wrap</option>
+                        <option value="bundle">Bundle</option>
+                    </select>
+                </label>
+                <label className='price-filter'>
+                    Price:
+                    <select value={priceFilter} onChange={e => setPriceFilter(e.target.value)}>
+                        <option value="">All</option>
+                        <option value="< 500 V-Bucks">&lt; 500 V-Bucks</option>
+                        <option value="500 - 1500 V-Bucks">500 - 1500 V-Bucks</option>
+                        <option value="> 1500 V-Bucks">&gt; 1500 V-Bucks</option>
+                    </select>
+                </label>
+                <label className='rarity-filter'>
+                    Rarity:
+                    <select value={filterRarity} onChange={e => setFilterRarity(e.target.value)}>
+                        <option value="all">All</option>
+                        <option value="common">Common</option>
+                        <option value="uncommon">Uncommon</option>
+                        <option value="rare">Rare</option>
+                        <option value="epic">Epic</option>
+                        <option value="legendary">Legendary</option>
+                        <option value="dc">DC</option>
+                        <option value="marvel">Marvel</option>
+                        <option value="icon_series">Icon</option>
+                        <option value="shadow">Shadow</option>
+                        <option value="gaming_legends">Gaming Legends</option>
+                        <option value="slurp">Slurp</option>
+                        <option value="frozen">Frozen</option>
+                        <option value="lava">Lava</option>
+                        <option value="dark">Dark</option>
+                        <option value="star_wars">Star Wars</option>
+                    </select>
+                </label>
+            </div>
+
             <div className='featured-items-container'>
-                {featuredItems.length > 0 && featuredItems.map((item, idx) => (
+                {featuredItems.length > 0 && filteredItems.map((item, idx) => (
                     <div key={idx} onClick={() => history.push(`/item/${item.name}`)}>
                         <div className='featured-item'>
                             <div className={`img-container ${item.rarity}-container`}>

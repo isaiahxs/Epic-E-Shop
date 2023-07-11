@@ -50,6 +50,7 @@ function App() {
 
           <Route path="/featured_items" exact>
             <Featured />
+            <ScrollToTop />
           </Route>
 
           <Route path="/item/:itemName" exact>
