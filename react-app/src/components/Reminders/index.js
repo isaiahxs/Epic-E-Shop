@@ -82,7 +82,7 @@ const Reminders = () => {
                                                 Want to change how long your reminder is active for?
                                             </div>
                                             <form className='reminder-form' onSubmit={handleUpdateReminder}>
-                                                <label>New Reminder duration:
+                                                <label className='update-reminder-label'>New duration:
                                                     <select className='select-field' value={editDuration} onChange={(e) => setEditDuration(e.target.value)}>
                                                         <option value={30}>30</option>
                                                         <option value={60}>60</option>
@@ -116,7 +116,7 @@ const Reminders = () => {
                                                 Want to change how long your reminder is active for?
                                             </div>
                                             <form className='reminder-form' onSubmit={handleUpdateReminder}>
-                                                <label>New reminder duration:
+                                                <label className='update-reminder-label'>New duration:
                                                     <select className='select-field' value={editDuration} onChange={(e) => setEditDuration(e.target.value)}>
                                                         <option value={30}>30</option>
                                                         <option value={60}>60</option>
