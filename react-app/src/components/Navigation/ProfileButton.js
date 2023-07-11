@@ -43,6 +43,12 @@ function ProfileButton({ user }) {
     history.push("/");
   };
 
+  const handleInventory = (e) => {
+    e.preventDefault();
+    closeMenu();
+    history.push("/inventory");
+  };
+
   const ulClassName = "profile-dropdown" + (showMenu ? "" : " hidden");
 
   const closeMenu = () => setShowMenu(false);
@@ -64,13 +70,13 @@ function ProfileButton({ user }) {
         }
 
       </button>
-      <ul className={ulClassName} ref={ulRef}>
+      <ul className={`${ulClassName} ${sessionUser ? 'session-profile-dropdown' : ''}`} ref={ulRef}>
         {user ? (
           <div className="dropdown-options">
             <div className="dropdown-username">
               Hi, {user.username}
             </div>
-            <button className="dropdown-inventory-button" onClick={() => history.push("/inventory")}>Inventory</button>
+            <button className="dropdown-inventory-button" onClick={handleInventory}>Inventory</button>
             <button className="dropdown-logout-button" onClick={handleLogout}>Log Out</button>
           </div>
         ) : (

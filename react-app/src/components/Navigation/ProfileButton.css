@@ -11,6 +11,20 @@
     z-index: 1;
 }
 
+.session-profile-dropdown {
+    right: -65%;
+}
+
+@media screen and (max-width: 605px) {
+    .profile-dropdown {
+        right: -15%;
+    }
+
+    .session-profile-dropdown {
+        right: -15%;
+    }
+}
+
 .dropdown-options {
     display: flex;
     flex-direction: column;
