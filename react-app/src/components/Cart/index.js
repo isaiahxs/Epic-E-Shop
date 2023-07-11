@@ -114,7 +114,7 @@ const Cart = ({isCartOpen, toggleCartOpen}) => {
                                                 <div className='cart-item-information'>
                                                     <div>{item.quantity}x {item.name}</div>
                                                     <div className='item-detail-price'>
-                                                        <img className='vbucks-icon' src={item.priceIconLink} />
+                                                        <img className='vbucks-icon' src={item.priceIconLink} alt='v-bucks icon'/>
                                                         <div>{item.price} V-Bucks</div>
                                                     </div>
                                                     <div className='in-cart-updates'>
@@ -124,7 +124,7 @@ const Cart = ({isCartOpen, toggleCartOpen}) => {
                                                 </div>
 
                                                 <div className='cart-item-image-container'>
-                                                    <img className='cart-item-image' src={item.images.icon} style={{ backgroundColor: getItemBackgroundColor(item.rarity) }}/>
+                                                    <img className='cart-item-image' alt='cart-item-image' src={item.images.icon} style={{ backgroundColor: getItemBackgroundColor(item.rarity) }}/>
                                                 </div>
 
                                             </div>
@@ -138,7 +138,7 @@ const Cart = ({isCartOpen, toggleCartOpen}) => {
                                     <div className='inventory-balance-container'>
                                         <h3 className='current-vbucks'>Current Balance:</h3>
                                         <div className='item-detail-price inventory-balance cart-content'>
-                                            <img src={vbucks} className='vbucks-icon' />
+                                            <img src={vbucks} className='vbucks-icon' alt='v-bucks icon'/>
                                             <h3 className='balance-amount'>{numberWithCommas(sessionUser.vbucks)} V-Bucks</h3>
                                         </div>
                                     </div>
@@ -148,7 +148,7 @@ const Cart = ({isCartOpen, toggleCartOpen}) => {
                             <div className='cart-total'>
                                 <h3 className='cart-total-heading'>Cart Total:</h3>
                                 <h3 className='item-detail-price cart-total-price'>
-                                    <img className='vbucks-icon' src={vbucks} />
+                                    <img className='vbucks-icon' src={vbucks} alt='v-bucks icon'/>
                                     {/* <div>{numberWithCommas(itemsInCart.reduce((total, item) => {
                                     const price = parseInt(item.price.replace(/,/g, ''), 10);
                                     return total + price * item.quantity;
@@ -164,7 +164,7 @@ const Cart = ({isCartOpen, toggleCartOpen}) => {
                             </div>
 
                             <div className='checkout-button-container'>
-                                <button className='checkout-button' onClick={handleCheckout}>Checkout</button>
+                                <button className='checkout-button blue-button' onClick={handleCheckout}>Checkout</button>
                             </div>
                         </div>
                     </>
@@ -175,7 +175,7 @@ const Cart = ({isCartOpen, toggleCartOpen}) => {
                             <>
                                 <h2 className='cart-content-header cart-content'>Looks like you don't have any items in your cart yet!</h2>
                                     <div className='item-detail-price current-wallet cart-content'>
-                                        <img src={vbucks} className='vbucks-icon' />
+                                        <img src={vbucks} className='vbucks-icon' alt='v-bucks icon'/>
                                         <h3 className='current-vbucks'>Current V-Bucks: {numberWithCommas(sessionUser.vbucks)}</h3>
                                     </div>
                             </>

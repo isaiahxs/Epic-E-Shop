@@ -9,15 +9,6 @@ const FanFavorites = () => {
     const fanFavorites = useSelector(state => state.items.seedItems)
     const history = useHistory()
 
-    // const settings = {
-    //     infinite: true,
-    //     speed: 500,
-    //     slidesToShow: 2,
-    //     slidesToScroll: 2,
-    //     centerMode: true,
-    //     centerPadding: "110px",
-    // };
-
     const settings = {
         infinite: true,
         speed: 500,

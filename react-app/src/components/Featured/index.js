@@ -45,7 +45,7 @@ const Featured = () => {
                     <div key={idx} onClick={() => history.push(`/item/${item.name}`)}>
                         <div className='featured-item'>
                             <div className={`img-container ${item.rarity}-container`}>
-                                <img className='home-item-image' src={item.images.icon} alt={item.name} style={{ backgroundColor: getItemBackgroundColor(item.rarity) }}/>
+                                <img className={`home-item-image ${item.rarity}`} src={item.images.icon} alt={item.name} style={{ backgroundColor: getItemBackgroundColor(item.rarity) }}/>
                             </div>
                             <div className='item-name home-item-name'>{item.name}</div>
                             <div className='item-detail-price'>

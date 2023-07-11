@@ -7,6 +7,7 @@ import LoginFormModal from "../LoginFormModal";
 import SignupFormModal from "../SignupFormModal";
 import { useHistory, NavLink } from "react-router-dom";
 import userIcon from '../../assets/images/user.png';
+import './ProfileButton.css';
 
 function ProfileButton({ user }) {
   const dispatch = useDispatch();
@@ -38,7 +39,14 @@ function ProfileButton({ user }) {
     e.preventDefault();
     dispatch(logout());
     dispatch(clearCart());
+    closeMenu();
     history.push("/");
+  };
+
+  const handleInventory = (e) => {
+    e.preventDefault();
+    closeMenu();
+    history.push("/inventory");
   };
 
   const ulClassName = "profile-dropdown" + (showMenu ? "" : " hidden");
@@ -62,28 +70,28 @@ function ProfileButton({ user }) {
         }
 
       </button>
-      <ul className={ulClassName} ref={ulRef}>
+      <ul className={`${ulClassName} ${sessionUser ? 'session-profile-dropdown' : ''}`} ref={ulRef}>
         {user ? (
           <div className="dropdown-options">
             <div className="dropdown-username">
               Hi, {user.username}
             </div>
-            <button className="dropdown-inventory-button" onClick={() => history.push("/inventory")}>Inventory</button>
-            <button className="dropdown-logout-button" onClick={handleLogout}>Log Out</button>
+            <button className="dropdown-inventory-button blue-button" onClick={handleInventory}>Inventory</button>
+            <button className="dropdown-logout-button red-button" onClick={handleLogout}>Log Out</button>
           </div>
         ) : (
           <div className="dropdown-options">
             <OpenModalButton
               className="login-button"
               buttonText="Log In"
-              onItemClick={closeMenu}
+              onButtonClick={closeMenu}
               modalComponent={<LoginFormModal />}
             />
 
             <OpenModalButton
               className="signup-button"
               buttonText="Sign Up"
-              onItemClick={closeMenu}
+              onButtonClick={closeMenu}
               modalComponent={<SignupFormModal />}
             />
           </div>

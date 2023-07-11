@@ -56,6 +56,8 @@ import './DailyItems.css'
 //     )
 // }
 
+// export default DailyItems;
+
 // Alternate iteration with react-slick carousel
 const DailyItems = () => {
     // const dispatch = useDispatch()
@@ -118,7 +120,5 @@ const DailyItems = () => {
         </div>
     )
 }
-
-// export default DailyItems;
 
 export default DailyItems;

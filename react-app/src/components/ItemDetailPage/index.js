@@ -117,7 +117,8 @@ const ItemDetailPage = () => {
             {/* <h1>This is the Item Detail Page</h1> */}
             {item ? (
                 <div className='item-detail-body'>
-                    <div className='item-detail-heading'>
+                    {/* <div className='item-detail-heading'> */}
+                    <div className={`item-detail-heading ${!item.history.dates ? 'exclusive-item-detail-heading' : ''}`}>
                         <div className={`item-detail-image-container ${item.rarity}-container`}>
                             <img className={`item-detail-image ${item.rarity}`} src={item.images.icon} alt={item.name} style={{ backgroundColor: getItemBackgroundColor(item.rarity) }}/>
                         </div>

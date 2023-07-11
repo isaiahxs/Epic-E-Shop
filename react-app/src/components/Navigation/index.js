@@ -7,6 +7,7 @@ import logo from '../../assets/images/Logo.png';
 import { getCart } from '../../store/cart';
 import Cart from '../Cart';
 import './Navigation.css';
+import './ProfileButton.css';
 
 function Navigation({ isLoaded }){
 	const sessionUser = useSelector(state => state.session.user);

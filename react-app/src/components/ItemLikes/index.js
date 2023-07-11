@@ -41,13 +41,14 @@ const ItemLikes = () => {
     // }
 
     let message = "This item doesn't have likes or dislikes yet, be the first to give it one!"
+    let voteCount;
 
     if (allLikes && currentItem) {
         const likes = allLikes.filter(like => like.itemId === currentItem.itemId);  // filter likes for this specific item
         if (likes.length > 0) {
             likesCount = likes.filter(like => like.value === true).length;
             dislikesCount = likes.filter(like => like.value === false).length;
-            message = `Likes: ${likesCount} Dislikes: ${dislikesCount}`;
+            voteCount = `Likes: ${likesCount} Dislikes: ${dislikesCount}`;
         }
     }
 
@@ -65,28 +66,30 @@ const ItemLikes = () => {
         <div className='item-detail-likes'>
             <>
                 <h2 className='idp-subheading'>Votes ({likesCount + dislikesCount})</h2>
-                <h3 className='likes'>{message}</h3>
+                <h3 className='likes'>{voteCount}</h3>
                 {!sessionUser &&
-                <h3 className='likes'>You must be logged in to vote on this item.</h3>
+                    <>
+                        <h3 className='likes'>You must be logged in to vote on this item.</h3>
+                    </>
                 }
             </>
 
             {sessionUser && currentUserVote === null &&
                 <div className='like-dislike-container'>
-                    <button className='like-button' onClick={() => addLikeHandler(true)}>Like</button>
-                    <button className='dislike-button' onClick={() => dislikeHandler(false)}>Dislike</button>
+                    <button className='like-button green-button' onClick={() => addLikeHandler(true)}>Like</button>
+                    <button className='dislike-button red-button' onClick={() => dislikeHandler(false)}>Dislike</button>
                 </div>
             }
             {sessionUser && currentUserVote === 'like' &&
                 <div className='like-dislike-container'>
-                    <button className='remove-like-button' onClick={() => removeLikeHandler()}>Remove Like</button>
-                    <button className='switch-vote-button' onClick={() => switchVoteHandler(false)}>Switch to Dislike</button>
+                    <button className='remove-vote-button dark-button' onClick={() => removeLikeHandler()}>Remove Like</button>
+                    <button className='switch-vote-button purple-button' onClick={() => switchVoteHandler(false)}>Switch to Dislike</button>
                 </div>
             }
             {sessionUser && currentUserVote === 'dislike' &&
                 <div className='like-dislike-container'>
-                    <button className='remove-dislike-button' onClick={() => removeDislikeHandler()}>Remove Dislike</button>
-                    <button className='switch-vote-button' onClick={() => switchVoteHandler(true)}>Switch to Like</button>
+                    <button className='remove-vote-button dark-button' onClick={() => removeDislikeHandler()}>Remove Dislike</button>
+                    <button className='switch-vote-button purple-button' onClick={() => switchVoteHandler(true)}>Switch to Like</button>
                 </div>
             }
         </div>

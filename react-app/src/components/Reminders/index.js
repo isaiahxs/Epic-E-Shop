@@ -155,7 +155,7 @@ const Reminders = () => {
                                                 <option value={-1}>Until item returns</option>
                                             </select>
                                         </label>
-                                        <button className='create-reminder' type='submit'>
+                                        <button className='create-reminder green-button' type='submit'>
                                             Create Reminder
                                         </button>
                                     </form>
@@ -168,7 +168,7 @@ const Reminders = () => {
                                 </>
                             }
 
-                            {!sessionUser &&
+                            {!sessionUser && currentItem.history.dates &&
                                 <>
                                     <h3 className='reminder-message-logged-out'>
                                         You must be logged in to set a reminder for this item.
