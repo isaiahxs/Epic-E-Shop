@@ -42,7 +42,7 @@ const FanFavorites = () => {
                 </div>
                 <Slider {...settings}>
                     {/* check if the items array is not empty before trying to map over it */}
-                    {fanFavorites.length > 0 && fanFavorites.slice(0, 5).map((item, idx) => (
+                    {fanFavorites.length > 0 && fanFavorites.slice(0, 7).map((item, idx) => (
                         <div className='item-unit' key={idx} onClick={() => history.push(`/item/${item.name}`)}>
                             {/* possible image options are: featured, gallery, icon, png, resizeAvailable: boolean */}
                             <div className={`img-container ${item.rarity}-container`}>

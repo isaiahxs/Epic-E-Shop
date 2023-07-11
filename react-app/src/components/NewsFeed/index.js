@@ -15,7 +15,9 @@ const NewsFeed = () => {
                 <div className='news-feed'>
                     <div className='latest-news'>
                         <div className='feed-image-container'>
-                            <img className='news-image' src={theWilds} alt='The Wilds' />
+                            {/* <div className='news-img-container'> */}
+                                <img className='news-image' src={theWilds} alt='The Wilds' />
+                            {/* </div> */}
                         </div>
                         <div className='news-text'>
                             <h3 className='news-text-heading'>Chapter 4 Season 3: WILDS</h3>

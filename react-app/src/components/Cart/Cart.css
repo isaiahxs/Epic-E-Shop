@@ -5,7 +5,6 @@
     width: 350px;
     height: 100%;
     transition: transform 0.4s ease-in-out;
-    /* overflow: auto; */
     overflow-y: scroll;
     overflow-x: hidden;
     z-index: 100;
@@ -28,8 +27,6 @@
     }
 
     .cart-open {
-        /* margin-left: 50px; */
-        /* left: 0px; */
         padding: 15px;
     }
 }
@@ -55,7 +52,6 @@
 }
 
 .cart-items-heading {
-    /* text-align: center; */
     font-size: 1.5rem;
     margin: 20px auto;
 }
@@ -63,7 +59,6 @@
 .cart-item-list {
     display: flex;
     flex-direction: column;
-    /* align-items: stretch; */
     margin: 10px 0px;
     font-family: 'Poppins', calibri, helvetica, arial, sans-serif;
     font-weight: bold;
@@ -92,18 +87,16 @@
 
 .cart-item-image {
     height: 100%;
-    border: 1px solid white;
+    border: 2px solid white;
 }
 
 .cart-total-heading {
     margin: 0;
-    /* font-weight: bold; */
 }
 
 .additional-money-message {
     font-family: 'Poppins', calibri, helvetica, arial, sans-serif;
     font-weight: bold;
-    /* color: #d0b66d; */
     color: #cfb56d;
     margin: 40px 0;
 }
@@ -132,38 +125,19 @@
 
 .in-cart-updates {
     display: flex;
-    /* flex-direction: column; */
-    /* justify-content: space-around; */
 }
 
 .in-cart-add {
-    margin-right: 15px;
-    background-color: #35ff1f;
-    transition: 0.5s all;
-}
-
-.in-cart-add:hover {
-    background-color: 	#32ef1d;
-}
-
-.in-cart-remove {
-    background-color: #ff1f35;
-    transition: 0.5s all;
-}
-
-.in-cart-remove:hover {
-    background-color: 	#e11d30;
+    margin-right: 10px;
 }
 
 .in-cart-add,
 .in-cart-remove {
-    /* background-color: #222222; */
-    border: 1px solid white;
+    border: 2px solid white;
     font-family: "Luckiest Guy", cursive;
     font-size: 1.2rem;
     margin-top: 5px;
     cursor: pointer;
-    color: #1d1d1d;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -174,7 +148,6 @@
 .checkout-button-container {
     display: flex;
     flex-direction: column;
-    /* align-items: center; */
 }
 
 .checkout-button {

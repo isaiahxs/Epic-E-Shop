@@ -28,7 +28,7 @@ function LoginFormModal() {
   };
 
   const handleDemoLogin = () => {
-    dispatch(login('isaiahxs@gmail.com', 'password'));
+    dispatch(login('demo@aa.io', 'password'));
     closeModal();
   }
 
