@@ -92,6 +92,51 @@
 }
 
 .submit-comment:disabled {
-    background-color: grey;
+    opacity: 0.5;
     cursor: not-allowed;
+    background-color: #222222;
+}
+
+.cancel-edit {
+    background-color: #c52434;
+    margin-left: 10px;
+}
+
+.edit-comment-container {
+    display: flex;
+}
+
+.active-edit-delete-comment-buttons {
+    display: flex;
+}
+
+@media screen and (max-width: 460px) {
+    .new-comment-input {
+        margin-right: 5px !important;
+        height: 25px;
+    }
+
+    .edit-comment-form {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .comment-input {
+        width: 97%;
+        margin: 0px;
+        /* padding: 0px; */
+    }
+
+    .submit-edit {
+        width: 50%;
+    }
+
+    .cancel-edit {
+        width: 50%;
+    }
+
+    .active-edit-delete-comment-buttons {
+        width: 100%;
+        margin-top: 10px;
+    }
 }

@@ -85,16 +85,23 @@ const Comments = () => {
 
                             <div className='comment-content'>
                                 {editingCommentId === comment?.id &&
-                                    <form className='edit-comment-form' onSubmit={(e) => handleEditSubmit(e, comment?.id)}>
-                                        <input 
-                                            className='comment-input'
-                                            placeholder={commentText}
-                                            value={editText} 
-                                            onChange={(e) => setEditText(e.target.value)} 
-                                            required
-                                        />
-                                        <button className='submit-comment' type="submit" disabled={editText.length === 0}>Submit Edit</button>
-                                    </form>
+                                    <div className='edit-comment-container'>
+                                        <form className='edit-comment-form' onSubmit={(e) => handleEditSubmit(e, comment?.id)}>
+                                            <input 
+                                                className='comment-input'
+                                                placeholder={commentText}
+                                                value={editText} 
+                                                onChange={(e) => setEditText(e.target.value)} 
+                                                required
+                                            />
+                                            {/* <button className='submit-comment' type="submit" disabled={editText.length === 0}>Submit Edit</button>
+                                            <button className='cancel-edit' onClick={() => setEditingCommentId(null)}>Cancel</button> */}
+                                            <div className='active-edit-delete-comment-buttons'>
+                                                <button className='submit-comment submit-edit' type="submit" disabled={editText.length === 0}>Submit Edit</button>
+                                                <button className='cancel-edit' onClick={() => setEditingCommentId(null)}>Cancel</button>
+                                            </div>
+                                        </form>
+                                    </div>
                                 }
                             </div>
 
@@ -119,7 +126,7 @@ const Comments = () => {
                     {sessionUser && !userHasPosted &&
                         <form className='new-comment-form' onSubmit={handleSubmit}>
                             <input
-                            className='comment-input'
+                            className='comment-input new-comment-input'
                             // value={commentText}    
                             // onChange={(e) => setCommentText(e.target.value)}
                             value={newCommentText}    
