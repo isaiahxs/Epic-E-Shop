@@ -81,10 +81,10 @@
 }
 
 .comment-input {
-    /* height: 16px; */
     margin-right: 10px;
     font-family: 'Poppins', calibri, helvetica, arial, sans-serif;
     padding: 5px;
+    height: 25px;
 }
 
 .submit-comment {
@@ -111,11 +111,6 @@
 }
 
 @media screen and (max-width: 460px) {
-    .new-comment-input {
-        margin-right: 5px !important;
-        height: 25px;
-    }
-
     .edit-comment-form {
         flex-direction: column;
         width: 100%;
@@ -123,8 +118,7 @@
 
     .comment-input {
         width: 97%;
-        margin: 0px;
-        /* padding: 0px; */
+        margin-right: 0px;
     }
 
     .submit-edit {

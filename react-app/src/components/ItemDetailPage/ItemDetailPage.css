@@ -149,16 +149,24 @@
     .item-detail-stats {
         flex-direction: row;
         align-items: center;
-        justify-content: space-between;
+        /* justify-content: space-between; */
         margin-top: 20px;
+    }
+
+    .item-history {
+        margin-left: 25px;
     }
 }
 
-@media screen and (max-width: 550px) {
+@media screen and (max-width: 630px) {
     .item-detail-heading {
         flex-direction: column;
         align-items: center;
-        margin-bottom: 550px;
+        margin-bottom: 570px;
+    }
+
+    .exclusive-item-detail-heading {
+        margin-bottom: 370px;
     }
 
     .item-detail-image-container {
@@ -189,5 +197,9 @@
 
     .item-history {
         margin-left: 0;
+    }
+
+    .occurrences {
+        margin-left: 0px;
     }
 }
