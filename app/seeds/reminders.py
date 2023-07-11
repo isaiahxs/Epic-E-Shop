@@ -5,8 +5,8 @@ def seed_reminders():
     Reminder.query.delete()
 
     reminder1 = Reminder(user_id=1, item_id='61bb53b3bd358a192111d97c', duration=30, reminded=False)
-    reminder2 = Reminder(user_id=2, item_id='61bb53b3bd358a192111d97c', duration=60, reminded=False)
-    reminder3 = Reminder(user_id=3, item_id='61bb53b3bd358a192111d97c', duration=-1, reminded=False)
+    reminder2 = Reminder(user_id=1, item_id='61bb53b3bd358a192111d97c', duration=60, reminded=False)
+    reminder3 = Reminder(user_id=1, item_id='61bb53b3bd358a192111d97c', duration=-1, reminded=False)
 
     reminders_list = [
         reminder1, reminder2, reminder3

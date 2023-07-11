@@ -58,7 +58,7 @@ const HomePage = () => {
             <DailyItems />
             <FeaturedItems />
             <div className='featured-items-button-container'>
-                <button className='featured-items-button' onClick={() => history.push(`/featured_items`)}>Check out the rest of today's featured items!</button>
+                <button className='featured-items-button purple-button' onClick={() => history.push(`/featured_items`)}>Check out the rest of today's featured items!</button>
             </div>
             <NewsFeed />
         </div>

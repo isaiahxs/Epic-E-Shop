@@ -90,7 +90,7 @@
 }
 
 .project-image {
-    border: 1px solid white;
+    border: 2px solid white;
     height: 275px;
     width: auto;
     transition: transform 0.75s ease;
