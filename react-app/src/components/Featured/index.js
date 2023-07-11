@@ -71,9 +71,9 @@ const Featured = () => {
         <>
             <h1 className='featured-header'>Today's Featured Items</h1>
             <div className='filter-bar'>
-                <label className='type-filter'>
+                <label className='filter-segment type-filter'>
                     Type:
-                    <select value={filterType} onChange={e => setFilterType(e.target.value)}>
+                    <select value={filterType} className='filter-select' onChange={e => setFilterType(e.target.value)}>
                         <option value="all">All</option>
                         <option value="outfit">Outfit</option>
                         <option value="pickaxe">Pickaxe</option>
@@ -85,18 +85,18 @@ const Featured = () => {
                         <option value="bundle">Bundle</option>
                     </select>
                 </label>
-                <label className='price-filter'>
+                <label className='filter-segment price-filter'>
                     Price:
-                    <select value={priceFilter} onChange={e => setPriceFilter(e.target.value)}>
+                    <select value={priceFilter} className='filter-select' onChange={e => setPriceFilter(e.target.value)}>
                         <option value="">All</option>
                         <option value="< 500 V-Bucks">&lt; 500 V-Bucks</option>
                         <option value="500 - 1500 V-Bucks">500 - 1500 V-Bucks</option>
                         <option value="> 1500 V-Bucks">&gt; 1500 V-Bucks</option>
                     </select>
                 </label>
-                <label className='rarity-filter'>
+                <label className='filter-segment rarity-filter'>
                     Rarity:
-                    <select value={filterRarity} onChange={e => setFilterRarity(e.target.value)}>
+                    <select value={filterRarity} className='filter-select' onChange={e => setFilterRarity(e.target.value)}>
                         <option value="all">All</option>
                         <option value="common">Common</option>
                         <option value="uncommon">Uncommon</option>
