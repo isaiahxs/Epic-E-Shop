@@ -39,6 +39,7 @@ function ProfileButton({ user }) {
     e.preventDefault();
     dispatch(logout());
     dispatch(clearCart());
+    closeMenu();
     history.push("/");
   };
 
@@ -77,14 +78,14 @@ function ProfileButton({ user }) {
             <OpenModalButton
               className="login-button"
               buttonText="Log In"
-              onItemClick={closeMenu}
+              onButtonClick={closeMenu}
               modalComponent={<LoginFormModal />}
             />
 
             <OpenModalButton
               className="signup-button"
               buttonText="Sign Up"
-              onItemClick={closeMenu}
+              onButtonClick={closeMenu}
               modalComponent={<SignupFormModal />}
             />
           </div>
