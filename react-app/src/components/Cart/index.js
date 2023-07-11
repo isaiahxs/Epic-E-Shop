@@ -96,7 +96,7 @@ const Cart = ({isCartOpen, toggleCartOpen}) => {
 
     return (
         <div className={`cart ${isCartOpen ? 'cart-open' : 'cart-closed'}`} onClick={handleClick}>
-            <button className='close-cart-button' onClick={toggleCartOpen}>X</button>
+            <button className='close-cart-button red-button' onClick={toggleCartOpen}>X</button>
             <div className='current-cart-items'>
                 {itemsInCart.length !== 0 &&
                     <>
@@ -118,8 +118,8 @@ const Cart = ({isCartOpen, toggleCartOpen}) => {
                                                         <div>{item.price} V-Bucks</div>
                                                     </div>
                                                     <div className='in-cart-updates'>
-                                                        <button className='in-cart-add' onClick={() => handleAddToCart(item.itemId)}>+1</button>
-                                                        <button className='in-cart-remove' onClick={() => handleRemoveFromCart(item.itemId)}>-1</button>
+                                                        <button className='in-cart-add green-button' onClick={() => handleAddToCart(item.itemId)}>+1</button>
+                                                        <button className='in-cart-remove red-button' onClick={() => handleRemoveFromCart(item.itemId)}>-1</button>
                                                     </div>
                                                 </div>
 

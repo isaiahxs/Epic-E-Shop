@@ -4,35 +4,85 @@ from sqlalchemy.sql import text
 def seed_items():
     Item.query.delete()
 
-    elite_agent = Item(
-        item_id='5ab16ae85f957f27504aa4df',
-        name='Elite Agent',
-        price='Tier 87 (S3)',
-        price_icon='vip',
-        price_icon_link='https://image.fnbr.co/price/icon_vip.png',
+    # elite_agent = Item(
+    #     item_id='5ab16ae85f957f27504aa4df',
+    #     name='Elite Agent',
+    #     price='Tier 87 (S3)',
+    #     price_icon='vip',
+    #     price_icon_link='https://image.fnbr.co/price/icon_vip.png',
+    #     images={
+    #         "icon":'https://image.fnbr.co/outfit/5ab16ae85f957f27504aa4df/icon.png',
+    #         "gallery":'https://image.fnbr.co/outfit/5ab16ae85f957f27504aa4df/gallery.png',
+    #     },
+    #     rarity='epic',
+    #     type='outfit',
+    #     slug='elite-agent',
+    #     readable_type='Outfit',
+    #     description="Failure is not an option.",
+    #     # could give this battle-pass exclusive seed a specific history, but it would then create an inconsistency with other items fetched where history="false"
+    #     # history={
+    #     #     "occurrences": 1,
+    #     #     "firstSeen": "2018-02-22T00:00:00.000Z",
+    #     #     "lastSeen": "2018-04-30T00:00:00.000Z",
+    #     #     "dates": [
+    #     #         }
+    #     #     ],
+
+    #     # some items that are battle-pass-exclusive will have a history of false with this API. the problem is that my model is set up to take JSON and not just a boolean, so i'll create an equivalent of `history="false"` in JSON form. then in ItemDetailPage, i can check if item.history is false to then display a specific message
+    #     bundle_set="null",
+    #     banner_text="null",
+    #     history={
+    #     "exclusive": True,
+    #     }
+    # )
+
+    grim_fable = Item(
+        item_id="5da5d9bf377bc5b20a96e5e1",
+        name='Grim Fable',
+        price='1,500',
+        price_icon='vbucks',
+        price_icon_link='https://image.fnbr.co/price/icon_vbucks.png',
         images={
-            "icon":'https://image.fnbr.co/outfit/5ab16ae85f957f27504aa4df/icon.png',
-            "gallery":'https://image.fnbr.co/outfit/5ab16ae85f957f27504aa4df/gallery.png',
+            "featured": "https://image.fnbr.co/outfit/5da5d9bf377bc5b20a96e5e1/featured.png",
+            "gallery": "https://image.fnbr.co/outfit/5da5d9bf377bc5b20a96e5e1/gallery.png",
+            "icon": "https://image.fnbr.co/outfit/5da5d9bf377bc5b20a96e5e1/icon.png",
+            "png": "false",
+            "resizeAvailable": "true"
         },
         rarity='epic',
         type='outfit',
-        slug='elite-agent',
+        slug='grim-fable',
         readable_type='Outfit',
-        description="Failure is not an option.",
-        # could give this battle-pass exclusive seed a specific history, but it would then create an inconsistency with other items fetched where history="false"
-        # history={
-        #     "occurrences": 1,
-        #     "firstSeen": "2018-02-22T00:00:00.000Z",
-        #     "lastSeen": "2018-04-30T00:00:00.000Z",
-        #     "dates": [
-        #         }
-        #     ],
-
-        # some items that are battle-pass-exclusive will have a history of false with this API. the problem is that my model is set up to take JSON and not just a boolean, so i'll create an equivalent of `history="false"` in JSON form. then in ItemDetailPage, i can check if item.history is false to then display a specific message
+        description="Once upon a time...",
         bundle_set="null",
         banner_text="null",
         history={
-        "exclusive": True,
+            "occurrences": 21,
+            "firstSeen": "2019-11-03T00:00:00.000Z",
+            "lastSeen": "2023-05-17T00:00:00.000Z",
+            "dates": [
+                "2023-03-02T00:00:00.000Z",
+                "2022-11-28T00:00:00.000Z",
+                "2021-08-03T00:00:00.000Z",
+                "2021-06-24T00:00:00.000Z",
+                "2020-10-31T00:00:00.000Z",
+                "2019-11-03T00:00:00.000Z",
+                "2023-05-17T00:00:00.000Z",
+                "2021-05-20T00:00:00.000Z",
+                "2020-01-08T00:00:00.000Z",
+                "2019-11-04T00:00:00.000Z",
+                "2021-11-21T00:00:00.000Z",
+                "2021-09-03T00:00:00.000Z",
+                "2020-02-15T00:00:00.000Z",
+                "2020-03-16T00:00:00.000Z",
+                "2020-08-21T00:00:00.000Z",
+                "2019-12-02T00:00:00.000Z",
+                "2020-04-16T00:00:00.000Z",
+                "2023-01-27T00:00:00.000Z",
+                "2020-09-30T00:00:00.000Z",
+                "2020-05-16T00:00:00.000Z",
+                "2020-06-14T00:00:00.000Z"
+            ],
         }
     )
 
@@ -176,6 +226,82 @@ def seed_items():
         }
     )
 
+    rey = Item(
+        item_id='5df2d48bb84283d7abdeb062',
+        name='Rey',
+        price='1,500',
+        price_icon='vbucks',
+        price_icon_link='https://image.fnbr.co/price/icon_vbucks.png',
+        images={
+            "featured": "https://image.fnbr.co/outfit/5df2d48bb84283d7abdeb062/featured.png",
+            "gallery": "https://image.fnbr.co/outfit/5df2d48bb84283d7abdeb062/gallery.png",
+            "icon": "https://image.fnbr.co/outfit/5df2d48bb84283d7abdeb062/icon.png",
+            "png": "false",
+            "resizeAvailable": "true"
+        },
+        rarity='star_wars',
+        type='outfit',
+        slug='rey',
+        readable_type='Outfit',
+        description="A scavenger, now studying the Jedi ways.",
+        bundle_set="null",
+        banner_text="null",
+        history={
+            "occurrences": 47,
+            "firstSeen": "2019-12-13T00:00:00.495Z",
+            "lastSeen": "2023-05-23T00:00:00.000Z",
+            "dates": [
+                "2023-05-23T00:00:00.000Z",
+                "2022-05-17T00:00:00.000Z",
+                "2023-05-13T00:00:00.000Z",
+                "2022-05-13T00:00:00.000Z",
+                "2023-05-18T00:00:00.000Z",
+                "2023-05-19T00:00:00.000Z",
+                "2022-05-12T00:00:00.000Z",
+                "2022-05-15T00:00:00.000Z",
+                "2023-05-17T00:00:00.000Z",
+                "2022-05-07T00:00:00.000Z",
+                "2022-05-06T00:00:00.000Z",
+                "2023-01-04T00:00:00.000Z",
+                "2022-05-08T00:00:00.000Z",
+                "2023-05-07T00:00:00.000Z",
+                "2022-05-14T00:00:00.000Z",
+                "2020-05-05T00:00:00.000Z",
+                "2022-05-10T00:00:00.000Z",
+                "2019-12-31T00:00:00.000Z",
+                "2022-05-05T00:00:00.000Z",
+                "2023-05-16T00:00:00.000Z",
+                "2023-05-12T00:00:00.000Z",
+                "2019-12-15T00:00:00.671Z",
+                "2020-01-02T00:00:00.000Z",
+                "2022-11-07T00:00:00.000Z",
+                "2020-05-04T00:00:00.000Z",
+                "2022-05-16T00:00:00.000Z",
+                "2022-11-04T00:00:00.000Z",
+                "2022-11-05T00:00:00.000Z",
+                "2019-12-13T00:00:00.495Z",
+                "2022-11-06T00:00:00.000Z",
+                "2023-01-02T00:00:00.000Z",
+                "2023-05-14T00:00:00.000Z",
+                "2022-05-09T00:00:00.000Z",
+                "2023-01-03T00:00:00.000Z",
+                "2020-05-03T00:00:00.000Z",
+                "2023-05-09T00:00:00.000Z",
+                "2023-05-21T00:00:00.000Z",
+                "2020-01-01T00:00:00.000Z",
+                "2022-05-04T00:00:00.000Z",
+                "2023-05-15T00:00:00.000Z",
+                "2022-05-11T00:00:00.000Z",
+                "2023-05-08T00:00:00.000Z",
+                "2023-01-05T00:00:00.000Z",
+                "2023-05-10T00:00:00.000Z",
+                "2023-05-20T00:00:00.000Z",
+                "2023-05-11T00:00:00.000Z",
+                "2023-05-22T00:00:00.000Z"
+            ],
+        }
+    )
+
     master_chief = Item(
         item_id='5fd2b936c0132843480146e8',
         name='Master Chief',
@@ -275,8 +401,91 @@ def seed_items():
         }
     )
 
+    socks = Item(
+        item_id='60b033cd0b408201818d663d',
+        name='Socks',
+        price='500',
+        price_icon='vbucks',
+        price_icon_link='https://image.fnbr.co/price/icon_vbucks.png',
+        images={
+            "icon": "https://image.fnbr.co/emote/60b033cd0b408201818d663d/icon.png",
+        },
+        rarity='icon_series',
+        type='emote',
+        slug='socks',
+        readable_type='Emote',
+        description="Put in work",
+        bundle_set="null",
+        banner_text="null",
+        history={
+            "occurrences": 58,
+            "firstSeen": "2021-05-28T00:00:00.000Z",
+            "lastSeen": "2023-04-17T00:00:00.000Z",
+            "dates": [
+                "2023-04-17T00:00:00.000Z",
+                "2023-04-16T00:00:00.000Z",
+                "2023-04-13T00:00:00.000Z",
+                "2023-04-10T00:00:00.000Z",
+                "2023-04-09T00:00:00.000Z",
+                "2023-04-08T00:00:00.000Z",
+                "2022-06-04T00:00:00.000Z",
+                "2022-04-04T00:00:00.000Z",
+                "2022-04-02T00:00:00.000Z",
+                "2022-10-11T00:00:00.000Z",
+                "2022-02-15T00:00:00.000Z",
+                "2022-01-22T00:00:00.000Z",
+                "2022-06-08T00:00:00.000Z",
+                "2022-04-03T00:00:00.000Z",
+                "2022-10-07T00:00:00.000Z",
+                "2022-01-21T00:00:00.000Z",
+                "2022-09-10T00:00:00.000Z",
+                "2023-02-24T00:00:00.000Z",
+                "2022-12-27T00:00:00.000Z",
+                "2021-08-10T00:00:00.000Z",
+                "2021-11-11T00:00:00.000Z",
+                "2022-06-05T00:00:00.000Z",
+                "2022-10-06T00:00:00.000Z",
+                "2021-05-28T00:00:00.000Z",
+                "2022-01-20T00:00:00.000Z",
+                "2021-10-10T00:00:00.000Z",
+                "2022-05-30T00:00:00.000Z",
+                "2022-10-09T00:00:00.000Z",
+                "2023-04-12T00:00:00.000Z",
+                "2021-06-30T00:00:00.000Z",
+                "2022-06-12T00:00:00.000Z",
+                "2021-12-15T00:00:00.000Z",
+                "2021-09-10T00:00:00.000Z",
+                "2021-12-31T00:00:00.000Z",
+                "2022-01-01T00:00:00.000Z",
+                "2022-06-11T00:00:00.000Z",
+                "2023-04-15T00:00:00.000Z",
+                "2022-09-09T00:00:00.000Z",
+                "2022-10-08T00:00:00.000Z",
+                "2023-01-31T00:00:00.000Z",
+                "2022-06-06T00:00:00.000Z",
+                "2022-11-21T00:00:00.000Z",
+                "2022-03-17T00:00:00.000Z",
+                "2022-10-10T00:00:00.000Z",
+                "2022-10-12T00:00:00.000Z",
+                "2023-04-11T00:00:00.000Z",
+                "2022-06-07T00:00:00.000Z",
+                "2023-01-28T00:00:00.000Z",
+                "2023-04-14T00:00:00.000Z",
+                "2022-06-10T00:00:00.000Z",
+                "2022-11-22T00:00:00.000Z",
+                "2022-11-23T00:00:00.000Z",
+                "2022-04-18T00:00:00.000Z",
+                "2022-12-26T00:00:00.000Z",
+                "2022-06-09T00:00:00.000Z",
+                "2023-01-29T00:00:00.000Z",
+                "2023-01-27T00:00:00.000Z",
+                "2023-01-30T00:00:00.000Z"
+            ],
+        }
+    )
+
     items_list = [
-        elite_agent, mj_no_way_home, spider_man_2099, teef, master_chief
+        grim_fable, mj_no_way_home, spider_man_2099, teef, rey, master_chief, socks
     ]
 
     for item in items_list:

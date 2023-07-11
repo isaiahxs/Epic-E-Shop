@@ -19,7 +19,7 @@ button {
     font-family: "Luckiest Guy", cursive;
     font-size: 1.2rem;
     background-color: #222222;
-    border: 1px solid white;
+    border: 2px solid white;
     color: white;
     transition: 0.5s all;
     cursor: pointer;

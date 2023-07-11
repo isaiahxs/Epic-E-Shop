@@ -34,8 +34,15 @@
 .latest-news {
     background-color: #ffffff;
     max-width: 500px;
-    border: 1px solid white;
+    border: 2px solid white;
 }
+
+/* .news-img-container {
+    width: 100%;
+    height: 20%;
+    margin: 0px;
+    overflow-x: hidden;
+} */
 
 .news-image {
     width: 100%;
@@ -54,5 +61,5 @@
 }
 
 .news-image:hover {
-    transform: scale(1.05);
+    transform: scale(1.03);
 }

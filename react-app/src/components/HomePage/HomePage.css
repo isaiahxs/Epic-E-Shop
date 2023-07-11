@@ -1,12 +1,3 @@
-/* colors used per rarity */
-/* 
-#62b11e green
-#5346d2 dark blue/purple
-#309b9b aquamarine
-#28a8e7 light blue
-#9e49d9 purple
-*/
-
 /* .home-container {
     display: flex;
     justify-content: center;
@@ -28,9 +19,7 @@
     align-items: center;
     width: 100%;
     margin: auto;
-    /* max-height: 400px; */
     transition: transform 1s ease;
-    /* z-index: -1; */
 }
 
 .hero-banner:hover {
@@ -44,17 +33,12 @@
     align-items: center;
     flex-direction: column;
     padding: 15px;
-    /* margin: 20px 0; */
 }
 
 .banner-container {
     overflow: hidden;
     border: 1px solid white;
     max-width: 1000px;
-    /* display: flex; */
-    /* justify-content: center; */
-    /* align-items: center; */
-    /* z-index: -1; */
 }
 
 .featured-items-button-container {
@@ -64,11 +48,7 @@
 }
 
 .featured-items-button {
-    background-color: #ae35ea;
-    /* margin-top: 20px; */
-    /* margin-bottom: 30px; */
     font-size: 1.35rem;
-    /* padding: 8px; */
 }
 
 .home-item-information {
