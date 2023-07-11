@@ -4,12 +4,11 @@ from sqlalchemy.sql import text
 def seed_reminders():
     Reminder.query.delete()
 
-    reminder1 = Reminder(user_id=1, item_id='61bb53b3bd358a192111d97c', duration=30, reminded=False)
-    reminder2 = Reminder(user_id=1, item_id='61bb53b3bd358a192111d97c', duration=60, reminded=False)
-    reminder3 = Reminder(user_id=1, item_id='61bb53b3bd358a192111d97c', duration=-1, reminded=False)
+    # grim fable
+    reminder1 = Reminder(user_id=1, item_id='5da5d9bf377bc5b20a96e5e1', duration=-1, reminded=False)
 
     reminders_list = [
-        reminder1, reminder2, reminder3
+        reminder1
     ]
 
     for reminder in reminders_list:
