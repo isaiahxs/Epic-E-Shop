@@ -124,15 +124,24 @@ const Featured = () => {
                             <div className={`img-container ${item.rarity}-container`}>
                                 <img className={`home-item-image ${item.rarity}`} src={item.images.icon} alt={item.name} style={{ backgroundColor: getItemBackgroundColor(item.rarity) }}/>
                             </div>
-                            <div className='item-name home-item-name'>{item.name}</div>
-                            <div className='item-detail-price'>
-                                <img className='vbucks-icon' src={item.priceIconLink} alt='vbucks' />
-                                <div className='item-price home-item-price'>{item.price}</div>
+                            <div className='home-item-information'>
+                                <div className='item-name home-item-name'>{item.name}</div>
+                                <div className='item-detail-price icon-and-price'>
+                                    <img className='vbucks-icon' src={item.priceIconLink} alt='vbucks' />
+                                    <div className='item-price home-item-price'>{item.price}</div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 ))}
             </div>
+
+            {filteredItems.length === 0 &&
+                <div className='no-featured-items-message-container'>
+                    <h2 className='no-featured-items-message error-message'>Sorry, no items match your filters</h2>
+                </div>
+            }
+
             <div className='back-to-top-button-container'>
                 <button className='back-to-top-button' onClick={scrollToTop}>Back to Top</button>
             </div>

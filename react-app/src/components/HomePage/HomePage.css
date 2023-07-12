@@ -54,11 +54,14 @@
 .home-item-information {
     display: flex;
     flex-direction: column;
+    text-align: center;
+    font-size: 1.2rem;
 }
 
 .icon-and-price {
     display: flex;
     align-items: center;
+    justify-content: center;
 }
 
 .item-name {
@@ -67,6 +70,8 @@
 
 .item-price {
     cursor: pointer;
+    font-family: 'Poppins', calibri, helvetica, arial, sans-serif;
+    font-weight: bold;
 }
 
 .vbucks-icon {

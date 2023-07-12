@@ -56,6 +56,16 @@
     padding: 0 10px;
 }
 
+.news-text-heading {
+    font-size: 1.4rem;
+    margin-top: 10px;
+}
+
+.news-text-body {
+    font-family: 'Poppins', calibri, helvetica, arial, sans-serif;
+    font-weight: bold;
+}
+
 .feed-image-container {
     overflow: hidden;
 }

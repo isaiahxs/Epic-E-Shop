@@ -78,11 +78,11 @@ const Reminders = () => {
                                     </h3>
 
                                     <div className='update-reminder-section'>
-                                            <div className='update-message'>
+                                            <div className='update-message bolder'>
                                                 Want to change how long your reminder is active for?
                                             </div>
                                             <form className='reminder-form' onSubmit={handleUpdateReminder}>
-                                                <label className='update-reminder-label'>New duration:
+                                                <label className='update-reminder-label bolder'>New duration:
                                                     <select className='select-field' value={editDuration} onChange={(e) => setEditDuration(e.target.value)}>
                                                         <option value={30}>30</option>
                                                         <option value={60}>60</option>
@@ -96,7 +96,7 @@ const Reminders = () => {
                                         </div>
 
                                     <div className='delete-reminder-section'>
-                                        <div className='delete-message'>
+                                        <div className='delete-message bolder'>
                                             No longer want this reminder?
                                             <button className='delete-reminder-button' onClick={handleDeleteReminder}>
                                                 Delete Reminder
@@ -112,11 +112,11 @@ const Reminders = () => {
                                         </h3>
 
                                         <div className='update-reminder-section'>
-                                            <div className='update-message'>
+                                            <div className='update-message bolder'>
                                                 Want to change how long your reminder is active for?
                                             </div>
                                             <form className='reminder-form' onSubmit={handleUpdateReminder}>
-                                                <label className='update-reminder-label'>New duration:
+                                                <label className='update-reminder-label bolder'>New duration:
                                                     <select className='select-field' value={editDuration} onChange={(e) => setEditDuration(e.target.value)}>
                                                         <option value={30}>30</option>
                                                         <option value={60}>60</option>
@@ -131,7 +131,7 @@ const Reminders = () => {
                                         </div>
 
                                         <div className='delete-reminder-section'>
-                                            <div className='delete-message'>
+                                            <div className='delete-message bolder'>
                                                 No longer want this reminder?
                                             </div>
                                             <button className='delete-reminder-button' onClick={handleDeleteReminder}>
@@ -148,7 +148,7 @@ const Reminders = () => {
                                         Looks like you don't have a reminder for this item yet. Complete the form below to create one!
                                     </h3>
                                     <form className='reminder-form' onSubmit={handleCreateReminder}>
-                                        <label>Reminder duration:
+                                        <label className='bolder'>Reminder duration:
                                             <select className='select-field' value={duration} onChange={(e) => setDuration(e.target.value)}>
                                                 <option value={30}>30</option>
                                                 <option value={60}>60</option>

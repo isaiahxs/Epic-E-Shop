@@ -33,7 +33,9 @@ button {
     font-weight: bold;
 }
 
-
+.bolder {
+    font-weight: bolder;
+}
 
 
 

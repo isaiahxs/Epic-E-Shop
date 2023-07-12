@@ -10,10 +10,13 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    margin: 0px auto;
     margin-bottom: 40px;
     font-size: 1.3rem;
+    font-weight: bolder;
     font-family: 'Poppins', calibri, helvetica, arial, sans-serif;
-    width: 800px;
+    max-width: 800px;
+    padding: 15px;
 }
 
 .price-filter {
@@ -34,6 +37,28 @@
 .filter-dropdown {
     max-height: 200px;
     overflow-y: auto;
+}
+
+.no-featured-items-message-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0px auto;
+    text-align: center;
+}
+
+.no-featured-items-message {
+    margin-top: 0px;
+}
+
+@media screen and (max-width: 660px) {
+    .filter-bar {
+        flex-direction: column;
+    }
+
+    .price-filter {
+        margin: 10px 0px;
+    }
 }
 
 .featured-items-container {
