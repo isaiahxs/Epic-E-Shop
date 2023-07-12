@@ -20,6 +20,7 @@ const Reminders = () => {
     const userReminderForItem = reminders.find(reminder => 
         reminder.userId === sessionUser?.id && reminder.itemId === currentItem?.itemId
     );
+    console.log("THIS IS OUR USER REMINDER FOR ITEM", userReminderForItem)
 
     const indefiniteMessage = reminders.find(reminder => 
         reminder.userId === sessionUser?.id && reminder.itemId === currentItem?.itemId && reminder.duration === -1
@@ -105,7 +106,7 @@ const Reminders = () => {
                                     </div>
                                 </>
                                 }
-                                {userReminderForItem && !indefiniteMessage &&
+                                {userReminderForItem && !indefiniteMessage && userReminderForItem.reminded === false &&
                                     <>
                                         <h3>
                                             You've already set a reminder for this item that will expire in {userReminderForItem.duration} days. We'll let you know as soon as it returns to the shop!
@@ -129,6 +130,23 @@ const Reminders = () => {
                                                 
                                             </form>
                                         </div>
+
+                                        <div className='delete-reminder-section'>
+                                            <div className='delete-message bolder'>
+                                                No longer want this reminder?
+                                            </div>
+                                            <button className='delete-reminder-button' onClick={handleDeleteReminder}>
+                                                Delete Reminder
+                                            </button>
+                                        </div>
+                                    </>
+                                }
+
+                                {userReminderForItem && userReminderForItem.reminded === true &&
+                                    <>
+                                        <h3>
+                                            You previously set a reminder for this item, now's your chance to add it to your collection!
+                                        </h3>
 
                                         <div className='delete-reminder-section'>
                                             <div className='delete-message bolder'>

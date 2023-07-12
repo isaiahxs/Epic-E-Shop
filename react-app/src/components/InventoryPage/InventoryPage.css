@@ -1,9 +1,17 @@
 .inventory-container {
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    max-width: 1000px;
     padding: 15px;
 }
 
 .inventory-heading {
     font-family: 'Poppins', calibri, helvetica, arial, sans-serif;
+}
+
+.inventory-heading h2 {
+    margin: 0px;
 }
 
 .inventory-welcome {
@@ -15,3 +23,99 @@
     margin-left: 10px;
 }
 
+.inventory-container {
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    max-width: 1000px;
+}
+
+.inventory-item {
+    margin-bottom: 45px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    align-items: center;
+    gap: 20px;
+    width: 800px;
+}
+
+.total-value {
+    display: flex;
+    font-size: 1.5rem;
+    align-items: center;
+}
+
+.inventory-subheading {
+    margin-top: 25px;
+    margin-bottom: 10px;
+    font-family: "Luckiest Guy", cursive;
+}
+
+.inventory-quantity {
+    display: flex;
+    justify-content: center;
+    font-size: 1.4rem;
+}
+
+.inventory-comment-text {
+    max-width: 400px;
+    text-align: center;
+}
+
+.member-since {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+}
+
+.user-creation-date {
+    margin-left: 10px !important;
+}
+
+@media screen and (max-width: 735px) {
+    .inventory-heading {
+        text-align: center;
+    }
+
+    .inventory-detail-price {
+        justify-content: center;
+    }
+
+    .inventory-item {
+        display: flex;
+        flex-direction: column;
+        width: auto;
+        /* justify-content: space-between; */
+    }
+
+    .inventory-item-info {
+        margin: 0px;
+        text-align: center;
+    }
+
+    .inventory-subheading {
+        text-align: center;
+    }
+
+    .total-value {
+        justify-content: center;
+    }
+
+    .member-since {
+        justify-content: center;
+    }
+}
+
+@media screen and (max-width: 420px) {
+    .inventory-detail-price-heading {
+        flex-direction: column;
+    }
+
+    .member-since {
+        flex-direction: column;
+    }
+
+    .user-creation-date {
+        margin-left: 0px;
+    }
+}

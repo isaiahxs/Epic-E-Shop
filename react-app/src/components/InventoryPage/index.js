@@ -9,6 +9,7 @@ import { getInventory } from '../../store/inventory'
 import { getReminders } from '../../store/reminders'
 import vbucks from '../../assets/images/vbucks-icon.webp'
 import InventoryItems from '../InventoryItems'
+import InventoryBlock from '../InventoryBlock'
 import './InventoryPage.css'
 
 const InventoryPage = () => {
@@ -22,6 +23,7 @@ const InventoryPage = () => {
     const reminders = useSelector(state => state.reminders);
     const comments = useSelector(state => state.comments);
     const likes = useSelector(state => state.totalLikes);
+    const inventory = useSelector(state => state.inventory);
 
     const seedItems = useSelector(state => state.items.seedItems);
     const dailyItems = useSelector(state => state.items.dailyItems);
@@ -65,9 +67,29 @@ const InventoryPage = () => {
 
     const userReminders = reminders.filter(reminder => reminder.userId === sessionUser.id)
     // console.log('USER REMINDERS', userReminders);
-
     const userComments = comments.filter(comment => comment.userId === sessionUser.id)
     const userLikes = likes.filter(like => like.userId === sessionUser.id)
+
+    function numberWithCommas(x) {
+        return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    } 
+
+    //calculating the total value of the inventory
+    const totalValue = inventory.reduce((total, inventoryItem) => {
+        const item = allItems.find(item => item.itemId === inventoryItem.itemId);
+        if (item) {
+            const itemPrice = parseInt(item.price.replace(',', ''), 10);
+            return total + (inventoryItem.quantity * itemPrice);
+        }
+        return total;
+    }, 0);
+
+    const formattedTotalValue = numberWithCommas(totalValue);
+
+    //calculating the total quantity of the inventory
+    const totalItems = inventory.reduce((total, inventoryItem) => {
+        return total + inventoryItem.quantity;
+    }, 0);
 
     const scrollToTop = () => {
         window.scrollTo({
@@ -83,7 +105,48 @@ const InventoryPage = () => {
         <>
             {sessionUser &&
                 <>
-                    <InventoryItems />
+                    <div className='inventory-container'>
+                        <div className='inventory-heading'>
+                            {inventory.length > 0 &&
+                                <h1 className='inventory-welcome'>Nice collection so far, {sessionUser.username}!</h1>
+                            }
+
+                            <div className='member-since'>
+                                <h2>Member since: </h2>
+                                <h2 className='user-creation-date'>{sessionUser.created_at.slice(0, 16)}</h2>
+                            </div>
+
+                            <div className='item-detail-price inventory-detail-price inventory-detail-price-heading'>
+                                <div>
+                                    <h2>Total Inventory value:</h2>
+                                </div>
+                                <div>
+                                    <h2 className='total-value'>
+                                        <img src={vbucks} className='vbucks-icon inventory-vbuck'/>
+                                        {formattedTotalValue}
+                                    </h2>
+                                </div>
+                            </div>
+                            <div className='inventory-subheading'>
+                                <h2>Total items: ({totalItems})</h2>
+                                <h2>Unique items: ({inventory.length})</h2>
+                            </div>
+                        </div>
+
+                        {inventory.map(inventoryItem => {
+                            const item = allItems.find(item => item.itemId === inventoryItem.itemId);
+
+                            return item ? (
+                                <div className='inventory-item' key={inventoryItem.itemId}>
+                                    <InventoryBlock item={item}/>
+
+                                    <div className='inventory-quantity inv-clickable' onClick={() => history.push(`/item/${item.name}`)}>Quantity: {inventoryItem.quantity}x</div>
+                                </div>
+                            ) : null;
+                        })}
+                    </div>
+
+
                     <div className='inventory-reminders inventory-container'>
                         <h2 className='inventory-subheading'>Your Reminders: ({userReminders.length})</h2>
 
@@ -92,20 +155,9 @@ const InventoryPage = () => {
 
                             return item ? (
                                 <div className='inventory-item' key={reminder.itemId}>
-                                    
-                                    <div className={`img-container ${item.rarity}-container inv-clickable`} onClick={() => history.push(`/item/${item.name}`)}>
-                                        <img className={`home-item-image ${item.rarity}`} src={item.images.icon} alt={item.name} style={{ backgroundColor: getItemBackgroundColor(item.rarity) }}/>
-                                    </div>
-                                    <div className='inventory-item-info inv-clickable' onClick={() => history.push(`/item/${item.name}`)}>
-                                        <div className='inventory-item-name'>Item name: {item.name}</div>
-                                        <div className='inventory-rarity-section'>Rarity: <span className='rarity' style={{ backgroundColor: getItemBackgroundColor(item.rarity) }}>{item.rarity}</span></div>
 
-                                        <div className='inventory-item-type'>Type: {item.type}</div>
-                                        <div className='item-detail-price inventory-detail-price'>
-                                            <img src={item.priceIconLink} alt={item.priceIcon} className='vbucks-icon'/>
-                                            <div className='inventory-item-price'>{item.price}</div>
-                                        </div>
-                                    </div>
+                                    <InventoryBlock item={item}/>
+                                    
                                     {reminder.duration === -1 &&
                                         <div className='inventory-quantity inv-clickable' onClick={() => history.push(`/item/${item.name}`)}>Duration: Until item returns</div>
                                     }
@@ -128,19 +180,8 @@ const InventoryPage = () => {
                             return item ? (
                                 <div className='inventory-item' key={comment.itemId}>
                                     
-                                    <div className={`img-container ${item.rarity}-container inv-clickable`} onClick={() => history.push(`/item/${item.name}`)}>
-                                        <img className={`home-item-image ${item.rarity}`} src={item.images.icon} alt={item.name} style={{ backgroundColor: getItemBackgroundColor(item.rarity) }}/>
-                                    </div>
-                                    <div className='inventory-item-info inv-clickable' onClick={() => history.push(`/item/${item.name}`)}>
-                                        <div className='inventory-item-name'>Item name: {item.name}</div>
-                                        <div className='inventory-rarity-section'>Rarity: <span className='rarity' style={{ backgroundColor: getItemBackgroundColor(item.rarity) }}>{item.rarity}</span></div>
+                                    <InventoryBlock item={item} getItemBackgroundColor={getItemBackgroundColor} />
 
-                                        <div className='inventory-item-type'>Type: {item.type}</div>
-                                        <div className='item-detail-price inventory-detail-price'>
-                                            <img src={item.priceIconLink} alt={item.priceIcon} className='vbucks-icon'/>
-                                            <div className='inventory-item-price'>{item.price}</div>
-                                        </div>
-                                    </div>
                                     <div className='inventory-comment inv-clickable' onClick={() => history.push(`/item/${item.name}`)}>
                                         <div className='inventory-comment-text inventory-quantity'>Comment: {comment.text}</div>
                                     </div>
@@ -159,20 +200,8 @@ const InventoryPage = () => {
 
                             return item ? (
                                 <div className='inventory-item' key={vote.itemId}>
-                                    
-                                    <div className={`img-container ${item.rarity}-container inv-clickable`} onClick={() => history.push(`/item/${item.name}`)}>
-                                        <img className={`home-item-image ${item.rarity}`} src={item.images.icon} alt={item.name} style={{ backgroundColor: getItemBackgroundColor(item.rarity) }}/>
-                                    </div>
-                                    <div className='inventory-item-info inv-clickable' onClick={() => history.push(`/item/${item.name}`)}>
-                                        <div className='inventory-item-name'>Item name: {item.name}</div>
-                                        <div className='inventory-rarity-section'>Rarity: <span className='rarity' style={{ backgroundColor: getItemBackgroundColor(item.rarity) }}>{item.rarity}</span></div>
+                                    <InventoryBlock item={item} getItemBackgroundColor={getItemBackgroundColor} />
 
-                                        <div className='inventory-item-type'>Type: {item.type}</div>
-                                        <div className='item-detail-price inventory-detail-price'>
-                                            <img src={item.priceIconLink} alt={item.priceIcon} className='vbucks-icon'/>
-                                            <div className='inventory-item-price'>{item.price}</div>
-                                        </div>
-                                    </div>
                                     <div className='vote-value inventory-quantity inv-clickable' onClick={() => history.push(`/item/${item.name}`)}>{vote.value ? "Liked" : "Disliked"}</div>
                                 </div>
                             ) : null;
