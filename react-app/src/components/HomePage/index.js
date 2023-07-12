@@ -7,7 +7,7 @@ import { useHistory } from 'react-router-dom'
 import theWilds from '../../assets/images/The-Wilds.jpg'
 import NewsFeed from '../NewsFeed'
 import DailyItems from '../DailyItems'
-import FeaturedItems from '../FeaturedItems'
+import FeaturedCarousel from '../FeaturedCarousel'
 import RefreshCounter from '../RefreshCounter'
 import FanFavorites from '../FanFavorites'
 import './HomePage.css'
@@ -56,7 +56,7 @@ const HomePage = () => {
             </div>
             <FanFavorites />
             <DailyItems />
-            <FeaturedItems />
+            <FeaturedCarousel />
             <div className='featured-items-button-container'>
                 <button className='featured-items-button purple-button' onClick={() => history.push(`/featured_items`)}>Check out the rest of today's featured items!</button>
             </div>

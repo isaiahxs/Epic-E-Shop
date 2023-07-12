@@ -8,7 +8,6 @@ import { useHistory } from 'react-router-dom'
 import { getInventory } from '../../store/inventory'
 import { getReminders } from '../../store/reminders'
 import vbucks from '../../assets/images/vbucks-icon.webp'
-import InventoryItems from '../InventoryItems'
 import InventoryBlock from '../InventoryBlock'
 import './InventoryPage.css'
 
@@ -17,8 +16,6 @@ const InventoryPage = () => {
     const history = useHistory();
     const [isLoading, setIsLoading] = useState(true);
 
-    // const inventory = useSelector(state => state.inventory);
-    // console.log('INVENTORY', inventory)
     const sessionUser = useSelector(state => state.session.user);
     const reminders = useSelector(state => state.reminders);
     const comments = useSelector(state => state.comments);
