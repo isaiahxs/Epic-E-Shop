@@ -1,11 +1,15 @@
 #  contains routes for getting information about items, like getting an item by ID
 import os
-from flask import Blueprint, jsonify, request, abort
+from flask import Blueprint, jsonify, request, abort, current_app
 import requests
 import json
-from app.models import Item
+from app.models import Item, Reminder, User
+from flask_mail import Mail, Message
+from app.extensions import mail
 from app.models import db
 item_routes = Blueprint('items', __name__)
+
+mail = Mail()
 
 # helper we will use to check if item retrieved from API already exists in our database
 def item_exists(id):
@@ -73,6 +77,22 @@ def get_daily_items():
             )
             db.session.add(new_item)
 
+        #checking for reminders
+        reminders = Reminder.query.filter_by(item_id=item['id'], reminded=False).all()
+
+        for reminder in reminders:
+            user = User.query.get(reminder.user_id)
+            if user:
+                msg = Message(
+                    "Item is back in the store!",
+                    sender=current_app.config.get("MAIL_USERNAME"),
+                    recipients=[user.email],
+                    body=f"Hello {user.username}, the item you were waiting for is back in the store!")
+                mail.send(msg)
+                
+                #update the reminder status
+                reminder.reminded = True
+
         #adding the dictionary to the result list
         result.append(item_dict)
 
@@ -133,6 +153,22 @@ def get_featured_items():
                 history=item['history']
             )
             db.session.add(new_item)
+
+            #checking for reminders
+            reminders = Reminder.query.filter_by(item_id=item['id'], reminded=False).all()
+
+            for reminder in reminders:
+                user = User.query.get(reminder.user_id)
+                if user:
+                    msg = Message(
+                        "Item is back in the store!",
+                        sender=current_app.config.get("MAIL_USERNAME"),
+                        recipients=[user.email], # assuming the User model has an 'email' field
+                        body=f"Hello {user.name}, the item you were waiting for is back in the store!")
+                    mail.send(msg)
+                    
+                    #update the reminder status
+                    reminder.reminded = True
 
         #adding the dictionary to the result list
         result.append(item_dict)

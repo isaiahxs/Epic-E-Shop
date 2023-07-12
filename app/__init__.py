@@ -1,5 +1,7 @@
 import os
 from flask import Flask, render_template, request, session, redirect
+# from flask_mail import Mail, Message
+from .extensions import mail
 from flask_cors import CORS
 from flask_migrate import Migrate
 from flask_wtf.csrf import CSRFProtect, generate_csrf
@@ -10,7 +12,7 @@ from .api.auth_routes import auth_routes
 from .api.cart_routes import cart_routes
 from .api.comment_routes import comment_routes
 from .api.cart_routes import cart_routes
-from .api.item_routes import item_routes
+from .api.item_routes import item_routes, mail
 from .api.like_routes import like_routes
 from .api.reminder_routes import reminder_routes
 from .api.section_item_routes import section_item_routes
@@ -21,6 +23,19 @@ from .seeds import seed_commands
 from .config import Config
 
 app = Flask(__name__, static_folder='../react-app/build', static_url_path='/')
+
+mail_settings = {
+    "MAIL_SERVER": 'smtp.gmail.com',
+    "MAIL_PORT": 465,
+    "MAIL_USE_TLS": False,
+    "MAIL_USE_SSL": True,
+    "MAIL_USERNAME": os.getenv('EMAIL_USER'),
+    "MAIL_PASSWORD": os.getenv('EMAIL_PASSWORD')
+}
+
+app.config.update(mail_settings)
+# mail = Mail(app)
+mail.init_app(app)
 
 # Setup login manager
 login = LoginManager(app)
