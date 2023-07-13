@@ -39,6 +39,12 @@
     width: 800px;
 }
 
+.inv-special-column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .total-value {
     display: flex;
     font-size: 1.5rem;
@@ -51,7 +57,7 @@
     font-family: "Luckiest Guy", cursive;
 }
 
-.inventory-quantity {
+.inventory-special {
     display: flex;
     justify-content: center;
     font-size: 1.4rem;
@@ -72,7 +78,7 @@
     margin-left: 10px !important;
 }
 
-@media screen and (max-width: 735px) {
+@media screen and (max-width: 850px) {
     .inventory-heading {
         text-align: center;
     }

@@ -137,7 +137,14 @@ const InventoryPage = () => {
                                 <div className='inventory-item' key={inventoryItem.itemId}>
                                     <InventoryBlock item={item}/>
 
-                                    <div className='inventory-quantity inv-clickable' onClick={() => history.push(`/item/${item.name}`)}>Quantity: {inventoryItem.quantity}x</div>
+                                    <div className='inventory-special inv-clickable inv-special-column' onClick={() => history.push(`/item/${item.name}`)}>
+                                        <div className='inventory-special-word'>
+                                            Quantity: 
+                                        </div>
+                                        <div className='inventory-special-value'>
+                                            {inventoryItem.quantity}x
+                                        </div>
+                                    </div>
                                 </div>
                             ) : null;
                         })}
@@ -156,10 +163,24 @@ const InventoryPage = () => {
                                     <InventoryBlock item={item}/>
                                     
                                     {reminder.duration === -1 &&
-                                        <div className='inventory-quantity inv-clickable' onClick={() => history.push(`/item/${item.name}`)}>Duration: Until item returns</div>
+                                        <div className='inventory-special inv-clickable inv-special-column' onClick={() => history.push(`/item/${item.name}`)}>
+                                            <div className='inventory-special-word'>
+                                                Duration:
+                                            </div>
+                                            <div className='inventory-special-value'>
+                                                Until item returns
+                                            </div>
+                                        </div>
                                     }
                                     {reminder.duration !== -1 &&
-                                        <div className='inventory-quantity inv-clickable' onClick={() => history.push(`/item/${item.name}`)}>Duration: {reminder.duration} days</div>
+                                        <div className='inventory-special inv-clickable inv-special-column' onClick={() => history.push(`/item/${item.name}`)}>
+                                            <div className='inventory-special-word'>
+                                                Duration:
+                                            </div>
+                                            <div className='inventory-special-value'>
+                                                {reminder.duration} days
+                                            </div>
+                                        </div>
                                     }
                                 </div>
                             ) : null;
@@ -180,7 +201,14 @@ const InventoryPage = () => {
                                     <InventoryBlock item={item} getItemBackgroundColor={getItemBackgroundColor} />
 
                                     <div className='inventory-comment inv-clickable' onClick={() => history.push(`/item/${item.name}`)}>
-                                        <div className='inventory-comment-text inventory-quantity'>Comment: {comment.text}</div>
+                                        <div className='inventory-comment-text inventory-special inv-special-column'>
+                                            <div className='inventory-special-word'>
+                                                Comment:
+                                            </div>
+                                            <div className='inventory-special-value'>
+                                                {comment.text}
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             ) : null;
@@ -199,7 +227,14 @@ const InventoryPage = () => {
                                 <div className='inventory-item' key={vote.itemId}>
                                     <InventoryBlock item={item} getItemBackgroundColor={getItemBackgroundColor} />
 
-                                    <div className='vote-value inventory-quantity inv-clickable' onClick={() => history.push(`/item/${item.name}`)}>{vote.value ? "Liked" : "Disliked"}</div>
+                                    <div className='vote-value inventory-special inv-clickable inv-special-column' onClick={() => history.push(`/item/${item.name}`)}>
+                                        <div className='inventory-special-word'>
+                                            Vote:
+                                        </div>
+                                        <div className='inventory-special-value'>
+                                            {vote.value ? "Liked" : "Disliked"}
+                                        </div>
+                                    </div>
                                 </div>
                             ) : null;
                         })}
