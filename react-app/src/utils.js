@@ -24,6 +24,12 @@ export const getItemBackgroundColor = (rarity) => {
             return "#173063";
         case 'slurp':
             return "#20d5a3";
+        case 'frozen':
+            return "#269ed6";
+        case 'lava':
+            return "#6a0a31";
+        case 'dark':
+            return "#520c6f";
         default:
             return 'grey';
     }

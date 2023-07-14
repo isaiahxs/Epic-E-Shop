@@ -13,10 +13,6 @@ const Reminders = () => {
     const [duration, setDuration] = useState(30);
     const [editDuration, setEditDuration] = useState(30);
 
-    // useEffect(() => {
-    //     dispatch(getReminders())
-    // }, [dispatch])
-
     const userReminderForItem = reminders.find(reminder => 
         reminder.userId === sessionUser?.id && reminder.itemId === currentItem?.itemId
     );
@@ -59,6 +55,8 @@ const Reminders = () => {
         dispatch(getReminders())
     }
 
+    const seedItemIds = ["5da5d9bf377bc5b20a96e5e1", "61bb53b3bd358a192111d97c", "6467a03b03356945427f6068", "5daedbcebffa742e002c321c", "5df2d48bb84283d7abdeb062", "5fd2b936c0132843480146e8", "60b033cd0b408201818d663d"];
+
     return (
         <>
             {currentItem ? (
@@ -67,10 +65,7 @@ const Reminders = () => {
                 <div className='user-reminders'>
                     <div className='reminder-message'>
                         <div>
-                            {/* if currentItem.itemId is equal to session.user.inventory.items.itemId or something like that */}
-                            {/* <div className='already-owned'>
-                                Looks like you already own this item. Nice collection so far!
-                            </div> */}
+                            
                             <div className='already-reminder-set'>
                                 {indefiniteMessage &&
                                 <>
@@ -160,7 +155,11 @@ const Reminders = () => {
                                 }
 
                             </div>
-                            {!userReminderForItem && sessionUser && currentItem.history.dates &&
+                            {seedItemIds.includes(currentItem.itemId) && 
+                                <h3>No need to worry about missing out on our fan favorites! They'll always be around!</h3>
+                            }
+
+                            {!userReminderForItem && sessionUser && currentItem.history.dates && !seedItemIds.includes(currentItem.itemId) &&
                                 <>
                                     <h3>
                                         Looks like you don't have a reminder for this item yet. Complete the form below to create one!

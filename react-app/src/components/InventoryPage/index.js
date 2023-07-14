@@ -47,6 +47,7 @@ const InventoryPage = () => {
 
     useEffect(() => {
         const fetchAllData = async () => {
+            // await dispatch(getSeedItems());
             await Promise.all([
                 dispatch(getSeedItems()),
                 // dispatch(getDailyItems()),
@@ -64,6 +65,7 @@ const InventoryPage = () => {
 
     const userReminders = reminders.filter(reminder => reminder.userId === sessionUser.id)
     console.log('USER REMINDERS', userReminders);
+    const remindedItems = userReminders.filter(reminder => reminder.reminded === true);
     const userComments = comments.filter(comment => comment.userId === sessionUser.id)
     const userLikes = likes.filter(like => like.userId === sessionUser.id)
 
@@ -126,12 +128,12 @@ const InventoryPage = () => {
                             </div>
                         </div>
 
-                        {userReminders.length === 1 &&
+                        {remindedItems.length === 1 &&
                             <div className='inventory-subheading'>
                                 <h2 className='currently-in-store'>The item you set a reminder for is currently in store!</h2>
                             </div>
                         }
-                        {userReminders.length > 1 &&
+                        {remindedItems.length > 1 &&
                             <div className='inventory-subheading'>
                                 <h2 className='currently-in-store'>The items you set reminders for are currently in store!</h2>
                             </div>

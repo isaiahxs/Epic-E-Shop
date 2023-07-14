@@ -23,6 +23,41 @@ def seeded_items():
     items = Item.query.all()
     return {'seeded_items': [item.to_dict() for item in items]}
 
+# version of getting seeds where we check for reminders on initial seeds as well
+# @item_routes.route('/seed_items', methods=['GET'])
+# def seeded_items():
+#     """
+#     Query for seeded items and return them in a list of dictionaries
+#     """
+#     items = Item.query.all()
+#     result = []
+#     for item in items:
+#         #create a dictionary representation of the item
+#         item_dict = item.to_dict()
+
+#         #check for reminders
+#         reminders = Reminder.query.filter_by(item_id=item.id, reminded=False).all()
+#         for reminder in reminders:
+#             user = User.query.get(reminder.user_id)
+#             if user:
+#                 msg = Message(
+#                     "Item is back in the store!",
+#                     sender=current_app.config.get("MAIL_USERNAME"),
+#                     recipients=[user.email],
+#                     body=f"Hello {user.username}, the item you were waiting for is back in the store!")
+#                 mail.send(msg)
+
+#                 #update the reminder status
+#                 reminder.reminded = True
+
+#         #add the dictionary to the result list
+#         result.append(item_dict)
+
+#     #commit changes to the database
+#     db.session.commit()
+
+#     return {'seeded_items': result}
+
 # because of the prefix in app/__init__.py, the full route is '/api/items/daily_items'
 # when this route is hit, it will return a JSON response with the daily items from the Fortnite API
 @item_routes.route('/daily_items', methods=['GET'])

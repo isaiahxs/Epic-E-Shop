@@ -9,9 +9,7 @@ import HomePage from "./components/HomePage";
 import Featured from "./components/Featured";
 // import Cart from "./components/CartSection";
 import ItemDetailPage from "./components/ItemDetailPage";
-import WishlistPage from "./components/WishlistPage";
 import UserProfilePage from "./components/UserProfile";
-import RemindersPage from "./components/RemindersPage";
 import InventoryPage from "./components/InventoryPage";
 import AboutMe from "./components/AboutMe";
 import SearchPage from "./components/SearchPage";
@@ -58,11 +56,6 @@ function App() {
             <ScrollToTop />
           </Route>
 
-          <Route path="/wishlist" exact>
-            <WishlistPage />
-            <ScrollToTop />
-          </Route>
-
           <Route path="/user_profile" exact>
             <UserProfilePage />
             <ScrollToTop />
@@ -74,10 +67,6 @@ function App() {
 
           <Route path="/signup">
             <SignupFormPage />
-          </Route>
-
-          <Route path="/reminders">
-            <RemindersPage />
           </Route>
 
           <Route path="/inventory">
