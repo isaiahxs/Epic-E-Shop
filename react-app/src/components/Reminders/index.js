@@ -197,7 +197,9 @@ const Reminders = () => {
                 </div>
             </div>
             ) : (
-                <h1 className='loading-message'>Loading...</h1>
+                <div className='loading-message-container'>
+                    <h2 className='loading-message'>Loading...</h2>
+                </div>
             )}
         </>
     )

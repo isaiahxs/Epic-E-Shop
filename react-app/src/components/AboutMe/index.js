@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import cavalry from '../../assets/images/Cavalry-Captain.png'
 import welldone from '../../assets/images/Well-Done-SC.png'
 import serene from '../../assets/images/SereneHaven-SC.png'
@@ -6,11 +7,25 @@ import github from '../../assets/images/github-logo.svg'
 import './AboutMe.css'
 
 const AboutMe = () => {
+    const [isLoading, setIsLoading] = useState(true);
+
+    const handleImageLoad = () => {
+        setIsLoading(false);
+    };
+
+    if (isLoading) {
+        return (
+            <div className='loading-message-container'>
+                <h2 className='loading-message'>Loading...</h2>
+            </div>
+        )
+    }
+
     return (
         <div className='item-detail-container'>
             <div className='item-detail-heading about-me-heading'>
                 <div className={`item-detail-image-container about-me-image-container`}>
-                    <img className='item-detail-image about-me-image' src={cavalry} alt="Isaiah as a Fortnite Character"/>
+                    <img className='item-detail-image about-me-image' src={cavalry} alt="Isaiah as a Fortnite Character" onLoad={handleImageLoad}/>
                 </div>
                 <div className='item-details about-me-details'>
                     <h1 className='item-detail-name'>Isaiah Sinnathamby</h1>

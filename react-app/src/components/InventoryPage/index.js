@@ -98,7 +98,11 @@ const InventoryPage = () => {
     };
 
     if (isLoading) {
-        return <div>Loading...</div>
+        return (
+            <div className='loading-message-container'>
+                <h2 className='loading-message'>Loading...</h2>
+            </div>
+        )
     }
     return (
         <>
