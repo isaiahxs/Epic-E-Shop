@@ -63,7 +63,7 @@ const InventoryPage = () => {
     }, [dispatch]);
 
     const userReminders = reminders.filter(reminder => reminder.userId === sessionUser.id)
-    // console.log('USER REMINDERS', userReminders);
+    console.log('USER REMINDERS', userReminders);
     const userComments = comments.filter(comment => comment.userId === sessionUser.id)
     const userLikes = likes.filter(like => like.userId === sessionUser.id)
 
@@ -124,14 +124,47 @@ const InventoryPage = () => {
                                     </h2>
                                 </div>
                             </div>
-                            <div className='inventory-subheading'>
-                                <h2>Total items: ({totalItems})</h2>
-                                <h2>Unique items: ({inventory.length})</h2>
-                            </div>
                         </div>
 
+                        {userReminders.length === 1 &&
+                            <div className='inventory-subheading'>
+                                <h2 className='currently-in-store'>The item you set a reminder for is currently in store!</h2>
+                            </div>
+                        }
+                        {userReminders.length > 1 &&
+                            <div className='inventory-subheading'>
+                                <h2 className='currently-in-store'>The items you set reminders for are currently in store!</h2>
+                            </div>
+                        }
+
+                        {userReminders.map(reminder => {
+                            const item = allItems.find(item => item.itemId === reminder.itemId && reminder.reminded === true);
+                            console.log('ITEM CURRENTLY IN REMINDER', item);
+
+                            return item ? (
+                                <div className='inventory-item' key={item.itemId}>
+                                    <InventoryBlock item={item}/>
+
+                                    <div className='inventory-special inv-clickable inv-special-column' onClick={() => history.push(`/item/${item.name}`)}>
+                                        <div className='inventory-special-word'>
+                                            Available: 
+                                        </div>
+                                        <div className='inventory-special-value'>
+                                            Now
+                                        </div>
+                                    </div>
+                                </div>
+                            ) : null;
+                        })}
+                        
+                        <div className='inventory-subheading'>
+                            <h2>Total items: ({totalItems})</h2>
+                            <h2>Unique items: ({inventory.length})</h2>
+                        </div>
                         {inventory.map(inventoryItem => {
                             const item = allItems.find(item => item.itemId === inventoryItem.itemId);
+
+                            console.log('ITEM IN INVENTORY', item);
 
                             return item ? (
                                 <div className='inventory-item' key={inventoryItem.itemId}>

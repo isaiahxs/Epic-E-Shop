@@ -37,6 +37,7 @@
     align-items: center;
     gap: 20px;
     width: 800px;
+    font-size: 1.4rem;
 }
 
 .inv-special-column {
@@ -55,6 +56,14 @@
     margin-top: 25px;
     margin-bottom: 10px;
     font-family: "Luckiest Guy", cursive;
+}
+
+.currently-in-store {
+    /* padding: 3px; */
+    /* border: 3px solid #ffd148; */
+    text-decoration: underline;
+    text-decoration-color: #ffd148;
+    text-decoration-thickness: 5px;
 }
 
 .inventory-special {
