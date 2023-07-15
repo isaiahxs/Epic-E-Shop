@@ -179,6 +179,27 @@
     }
 }
 
+@media screen and (max-width: 630px) {
+    .about-me-image-container {
+        display: flex;
+        height: 100%;
+        width: 100%;
+        justify-content: center;
+    }
+
+    .about-me-details {
+        margin-top: 70px;
+    }
+
+    .about-me-body-container {
+        margin-top: 0px;
+    }
+
+    .about-me-body {
+        margin-top: 20px;
+    }
+}
+
 @media screen and (max-width: 550px) {
     .about-me-body {
         margin-top: 0px;

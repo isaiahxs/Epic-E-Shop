@@ -13,13 +13,10 @@ const Reminders = () => {
     const [duration, setDuration] = useState(30);
     const [editDuration, setEditDuration] = useState(30);
 
-    // useEffect(() => {
-    //     dispatch(getReminders())
-    // }, [dispatch])
-
     const userReminderForItem = reminders.find(reminder => 
         reminder.userId === sessionUser?.id && reminder.itemId === currentItem?.itemId
     );
+    console.log("THIS IS OUR USER REMINDER FOR ITEM", userReminderForItem)
 
     const indefiniteMessage = reminders.find(reminder => 
         reminder.userId === sessionUser?.id && reminder.itemId === currentItem?.itemId && reminder.duration === -1
@@ -58,6 +55,8 @@ const Reminders = () => {
         dispatch(getReminders())
     }
 
+    const seedItemIds = ["5da5d9bf377bc5b20a96e5e1", "61bb53b3bd358a192111d97c", "6467a03b03356945427f6068", "5daedbcebffa742e002c321c", "5df2d48bb84283d7abdeb062", "5fd2b936c0132843480146e8", "60b033cd0b408201818d663d"];
+
     return (
         <>
             {currentItem ? (
@@ -66,10 +65,7 @@ const Reminders = () => {
                 <div className='user-reminders'>
                     <div className='reminder-message'>
                         <div>
-                            {/* if currentItem.itemId is equal to session.user.inventory.items.itemId or something like that */}
-                            {/* <div className='already-owned'>
-                                Looks like you already own this item. Nice collection so far!
-                            </div> */}
+                            
                             <div className='already-reminder-set'>
                                 {indefiniteMessage &&
                                 <>
@@ -78,11 +74,11 @@ const Reminders = () => {
                                     </h3>
 
                                     <div className='update-reminder-section'>
-                                            <div className='update-message'>
+                                            <div className='update-message bolder'>
                                                 Want to change how long your reminder is active for?
                                             </div>
                                             <form className='reminder-form' onSubmit={handleUpdateReminder}>
-                                                <label className='update-reminder-label'>New duration:
+                                                <label className='update-reminder-label bolder'>New duration:
                                                     <select className='select-field' value={editDuration} onChange={(e) => setEditDuration(e.target.value)}>
                                                         <option value={30}>30</option>
                                                         <option value={60}>60</option>
@@ -96,7 +92,7 @@ const Reminders = () => {
                                         </div>
 
                                     <div className='delete-reminder-section'>
-                                        <div className='delete-message'>
+                                        <div className='delete-message bolder'>
                                             No longer want this reminder?
                                             <button className='delete-reminder-button' onClick={handleDeleteReminder}>
                                                 Delete Reminder
@@ -105,18 +101,18 @@ const Reminders = () => {
                                     </div>
                                 </>
                                 }
-                                {userReminderForItem && !indefiniteMessage &&
+                                {userReminderForItem && !indefiniteMessage && userReminderForItem.reminded === false &&
                                     <>
                                         <h3>
                                             You've already set a reminder for this item that will expire in {userReminderForItem.duration} days. We'll let you know as soon as it returns to the shop!
                                         </h3>
 
                                         <div className='update-reminder-section'>
-                                            <div className='update-message'>
+                                            <div className='update-message bolder'>
                                                 Want to change how long your reminder is active for?
                                             </div>
                                             <form className='reminder-form' onSubmit={handleUpdateReminder}>
-                                                <label className='update-reminder-label'>New duration:
+                                                <label className='update-reminder-label bolder'>New duration:
                                                     <select className='select-field' value={editDuration} onChange={(e) => setEditDuration(e.target.value)}>
                                                         <option value={30}>30</option>
                                                         <option value={60}>60</option>
@@ -131,7 +127,24 @@ const Reminders = () => {
                                         </div>
 
                                         <div className='delete-reminder-section'>
-                                            <div className='delete-message'>
+                                            <div className='delete-message bolder'>
+                                                No longer want this reminder?
+                                            </div>
+                                            <button className='delete-reminder-button' onClick={handleDeleteReminder}>
+                                                Delete Reminder
+                                            </button>
+                                        </div>
+                                    </>
+                                }
+
+                                {userReminderForItem && userReminderForItem.reminded === true &&
+                                    <>
+                                        <h3>
+                                            You previously set a reminder for this item, now's your chance to add it to your collection!
+                                        </h3>
+
+                                        <div className='delete-reminder-section'>
+                                            <div className='delete-message bolder'>
                                                 No longer want this reminder?
                                             </div>
                                             <button className='delete-reminder-button' onClick={handleDeleteReminder}>
@@ -142,13 +155,17 @@ const Reminders = () => {
                                 }
 
                             </div>
-                            {!userReminderForItem && sessionUser && currentItem.history.dates &&
+                            {seedItemIds.includes(currentItem.itemId) && 
+                                <h3>No need to worry about missing out on our fan favorites! They'll always be around!</h3>
+                            }
+
+                            {!userReminderForItem && sessionUser && currentItem.history.dates && !seedItemIds.includes(currentItem.itemId) &&
                                 <>
                                     <h3>
                                         Looks like you don't have a reminder for this item yet. Complete the form below to create one!
                                     </h3>
                                     <form className='reminder-form' onSubmit={handleCreateReminder}>
-                                        <label>Reminder duration:
+                                        <label className='bolder'>Reminder duration:
                                             <select className='select-field' value={duration} onChange={(e) => setDuration(e.target.value)}>
                                                 <option value={30}>30</option>
                                                 <option value={60}>60</option>
@@ -180,7 +197,9 @@ const Reminders = () => {
                 </div>
             </div>
             ) : (
-                <h1 className='loading-message'>Loading...</h1>
+                <div className='loading-message-container'>
+                    <h2 className='loading-message'>Loading...</h2>
+                </div>
             )}
         </>
     )

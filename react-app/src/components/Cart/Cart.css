@@ -54,6 +54,7 @@
 .cart-items-heading {
     font-size: 1.5rem;
     margin: 20px auto;
+    /* text-align: center; */
 }
 
 .cart-item-list {

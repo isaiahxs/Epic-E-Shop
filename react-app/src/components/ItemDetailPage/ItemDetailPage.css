@@ -60,6 +60,10 @@
     /* overflow-y: auto; */
 /* } */
 
+.item-details {
+    font-weight: bolder;
+}
+
 .occurrences {
     display: flex;
     margin: 8px 0 12px;
@@ -92,6 +96,7 @@
     align-items: center;
     border: 1px solid #1e223a;
     padding: 0.4rem 0.6rem;
+    font-weight: bolder;
 }
 
 .time-days {

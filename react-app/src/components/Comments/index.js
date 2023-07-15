@@ -134,8 +134,8 @@ const Comments = () => {
                 </div>
             </div>
         ) :
-            <div>
-                Loading...
+            <div className='loading-message-container'>
+                <h2 className='loading-message'>Loading...</h2>
             </div>
     )
 }

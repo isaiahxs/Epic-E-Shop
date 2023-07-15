@@ -1,0 +1,16 @@
+.inv-clickable {
+    cursor: pointer;
+}
+
+.inventory-item-info {
+    margin: 20px 0px;
+}
+
+.inventory-item-info > div {
+    margin-bottom: 15px;
+}
+
+.inventory-detail-price {
+    display: flex;
+    flex-direction: row;
+}

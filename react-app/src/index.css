@@ -33,8 +33,21 @@ button {
     font-weight: bold;
 }
 
+.bolder {
+    font-weight: bolder;
+}
 
+.loading-message-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
 
+.loading-message {
+    font-size: 2rem;
+    color: white;
+}
 
 
 

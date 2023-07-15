@@ -8,7 +8,7 @@ import { useHistory } from 'react-router-dom'
 import { getInventory } from '../../store/inventory'
 import { getReminders } from '../../store/reminders'
 import vbucks from '../../assets/images/vbucks-icon.webp'
-import InventoryItems from '../InventoryItems'
+import InventoryBlock from '../InventoryBlock'
 import './InventoryPage.css'
 
 const InventoryPage = () => {
@@ -16,12 +16,11 @@ const InventoryPage = () => {
     const history = useHistory();
     const [isLoading, setIsLoading] = useState(true);
 
-    // const inventory = useSelector(state => state.inventory);
-    // console.log('INVENTORY', inventory)
     const sessionUser = useSelector(state => state.session.user);
     const reminders = useSelector(state => state.reminders);
     const comments = useSelector(state => state.comments);
     const likes = useSelector(state => state.totalLikes);
+    const inventory = useSelector(state => state.inventory);
 
     const seedItems = useSelector(state => state.items.seedItems);
     const dailyItems = useSelector(state => state.items.dailyItems);
@@ -48,6 +47,7 @@ const InventoryPage = () => {
 
     useEffect(() => {
         const fetchAllData = async () => {
+            // await dispatch(getSeedItems());
             await Promise.all([
                 dispatch(getSeedItems()),
                 // dispatch(getDailyItems()),
@@ -64,10 +64,31 @@ const InventoryPage = () => {
     }, [dispatch]);
 
     const userReminders = reminders.filter(reminder => reminder.userId === sessionUser.id)
-    // console.log('USER REMINDERS', userReminders);
-
+    console.log('USER REMINDERS', userReminders);
+    const remindedItems = userReminders.filter(reminder => reminder.reminded === true);
     const userComments = comments.filter(comment => comment.userId === sessionUser.id)
     const userLikes = likes.filter(like => like.userId === sessionUser.id)
+
+    function numberWithCommas(x) {
+        return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    } 
+
+    //calculating the total value of the inventory
+    const totalValue = inventory.reduce((total, inventoryItem) => {
+        const item = allItems.find(item => item.itemId === inventoryItem.itemId);
+        if (item) {
+            const itemPrice = parseInt(item.price.replace(',', ''), 10);
+            return total + (inventoryItem.quantity * itemPrice);
+        }
+        return total;
+    }, 0);
+
+    const formattedTotalValue = numberWithCommas(totalValue);
+
+    //calculating the total quantity of the inventory
+    const totalItems = inventory.reduce((total, inventoryItem) => {
+        return total + inventoryItem.quantity;
+    }, 0);
 
     const scrollToTop = () => {
         window.scrollTo({
@@ -77,13 +98,98 @@ const InventoryPage = () => {
     };
 
     if (isLoading) {
-        return <div>Loading...</div>
+        return (
+            <div className='loading-message-container'>
+                <h2 className='loading-message'>Loading...</h2>
+            </div>
+        )
     }
     return (
         <>
             {sessionUser &&
                 <>
-                    <InventoryItems />
+                    <div className='inventory-container'>
+                        <div className='inventory-heading'>
+                            {inventory.length > 0 &&
+                                <h1 className='inventory-welcome'>Nice collection so far, {sessionUser.username}!</h1>
+                            }
+
+                            <div className='member-since'>
+                                <h2>Member since: </h2>
+                                <h2 className='user-creation-date'>{sessionUser.created_at.slice(0, 16)}</h2>
+                            </div>
+
+                            <div className='item-detail-price inventory-detail-price inventory-detail-price-heading'>
+                                <div>
+                                    <h2>Total Inventory value:</h2>
+                                </div>
+                                <div>
+                                    <h2 className='total-value'>
+                                        <img src={vbucks} className='vbucks-icon inventory-vbuck'/>
+                                        {formattedTotalValue}
+                                    </h2>
+                                </div>
+                            </div>
+                        </div>
+
+                        {remindedItems.length === 1 &&
+                            <div className='inventory-subheading'>
+                                <h2 className='currently-in-store'>The item you set a reminder for is currently in store!</h2>
+                            </div>
+                        }
+                        {remindedItems.length > 1 &&
+                            <div className='inventory-subheading'>
+                                <h2 className='currently-in-store'>The items you set reminders for are currently in store!</h2>
+                            </div>
+                        }
+
+                        {userReminders.map(reminder => {
+                            const item = allItems.find(item => item.itemId === reminder.itemId && reminder.reminded === true);
+                            console.log('ITEM CURRENTLY IN REMINDER', item);
+
+                            return item ? (
+                                <div className='inventory-item' key={item.itemId}>
+                                    <InventoryBlock item={item}/>
+
+                                    <div className='inventory-special inv-clickable inv-special-column' onClick={() => history.push(`/item/${item.name}`)}>
+                                        <div className='inventory-special-word'>
+                                            Available: 
+                                        </div>
+                                        <div className='inventory-special-value'>
+                                            Now
+                                        </div>
+                                    </div>
+                                </div>
+                            ) : null;
+                        })}
+                        
+                        <div className='inventory-subheading'>
+                            <h2>Total items: ({totalItems})</h2>
+                            <h2>Unique items: ({inventory.length})</h2>
+                        </div>
+                        {inventory.map(inventoryItem => {
+                            const item = allItems.find(item => item.itemId === inventoryItem.itemId);
+
+                            console.log('ITEM IN INVENTORY', item);
+
+                            return item ? (
+                                <div className='inventory-item' key={inventoryItem.itemId}>
+                                    <InventoryBlock item={item}/>
+
+                                    <div className='inventory-special inv-clickable inv-special-column' onClick={() => history.push(`/item/${item.name}`)}>
+                                        <div className='inventory-special-word'>
+                                            Quantity: 
+                                        </div>
+                                        <div className='inventory-special-value'>
+                                            {inventoryItem.quantity}x
+                                        </div>
+                                    </div>
+                                </div>
+                            ) : null;
+                        })}
+                    </div>
+
+
                     <div className='inventory-reminders inventory-container'>
                         <h2 className='inventory-subheading'>Your Reminders: ({userReminders.length})</h2>
 
@@ -92,25 +198,28 @@ const InventoryPage = () => {
 
                             return item ? (
                                 <div className='inventory-item' key={reminder.itemId}>
-                                    
-                                    <div className={`img-container ${item.rarity}-container inv-clickable`} onClick={() => history.push(`/item/${item.name}`)}>
-                                        <img className={`home-item-image ${item.rarity}`} src={item.images.icon} alt={item.name} style={{ backgroundColor: getItemBackgroundColor(item.rarity) }}/>
-                                    </div>
-                                    <div className='inventory-item-info inv-clickable' onClick={() => history.push(`/item/${item.name}`)}>
-                                        <div className='inventory-item-name'>Item name: {item.name}</div>
-                                        <div className='inventory-rarity-section'>Rarity: <span className='rarity' style={{ backgroundColor: getItemBackgroundColor(item.rarity) }}>{item.rarity}</span></div>
 
-                                        <div className='inventory-item-type'>Type: {item.type}</div>
-                                        <div className='item-detail-price inventory-detail-price'>
-                                            <img src={item.priceIconLink} alt={item.priceIcon} className='vbucks-icon'/>
-                                            <div className='inventory-item-price'>{item.price}</div>
-                                        </div>
-                                    </div>
+                                    <InventoryBlock item={item}/>
+                                    
                                     {reminder.duration === -1 &&
-                                        <div className='inventory-quantity inv-clickable' onClick={() => history.push(`/item/${item.name}`)}>Duration: Until item returns</div>
+                                        <div className='inventory-special inv-clickable inv-special-column' onClick={() => history.push(`/item/${item.name}`)}>
+                                            <div className='inventory-special-word'>
+                                                Duration:
+                                            </div>
+                                            <div className='inventory-special-value'>
+                                                Until item returns
+                                            </div>
+                                        </div>
                                     }
                                     {reminder.duration !== -1 &&
-                                        <div className='inventory-quantity inv-clickable' onClick={() => history.push(`/item/${item.name}`)}>Duration: {reminder.duration} days</div>
+                                        <div className='inventory-special inv-clickable inv-special-column' onClick={() => history.push(`/item/${item.name}`)}>
+                                            <div className='inventory-special-word'>
+                                                Duration:
+                                            </div>
+                                            <div className='inventory-special-value'>
+                                                {reminder.duration} days
+                                            </div>
+                                        </div>
                                     }
                                 </div>
                             ) : null;
@@ -128,21 +237,17 @@ const InventoryPage = () => {
                             return item ? (
                                 <div className='inventory-item' key={comment.itemId}>
                                     
-                                    <div className={`img-container ${item.rarity}-container inv-clickable`} onClick={() => history.push(`/item/${item.name}`)}>
-                                        <img className={`home-item-image ${item.rarity}`} src={item.images.icon} alt={item.name} style={{ backgroundColor: getItemBackgroundColor(item.rarity) }}/>
-                                    </div>
-                                    <div className='inventory-item-info inv-clickable' onClick={() => history.push(`/item/${item.name}`)}>
-                                        <div className='inventory-item-name'>Item name: {item.name}</div>
-                                        <div className='inventory-rarity-section'>Rarity: <span className='rarity' style={{ backgroundColor: getItemBackgroundColor(item.rarity) }}>{item.rarity}</span></div>
+                                    <InventoryBlock item={item} getItemBackgroundColor={getItemBackgroundColor} />
 
-                                        <div className='inventory-item-type'>Type: {item.type}</div>
-                                        <div className='item-detail-price inventory-detail-price'>
-                                            <img src={item.priceIconLink} alt={item.priceIcon} className='vbucks-icon'/>
-                                            <div className='inventory-item-price'>{item.price}</div>
-                                        </div>
-                                    </div>
                                     <div className='inventory-comment inv-clickable' onClick={() => history.push(`/item/${item.name}`)}>
-                                        <div className='inventory-comment-text inventory-quantity'>Comment: {comment.text}</div>
+                                        <div className='inventory-comment-text inventory-special inv-special-column'>
+                                            <div className='inventory-special-word'>
+                                                Comment:
+                                            </div>
+                                            <div className='inventory-special-value'>
+                                                {comment.text}
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             ) : null;
@@ -159,21 +264,16 @@ const InventoryPage = () => {
 
                             return item ? (
                                 <div className='inventory-item' key={vote.itemId}>
-                                    
-                                    <div className={`img-container ${item.rarity}-container inv-clickable`} onClick={() => history.push(`/item/${item.name}`)}>
-                                        <img className={`home-item-image ${item.rarity}`} src={item.images.icon} alt={item.name} style={{ backgroundColor: getItemBackgroundColor(item.rarity) }}/>
-                                    </div>
-                                    <div className='inventory-item-info inv-clickable' onClick={() => history.push(`/item/${item.name}`)}>
-                                        <div className='inventory-item-name'>Item name: {item.name}</div>
-                                        <div className='inventory-rarity-section'>Rarity: <span className='rarity' style={{ backgroundColor: getItemBackgroundColor(item.rarity) }}>{item.rarity}</span></div>
+                                    <InventoryBlock item={item} getItemBackgroundColor={getItemBackgroundColor} />
 
-                                        <div className='inventory-item-type'>Type: {item.type}</div>
-                                        <div className='item-detail-price inventory-detail-price'>
-                                            <img src={item.priceIconLink} alt={item.priceIcon} className='vbucks-icon'/>
-                                            <div className='inventory-item-price'>{item.price}</div>
+                                    <div className='vote-value inventory-special inv-clickable inv-special-column' onClick={() => history.push(`/item/${item.name}`)}>
+                                        <div className='inventory-special-word'>
+                                            Vote:
+                                        </div>
+                                        <div className='inventory-special-value'>
+                                            {vote.value ? "Liked" : "Disliked"}
                                         </div>
                                     </div>
-                                    <div className='vote-value inventory-quantity inv-clickable' onClick={() => history.push(`/item/${item.name}`)}>{vote.value ? "Liked" : "Disliked"}</div>
                                 </div>
                             ) : null;
                         })}

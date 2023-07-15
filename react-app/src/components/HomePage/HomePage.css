@@ -22,6 +22,28 @@
     transition: transform 1s ease;
 }
 
+.reminder-heading-text {
+    margin-bottom: 10px;
+}
+
+.home-currently-in-store {
+    font-size: 1.6rem;
+    margin-top: 0px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.home-to-inventory-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+/* .home-to-inventory {
+
+} */
+
 .hero-banner:hover {
     transform: scale(1.05);
     /* z-index: -1; */
@@ -54,11 +76,14 @@
 .home-item-information {
     display: flex;
     flex-direction: column;
+    text-align: center;
+    font-size: 1.2rem;
 }
 
 .icon-and-price {
     display: flex;
     align-items: center;
+    justify-content: center;
 }
 
 .item-name {
@@ -67,6 +92,8 @@
 
 .item-price {
     cursor: pointer;
+    font-family: 'Poppins', calibri, helvetica, arial, sans-serif;
+    font-weight: bold;
 }
 
 .vbucks-icon {

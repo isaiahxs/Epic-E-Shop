@@ -2,9 +2,9 @@ import {useSelector} from 'react-redux'
 import { getItemBackgroundColor } from '../../utils'
 import { useHistory } from 'react-router-dom'
 import Slider from 'react-slick'
-import './FeaturedItems.css'
+import './FeaturedCarousel.css'
 
-const FeaturedItems = () => {
+const FeaturedCarousel = () => {
     const allFeaturedItems = useSelector(state => state.items.featuredItems)
     const history = useHistory()
 
@@ -62,4 +62,4 @@ const FeaturedItems = () => {
     )
 }
 
-export default FeaturedItems;
+export default FeaturedCarousel;

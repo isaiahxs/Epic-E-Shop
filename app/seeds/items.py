@@ -29,8 +29,8 @@ def seed_items():
     #     #     ],
 
     #     # some items that are battle-pass-exclusive will have a history of false with this API. the problem is that my model is set up to take JSON and not just a boolean, so i'll create an equivalent of `history="false"` in JSON form. then in ItemDetailPage, i can check if item.history is false to then display a specific message
-    #     bundle_set="null",
-    #     banner_text="null",
+    #     bundle_set="0",
+    #     banner_text="0",
     #     history={
     #     "exclusive": True,
     #     }
@@ -54,8 +54,8 @@ def seed_items():
         slug='grim-fable',
         readable_type='Outfit',
         description="Once upon a time...",
-        bundle_set="null",
-        banner_text="null",
+        bundle_set="0",
+        banner_text="0",
         history={
             "occurrences": 21,
             "firstSeen": "2019-11-03T00:00:00.000Z",
@@ -101,8 +101,8 @@ def seed_items():
         slug='mj-no-way-home',
         readable_type='Outfit',
         description="What's up, dorks?",
-        bundle_set="null",
-        banner_text="null",
+        bundle_set="0",
+        banner_text="0",
         history={
             "occurrences": 30,
             "firstSeen": "2021-12-17T00:00:00.000Z",
@@ -157,8 +157,8 @@ def seed_items():
         slug='spider-man-2099',
         readable_type='Outfit',
         description="Brilliant geneticist Miguel O'Hara.",
-        bundle_set="null",
-        banner_text="null",
+        bundle_set="0",
+        banner_text="0",
         history={
             "occurrences": 16,
             "firstSeen": "2023-05-23T00:00:00.000Z",
@@ -200,8 +200,8 @@ def seed_items():
         slug='teef',
         readable_type='Outfit',
         description="Life's chewy when you're born to chomp.",
-        bundle_set="null",
-        banner_text="null",
+        bundle_set="0",
+        banner_text="0",
         history={
             "occurrences": 15,
             "firstSeen": "2019-10-24T00:00:00.000Z",
@@ -244,8 +244,8 @@ def seed_items():
         slug='rey',
         readable_type='Outfit',
         description="A scavenger, now studying the Jedi ways.",
-        bundle_set="null",
-        banner_text="null",
+        bundle_set="0",
+        banner_text="0",
         history={
             "occurrences": 47,
             "firstSeen": "2019-12-13T00:00:00.495Z",
@@ -317,6 +317,8 @@ def seed_items():
         slug='master-chief',
         readable_type='Outfit',
         description="Master Chief Petty Officer John-117",
+        bundle_set="0",
+        banner_text="0",
         history={
             "occurrences": 75,
             "firstSeen": "2020-12-11T00:00:00.000Z",
@@ -415,8 +417,8 @@ def seed_items():
         slug='socks',
         readable_type='Emote',
         description="Put in work",
-        bundle_set="null",
-        banner_text="null",
+        bundle_set="0",
+        banner_text="0",
         history={
             "occurrences": 58,
             "firstSeen": "2021-05-28T00:00:00.000Z",

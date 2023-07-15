@@ -97,11 +97,8 @@ const DailyItems = () => {
                     <h2 className='home-subheading'>Today's Daily Items</h2>
                 </div>
                 <Slider {...settings}>
-                    {/* check if the items array is not empty before trying to map over it */}
                     {allDailyItems.length > 0 && allDailyItems.map((item, idx) => (
-                    // <div className='item-unit-container'>
                         <div className='item-unit' key={idx} onClick={() => history.push(`/item/${item.name}`)}>
-                            {/* possible image options are: featured, gallery, icon, png, resizeAvailable: boolean */}
                             <div className={`img-container ${item.rarity}-container`}>
                                 <img className={`home-item-image ${item.rarity}`} src={item.images.icon} alt={item.name} style={{ backgroundColor: getItemBackgroundColor(item.rarity) }}/>
                             </div>
@@ -113,7 +110,6 @@ const DailyItems = () => {
                                 </div>
                             </div>
                         </div>
-                    // </div>
                     ))}
                 </Slider>
             </div>
