@@ -11,7 +11,7 @@ const CLEAR_SEARCH_RESULTS = "items/CLEAR_SEARCH_RESULTS";
 
 //action creators
 export const setSeedItems = (items) => {
-    console.log('Loading seed items from localStorage');
+    // console.log('Loading seed items from localStorage');
 
     return {
         type: SET_SEED_ITEMS,
@@ -20,7 +20,7 @@ export const setSeedItems = (items) => {
 };
 
 export const setDailyItems = (items) => {
-    console.log('Loading daily items from localStorage');
+    // console.log('Loading daily items from localStorage');
 
     return {
         type: SET_DAILY_ITEMS,
@@ -29,7 +29,7 @@ export const setDailyItems = (items) => {
 };
 
 export const setFeaturedItems = (items) => {
-    console.log('Loading featured items from localStorage');
+    // console.log('Loading featured items from localStorage');
 
     return {
         type: SET_FEATURED_ITEMS,
@@ -71,10 +71,10 @@ export const getSeedItems = () => async (dispatch) => {
 
     if (response.ok) {
         const data = await response.json();
-        console.log('Data from getSeedItems', data);
+        // console.log('Data from getSeedItems', data);
 
         dispatch(setSeedItems(data.seeded_items));
-        console.log('Loading seed items from API');
+        // console.log('Loading seed items from API');
         dispatch(setItemsLoaded()); //set items loaded after fetching items
     }
 };
@@ -89,7 +89,7 @@ export const getDailyItems = () => async (dispatch) => {
     if (response.ok) {
         const data = await response.json();
         dispatch(setDailyItems(data));
-        console.log('Loading daily items from API')
+        // console.log('Loading daily items from API')
         dispatch(setItemsLoaded()); //set items loaded after fetching items
     }
 };
@@ -104,7 +104,7 @@ export const getFeaturedItems = () => async (dispatch) => {
     if (response.ok) {
         const data = await response.json();
         dispatch(setFeaturedItems(data));
-        console.log('Loading featured items from API')
+        // console.log('Loading featured items from API')
         dispatch(setItemsLoaded()); //set items loaded after fetching items
     }
 };
@@ -136,7 +136,7 @@ export const searchItems = (query) => async (dispatch) => {
 
     if (response.ok) {
         const data = await response.json();
-        console.log('data from searchItems', data)
+        // console.log('data from searchItems', data)
         dispatch(setSearchResults(data));
 
         // dispatch(getSeedItems());

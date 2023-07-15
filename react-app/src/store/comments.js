@@ -6,7 +6,7 @@ const DELETE_COMMENT = "comments/DELETE_COMMENT";
 
 //action creators
 export const setComments = (comments) => {
-    console.log('Loading comments from localStorage');
+    // console.log('Loading comments from localStorage');
     
     return {
         type: SET_COMMENTS,

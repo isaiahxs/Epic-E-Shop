@@ -4,6 +4,7 @@ import { useHistory } from 'react-router-dom'
 // import { useEffect, useState } from 'react'
 // import { getDailyItems } from '../../store/items'
 import Slider from 'react-slick'
+import vbucks from '../../assets/images/vbucks-icon.webp'
 import './DailyItems.css'
 
 // const DailyItems = () => {
@@ -105,7 +106,7 @@ const DailyItems = () => {
                             <div className='home-item-information'>
                                 <div className='item-name'>{item.name}</div>
                                 <div className='icon-and-price'>
-                                    <img className='vbucks-icon' src={item.priceIconLink} alt='vbucks' />
+                                    <img className='vbucks-icon' src={vbucks} alt='vbucks' />
                                     <div className='item-price'>{item.price}</div>
                                 </div>
                             </div>

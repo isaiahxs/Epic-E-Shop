@@ -1,6 +1,7 @@
 import {useSelector, useDispatch} from 'react-redux'
 import { getItemBackgroundColor } from '../../utils'
 import { useHistory } from 'react-router-dom'
+import vbucks from '../../assets/images/vbucks-icon.webp'
 import Slider from 'react-slick'
 import './FanFavorites.css'
 
@@ -41,7 +42,7 @@ const FanFavorites = () => {
                     <h2 className='home-subheading'>All-time fan favorites</h2>
                 </div>
                 <Slider {...settings}>
-                    {fanFavorites.length > 0 && fanFavorites.slice(0, 7).map((item, idx) => (
+                    {fanFavorites.length > 0 && fanFavorites.slice(0, 6).map((item, idx) => (
                         <div className='item-unit' key={idx} onClick={() => history.push(`/item/${item.name}`)}>
                             <div className={`img-container ${item.rarity}-container`}>
                                 <img className={`home-item-image ${item.rarity}`} src={item.images.icon} alt={item.name} style={{ backgroundColor: getItemBackgroundColor(item.rarity) }}/>
@@ -49,7 +50,7 @@ const FanFavorites = () => {
                             <div className='home-item-information'>
                                 <div className='item-name'>{item.name}</div>
                                 <div className='icon-and-price'>
-                                    <img className='vbucks-icon' src={item.priceIconLink} alt='vbucks' />
+                                    <img className='vbucks-icon' src={vbucks} alt='vbucks' />
                                     <div className='item-price'>{item.price}</div>
                                 </div>
                             </div>

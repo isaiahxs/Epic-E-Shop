@@ -64,7 +64,7 @@ const InventoryPage = () => {
     }, [dispatch]);
 
     const userReminders = reminders.filter(reminder => reminder.userId === sessionUser.id)
-    console.log('USER REMINDERS', userReminders);
+    // console.log('USER REMINDERS', userReminders);
     const remindedItems = userReminders.filter(reminder => reminder.reminded === true);
     const userComments = comments.filter(comment => comment.userId === sessionUser.id)
     const userLikes = likes.filter(like => like.userId === sessionUser.id)
@@ -145,7 +145,7 @@ const InventoryPage = () => {
 
                         {userReminders.map(reminder => {
                             const item = allItems.find(item => item.itemId === reminder.itemId && reminder.reminded === true);
-                            console.log('ITEM CURRENTLY IN REMINDER', item);
+                            // console.log('ITEM CURRENTLY IN REMINDER', item);
 
                             return item ? (
                                 <div className='inventory-item' key={item.itemId}>
@@ -170,7 +170,7 @@ const InventoryPage = () => {
                         {inventory.map(inventoryItem => {
                             const item = allItems.find(item => item.itemId === inventoryItem.itemId);
 
-                            console.log('ITEM IN INVENTORY', item);
+                            // console.log('ITEM IN INVENTORY', item);
 
                             return item ? (
                                 <div className='inventory-item' key={inventoryItem.itemId}>
