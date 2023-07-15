@@ -138,13 +138,20 @@ const ItemDetailPage = () => {
                                     </div>
                                 }
 
-                                {item.price && item.priceIconLink &&
+                                {item.price && item.priceIconLink && item.priceIcon === 'vip' && 
+                                    <div className='item-detail-price small-detail-price'>
+                                        <img className='vbucks-icon' src={item.priceIconLink} alt='vbucks' />
+                                        {item.price}
+                                    </div>
+                                }
+
+                                {item.price && item.priceIconLink && item.priceIcon !== 'vip' &&
                                     <div className='item-detail-price small-detail-price'>
                                         <img className='vbucks-icon' src={vbucks} alt='vbucks' />
                                         {item.price}
                                     </div>
                                 }
-                                
+
                                 <div className='small-item-details'>
                                     <div>{item.description}</div>
                                     {item.history.dates &&

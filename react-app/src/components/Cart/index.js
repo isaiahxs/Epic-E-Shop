@@ -114,7 +114,7 @@ const Cart = ({isCartOpen, toggleCartOpen}) => {
                                                 <div className='cart-item-information'>
                                                     <div>{item.quantity}x {item.name}</div>
                                                     <div className='item-detail-price'>
-                                                        <img className='vbucks-icon' src={item.priceIconLink} alt='v-bucks icon'/>
+                                                        <img className='vbucks-icon' src={vbucks} alt='v-bucks icon'/>
                                                         <div>{item.price} V-Bucks</div>
                                                     </div>
                                                     <div className='in-cart-updates'>

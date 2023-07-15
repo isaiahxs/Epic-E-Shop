@@ -1,6 +1,7 @@
 import {useSelector, useDispatch} from 'react-redux'
 import { getItemBackgroundColor } from '../../utils'
 import { useHistory } from 'react-router-dom'
+import vbucks from '../../assets/images/vbucks-icon.webp'
 import Slider from 'react-slick'
 import './FanFavorites.css'
 
@@ -49,7 +50,7 @@ const FanFavorites = () => {
                             <div className='home-item-information'>
                                 <div className='item-name'>{item.name}</div>
                                 <div className='icon-and-price'>
-                                    <img className='vbucks-icon' src={item.priceIconLink} alt='vbucks' />
+                                    <img className='vbucks-icon' src={vbucks} alt='vbucks' />
                                     <div className='item-price'>{item.price}</div>
                                 </div>
                             </div>
