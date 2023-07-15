@@ -9,6 +9,7 @@ import ItemLikes from '../ItemLikes'
 import Comments from '../Comments'
 import Reminders from '../Reminders'
 import CartPanel from '../CartPanel'
+import vbucks from '../../assets/images/vbucks-icon.webp'
 import './ItemDetailPage.css'
 import { getInventory } from '../../store/inventory'
 import { getReminders } from '../../store/reminders'
@@ -136,13 +137,14 @@ const ItemDetailPage = () => {
                                         {item.price}
                                     </div>
                                 }
-                                
+
                                 {item.price && item.priceIconLink &&
                                     <div className='item-detail-price small-detail-price'>
-                                        <img className='vbucks-icon' src={item.priceIconLink} alt='vbucks' />
+                                        <img className='vbucks-icon' src={vbucks} alt='vbucks' />
                                         {item.price}
                                     </div>
                                 }
+                                
                                 <div className='small-item-details'>
                                     <div>{item.description}</div>
                                     {item.history.dates &&

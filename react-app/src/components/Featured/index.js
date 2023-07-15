@@ -9,7 +9,7 @@ import './Featured.css'
 const Featured = () => {
     const dispatch = useDispatch();
     const featuredItems = useSelector(state => state.items.featuredItems);
-    console.log('featuredItems', featuredItems);
+    // console.log('featuredItems', featuredItems);
     const history = useHistory();
 
     const [filterType, setFilterType] = useState('all');

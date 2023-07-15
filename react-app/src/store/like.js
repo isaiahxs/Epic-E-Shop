@@ -8,7 +8,7 @@ const SWITCH_VOTE = "likes/SWITCH_VOTE";
 
 //action creators
 export const setLikes = (likes) => {
-    console.log('Loading likes from localStorage');
+    // console.log('Loading likes from localStorage');
     
     return {
         type: SET_LIKES,
@@ -59,7 +59,7 @@ export const getLikes = () => async (dispatch) => {
 };
 
 export const postLike = (itemId, value) => async (dispatch) => {
-    console.log('this is the value when liking an item', value)
+    // console.log('this is the value when liking an item', value)
     const response = await fetch(`/api/likes/${itemId}`, {
         method: "POST",
         headers: {
@@ -94,7 +94,7 @@ export const deleteLike = (itemId) => async (dispatch) => {
 };
 
 export const postDislike = (itemId, value) => async (dispatch) => {
-    console.log('this is the value when disliking an item', value)
+    // console.log('this is the value when disliking an item', value)
     const response = await fetch(`/api/likes/${itemId}`, {
         method: "POST",
         headers: {
