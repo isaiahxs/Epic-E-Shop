@@ -46,14 +46,13 @@ const HomePage = () => {
         const fetchData = async () => {
             await Promise.all([
                 dispatch(getSeedItems()),
+                setIsLoading(false),
                 dispatch(getDailyItems()),
                 dispatch(getFeaturedItems()),
                 dispatch(getReminders()),
-                // Uncomment other dispatches as per your needs
                 // dispatch(getInventory()),
                 // dispatch(getLikes()),
             ]);
-            setIsLoading(false);
         };
 
         fetchData();
