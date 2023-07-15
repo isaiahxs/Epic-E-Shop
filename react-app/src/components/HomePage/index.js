@@ -1,7 +1,7 @@
 import {useSelector, useDispatch} from 'react-redux'
 import { setSeedItems, setDailyItems, setFeaturedItems, getSeedItems, getDailyItems, getFeaturedItems } from '../../store/items'
 import { getLikes } from '../../store/like'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { getItemBackgroundColor } from '../../utils'
 import { useHistory } from 'react-router-dom'
 import theWilds from '../../assets/images/The-Wilds.jpg'
@@ -25,21 +25,38 @@ const HomePage = () => {
     const likes = useSelector(state => state.totalLikes)
     // console.log(likes);
 
+    const [isLoading, setIsLoading] = useState(true);
+
     const userReminders = sessionUser ? reminders.filter(reminder => reminder.userId === sessionUser.id) : [];
     // const userReminders = reminders.filter(reminder => reminder.userId === sessionUser.id)
-    console.log('USER REMINDERS', userReminders);
     const remindedItems = userReminders.filter(reminder => reminder.reminded === true);
-    console.log('REMINDED ITEMS', remindedItems);
 
     const dispatch = useDispatch()
 
+    // useEffect(() => {
+    //     dispatch(getSeedItems())
+    //     dispatch(getDailyItems())
+    //     dispatch(getFeaturedItems())
+    //     dispatch(getReminders())
+    //     // dispatch(getInventory())
+    //     // dispatch(getLikes())
+    // }, [dispatch])
+
     useEffect(() => {
-        dispatch(getSeedItems())
-        dispatch(getDailyItems())
-        dispatch(getFeaturedItems())
-        dispatch(getReminders())
-        // dispatch(getInventory())
-        // dispatch(getLikes())
+        const fetchData = async () => {
+            await Promise.all([
+                dispatch(getSeedItems()),
+                dispatch(getDailyItems()),
+                dispatch(getFeaturedItems()),
+                dispatch(getReminders()),
+                // Uncomment other dispatches as per your needs
+                // dispatch(getInventory()),
+                // dispatch(getLikes()),
+            ]);
+            setIsLoading(false);
+        };
+
+        fetchData();
     }, [dispatch])
 
     useEffect(() => {
@@ -49,6 +66,14 @@ const HomePage = () => {
         // localStorage.setItem('likes', JSON.stringify(likes));
     // }, [seedItems, dailyItems, featuredItems, likes]);
     }, [seedItems, dailyItems, featuredItems]);
+
+    if (isLoading) {
+        return (
+            <div className='loading-message-container'>
+                <h2 className='loading-message'>Loading...</h2>
+            </div>
+        )
+    }
 
     return (
         <div className='home-container'>
