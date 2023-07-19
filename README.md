@@ -1,148 +1,67 @@
-# Flask React Project
-
-This is the starter for the Flask React project.
-
-## Getting started
-1. Clone this repository (only this branch)
-
-2. Install dependencies
-
-      ```bash
-      pipenv install -r requirements.txt
-      ```
-
-3. Create a **.env** file based on the example with proper settings for your
-   development environment
-
-4. Make sure the SQLite3 database connection URL is in the **.env** file
-
-5. This starter organizes all tables inside the `epic_schema` schema, defined
-   by the `SCHEMA` environment variable.  Replace the value for
-   `SCHEMA` with a unique name, **making sure you use the snake_case
-   convention**.
-
-6. Get into your pipenv, migrate your database, seed your database, and run your Flask app
-
-   ```bash
-   pipenv shell
-   ```
-
-   ```bash
-   flask db upgrade
-   ```
-
-   ```bash
-   flask seed all
-   ```
-
-   ```bash
-   flask run
-   ```
-
-7. To run the React App in development, checkout the [README](./react-app/README.md) inside the `react-app` directory.
+# Epic-E-Shop
+![image](https://github.com/isaiahxs/Epic-E-Shop/assets/107521578/883cb473-12ef-4fc0-a574-852473be5dfd)
 
 
-## Deployment through Render.com
+Epic-E-Shop is a full-stack e-commerce application that offers real-time inventory and reminder system for Fortnite's item shop. Users can browse every item in Fortnite's history, as well as today's daily items and featured items. The live data is retrieved using FNBR's community-made third-party API.
 
-First, refer to your Render.com deployment articles for more detailed
-instructions about getting started with [Render.com], creating a production
-database, and deployment debugging tips.
+Not only can users view items, but they can also engage in several ways. They can comment on items, vote on items, and even set reminders for items. When an item returns to the shop, the user is notified by email. There's also an e-commerce aspect to the site; each new user is given 20,000 V-Bucks to start shopping. They can add items to their carts, remove items, and check out. Once purchased, items go to their inventory. Users can also view all items they own, have set reminders for, have voted on, and have commented on in their profile page.
 
-From the [Dashboard], click on the "New +" button in the navigation bar, and
-click on "Web Service" to create the application that will be deployed.
+The live site can be found [here](https://epic-e-shop.onrender.com/).
 
-Look for the name of the application you want to deploy, and click the "Connect"
-button to the right of the name.
+![image](https://github.com/isaiahxs/Epic-E-Shop/assets/107521578/cd020cd9-21bf-46f2-ab8e-2719672995c8)
+![image](https://github.com/isaiahxs/Epic-E-Shop/assets/107521578/590ffed0-219f-4ff4-b31f-ab8eb2a3ac3a)
 
-Now, fill out the form to configure the build and start commands, as well as add
-the environment variables to properly deploy the application.
+## Installation
 
-### Part A: Configure the Start and Build Commands
+Provide instructions on how to build/run the project here.
 
-Start by giving your application a name.
+## Technologies Used
+- JavaScript
+- Python
+- PostgreSQL
+- Flask
+- Redux
+- React
+- [FNBR API](https://fnbr.co/)
 
-Leave the root directory field blank. By default, Render will run commands from
-the root directory.
+## Features
+- Comment on items
+- Vote on items
+- Set reminders for items
+- E-commerce functionalities (Add to cart, remove from cart, checkout)
+- User profile (View owned items, reminders, votes, and comments)
 
-Make sure the Environment field is set set to "Python 3", the Region is set to
-the location closest to you, and the Branch is set to "main".
+![image](https://github.com/isaiahxs/Epic-E-Shop/assets/107521578/e2f77e85-dae0-4a64-acca-0f6a1278f692)
+![image](https://github.com/isaiahxs/Epic-E-Shop/assets/107521578/d181b2f4-bacc-49a5-8728-b203921687b3)
+![image](https://github.com/isaiahxs/Epic-E-Shop/assets/107521578/c6f19dc4-6102-4824-8154-fd6b51d45cef)
+![image](https://github.com/isaiahxs/Epic-E-Shop/assets/107521578/2d8368dd-ef3e-4b55-9051-199781c8f621)
+![image](https://github.com/isaiahxs/Epic-E-Shop/assets/107521578/31cf4efd-49c4-4949-b9dc-c32fb7169700)
 
-Next, add your Build command. This is a script that should include everything
-that needs to happen _before_ starting the server.
 
-For your Flask project, enter the following command into the Build field, all in
-one line:
 
-```shell
-# build command - enter all in one line
-npm install --prefix react-app &&
-npm run build --prefix react-app &&
-pip install -r requirements.txt &&
-pip install psycopg2 &&
-flask db upgrade &&
-flask seed all
-```
 
-This script will install dependencies for the frontend, and run the build
-command in the __package.json__ file for the frontend, which builds the React
-application. Then, it will install the dependencies needed for the Python
-backend, and run the migration and seed files.
+## Future Features
+- Ability to gift items to a friend
+- Gain additional V-Bucks by interacting with the features of the site
 
-Now, add your start command in the Start field:
+## Challenges and Solutions
+Describe the challenges you faced during development and the solutions you implemented here.
 
-```shell
-# start script
-gunicorn app:app
-```
+## Code Snippets
+Include your code snippets here.
 
-_If you are using websockets, use the following start command instead for increased performance:_
+## Documents
+- [Feature List](https://github.com/isaiahxs/Epic-E-Shop/wiki/Features)
+- [Figma Wireframes](https://github.com/isaiahxs/Epic-E-Shop/wiki/Figma-Wireframes)
+- [React Components List](link_to_react_components_list_here)
+- [Database Schema](https://github.com/isaiahxs/Epic-E-Shop/wiki/Database-Schema)
+- [Frontend Routes](https://github.com/isaiahxs/Epic-E-Shop/wiki/Front-End-Routes)
+- [API Routes](https://github.com/isaiahxs/Epic-E-Shop/wiki/API-Routes)
+- [Redux Store Tree](https://github.com/isaiahxs/Epic-E-Shop/wiki/Redux-State)
 
-`gunicorn --worker-class eventlet -w 1 app:app`
+## About Me
+![image](https://github.com/isaiahxs/Epic-E-Shop/assets/107521578/6d486df4-647e-42bf-9e44-13bcdcf3e92e)
+![image](https://github.com/isaiahxs/Epic-E-Shop/assets/107521578/e5b0bd3a-2160-4787-baea-40dd13bd3931)
 
-### Part B: Add the Environment Variables
-
-Click on the "Advanced" button at the bottom of the form to configure the
-environment variables your application needs to access to run properly. In the
-development environment, you have been securing these variables in the __.env__
-file, which has been removed from source control. In this step, you will need to
-input the keys and values for the environment variables you need for production
-into the Render GUI.
-
-Click on "Add Environment Variable" to start adding all of the variables you
-need for the production environment.
-
-Add the following keys and values in the Render GUI form:
-
-- SECRET_KEY (click "Generate" to generate a secure secret for production)
-- FLASK_ENV production
-- FLASK_APP app
-- SCHEMA (your unique schema name, in snake_case)
-- REACT_APP_BASE_URL (use render.com url, located at top of page, similar to
-  https://this-application-name.onrender.com)
-
-In a new tab, navigate to your dashboard and click on your Postgres database
-instance.
-
-Add the following keys and values:
-
-- DATABASE_URL (copy value from Internal Database URL field)
-
-_Note: Add any other keys and values that may be present in your local __.env__
-file. As you work to further develop your project, you may need to add more
-environment variables to your local __.env__ file. Make sure you add these
-environment variables to the Render GUI as well for the next deployment._
-
-Next, choose "Yes" for the Auto-Deploy field. This will re-deploy your
-application every time you push to main.
-
-Now, you are finally ready to deploy! Click "Create Web Service" to deploy your
-project. The deployment process will likely take about 10-15 minutes if
-everything works as expected. You can monitor the logs to see your build and
-start commands being executed, and see any errors in the build process.
-
-When deployment is complete, open your deployed site and check to see if you
-successfully deployed your Flask application to Render! You can find the URL for
-your site just below the name of the Web Service at the top of the page.
-
-[Render.com]: https://render.com/
-[Dashboard]: https://dashboard.render.com/
+## License
+[MIT](https://choosealicense.com/licenses/mit/)
