@@ -81,6 +81,64 @@ Each of these challenges allowed me to explore and learn various aspects of Reac
 ## Code Snippets
 *Have to add my code highlights here that were challenging, interesting, or particularly crucial to the functionality of the application*
 
+### Home Page Component
+
+Our Home Page component is the landing page of the application and where most of the action occurs. Here, I fetch and display all the items featured, handle user sessions and reminders, and control the page loading state.
+
+Here are some key excerpts from the `HomePage` component:
+
+```
+// Dependencies and initial state setup
+const HomePage = () => {
+    const history = useHistory()
+    const sessionUser = useSelector(state => state.session.user)
+    const reminders = useSelector(state => state.reminders);
+    const seedItems = useSelector(state => state.items.seedItems);
+    const dailyItems = useSelector(state => state.items.dailyItems);
+    const featuredItems = useSelector(state => state.items.featuredItems);
+
+    const [isLoading, setIsLoading] = useState(true);
+    ...
+```
+
+This first chunk shows the component setup, where I utilize the useSelector hook to grab the necessary slices of state from our Redux store.
+
+```
+// Data fetching and loading state management
+useEffect(() => {
+    const fetchData = async () => {
+        await Promise.all([
+            dispatch(getSeedItems()),
+            setIsLoading(false),
+            dispatch(getDailyItems()),
+            dispatch(getFeaturedItems()),
+            dispatch(getReminders()),
+        ]);
+    };
+
+    fetchData();
+}, [dispatch])
+```
+In this section, I use the useEffect hook to fetch data from our backend when the component first loads. I use Promise.all to ensure that our setIsLoading function does not change the loading state until all of our dispatch functions have completed their asynchronous operations.
+
+```
+// Rendering the component
+if (isLoading) {
+    return (
+        <div className='loading-message-container'>
+            <h2 className='loading-message'>Loading...</h2>
+        </div>
+    )
+}
+
+return (
+    <div className='home-container'>
+        ...
+    )
+}
+```
+Finally, in the rendering part of our component, I first check if the component is still in its loading state. If so, I render a simple "Loading..." message. Once loading is complete, the full component renders, displaying all the features of the application to the user.
+
 ## Documents
 - [Feature List](https://github.com/isaiahxs/Epic-E-Shop/wiki/Features)
 - [Figma Wireframes](https://github.com/isaiahxs/Epic-E-Shop/wiki/Figma-Wireframes)
