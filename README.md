@@ -37,6 +37,11 @@ Provide instructions on how to build/run the project here.
 ![image](https://github.com/isaiahxs/Epic-E-Shop/assets/107521578/2d8368dd-ef3e-4b55-9051-199781c8f621)
 ![image](https://github.com/isaiahxs/Epic-E-Shop/assets/107521578/31cf4efd-49c4-4949-b9dc-c32fb7169700)
 
+## Inventory
+![image](https://github.com/isaiahxs/Epic-E-Shop/assets/107521578/c6f68710-2dec-4941-8812-f67369301523)
+![image](https://github.com/isaiahxs/Epic-E-Shop/assets/107521578/f8372a35-d268-4275-a4ba-da2e1a231fac)
+![image](https://github.com/isaiahxs/Epic-E-Shop/assets/107521578/e60a8eeb-d2a7-4801-8ef7-94735e075688)
+![image](https://github.com/isaiahxs/Epic-E-Shop/assets/107521578/d05a8ef2-476a-4e5f-80e7-5654c58a304e)
 
 
 
@@ -45,10 +50,36 @@ Provide instructions on how to build/run the project here.
 - Gain additional V-Bucks by interacting with the features of the site
 
 ## Challenges and Solutions
-Describe the challenges you faced during development and the solutions you implemented here.
+While developing the project, I encountered several challenges. Here are some of the most significant ones, along with the ways they were addressed:
+
+### Handling Asynchronous Data Fetching
+
+One of the major challenges was dealing with fetching data asynchronously from an external API and synchronizing that data with the application's state. This was resolved by using Redux along with Redux thunk. Redux helped manage the global state of the application, while Redux thunk allowed me to handle asynchronous actions. Thus, I was able to dispatch actions to update the state after the data from the API was successfully retrieved.
+
+### Rendering Optimization
+
+Another challenge faced was ensuring that the application rendered efficiently. This was particularly relevant when dealing with components like FanFavorites, DailyItems, FeaturedItems, which needed to display a dynamic list of items. This was addressed using React's virtual DOM diffing and reconciliation process. I also ensured that components were not re-rendering unnecessarily by using React hooks like `useMemo` and `useCallback` to memoize values and functions.
+
+### Data Filtering and Sorting
+
+Filtering and sorting the items based on various parameters like price, rarity, etc., was a complex task. For this, JavaScript's built-in array methods were used to filter and sort the data as per the requirements. Redux was used to manage the state for filter and sort parameters, allowing for a seamless user experience.
+
+### Responsive UI
+
+Designing a UI that worked equally well on all device sizes was a challenging task. This was handled using CSS media queries and a desktop-first approach to ensure that the UI scaled well from large to small screen sizes. Libraries such as React-Slick were also leveraged to provide responsive and accessible components.
+
+### User Authentication and Authorization
+
+Implementing a secure and efficient user authentication system was crucial for the project. I used Flask-SQLAlchemy for the backend and Redux for the frontend to manage user sessions. I also implemented protective measures such as hashed passwords and user input validations to ensure a secure user experience.
+
+### Data Persistency
+
+A significant challenge was to maintain the state across the sessions, like preserving user's login state or cached data. LocalStorage was leveraged for this purpose. It helped persist data across sessions and improved the user experience by eliminating unnecessary data fetches and re-rendering.
+
+Each of these challenges allowed me to explore and learn various aspects of React, Redux, and Flask in depth, and I was able to find effective solutions by leveraging the features of these technologies and best practices of software development.
 
 ## Code Snippets
-Include your code snippets here.
+*Have to add my code highlights here that were challenging, interesting, or particularly crucial to the functionality of the application*
 
 ## Documents
 - [Feature List](https://github.com/isaiahxs/Epic-E-Shop/wiki/Features)
