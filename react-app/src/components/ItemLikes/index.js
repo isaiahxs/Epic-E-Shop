@@ -1,4 +1,4 @@
-import {useSelector, useDispatch} from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import { postLike, deleteLike, postDislike, deleteDislike, switchVoteLike } from '../../store/like'
 import like from '../../assets/images/good-review.png'
 import dislike from '../../assets/images/bad-review.png'
@@ -8,7 +8,6 @@ const ItemLikes = () => {
     const dispatch = useDispatch();
     const currentItem = useSelector(state => state.items.currentItem);
     const allLikes = useSelector(state => state.totalLikes)
-    // console.log(allLikes)
     const sessionUser = useSelector(state => state.session.user);
 
     const addLikeHandler = (value) => {

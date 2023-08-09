@@ -1,4 +1,4 @@
-import {useSelector, useDispatch} from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import { setSeedItems, setDailyItems, setFeaturedItems, setCurrentItem, getSeedItems, getDailyItems, getFeaturedItems } from '../../store/items'
 import { setLikes, getLikes } from '../../store/like'
 import { getComments } from '../../store/comments'
@@ -27,7 +27,6 @@ const ItemDetailPage = () => {
 
     //combine both lists
     const allItems = [...seedItems, ...dailyItems, ...featuredItems]
-    // console.log('ALL ITEMS', allItems)
 
     //find the item with the given name
     const item = allItems.find(item => item.name === itemName);
@@ -38,7 +37,6 @@ const ItemDetailPage = () => {
             dispatch(setCurrentItem(item)); //set the current item in the store
         }
     }, [dispatch, item]);
-    // console.log('THIS IS THE ITEM', item);
 
     //now we can use 'item' to display its details
     //handle case where item is undefined
@@ -48,14 +46,14 @@ const ItemDetailPage = () => {
         const day = date.getDate();
         const month = date.toLocaleString('default', { month: 'long' }); //this will get the month name
         const year = date.getFullYear();
-        
+
         //function to convert day into ordinal number (1st, 2nd, 3rd, etc.)
         function getOrdinal(n) {
-            const s = ["th","st","nd","rd"],
-            v = n % 100;
-            return n + (s[(v-20)%10] || s[v] || s[0]);
+            const s = ["th", "st", "nd", "rd"],
+                v = n % 100;
+            return n + (s[(v - 20) % 10] || s[v] || s[0]);
         }
-    
+
         return `${month} ${getOrdinal(day)}, ${year}`;
     }
 
@@ -73,7 +71,7 @@ const ItemDetailPage = () => {
     //     const seedItemsStored = localStorage.getItem('seedItems');
     //     const dailyItemsStored = localStorage.getItem('dailyItems');
     //     const featuredItemsStored = localStorage.getItem('featuredItems');
-    
+
     //     if (!seedItemsStored || !dailyItemsStored || !featuredItemsStored) {
     //         dispatch(getSeedItems())
     //         dispatch(getDailyItems())
@@ -95,7 +93,7 @@ const ItemDetailPage = () => {
         // const seedItemsStored = localStorage.getItem('seedItems');
         const dailyItemsStored = localStorage.getItem('dailyItems');
         const featuredItemsStored = localStorage.getItem('featuredItems');
-    
+
         if (!dailyItemsStored || !featuredItemsStored) {
             // dispatch(getSeedItems())
             dispatch(getDailyItems())
@@ -121,7 +119,7 @@ const ItemDetailPage = () => {
                     {/* <div className='item-detail-heading'> */}
                     <div className={`item-detail-heading ${!item.history.dates ? 'exclusive-item-detail-heading' : ''}`}>
                         <div className={`item-detail-image-container ${item.rarity}-container`}>
-                            <img className={`item-detail-image ${item.rarity}`} src={item.images.icon} alt={item.name} style={{ backgroundColor: getItemBackgroundColor(item.rarity) }}/>
+                            <img className={`item-detail-image ${item.rarity}`} src={item.images.icon} alt={item.name} style={{ backgroundColor: getItemBackgroundColor(item.rarity) }} />
                         </div>
                         <div className='item-detail-stats'>
                             <div className='item-details'>
@@ -138,7 +136,7 @@ const ItemDetailPage = () => {
                                     </div>
                                 }
 
-                                {item.price && item.priceIconLink && item.priceIcon === 'vip' && 
+                                {item.price && item.priceIconLink && item.priceIcon === 'vip' &&
                                     <div className='item-detail-price small-detail-price'>
                                         <img className='vbucks-icon' src={item.priceIconLink} alt='vbucks' />
                                         {item.price}
@@ -165,7 +163,7 @@ const ItemDetailPage = () => {
                             </div>
 
                             <div className='item-history'>
-                                {item.history === false || !item.history.dates ? 
+                                {item.history === false || !item.history.dates ?
                                     (
                                         <h3 className='occurrences'>
                                             Unfortunately, this item was a battle-pass exclusive, so you are not able to add it to your cart!
@@ -190,16 +188,16 @@ const ItemDetailPage = () => {
                                 }
                             </div>
                         </div>
-                        
+
                     </div>
 
                     <CartPanel />
                     <ItemLikes />
                     <Comments />
                     <Reminders />
-            </div>
+                </div>
             ) : (
-                <h1 className='loading-message'>Loading: { itemName }</h1>
+                <h1 className='loading-message'>Loading: {itemName}</h1>
             )}
         </div>
     )

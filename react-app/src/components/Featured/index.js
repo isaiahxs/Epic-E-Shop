@@ -1,4 +1,4 @@
-import {useSelector, useDispatch} from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import { setSeedItems, setDailyItems, setFeaturedItems, getSeedItems, getDailyItems, getFeaturedItems } from '../../store/items'
 import { setLikes, getLikes } from '../../store/like'
 import { useEffect, useState } from 'react'
@@ -10,7 +10,6 @@ import './Featured.css'
 const Featured = () => {
     const dispatch = useDispatch();
     const featuredItems = useSelector(state => state.items.featuredItems);
-    // console.log('featuredItems', featuredItems);
     const history = useHistory();
 
     const [filterType, setFilterType] = useState('all');
@@ -24,7 +23,7 @@ const Featured = () => {
         const dailyItemsStored = localStorage.getItem('dailyItems');
         const featuredItemsStored = localStorage.getItem('featuredItems');
         const likesStored = localStorage.getItem('likes');
-    
+
         if (!seedItemsStored || !dailyItemsStored || !featuredItemsStored || !likesStored) {
             dispatch(getSeedItems())
             dispatch(getDailyItems())
@@ -48,10 +47,10 @@ const Featured = () => {
     const filteredItems = featuredItems.filter(item => {
         const itemTypeMatches = filterType === 'all' || item.type === filterType;
         const rarityMatches = filterRarity === 'all' || item.rarity === filterRarity;
-    
+
         const price = Number(item.price.replace(",", ""));
         let priceMatches;
-        switch(priceFilter) {
+        switch (priceFilter) {
             case "< 500 V-Bucks":
                 priceMatches = price < 500;
                 break;
@@ -64,7 +63,7 @@ const Featured = () => {
             default:
                 priceMatches = true;
         }
-        
+
         return itemTypeMatches && rarityMatches && priceMatches;
     });
 
@@ -124,7 +123,7 @@ const Featured = () => {
                         <div className='featured-item'>
                             <div className='outer-img-container'>
                                 <div className={`img-container ${item.rarity}-container`}>
-                                    <img className={`home-item-image ${item.rarity}`} src={item.images.icon} alt={item.name} style={{ backgroundColor: getItemBackgroundColor(item.rarity) }}/>
+                                    <img className={`home-item-image ${item.rarity}`} src={item.images.icon} alt={item.name} style={{ backgroundColor: getItemBackgroundColor(item.rarity) }} />
                                 </div>
                             </div>
                             <div className='home-item-information'>

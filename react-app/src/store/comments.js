@@ -6,8 +6,7 @@ const DELETE_COMMENT = "comments/DELETE_COMMENT";
 
 //action creators
 export const setComments = (comments) => {
-    // console.log('Loading comments from localStorage');
-    
+
     return {
         type: SET_COMMENTS,
         payload: comments,
@@ -53,8 +52,6 @@ export const getComments = () => async (dispatch) => {
 }
 
 export const createComment = (itemId, comment) => async (dispatch) => {
-    // console.log('THIS IS OUR ITEM ID INSIDE THE THUNK ACTION', itemId)
-    // console.log('THIS IS OUR COMMENT INSIDE THE THUNK ACTION', comment)
     const response = await fetch(`/api/comments/${itemId}`, {
         method: "POST",
         headers: {
@@ -71,8 +68,6 @@ export const createComment = (itemId, comment) => async (dispatch) => {
 }
 
 export const editComment = (commentId, editedComment) => async (dispatch) => {
-    // console.log('THIS IS OUR COMMENT ID INSIDE THE THUNK ACTION', commentId)
-    // console.log('THIS IS OUR COMMENT INSIDE THE THUNK ACTION', editedComment)
     const response = await fetch(`/api/comments/${commentId}`, {
         method: "PUT",
         headers: {
@@ -83,7 +78,6 @@ export const editComment = (commentId, editedComment) => async (dispatch) => {
 
     if (response.ok) {
         const updatedComment = await response.json();
-        // console.log('THIS IS OUR UPDATED COMMENT', updatedComment)
         dispatch(editCommentAction(updatedComment));
         return updatedComment;
     }

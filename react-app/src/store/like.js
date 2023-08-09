@@ -8,8 +8,6 @@ const SWITCH_VOTE = "likes/SWITCH_VOTE";
 
 //action creators
 export const setLikes = (likes) => {
-    // console.log('Loading likes from localStorage');
-    
     return {
         type: SET_LIKES,
         payload: likes,
@@ -59,13 +57,12 @@ export const getLikes = () => async (dispatch) => {
 };
 
 export const postLike = (itemId, value) => async (dispatch) => {
-    // console.log('this is the value when liking an item', value)
     const response = await fetch(`/api/likes/${itemId}`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
         },
-        body: JSON.stringify({value: value}),
+        body: JSON.stringify({ value: value }),
     });
 
     if (response.ok) {
@@ -82,7 +79,7 @@ export const deleteLike = (itemId) => async (dispatch) => {
         headers: {
             "Content-Type": "application/json",
         },
-        body: JSON.stringify({value: true}),
+        body: JSON.stringify({ value: true }),
     });
 
     if (response.ok) {
@@ -94,13 +91,12 @@ export const deleteLike = (itemId) => async (dispatch) => {
 };
 
 export const postDislike = (itemId, value) => async (dispatch) => {
-    // console.log('this is the value when disliking an item', value)
     const response = await fetch(`/api/likes/${itemId}`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
         },
-        body: JSON.stringify({value: value}),
+        body: JSON.stringify({ value: value }),
     });
 
     if (response.ok) {
@@ -117,7 +113,7 @@ export const deleteDislike = (itemId) => async (dispatch) => {
         headers: {
             "Content-Type": "application/json",
         },
-        body: JSON.stringify({value: false}),
+        body: JSON.stringify({ value: false }),
     });
 
     if (response.ok) {
@@ -134,7 +130,7 @@ export const switchVoteLike = (itemId, value) => async (dispatch) => {
         headers: {
             "Content-Type": "application/json",
         },
-        body: JSON.stringify({value: value}),
+        body: JSON.stringify({ value: value }),
     });
 
     if (response.ok) {
@@ -147,8 +143,6 @@ export const switchVoteLike = (itemId, value) => async (dispatch) => {
 
 //intial state
 const initialState = [];
-
-// console.log('this is the action.payload', action.payload);
 
 //reducer
 export default function reducer(state = initialState, action) {
@@ -171,7 +165,7 @@ export default function reducer(state = initialState, action) {
             return state.filter((dislike) => dislike.id !== action.payload.id);
 
         case SWITCH_VOTE:
-            return state.map((like) => 
+            return state.map((like) =>
                 like.id === action.payload.id ? action.payload : like
             );
 

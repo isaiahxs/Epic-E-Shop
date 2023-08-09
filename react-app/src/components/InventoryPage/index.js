@@ -1,4 +1,4 @@
-import React, {useSelector, useDispatch} from 'react-redux'
+import React, { useSelector, useDispatch } from 'react-redux'
 import { setSeedItems, setDailyItems, setFeaturedItems, setCurrentItem, getSeedItems, getDailyItems, getFeaturedItems } from '../../store/items'
 import { setLikes, getLikes } from '../../store/like'
 import { getComments } from '../../store/comments'
@@ -30,7 +30,7 @@ const InventoryPage = () => {
         const seedItemsStored = localStorage.getItem('seedItems');
         const dailyItemsStored = localStorage.getItem('dailyItems');
         const featuredItemsStored = localStorage.getItem('featuredItems');
-    
+
         if (!seedItemsStored || !dailyItemsStored || !featuredItemsStored) {
             dispatch(getSeedItems())
             dispatch(getDailyItems())
@@ -64,14 +64,13 @@ const InventoryPage = () => {
     }, [dispatch]);
 
     const userReminders = reminders.filter(reminder => reminder.userId === sessionUser.id)
-    // console.log('USER REMINDERS', userReminders);
     const remindedItems = userReminders.filter(reminder => reminder.reminded === true);
     const userComments = comments.filter(comment => comment.userId === sessionUser.id)
     const userLikes = likes.filter(like => like.userId === sessionUser.id)
 
     function numberWithCommas(x) {
         return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-    } 
+    }
 
     //calculating the total value of the inventory
     const totalValue = inventory.reduce((total, inventoryItem) => {
@@ -125,7 +124,7 @@ const InventoryPage = () => {
                                 </div>
                                 <div>
                                     <h2 className='total-value'>
-                                        <img src={vbucks} className='vbucks-icon inventory-vbuck'/>
+                                        <img src={vbucks} className='vbucks-icon inventory-vbuck' />
                                         {formattedTotalValue}
                                     </h2>
                                 </div>
@@ -145,15 +144,14 @@ const InventoryPage = () => {
 
                         {userReminders.map(reminder => {
                             const item = allItems.find(item => item.itemId === reminder.itemId && reminder.reminded === true);
-                            // console.log('ITEM CURRENTLY IN REMINDER', item);
 
                             return item ? (
                                 <div className='inventory-item' key={item.itemId}>
-                                    <InventoryBlock item={item}/>
+                                    <InventoryBlock item={item} />
 
                                     <div className='inventory-special inv-clickable inv-special-column' onClick={() => history.push(`/item/${item.name}`)}>
                                         <div className='inventory-special-word'>
-                                            Available: 
+                                            Available:
                                         </div>
                                         <div className='inventory-special-value'>
                                             Now
@@ -162,7 +160,7 @@ const InventoryPage = () => {
                                 </div>
                             ) : null;
                         })}
-                        
+
                         <div className='inventory-subheading'>
                             <h2>Total items: ({totalItems})</h2>
                             <h2>Unique items: ({inventory.length})</h2>
@@ -170,15 +168,13 @@ const InventoryPage = () => {
                         {inventory.map(inventoryItem => {
                             const item = allItems.find(item => item.itemId === inventoryItem.itemId);
 
-                            // console.log('ITEM IN INVENTORY', item);
-
                             return item ? (
                                 <div className='inventory-item' key={inventoryItem.itemId}>
-                                    <InventoryBlock item={item}/>
+                                    <InventoryBlock item={item} />
 
                                     <div className='inventory-special inv-clickable inv-special-column' onClick={() => history.push(`/item/${item.name}`)}>
                                         <div className='inventory-special-word'>
-                                            Quantity: 
+                                            Quantity:
                                         </div>
                                         <div className='inventory-special-value'>
                                             {inventoryItem.quantity}x
@@ -193,14 +189,14 @@ const InventoryPage = () => {
                     <div className='inventory-reminders inventory-container'>
                         <h2 className='inventory-subheading'>Your Reminders: ({userReminders.length})</h2>
 
-                            {userReminders.map(reminder => {
+                        {userReminders.map(reminder => {
                             const item = allItems.find(item => item.itemId === reminder.itemId);
 
                             return item ? (
                                 <div className='inventory-item' key={reminder.itemId}>
 
-                                    <InventoryBlock item={item}/>
-                                    
+                                    <InventoryBlock item={item} />
+
                                     {reminder.duration === -1 &&
                                         <div className='inventory-special inv-clickable inv-special-column' onClick={() => history.push(`/item/${item.name}`)}>
                                             <div className='inventory-special-word'>
@@ -236,7 +232,7 @@ const InventoryPage = () => {
 
                             return item ? (
                                 <div className='inventory-item' key={comment.itemId}>
-                                    
+
                                     <InventoryBlock item={item} getItemBackgroundColor={getItemBackgroundColor} />
 
                                     <div className='inventory-comment inv-clickable' onClick={() => history.push(`/item/${item.name}`)}>
