@@ -41,7 +41,6 @@ export const getCart = () => async (dispatch) => {
 };
 
 export const addToCart = (item) => async (dispatch) => {
-    // console.log('THIS IS OUR ITEM ID INSIDE THE THUNK ACTION', item)
     const response = await fetch(`/api/carts/${item.itemId}`, {
         method: "POST",
         headers: {

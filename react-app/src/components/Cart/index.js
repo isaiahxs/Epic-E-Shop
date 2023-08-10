@@ -9,10 +9,9 @@ import { authenticate } from '../../store/session'
 // import { setUser } from '../../store/session'
 
 
-const Cart = ({isCartOpen, toggleCartOpen}) => {
+const Cart = ({ isCartOpen, toggleCartOpen }) => {
     const dispatch = useDispatch();
     const currentCart = useSelector(state => state.cart);
-    // console.log('CURRENT CART', currentCart)
 
     const seedItems = useSelector(state => state.items.seedItems);
     const dailyItems = useSelector(state => state.items.dailyItems);
@@ -56,8 +55,6 @@ const Cart = ({isCartOpen, toggleCartOpen}) => {
     //     };
     // });
 
-    // console.log('ITEMS IN CART LISTTTTTT', itemsInCart)
-
     const handleAddToCart = (itemId) => {
         // e.preventDefault();
         const item = {
@@ -66,28 +63,27 @@ const Cart = ({isCartOpen, toggleCartOpen}) => {
             // quantity: 1,
         }
         dispatch(addToCart(item))
-        .then(() => dispatch(getCart())) //only want to dispatch the re-render after the addToCart thunk action has completed
+            .then(() => dispatch(getCart())) //only want to dispatch the re-render after the addToCart thunk action has completed
     }
 
     const handleRemoveFromCart = (itemId) => {
-        // console.log('itemId within handleRemoveFromCart function', itemId)
 
         dispatch(removeFromCart(itemId))
-        .then(() => dispatch(getCart()));
+            .then(() => dispatch(getCart()));
     }
 
     //this function will add commas to numbers
     function numberWithCommas(x) {
         return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-    } 
+    }
 
     const handleCheckout = () => {
         dispatch(checkout())
-        .then(() => {
-            dispatch(authenticate())
-            dispatch(getInventory())
-            dispatch(getCart())    
-        });
+            .then(() => {
+                dispatch(authenticate())
+                dispatch(getInventory())
+                dispatch(getCart())
+            });
     }
 
     const handleClick = (e) => {
@@ -114,7 +110,7 @@ const Cart = ({isCartOpen, toggleCartOpen}) => {
                                                 <div className='cart-item-information'>
                                                     <div>{item.quantity}x {item.name}</div>
                                                     <div className='item-detail-price'>
-                                                        <img className='vbucks-icon' src={vbucks} alt='v-bucks icon'/>
+                                                        <img className='vbucks-icon' src={vbucks} alt='v-bucks icon' />
                                                         <div>{item.price} V-Bucks</div>
                                                     </div>
                                                     <div className='in-cart-updates'>
@@ -124,7 +120,7 @@ const Cart = ({isCartOpen, toggleCartOpen}) => {
                                                 </div>
 
                                                 <div className='cart-item-image-container'>
-                                                    <img className='cart-item-image' alt='cart-item-image' src={item.images.icon} style={{ backgroundColor: getItemBackgroundColor(item.rarity) }}/>
+                                                    <img className='cart-item-image' alt='cart-item-image' src={item.images.icon} style={{ backgroundColor: getItemBackgroundColor(item.rarity) }} />
                                                 </div>
 
                                             </div>
@@ -138,7 +134,7 @@ const Cart = ({isCartOpen, toggleCartOpen}) => {
                                     <div className='inventory-balance-container'>
                                         <h3 className='current-vbucks'>Current Balance:</h3>
                                         <div className='item-detail-price inventory-balance cart-content'>
-                                            <img src={vbucks} className='vbucks-icon' alt='v-bucks icon'/>
+                                            <img src={vbucks} className='vbucks-icon' alt='v-bucks icon' />
                                             <h3 className='balance-amount'>{numberWithCommas(sessionUser.vbucks)} V-Bucks</h3>
                                         </div>
                                     </div>
@@ -148,7 +144,7 @@ const Cart = ({isCartOpen, toggleCartOpen}) => {
                             <div className='cart-total'>
                                 <h3 className='cart-total-heading'>Cart Total:</h3>
                                 <h3 className='item-detail-price cart-total-price'>
-                                    <img className='vbucks-icon' src={vbucks} alt='v-bucks icon'/>
+                                    <img className='vbucks-icon' src={vbucks} alt='v-bucks icon' />
                                     {/* <div>{numberWithCommas(itemsInCart.reduce((total, item) => {
                                     const price = parseInt(item.price.replace(/,/g, ''), 10);
                                     return total + price * item.quantity;
@@ -174,10 +170,10 @@ const Cart = ({isCartOpen, toggleCartOpen}) => {
                         {sessionUser &&
                             <>
                                 <h2 className='cart-content-header cart-content'>Looks like you don't have any items in your cart yet!</h2>
-                                    <div className='item-detail-price current-wallet cart-content'>
-                                        <img src={vbucks} className='vbucks-icon' alt='v-bucks icon'/>
-                                        <h3 className='current-vbucks'>Current V-Bucks: {numberWithCommas(sessionUser.vbucks)}</h3>
-                                    </div>
+                                <div className='item-detail-price current-wallet cart-content'>
+                                    <img src={vbucks} className='vbucks-icon' alt='v-bucks icon' />
+                                    <h3 className='current-vbucks'>Current V-Bucks: {numberWithCommas(sessionUser.vbucks)}</h3>
+                                </div>
                             </>
                         }
                         {!sessionUser &&
@@ -188,7 +184,7 @@ const Cart = ({isCartOpen, toggleCartOpen}) => {
                     </>
                 }
             </div>
-            
+
             <div className='additional-money-message'>
                 <div>Additional features coming soon:</div>
                 <div className='starter-cash-message'>Need more V-Bucks? You can buy some more with your starter cash!</div>

@@ -9,7 +9,6 @@ function LoginFormModal() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState([]);
-  // console.log("errors", errors)
   const { closeModal } = useModal();
 
   const handleSubmit = async (e) => {

@@ -7,18 +7,16 @@ const Reminders = () => {
     const dispatch = useDispatch();
     const sessionUser = useSelector(state => state.session.user);
     const reminders = useSelector(state => state.reminders);
-    // console.log("THESE ARE OUR STATE REMINDERS", reminders);
     const currentItem = useSelector(state => state.items.currentItem);
 
     const [duration, setDuration] = useState(30);
     const [editDuration, setEditDuration] = useState(30);
 
-    const userReminderForItem = reminders.find(reminder => 
+    const userReminderForItem = reminders.find(reminder =>
         reminder.userId === sessionUser?.id && reminder.itemId === currentItem?.itemId
     );
-    console.log("THIS IS OUR USER REMINDER FOR ITEM", userReminderForItem)
 
-    const indefiniteMessage = reminders.find(reminder => 
+    const indefiniteMessage = reminders.find(reminder =>
         reminder.userId === sessionUser?.id && reminder.itemId === currentItem?.itemId && reminder.duration === -1
     );
 
@@ -60,142 +58,142 @@ const Reminders = () => {
     return (
         <>
             {currentItem ? (
-            <div className='item-detail-reminders'>
-                <h2 className='idp-subheading'>Reminders</h2>
-                <div className='user-reminders'>
-                    <div className='reminder-message'>
-                        <div>
-                            
-                            <div className='already-reminder-set'>
-                                {indefiniteMessage &&
-                                <>
-                                    <h3>
-                                        You've set a reminder for this item that will not expire. We'll let you know as soon as it returns to the shop!
-                                    </h3>
+                <div className='item-detail-reminders'>
+                    <h2 className='idp-subheading'>Reminders</h2>
+                    <div className='user-reminders'>
+                        <div className='reminder-message'>
+                            <div>
 
-                                    <div className='update-reminder-section'>
-                                            <div className='update-message bolder'>
-                                                Want to change how long your reminder is active for?
+                                <div className='already-reminder-set'>
+                                    {indefiniteMessage &&
+                                        <>
+                                            <h3>
+                                                You've set a reminder for this item that will not expire. We'll let you know as soon as it returns to the shop!
+                                            </h3>
+
+                                            <div className='update-reminder-section'>
+                                                <div className='update-message bolder'>
+                                                    Want to change how long your reminder is active for?
+                                                </div>
+                                                <form className='reminder-form' onSubmit={handleUpdateReminder}>
+                                                    <label className='update-reminder-label bolder'>New duration:
+                                                        <select className='select-field' value={editDuration} onChange={(e) => setEditDuration(e.target.value)}>
+                                                            <option value={30}>30</option>
+                                                            <option value={60}>60</option>
+                                                            <option value={-1}>Until item returns</option>
+                                                        </select>
+                                                    </label>
+                                                    <button className='create-reminder update-reminder' type='submit'>
+                                                        Update Reminder
+                                                    </button>
+                                                </form>
                                             </div>
-                                            <form className='reminder-form' onSubmit={handleUpdateReminder}>
-                                                <label className='update-reminder-label bolder'>New duration:
-                                                    <select className='select-field' value={editDuration} onChange={(e) => setEditDuration(e.target.value)}>
-                                                        <option value={30}>30</option>
-                                                        <option value={60}>60</option>
-                                                        <option value={-1}>Until item returns</option>
-                                                    </select>
-                                                </label>
-                                                <button className='create-reminder update-reminder' type='submit'>
-                                                    Update Reminder
-                                                </button>
-                                            </form>
-                                        </div>
 
-                                    <div className='delete-reminder-section'>
-                                        <div className='delete-message bolder'>
-                                            No longer want this reminder?
-                                            <button className='delete-reminder-button' onClick={handleDeleteReminder}>
-                                                Delete Reminder
-                                            </button>
-                                        </div>
-                                    </div>
-                                </>
+                                            <div className='delete-reminder-section'>
+                                                <div className='delete-message bolder'>
+                                                    No longer want this reminder?
+                                                    <button className='delete-reminder-button' onClick={handleDeleteReminder}>
+                                                        Delete Reminder
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </>
+                                    }
+                                    {userReminderForItem && !indefiniteMessage && userReminderForItem.reminded === false &&
+                                        <>
+                                            <h3>
+                                                You've already set a reminder for this item that will expire in {userReminderForItem.duration} days. We'll let you know as soon as it returns to the shop!
+                                            </h3>
+
+                                            <div className='update-reminder-section'>
+                                                <div className='update-message bolder'>
+                                                    Want to change how long your reminder is active for?
+                                                </div>
+                                                <form className='reminder-form' onSubmit={handleUpdateReminder}>
+                                                    <label className='update-reminder-label bolder'>New duration:
+                                                        <select className='select-field' value={editDuration} onChange={(e) => setEditDuration(e.target.value)}>
+                                                            <option value={30}>30</option>
+                                                            <option value={60}>60</option>
+                                                            <option value={-1}>Until item returns</option>
+                                                        </select>
+                                                    </label>
+                                                    <button className='create-reminder update-reminder' type='submit'>
+                                                        Update Reminder
+                                                    </button>
+
+                                                </form>
+                                            </div>
+
+                                            <div className='delete-reminder-section'>
+                                                <div className='delete-message bolder'>
+                                                    No longer want this reminder?
+                                                </div>
+                                                <button className='delete-reminder-button' onClick={handleDeleteReminder}>
+                                                    Delete Reminder
+                                                </button>
+                                            </div>
+                                        </>
+                                    }
+
+                                    {userReminderForItem && userReminderForItem.reminded === true &&
+                                        <>
+                                            <h3>
+                                                You previously set a reminder for this item, now's your chance to add it to your collection!
+                                            </h3>
+
+                                            <div className='delete-reminder-section'>
+                                                <div className='delete-message bolder'>
+                                                    No longer want this reminder?
+                                                </div>
+                                                <button className='delete-reminder-button' onClick={handleDeleteReminder}>
+                                                    Delete Reminder
+                                                </button>
+                                            </div>
+                                        </>
+                                    }
+
+                                </div>
+                                {seedItemIds.includes(currentItem.itemId) &&
+                                    <h3>No need to worry about missing out on our fan favorites! They'll always be around!</h3>
                                 }
-                                {userReminderForItem && !indefiniteMessage && userReminderForItem.reminded === false &&
+
+                                {!userReminderForItem && sessionUser && currentItem.history.dates && !seedItemIds.includes(currentItem.itemId) &&
                                     <>
                                         <h3>
-                                            You've already set a reminder for this item that will expire in {userReminderForItem.duration} days. We'll let you know as soon as it returns to the shop!
+                                            Looks like you don't have a reminder for this item yet. Complete the form below to create one!
                                         </h3>
-
-                                        <div className='update-reminder-section'>
-                                            <div className='update-message bolder'>
-                                                Want to change how long your reminder is active for?
-                                            </div>
-                                            <form className='reminder-form' onSubmit={handleUpdateReminder}>
-                                                <label className='update-reminder-label bolder'>New duration:
-                                                    <select className='select-field' value={editDuration} onChange={(e) => setEditDuration(e.target.value)}>
-                                                        <option value={30}>30</option>
-                                                        <option value={60}>60</option>
-                                                        <option value={-1}>Until item returns</option>
-                                                    </select>
-                                                </label>
-                                                <button className='create-reminder update-reminder' type='submit'>
-                                                    Update Reminder
-                                                </button>
-                                                
-                                            </form>
-                                        </div>
-
-                                        <div className='delete-reminder-section'>
-                                            <div className='delete-message bolder'>
-                                                No longer want this reminder?
-                                            </div>
-                                            <button className='delete-reminder-button' onClick={handleDeleteReminder}>
-                                                Delete Reminder
+                                        <form className='reminder-form' onSubmit={handleCreateReminder}>
+                                            <label className='bolder'>Reminder duration:
+                                                <select className='select-field' value={duration} onChange={(e) => setDuration(e.target.value)}>
+                                                    <option value={30}>30</option>
+                                                    <option value={60}>60</option>
+                                                    <option value={-1}>Until item returns</option>
+                                                </select>
+                                            </label>
+                                            <button className='create-reminder green-button' type='submit'>
+                                                Create Reminder
                                             </button>
-                                        </div>
+                                        </form>
                                     </>
                                 }
 
-                                {userReminderForItem && userReminderForItem.reminded === true &&
+                                {!currentItem.history.dates &&
                                     <>
-                                        <h3>
-                                            You previously set a reminder for this item, now's your chance to add it to your collection!
-                                        </h3>
-
-                                        <div className='delete-reminder-section'>
-                                            <div className='delete-message bolder'>
-                                                No longer want this reminder?
-                                            </div>
-                                            <button className='delete-reminder-button' onClick={handleDeleteReminder}>
-                                                Delete Reminder
-                                            </button>
-                                        </div>
+                                        <h3>Unfortunately, this item was a battle-pass exclusive from a previous season so it will not be coming to the shop.</h3>
                                     </>
                                 }
 
+                                {!sessionUser && currentItem.history.dates && !seedItemIds.includes(currentItem.itemId) &&
+                                    <>
+                                        <h3 className='reminder-message-logged-out'>
+                                            You must be logged in to set a reminder for this item.
+                                        </h3>
+                                    </>
+                                }
                             </div>
-                            {seedItemIds.includes(currentItem.itemId) && 
-                                <h3>No need to worry about missing out on our fan favorites! They'll always be around!</h3>
-                            }
-
-                            {!userReminderForItem && sessionUser && currentItem.history.dates && !seedItemIds.includes(currentItem.itemId) &&
-                                <>
-                                    <h3>
-                                        Looks like you don't have a reminder for this item yet. Complete the form below to create one!
-                                    </h3>
-                                    <form className='reminder-form' onSubmit={handleCreateReminder}>
-                                        <label className='bolder'>Reminder duration:
-                                            <select className='select-field' value={duration} onChange={(e) => setDuration(e.target.value)}>
-                                                <option value={30}>30</option>
-                                                <option value={60}>60</option>
-                                                <option value={-1}>Until item returns</option>
-                                            </select>
-                                        </label>
-                                        <button className='create-reminder green-button' type='submit'>
-                                            Create Reminder
-                                        </button>
-                                    </form>
-                                </>
-                            }
-
-                            {!currentItem.history.dates &&
-                                <>
-                                    <h3>Unfortunately, this item was a battle-pass exclusive from a previous season so it will not be coming to the shop.</h3>
-                                </>
-                            }
-
-                            {!sessionUser && currentItem.history.dates &&
-                                <>
-                                    <h3 className='reminder-message-logged-out'>
-                                        You must be logged in to set a reminder for this item.
-                                    </h3>
-                                </>
-                            }
                         </div>
                     </div>
                 </div>
-            </div>
             ) : (
                 <div className='loading-message-container'>
                     <h2 className='loading-message'>Loading...</h2>

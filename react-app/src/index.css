@@ -113,6 +113,7 @@ button {
 .red-button:hover {
     background-color: #b51625;
 }
+
 .green-button {
     background-color: #1e8513;
 }
@@ -214,7 +215,7 @@ button {
 
 /* ITEM BACKGROUNDS */
 .common {
-    background: radial-gradient(#bebebe,#646464);
+    background: radial-gradient(#bebebe, #646464);
 }
 
 .common-container {
@@ -254,7 +255,7 @@ button {
 }
 
 .dc {
-    background: radial-gradient(#5475c7,#243461);
+    background: radial-gradient(#5475c7, #243461);
 }
 
 .dc-container {
@@ -302,7 +303,8 @@ button {
 }
 
 .frozen {
-    background: radial-gradient(#94dfff,#269ed6);;
+    background: radial-gradient(#94dfff, #269ed6);
+    ;
 }
 
 .frozen-container {
@@ -310,7 +312,7 @@ button {
 }
 
 .lava {
-    background: radial-gradient(#ea8d23,#6a0a31);
+    background: radial-gradient(#ea8d23, #6a0a31);
 }
 
 .lava-container {
@@ -318,7 +320,7 @@ button {
 }
 
 .dark {
-    background: radial-gradient(#fb22df,#520c6f);
+    background: radial-gradient(#fb22df, #520c6f);
 }
 
 .dark-container {
@@ -326,7 +328,7 @@ button {
 }
 
 .star_wars {
-    background: radial-gradient(#1b366e,#081737);
+    background: radial-gradient(#1b366e, #081737);
 }
 
 .star_wars-container {
