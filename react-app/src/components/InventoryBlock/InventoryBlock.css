@@ -3,11 +3,11 @@
 }
 
 .inventory-item-info {
-    margin: 20px 0px;
+    /* margin: 20px 0px; */
 }
 
-.inventory-item-info > div {
-    margin-bottom: 15px;
+.inventory-item-info>div {
+    margin-bottom: 10px;
 }
 
 .inventory-detail-price {

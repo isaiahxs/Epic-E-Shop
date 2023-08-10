@@ -183,7 +183,7 @@ const Reminders = () => {
                                     </>
                                 }
 
-                                {!sessionUser && currentItem.history.dates &&
+                                {!sessionUser && currentItem.history.dates && !seedItemIds.includes(currentItem.itemId) &&
                                     <>
                                         <h3 className='reminder-message-logged-out'>
                                             You must be logged in to set a reminder for this item.

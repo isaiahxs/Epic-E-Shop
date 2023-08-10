@@ -8,6 +8,10 @@
     /* color: red; */
 }
 
+.time-left-text {
+    margin-bottom: 10px;
+}
+
 .time-left {
     margin-bottom: 10px;
     margin-top: -10px;

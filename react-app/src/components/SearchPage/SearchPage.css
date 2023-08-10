@@ -11,7 +11,7 @@
 }
 
 /* .bp-exclusive { */
-    /* text-align: center; */
+/* text-align: center; */
 /* } */
 
 .search-item-detail-name {
@@ -45,12 +45,19 @@
 }
 
 @media screen and (max-width: 900px) {
-    .examples-message {
-        /* margin-top: 0px; */
+    .searched-item-container {
+        margin-bottom: 330px;
     }
+}
 
-    .popular-searches {
-        /* margin-bottom: 350px; */
-        /* position: static; */
+@media screen and (max-width: 630px) {
+    .searched-item-container {
+        margin-bottom: 530px;
+    }
+}
+
+@media screen and (max-width: 550px) {
+    .searched-item-container {
+        margin-bottom: 550px;
     }
 }

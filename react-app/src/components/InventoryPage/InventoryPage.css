@@ -7,7 +7,16 @@
 }
 
 .inventory-heading {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
     font-family: 'Poppins', calibri, helvetica, arial, sans-serif;
+}
+
+.inventory-detail-price-heading,
+.member-since {
+    justify-content: center;
 }
 
 .inventory-heading h2 {
@@ -30,14 +39,27 @@
     max-width: 1000px;
 }
 
+/* .inventory-reminders {
+    display: flex;
+    justify-content: center;
+} */
+
+.inventory-item-container {
+    display: flex;
+    justify-content: center;
+}
+
 .inventory-item {
     margin-bottom: 45px;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 0.7fr;
+    /* justify-content: center; */
     align-items: center;
     gap: 20px;
     width: 800px;
     font-size: 1.4rem;
+    font-family: 'Poppins', calibri, helvetica, arial, sans-serif;
+    font-weight: bold;
 }
 
 .inv-special-column {
@@ -53,9 +75,17 @@
 }
 
 .inventory-subheading {
-    margin-top: 25px;
-    margin-bottom: 10px;
+    text-align: center;
+    margin-top: 15px;
+    margin-bottom: 20px;
     font-family: "Luckiest Guy", cursive;
+    font-size: 1.8rem;
+    display: flex;
+    justify-content: center;
+}
+
+.unique-items-heading {
+    margin-top: 10px;
 }
 
 .currently-in-store {
@@ -65,6 +95,9 @@
     color: #fff5d4;
     text-decoration-color: #ffd148;
     text-decoration-thickness: 5px;
+    font-size: 1.8rem;
+    /* text-align: center; */
+    width: 90%;
 }
 
 .inventory-special {
@@ -93,8 +126,13 @@
         text-align: center;
     }
 
+    .img-container {
+        margin-bottom: 0px !important;
+    }
+
     .inventory-detail-price {
         justify-content: center;
+        margin-bottom: 0px !important;
     }
 
     .inventory-item {

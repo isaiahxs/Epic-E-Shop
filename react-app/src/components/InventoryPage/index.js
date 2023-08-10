@@ -146,38 +146,43 @@ const InventoryPage = () => {
                             const item = allItems.find(item => item.itemId === reminder.itemId && reminder.reminded === true);
 
                             return item ? (
-                                <div className='inventory-item' key={item.itemId}>
-                                    <InventoryBlock item={item} />
+                                <div className='inventory-item-container'>
+                                    <div className='inventory-item' key={item.itemId}>
+                                        <InventoryBlock item={item} />
 
-                                    <div className='inventory-special inv-clickable inv-special-column' onClick={() => history.push(`/item/${item.name}`)}>
-                                        <div className='inventory-special-word'>
-                                            Available:
-                                        </div>
-                                        <div className='inventory-special-value'>
-                                            Now
+                                        <div className='inventory-special inv-clickable inv-special-column' onClick={() => history.push(`/item/${item.name}`)}>
+                                            <div className='inventory-special-word'>
+                                                Available:
+                                            </div>
+                                            <div className='inventory-special-value'>
+                                                Now
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             ) : null;
                         })}
 
-                        <div className='inventory-subheading'>
-                            <h2>Total items: ({totalItems})</h2>
-                            <h2>Unique items: ({inventory.length})</h2>
+                        <div>
+                            <h2 className='inventory-subheading'>Total items: ({totalItems})</h2>
+                            <h2 className='inventory-subheading unique-items-heading'>Unique items: ({inventory.length})</h2>
                         </div>
+
                         {inventory.map(inventoryItem => {
                             const item = allItems.find(item => item.itemId === inventoryItem.itemId);
 
                             return item ? (
-                                <div className='inventory-item' key={inventoryItem.itemId}>
-                                    <InventoryBlock item={item} />
+                                <div className='inventory-item-container'>
+                                    <div className='inventory-item' key={inventoryItem.itemId}>
+                                        <InventoryBlock item={item} />
 
-                                    <div className='inventory-special inv-clickable inv-special-column' onClick={() => history.push(`/item/${item.name}`)}>
-                                        <div className='inventory-special-word'>
-                                            Quantity:
-                                        </div>
-                                        <div className='inventory-special-value'>
-                                            {inventoryItem.quantity}x
+                                        <div className='inventory-special inv-clickable inv-special-column' onClick={() => history.push(`/item/${item.name}`)}>
+                                            <div className='inventory-special-word'>
+                                                Quantity:
+                                            </div>
+                                            <div className='inventory-special-value'>
+                                                {inventoryItem.quantity}x
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -193,30 +198,32 @@ const InventoryPage = () => {
                             const item = allItems.find(item => item.itemId === reminder.itemId);
 
                             return item ? (
-                                <div className='inventory-item' key={reminder.itemId}>
+                                <div className='inventory-item-container'>
+                                    <div className='inventory-item' key={reminder.itemId}>
 
-                                    <InventoryBlock item={item} />
+                                        <InventoryBlock item={item} />
 
-                                    {reminder.duration === -1 &&
-                                        <div className='inventory-special inv-clickable inv-special-column' onClick={() => history.push(`/item/${item.name}`)}>
-                                            <div className='inventory-special-word'>
-                                                Duration:
+                                        {reminder.duration === -1 &&
+                                            <div className='inventory-special inv-clickable inv-special-column' onClick={() => history.push(`/item/${item.name}`)}>
+                                                <div className='inventory-special-word'>
+                                                    Duration:
+                                                </div>
+                                                <div className='inventory-special-value'>
+                                                    Until item returns
+                                                </div>
                                             </div>
-                                            <div className='inventory-special-value'>
-                                                Until item returns
+                                        }
+                                        {reminder.duration !== -1 &&
+                                            <div className='inventory-special inv-clickable inv-special-column' onClick={() => history.push(`/item/${item.name}`)}>
+                                                <div className='inventory-special-word'>
+                                                    Duration:
+                                                </div>
+                                                <div className='inventory-special-value'>
+                                                    {reminder.duration} days
+                                                </div>
                                             </div>
-                                        </div>
-                                    }
-                                    {reminder.duration !== -1 &&
-                                        <div className='inventory-special inv-clickable inv-special-column' onClick={() => history.push(`/item/${item.name}`)}>
-                                            <div className='inventory-special-word'>
-                                                Duration:
-                                            </div>
-                                            <div className='inventory-special-value'>
-                                                {reminder.duration} days
-                                            </div>
-                                        </div>
-                                    }
+                                        }
+                                    </div>
                                 </div>
                             ) : null;
                         })}
@@ -231,17 +238,19 @@ const InventoryPage = () => {
                             const item = allItems.find(item => item.itemId === comment.itemId);
 
                             return item ? (
-                                <div className='inventory-item' key={comment.itemId}>
+                                <div className='inventory-item-container'>
+                                    <div className='inventory-item' key={comment.itemId}>
 
-                                    <InventoryBlock item={item} getItemBackgroundColor={getItemBackgroundColor} />
+                                        <InventoryBlock item={item} getItemBackgroundColor={getItemBackgroundColor} />
 
-                                    <div className='inventory-comment inv-clickable' onClick={() => history.push(`/item/${item.name}`)}>
-                                        <div className='inventory-comment-text inventory-special inv-special-column'>
-                                            <div className='inventory-special-word'>
-                                                Comment:
-                                            </div>
-                                            <div className='inventory-special-value'>
-                                                {comment.text}
+                                        <div className='inventory-comment inv-clickable' onClick={() => history.push(`/item/${item.name}`)}>
+                                            <div className='inventory-comment-text inventory-special inv-special-column'>
+                                                <div className='inventory-special-word'>
+                                                    Comment:
+                                                </div>
+                                                <div className='inventory-special-value'>
+                                                    {comment.text}
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -259,15 +268,17 @@ const InventoryPage = () => {
                             const item = allItems.find(item => item.itemId === vote.itemId);
 
                             return item ? (
-                                <div className='inventory-item' key={vote.itemId}>
-                                    <InventoryBlock item={item} getItemBackgroundColor={getItemBackgroundColor} />
+                                <div className='inventory-item-container'>
+                                    <div className='inventory-item' key={vote.itemId}>
+                                        <InventoryBlock item={item} getItemBackgroundColor={getItemBackgroundColor} />
 
-                                    <div className='vote-value inventory-special inv-clickable inv-special-column' onClick={() => history.push(`/item/${item.name}`)}>
-                                        <div className='inventory-special-word'>
-                                            Vote:
-                                        </div>
-                                        <div className='inventory-special-value'>
-                                            {vote.value ? "Liked" : "Disliked"}
+                                        <div className='vote-value inventory-special inv-clickable inv-special-column' onClick={() => history.push(`/item/${item.name}`)}>
+                                            <div className='inventory-special-word'>
+                                                Vote:
+                                            </div>
+                                            <div className='inventory-special-value'>
+                                                {vote.value ? "Liked" : "Disliked"}
+                                            </div>
                                         </div>
                                     </div>
                                 </div>

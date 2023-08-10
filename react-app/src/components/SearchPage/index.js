@@ -64,7 +64,7 @@ const SearchPage = () => {
 
             <div className='item-detail-body'>
                 {searchResults && searchResults.map(item => (
-                    <div className='item-detail-heading' key={item.itemId}>
+                    <div className='item-detail-heading searched-item-container' key={item.itemId}>
                         <div className={`item-detail-image-container ${item.rarity}-container`}>
                             <img className={`item-detail-image search-image ${item.rarity}`} onClick={() => history.push(`/item/${item.name}`)} src={item.images.icon} alt={item.name} style={{ backgroundColor: getItemBackgroundColor(item.rarity) }} />
                         </div>

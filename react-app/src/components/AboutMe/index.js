@@ -1,7 +1,8 @@
 import { useState } from 'react'
 import cavalry from '../../assets/images/Cavalry-Captain.png'
 import welldone from '../../assets/images/Well-Done-SC.png'
-import serene from '../../assets/images/SereneHaven-SC.png'
+// import serene from '../../assets/images/SereneHaven-SC.png'
+import serene from '../../assets/images/SereneHaven-SC-New.png'
 import linkedin from '../../assets/images/linkedin-logo.svg'
 import github from '../../assets/images/github-logo.svg'
 import './AboutMe.css'
@@ -25,7 +26,7 @@ const AboutMe = () => {
         <div className='item-detail-container'>
             <div className='item-detail-heading about-me-heading'>
                 <div className={`item-detail-image-container about-me-image-container`}>
-                    <img className='item-detail-image about-me-image' src={cavalry} alt="Isaiah as a Fortnite Character"/>
+                    <img className='item-detail-image about-me-image' src={cavalry} alt="Isaiah as a Fortnite Character" />
                 </div>
                 <div className='item-details about-me-details'>
                     <h1 className='item-detail-name'>Isaiah Sinnathamby</h1>
@@ -88,7 +89,7 @@ const AboutMe = () => {
                             </div>
                         </div>
                     </div>
-                    
+
                     <h2 className='body-headers'>Check out my other projects!</h2>
                     <h4 className='about-body-subheading'>*Initial render build may take some time to load</h4>
                     <div className='other-projects'>
@@ -97,7 +98,7 @@ const AboutMe = () => {
                             <a className='project-name' href='https://serene-haven.onrender.com/' target='_blank' rel='noopener noreferrer'>SereneHaven</a>
                             <div className='about-img-container'>
                                 <a href='https://serene-haven.onrender.com/' target='_blank' rel='noopener noreferrer'>
-                                    <img className='project-image' src={serene} alt='serene-haven project'/>
+                                    <img className='project-image' src={serene} alt='serene-haven project' />
                                 </a>
                             </div>
                             <div className='project-links'>
@@ -112,7 +113,7 @@ const AboutMe = () => {
                             <a className='project-name' href='https://well-done.onrender.com/' target='_blank' rel='noopener noreferrer'>Well-Done</a>
                             <div className='about-img-container'>
                                 <a href='https://well-done.onrender.com/' target='_blank' rel='noopener noreferrer'>
-                                    <img className='project-image' src={welldone} alt='well-done project'/>
+                                    <img className='project-image' src={welldone} alt='well-done project' />
                                 </a>
                             </div>
                             <div className='project-links'>

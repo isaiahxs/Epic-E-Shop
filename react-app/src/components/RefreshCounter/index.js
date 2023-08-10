@@ -15,7 +15,7 @@ const RefreshCounter = () => {
         target.setMilliseconds(0);
 
         // converting to EST/EDT
-        const estDate = new Date(target.toLocaleString("en-US", {timeZone: "America/New_York"}));
+        const estDate = new Date(target.toLocaleString("en-US", { timeZone: "America/New_York" }));
         const estOffsetMinutes = (target - estDate) / 60000; // offset in minutes
         target.setMinutes(target.getMinutes() + estOffsetMinutes);
 
@@ -57,7 +57,7 @@ const RefreshCounter = () => {
 
     return (
         <div className='refresh-counter'>
-            <h2>Item Shop Reset: </h2>
+            <h2 className='time-left-text'>New Items In: </h2>
             <h2 className='time-left'>{formatTime(countdown)}</h2>
         </div>
     )
