@@ -20,6 +20,8 @@
     width: 100%;
     margin: auto;
     transition: transform 1s ease;
+    /* border: 1px solid white !important; */
+    /* border-right: 2px solid white; */
 }
 
 .reminder-heading-text {
@@ -29,20 +31,28 @@
 .home-currently-in-store {
     font-size: 1.6rem;
     margin-top: 0px;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
     text-align: center;
 }
 
 .home-to-inventory-container {
     display: flex;
     justify-content: center;
+    flex-direction: column;
     align-items: center;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
+    /* width: 900px; */
 }
 
-/* .home-to-inventory {
-
+/* @media screen and (min-width: 800px) {
+    .home-to-inventory-container {
+        width: 900px;
+    }
 } */
+
+.home-to-inventory {
+    font-size: 1.5rem;
+}
 
 .hero-banner:hover {
     transform: scale(1.05);
@@ -59,7 +69,7 @@
 
 .banner-container {
     overflow: hidden;
-    border: 1px solid white;
+    border: 2px solid white;
     max-width: 1000px;
 }
 
@@ -70,7 +80,7 @@
 }
 
 .featured-items-button {
-    font-size: 1.35rem;
+    font-size: 1.5rem;
 }
 
 .home-item-information {
@@ -131,3 +141,22 @@
 } */
 
 /* @media screen and (max-width: ) */
+
+@media screen and (max-width: 530px) {
+    .home-heading {
+        /* padding: 25px; */
+    }
+
+    .heading-text {
+        font-size: 2.0rem;
+    }
+
+    .home-currently-in-store {
+        font-size: 1.5rem !important;
+    }
+
+    .featured-items-button,
+    .home-to-inventory {
+        font-size: 1.3rem;
+    }
+}

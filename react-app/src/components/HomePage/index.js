@@ -63,22 +63,18 @@ const HomePage = () => {
 
                 <div>
                     {sessionUser && remindedItems.length === 1 &&
-                        <div>
+                        <div className='home-to-inventory-container'>
                             <h2 className='currently-in-store home-currently-in-store'>An item you set a reminder for is currently in store!</h2>
-                            <div className='home-to-inventory-container'>
-                                <button className='blue-button home-to-inventory' onClick={() => history.push('/inventory')}>View Reminder</button>
-                            </div>
+                            <button className='blue-button home-to-inventory' onClick={() => history.push('/inventory')}>View Reminder</button>
                         </div>
                     }
                 </div>
 
                 <div>
                     {sessionUser && remindedItems.length > 1 &&
-                        <div>
+                        <div className='home-to-inventory-container'>
                             <h2 className='currently-in-store home-currently-in-store'>Some items you set reminders for are currently in store!</h2>
-                            <div className='home-to-inventory-container'>
-                                <button className='blue-button home-to-inventory' onClick={() => history.push('/inventory')}>View Reminders</button>
-                            </div>
+                            <button className='blue-button home-to-inventory' onClick={() => history.push('/inventory')}>View Reminders</button>
                         </div>
                     }
                 </div>
