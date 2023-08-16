@@ -58,7 +58,7 @@ One of the major challenges was dealing with fetching data asynchronously from a
 
 ### Rendering Optimization
 
-Another challenge faced was ensuring that the application rendered efficiently. This was particularly relevant when dealing with components like FanFavorites, DailyItems, FeaturedItems, which needed to display a dynamic list of items. This was addressed using React's virtual DOM diffing and reconciliation process. I also ensured that components were not re-rendering unnecessarily by using React hooks like `useMemo` and `useCallback` to memoize values and functions.
+Another challenge faced was ensuring that the application rendered efficiently. This was particularly relevant when dealing with components like FanFavorites, DailyItems, FeaturedItems, which needed to display a dynamic list of items. This was addressed using localStorage to reduce unnecessary API fetches while also speeding up the rendering.
 
 ### Data Filtering and Sorting
 
@@ -79,7 +79,6 @@ A significant challenge was to maintain the state across the sessions, like pres
 Each of these challenges allowed me to explore and learn various aspects of React, Redux, and Flask in depth, and I was able to find effective solutions by leveraging the features of these technologies and best practices of software development.
 
 ## Code Snippets
-*Have to add my code highlights here that were challenging, interesting, or particularly crucial to the functionality of the application*
 
 ### Home Page Component
 
