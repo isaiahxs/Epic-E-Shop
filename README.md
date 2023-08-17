@@ -1,4 +1,4 @@
-# Epic-E-Shop
+# <a href="https://epic-e-shop.onrender.com/" target="_blank">Epic-E-Shop</a>
 ![image](https://github.com/isaiahxs/Epic-E-Shop/assets/107521578/883cb473-12ef-4fc0-a574-852473be5dfd)
 
 
@@ -78,7 +78,7 @@ Each of these challenges allowed me to explore and learn various aspects of Reac
 
 ### Home Page Component
 
-Our Home Page component is the landing page of the application and where most of the action occurs. Here, I fetch and display all the items featured, handle user sessions and reminders, and control the page loading state.
+The Home Page component is the landing page of the application and where most of the action occurs. Here, I fetch and display all the items featured, handle user sessions and reminders, and control the page loading state.
 
 Here are some key excerpts from the `HomePage` component:
 
@@ -96,7 +96,7 @@ const HomePage = () => {
     ...
 ```
 
-This first chunk shows the component setup, where I utilize the useSelector hook to grab the necessary slices of state from our Redux store.
+This first chunk shows the component setup, where I utilize the useSelector hook to grab the necessary slices of state from the Redux store.
 
 ```
 // Data fetching and loading state management
@@ -114,7 +114,7 @@ useEffect(() => {
     fetchData();
 }, [dispatch])
 ```
-In this section, I use the useEffect hook to fetch data from our backend when the component first loads. I use Promise.all to ensure that our setIsLoading function does not change the loading state until all of our dispatch functions have completed their asynchronous operations.
+In this section, I use the useEffect hook to fetch data from the backend when the component first loads. I use Promise.all to ensure that the setIsLoading function does not change the loading state until all of the dispatch functions have completed their asynchronous operations.
 
 ```
 // Rendering the component
@@ -132,7 +132,7 @@ return (
     )
 }
 ```
-Finally, in the rendering part of our component, I first check if the component is still in its loading state. If so, I render a simple "Loading..." message. Once loading is complete, the full component renders, displaying all the features of the application to the user.
+Finally, in the rendering part of the component, I first check if the component is still in its loading state. If so, I render a simple "Loading..." message. Once loading is complete, the full component renders, displaying all the features of the application to the user.
 
 ## Documents
 - [Feature List](https://github.com/isaiahxs/Epic-E-Shop/wiki/Features)
