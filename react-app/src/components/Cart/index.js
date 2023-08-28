@@ -119,8 +119,8 @@ const Cart = ({ isCartOpen, toggleCartOpen }) => {
                                                     </div>
                                                 </div>
 
-                                                <div className='cart-item-image-container'>
-                                                    <img className='cart-item-image' alt='cart-item-image' src={item.images.icon} style={{ backgroundColor: getItemBackgroundColor(item.rarity) }} />
+                                                <div className={`cart-item-image-container item-detail-image-container ${item.rarity}-container`}>
+                                                    <img className={`item-detail-image ${item.rarity}`} src={item.images.icon} alt={item.name} style={{ backgroundColor: getItemBackgroundColor(item.rarity) }} />
                                                 </div>
 
                                             </div>

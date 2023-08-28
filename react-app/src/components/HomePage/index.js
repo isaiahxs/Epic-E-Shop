@@ -30,11 +30,12 @@ const HomePage = () => {
         const fetchData = async () => {
             await Promise.all([
                 dispatch(getSeedItems()),
-                setIsLoading(false),
+                // setIsLoading(false),
                 dispatch(getDailyItems()),
                 dispatch(getFeaturedItems()),
                 dispatch(getReminders()),
             ]);
+            setIsLoading(false);
         };
 
         fetchData();

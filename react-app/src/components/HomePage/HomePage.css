@@ -113,6 +113,10 @@
     margin-right: 5px;
 }
 
+.vbuck-no-cursor {
+    cursor: default;
+}
+
 .home-item-image {
     height: 200px;
     width: 200px;
